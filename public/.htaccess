@@ -1,0 +1,31 @@
+# Prioritize React index.html over WordPress index.php
+DirectoryIndex index.html index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Bypass all rewrites for static React directories (forces raw files, prevents image optimizer loops)
+  RewriteRule ^logos($|/) - [L]
+  RewriteRule ^team($|/) - [L]
+  RewriteRule ^assets($|/) - [L]
+
+  # Exclude root directory request from directory index resolution and force React index.html
+  RewriteRule ^$ /index.html [L]
+
+  # 1. Exclude WordPress directories, administration panels, and APIs from React Router
+  RewriteRule ^wp-admin($|/) - [L]
+  RewriteRule ^wp-includes($|/) - [L]
+  RewriteRule ^wp-content($|/) - [L]
+  RewriteRule ^wp-json($|/) - [L]
+  RewriteRule ^wp-login\.php$ - [L]
+  RewriteRule ^xmlrpc\.php$ - [L]
+
+  # 2. Serve actual physical files/folders directly if they exist on Hostinger server
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. Route all other navigation links to the React single page app index.html
+  RewriteRule ^ /index.html [L]
+</IfModule>
