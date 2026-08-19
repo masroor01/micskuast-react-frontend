@@ -12,6 +12,7 @@ import EWS from './pages/EWS';
 import Publications from './pages/Publications';
 import Team from './pages/Team';
 import Admin from './pages/Admin';
+import About from './pages/About';
 import { ParticleBackground } from './components/ParticleBackground';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <main style={{ flexGrow: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/markets" element={<Markets />} />
             <Route path="/outlooks" element={<OutlookList />} />
             <Route path="/outlooks/:slug" element={<OutlookDetail />} />
