@@ -59,17 +59,17 @@ const Header: React.FC = () => {
           >
             <EditableLabel labelKey="nav_home" defaultValue="Home" />
           </NavLink>
-          
+
           <NavLink 
-            to="/markets" 
+            to="/about" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           >
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-              <Landmark size={16} /> 
-              <EditableLabel labelKey="nav_apmcs" defaultValue="APMCs" />
+              <Info size={16} /> 
+              <EditableLabel labelKey="nav_about" defaultValue="About Us" />
             </span>
           </NavLink>
-          
+
           {/* EWS Dropdown Menu */}
           <div 
             className="nav-dropdown-trigger"
@@ -97,22 +97,22 @@ const Header: React.FC = () => {
           </div>
 
           <NavLink 
+            to="/markets" 
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          >
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+              <Landmark size={16} /> 
+              <EditableLabel labelKey="nav_apmcs" defaultValue="APMCs" />
+            </span>
+          </NavLink>
+          
+          <NavLink 
             to="/publications" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           >
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
               <BookOpen size={16} /> 
               <EditableLabel labelKey="nav_publications" defaultValue="Publications" />
-            </span>
-          </NavLink>
-
-          <NavLink 
-            to="/about" 
-            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-          >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-              <Info size={16} /> 
-              <EditableLabel labelKey="nav_about" defaultValue="About Us" />
             </span>
           </NavLink>
         </nav>
@@ -215,11 +215,11 @@ const Header: React.FC = () => {
               <EditableLabel labelKey="nav_home" defaultValue="Home" />
             </NavLink>
             <NavLink 
-              to="/markets" 
+              to="/about" 
               className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
               onClick={() => setMobileOpen(false)}
             >
-              <EditableLabel labelKey="nav_apmcs" defaultValue="APMCs" />
+              <EditableLabel labelKey="nav_about" defaultValue="About Us" />
             </NavLink>
             <NavLink 
               to="/ews" 
@@ -229,18 +229,18 @@ const Header: React.FC = () => {
               <EditableLabel labelKey="nav_ews" defaultValue="EWS Reports" />
             </NavLink>
             <NavLink 
+              to="/markets" 
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              <EditableLabel labelKey="nav_apmcs" defaultValue="APMCs" />
+            </NavLink>
+            <NavLink 
               to="/publications" 
               className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
               onClick={() => setMobileOpen(false)}
             >
               <EditableLabel labelKey="nav_publications" defaultValue="Publications" />
-            </NavLink>
-            <NavLink 
-              to="/about" 
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-              onClick={() => setMobileOpen(false)}
-            >
-              <EditableLabel labelKey="nav_about" defaultValue="About Us" />
             </NavLink>
             <NavLink 
               to="/forecasts" 
