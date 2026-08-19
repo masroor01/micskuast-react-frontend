@@ -27,7 +27,7 @@ const Header: React.FC = () => {
         {/* Logo Section */}
         <NavLink to="/" className="logo-section" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
           <img 
-            src="/logos/mic.jpg" 
+            src="/logos/mic.png" 
             alt="MIC Logo" 
             style={{ 
               height: '40px', 
