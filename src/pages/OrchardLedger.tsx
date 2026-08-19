@@ -157,14 +157,31 @@ const OrchardLedger: React.FC = () => {
     const Plotly = (window as any).Plotly;
     const active = getActive();
 
-    // Chart configurations
+    // Chart configurations based on active theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const isWarm = document.documentElement.getAttribute('data-theme') === 'warm';
+    
+    let paperBg = '#ffffff';
+    let plotBg = '#ffffff';
+    let fontColor = '#24211a';
+    
+    if (isDark) {
+      paperBg = '#1c1f26';
+      plotBg = '#1c1f26';
+      fontColor = '#e2e8f0';
+    } else if (isWarm) {
+      paperBg = '#f7f1e3';
+      plotBg = '#f7f1e3';
+      fontColor = '#2d241c';
+    }
+
     const baseLayout = (extra: any) => ({
       margin: { l: 60, r: 24, t: 10, b: 44 },
-      legend: { orientation: 'h', y: -0.18, font: { family: 'IBM Plex Sans', size: 11 } },
+      legend: { orientation: 'h', y: -0.18, font: { family: 'IBM Plex Sans', size: 11, color: fontColor } },
       hovermode: 'closest',
-      plot_bgcolor: '#ffffff',
-      paper_bgcolor: '#ffffff',
-      font: { family: 'IBM Plex Sans', color: '#24211a', size: 12 },
+      plot_bgcolor: plotBg,
+      paper_bgcolor: paperBg,
+      font: { family: 'IBM Plex Sans', color: fontColor, size: 12 },
       colorway: cropNames.map(c => cropColor[c]),
       ...extra
     });
@@ -275,9 +292,18 @@ const OrchardLedger: React.FC = () => {
     }
   };
 
-  // Re-draw chart on selection and tab switches
+  // Re-draw chart on selection, tab, and theme switches
   useEffect(() => {
     renderChart();
+    
+    const handleThemeChange = () => {
+      renderChart();
+    };
+
+    window.addEventListener('theme-changed', handleThemeChange);
+    return () => {
+      window.removeEventListener('theme-changed', handleThemeChange);
+    };
   }, [plotlyLoaded, activeTab, activeView, activeCrops, raceFrameIdx]);
 
   // Race animation loop control
@@ -475,7 +501,7 @@ const OrchardLedger: React.FC = () => {
                 fontFamily: 'var(--jkh-font-mono)',
                 fontSize: '10.5px',
                 border: '1px solid var(--jkh-line)',
-                background: '#fff',
+                background: 'var(--color-surface)',
                 borderRadius: '6px',
                 padding: '3px 7px',
                 cursor: 'pointer'
@@ -527,6 +553,18 @@ const OrchardLedger: React.FC = () => {
       <style dangerouslySetInnerHTML={{ __html: `
         #jk-dash, #jk-dash *{box-sizing:border-box}
         #jk-dash{
+          --jkh-font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+          --jkh-font-mono: monospace;
+          --jkh-font-display: 'Playfair Display', Georgia, serif;
+          --jkh-ink: var(--color-text-main);
+          --jkh-parchment: var(--color-bg);
+          --jkh-parchment-2: var(--color-surface);
+          --jkh-line: var(--color-border);
+          --jkh-apple: #b23a2e;
+          --jkh-saffron: #e08e31;
+          --jkh-walnut: #6b4226;
+          --jkh-pine-2: var(--color-primary-pale);
+          
           font-family: var(--jkh-font-body);
           color: var(--jkh-ink);
           background: var(--jkh-parchment);
@@ -576,14 +614,14 @@ const OrchardLedger: React.FC = () => {
 
         .jkh-viewbar{ display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; position: relative; z-index: 5; }
         #jk-dash .jkh-chip{
-          border: 1px solid var(--jkh-line) !important; background: #fff !important; color: var(--jkh-ink) !important;
+          border: 1px solid var(--jkh-line) !important; background: var(--jkh-parchment-2) !important; color: var(--jkh-ink) !important;
           font-family: var(--jkh-font-mono); font-size: 11.5px; letter-spacing: .04em; text-transform: uppercase;
           padding: 7px 12px; border-radius: 999px; cursor: pointer; transition: .15s;
         }
         #jk-dash .jkh-chip:hover{ border-color: var(--jkh-apple) !important; color: var(--jkh-apple) !important; }
         #jk-dash .jkh-chip.is-active{ background: var(--jkh-apple) !important; border-color: var(--jkh-apple) !important; color: #fff !important; }
 
-        .jkh-canvas-wrap{ background: #fff; border: 1px solid var(--jkh-line); border-radius: 12px; padding: 12px; position: relative; }
+        .jkh-canvas-wrap{ background: var(--jkh-parchment-2); border: 1px solid var(--jkh-line); border-radius: 12px; padding: 12px; position: relative; }
         .jkh-panel-title{ display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; gap: 10px; flex-wrap: wrap; }
         .jkh-panel-title h4{ font-family: var(--jkh-font-display); font-size: 16px; margin: 0; font-weight: 600; }
         .jkh-panel-note{ font-size: 11.5px; color: var(--jkh-muted); font-family: var(--jkh-font-mono); }
@@ -601,8 +639,8 @@ const OrchardLedger: React.FC = () => {
         .jkh-race-ctrl input[type=range]{ flex: 1; }
 
         .jkh-side{ padding: 18px 18px 22px; background: var(--jkh-parchment-2); height: 100%; }
-        .jkh-cat-group{ margin-bottom: 10px; border: 1px solid var(--jkh-line); border-radius: 10px; background: #fff; overflow: hidden; }
-        .jkh-cat-head{ display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; font-weight: 600; font-size: 12.5px; border-bottom: 1px solid var(--jkh-line); background: var(--jkh-parchment-2); }
+        .jkh-cat-group{ margin-bottom: 10px; border: 1px solid var(--jkh-line); border-radius: 10px; background: var(--jkh-parchment-2); overflow: hidden; }
+        .jkh-cat-head{ display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; font-weight: 600; font-size: 12.5px; border-bottom: 1px solid var(--jkh-line); background: var(--jkh-parchment); }
         .jkh-cat-swatch{ width: 9px; height: 9px; border-radius: 2px; display: inline-block; margin-right: 7px; }
         .jkh-cat-body{ padding: 2px 10px 8px; }
         .jkh-crop-row{ display: flex; align-items: center; gap: 7px; padding: 4px 0; font-size: 12.5px; cursor: pointer; }
@@ -616,12 +654,12 @@ const OrchardLedger: React.FC = () => {
         .jkh-tablewrap{ overflow-x: auto; margin-top: 2px; }
         table.jkh-table{ width: 100%; border-collapse: collapse; font-size: 12px; font-family: var(--jkh-font-mono); }
         table.jkh-table th, table.jkh-table td{ border: 1px solid var(--jkh-line); padding: 5px 7px; text-align: right; white-space: nowrap; }
-        table.jkh-table th:first-child, table.jkh-table td:first-child{ text-align: left; position: sticky; left: 0; background: #fff; }
+        table.jkh-table th:first-child, table.jkh-table td:first-child{ text-align: left; position: sticky; left: 0; background: var(--jkh-parchment); }
         table.jkh-table thead th{ background: var(--jkh-parchment-2); font-weight: 600; }
-        table.jkh-table tbody tr:nth-child(even) td{ background: #fbf9f2; }
-        table.jkh-table tbody tr:nth-child(even) td:first-child{ background: #f3efe0; }
+        table.jkh-table tbody tr:nth-child(even) td{ background: var(--jkh-parchment-2); }
+        table.jkh-table tbody tr:nth-child(even) td:first-child{ background: var(--jkh-parchment); }
 
-        .jkh-foot{ padding: 10px 20px; background: #fff; border-top: 1px solid var(--jkh-line); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 11px; color: var(--jkh-muted); font-family: var(--jkh-font-mono); }
+        .jkh-foot{ padding: 10px 20px; background: var(--jkh-parchment-2); border-top: 1px solid var(--jkh-line); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 11px; color: var(--jkh-muted); font-family: var(--jkh-font-mono); }
         .jkh-badge{ display: inline-block; font-family: var(--jkh-font-mono); font-size: 9.5px; letter-spacing: .05em; padding: 2px 6px; border-radius: 5px; background: var(--jkh-saffron); color: #3b2a06; vertical-align: middle; margin-left: 6px; }
 
         @media (max-width: 920px) {

@@ -20,6 +20,8 @@
   --color-text-muted: hsl(210, 12%, 46%);
   --color-border: hsl(210, 14%, 90%);
   
+  --color-header-bg: rgba(255, 255, 255, 0.85);
+
   /* Layout & Elevations */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 8px 24px rgba(12, 42, 24, 0.08);
@@ -32,6 +34,52 @@
   --max-width: 1280px;
 }
 
+[data-theme="dark"] {
+  --primary-hue: 142;
+  --accent-hue: 38;
+  
+  --color-primary: hsl(var(--primary-hue), 65%, 70%);      /* Light green for readability */
+  --color-primary-light: hsl(var(--primary-hue), 55%, 60%);
+  --color-primary-pale: hsl(var(--primary-hue), 40%, 15%);
+  
+  --color-accent: hsl(var(--accent-hue), 95%, 65%);        /* Rich Amber / Gold */
+  --color-accent-light: hsl(var(--accent-hue), 40%, 20%);
+  
+  --color-bg: hsl(220, 20%, 10%);                          /* Dark Neutral */
+  --color-surface: hsl(220, 20%, 14%);
+  --color-surface-hover: hsl(var(--primary-hue), 30%, 18%);
+  
+  --color-text-main: hsl(210, 20%, 92%);                    /* Off-white */
+  --color-text-muted: hsl(210, 10%, 65%);
+  --color-border: hsl(220, 15%, 22%);
+  --color-header-bg: rgba(20, 24, 33, 0.85);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="warm"] {
+  --primary-hue: 142;
+  --accent-hue: 24;
+  
+  --color-primary: hsl(142, 60%, 16%);                      /* Forest green */
+  --color-primary-light: hsl(142, 45%, 26%);
+  --color-primary-pale: hsl(36, 30%, 88%);
+  
+  --color-accent: hsl(var(--accent-hue), 85%, 45%);        /* Rich Warm Amber */
+  --color-accent-light: hsl(36, 85%, 90%);
+  
+  --color-bg: hsl(36, 45%, 93%);                            /* Warm Sepia */
+  --color-surface: hsl(36, 50%, 97%);
+  --color-surface-hover: hsl(36, 35%, 90%);
+  
+  --color-text-main: hsl(24, 30%, 16%);                     /* Deep brown slate */
+  --color-text-muted: hsl(24, 15%, 45%);
+  --color-border: hsl(36, 20%, 85%);
+  --color-header-bg: rgba(247, 241, 227, 0.85);
+}
+
 /* Global Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -41,7 +89,7 @@
 
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--color-bg);
+  background-color: transparent;
   color: var(--color-text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -83,9 +131,8 @@ a {
   padding: clamp(3rem, 6vw, 6rem) 0;
 }
 
-/* Header / Navigation */
 .header-wrapper {
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--color-header-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border);

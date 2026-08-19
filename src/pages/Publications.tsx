@@ -107,7 +107,7 @@ const Publications: React.FC = () => {
         gap: '1.5rem',
         justifyContent: 'space-between',
         alignItems: 'center',
-        background: 'white',
+        background: 'var(--color-surface)',
         border: '1px solid var(--color-border)',
         padding: '1.25rem 2rem',
         borderRadius: 'var(--radius-md)',
@@ -278,7 +278,7 @@ const Publications: React.FC = () => {
           ))}
         </div>
       ) : (
-        <div style={{ textAlign: 'center', padding: '4rem 2rem', border: '1px dashed var(--color-border)', borderRadius: 'var(--radius-md)', background: 'white' }}>
+        <div style={{ textAlign: 'center', padding: '4rem 2rem', border: '1px dashed var(--color-border)', borderRadius: 'var(--radius-md)', background: 'var(--color-surface)' }}>
           <h3 style={{ color: 'var(--color-primary)' }}>No Publications Found</h3>
           <p style={{ color: 'var(--color-text-muted)', marginTop: '0.25rem' }}>
             We couldn't find any documents matching "{searchQuery}". Try refining your search query or switching categories.

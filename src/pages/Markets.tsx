@@ -149,7 +149,7 @@ const Markets: React.FC = () => {
       {/* Content */}
       <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '3rem', alignItems: 'start', marginTop: '2rem' }}>
         <div>
-          <div style={{ background: 'white', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2rem', marginBottom: '2rem', boxShadow: 'var(--shadow-sm)' }}>
+          <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2rem', marginBottom: '2rem', boxShadow: 'var(--shadow-sm)' }}>
             <span style={{ fontSize: '0.8rem', color: 'var(--color-accent)', fontWeight: 800, textTransform: 'uppercase' }}>
               {market.role}
             </span>
@@ -198,7 +198,7 @@ const Markets: React.FC = () => {
 
         {/* Visual Charts Container */}
         <div style={{ position: 'sticky', top: '100px' }}>
-          <div style={{ background: 'white', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2rem', boxShadow: 'var(--shadow-sm)' }}>
+          <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2rem', boxShadow: 'var(--shadow-sm)' }}>
             <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <TrendingUp size={20} style={{ color: 'var(--color-accent)' }} />
               Wholesale Price Profile
@@ -211,10 +211,10 @@ const Markets: React.FC = () => {
             <div style={{ textAlign: 'center', padding: '1rem 0' }}>
               <svg viewBox="0 0 300 180" width="100%" height="auto" style={{ overflow: 'visible' }}>
                 {/* Grid Lines */}
-                <line x1="20" y1="20" x2="280" y2="20" stroke="#f0f0f0" strokeWidth="1" />
-                <line x1="20" y1="60" x2="280" y2="60" stroke="#f0f0f0" strokeWidth="1" />
-                <line x1="20" y1="100" x2="280" y2="100" stroke="#f0f0f0" strokeWidth="1" />
-                <line x1="20" y1="140" x2="280" y2="140" stroke="#f0f0f0" strokeWidth="1" />
+                <line x1="20" y1="20" x2="280" y2="20" stroke="var(--color-border)" strokeWidth="1" />
+                <line x1="20" y1="60" x2="280" y2="60" stroke="var(--color-border)" strokeWidth="1" />
+                <line x1="20" y1="100" x2="280" y2="100" stroke="var(--color-border)" strokeWidth="1" />
+                <line x1="20" y1="140" x2="280" y2="140" stroke="var(--color-border)" strokeWidth="1" />
                 
                 {/* Axis */}
                 <line x1="20" y1="150" x2="280" y2="150" stroke="var(--color-border)" strokeWidth="2" />
@@ -242,17 +242,17 @@ const Markets: React.FC = () => {
                 <circle cx="95" cy="46" r="4" fill="var(--color-primary-light)" />
                 
                 {/* Label values */}
-                <text x="15" y="25" fontSize="8" textAnchor="end">₹120</text>
-                <text x="15" y="65" fontSize="8" textAnchor="end">₹80</text>
-                <text x="15" y="105" fontSize="8" textAnchor="end">₹40</text>
-                <text x="15" y="145" fontSize="8" textAnchor="end">₹0</text>
+                <text x="15" y="25" fontSize="8" textAnchor="end" fill="var(--color-text-main)">₹120</text>
+                <text x="15" y="65" fontSize="8" textAnchor="end" fill="var(--color-text-main)">₹80</text>
+                <text x="15" y="105" fontSize="8" textAnchor="end" fill="var(--color-text-main)">₹40</text>
+                <text x="15" y="145" fontSize="8" textAnchor="end" fill="var(--color-text-main)">₹0</text>
                 
                 {/* Months labels */}
-                <text x="30" y="165" fontSize="8" textAnchor="middle">May</text>
-                <text x="90" y="165" fontSize="8" textAnchor="middle">Jul</text>
-                <text x="150" y="165" fontSize="8" textAnchor="middle">Sep</text>
-                <text x="210" y="165" fontSize="8" textAnchor="middle">Nov</text>
-                <text x="270" y="165" fontSize="8" textAnchor="middle">Jan</text>
+                <text x="30" y="165" fontSize="8" textAnchor="middle" fill="var(--color-text-main)">May</text>
+                <text x="90" y="165" fontSize="8" textAnchor="middle" fill="var(--color-text-main)">Jul</text>
+                <text x="150" y="165" fontSize="8" textAnchor="middle" fill="var(--color-text-main)">Sep</text>
+                <text x="210" y="165" fontSize="8" textAnchor="middle" fill="var(--color-text-main)">Nov</text>
+                <text x="270" y="165" fontSize="8" textAnchor="middle" fill="var(--color-text-main)">Jan</text>
               </svg>
             </div>
             

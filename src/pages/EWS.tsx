@@ -94,7 +94,7 @@ const EWS: React.FC = () => {
       {/* Warnings Legend Cards */}
       {activeTab !== 'stability' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
-          <div style={{ background: '#fff8f8', border: '1px solid #ffebeb', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
+          <div style={{ background: 'var(--color-bg-alert-red)', border: '1px solid var(--color-border-alert-red)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
             <h4 style={{ color: '#c53030', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.5rem' }}>
               <AlertTriangle size={18} /> Price Shock (Anomaly)
             </h4>
@@ -102,7 +102,7 @@ const EWS: React.FC = () => {
               Detects extreme week-over-week price movements that deviate beyond standard statistical confidence intervals.
             </p>
           </div>
-          <div style={{ background: '#fffbeb', border: '1px solid #fef3c7', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
+          <div style={{ background: 'var(--color-bg-alert-yellow)', border: '1px solid var(--color-border-alert-yellow)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
             <h4 style={{ color: '#b7791f', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.5rem' }}>
               <TrendingDown size={18} /> Volatility Breakout
             </h4>
@@ -110,7 +110,7 @@ const EWS: React.FC = () => {
               Monitors clusters of variance where the standard deviation of prices expands rapidly over a 4-week window.
             </p>
           </div>
-          <div style={{ background: '#f0fdf4', border: '1px solid #dcfce7', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
+          <div style={{ background: 'var(--color-bg-alert-green)', border: '1px solid var(--color-border-alert-green)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
             <h4 style={{ color: '#15803d', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.5rem' }}>
               <ShieldCheck size={18} /> Price Drawdown
             </h4>
@@ -125,7 +125,7 @@ const EWS: React.FC = () => {
       {activeTab === 'stability' ? (
         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           {/* Stability Heatmap Section */}
-          <div style={{ background: 'white', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2.5rem', boxShadow: 'var(--shadow-sm)' }}>
+          <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2.5rem', boxShadow: 'var(--shadow-sm)' }}>
             <h3 style={{ marginBottom: '0.5rem', color: 'var(--color-primary)' }}>Agricultural Stability Heatmap</h3>
             <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', marginBottom: '2rem' }}>
               Aggregated risk assessment scorecards (on a 0-100 hazard scale) evaluating multiple parameters across regional markets.
@@ -183,10 +183,10 @@ const EWS: React.FC = () => {
 
           {/* Risk Quadrant Plot Representation */}
           <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '3rem', alignItems: 'start' }}>
-            <div style={{ background: 'white', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2.5rem', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2.5rem', boxShadow: 'var(--shadow-sm)' }}>
               <h3 style={{ marginBottom: '1.5rem', color: 'var(--color-primary)' }}>Instability Risk Quadrant</h3>
               
-              <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto', border: '1px solid var(--color-border)', padding: '1rem', background: '#fafafa', position: 'relative' }}>
+              <div style={{ width: '100%', maxWidth: '500px', margin: '0 auto', border: '1px solid var(--color-border)', padding: '1rem', background: 'var(--color-bg)', position: 'relative' }}>
                 <svg viewBox="0 0 200 200" width="100%" height="auto" style={{ overflow: 'visible' }}>
                   {/* Grid quadrants */}
                   <rect x="0" y="0" width="100" height="100" fill="hsla(38, 90%, 92%, 0.3)" /> {/* High Threat */}
@@ -207,20 +207,20 @@ const EWS: React.FC = () => {
                   {/* Scatter Points */}
                   {/* Aglar Small */}
                   <circle cx="140" cy="40" r="5" fill="#c53030" />
-                  <text x="140" y="32" fontSize="6" textAnchor="middle" fontWeight="bold">Aglar Small (Q1)</text>
+                  <text x="140" y="32" fontSize="6" textAnchor="middle" fontWeight="bold" fill="var(--color-text-main)">Aglar Small (Q1)</text>
 
                   {/* Parimpore Large */}
                   <circle cx="60" cy="140" r="5" fill="#15803d" />
-                  <text x="60" y="132" fontSize="6" textAnchor="middle" fontWeight="bold">Parimpore (Q3)</text>
+                  <text x="60" y="132" fontSize="6" textAnchor="middle" fontWeight="bold" fill="var(--color-text-main)">Parimpore (Q3)</text>
 
                   {/* Narwal Jammu */}
                   <circle cx="160" cy="70" r="5" fill="#c53030" />
-                  <text x="160" y="62" fontSize="6" textAnchor="middle" fontWeight="bold">Jammu (Q1)</text>
+                  <text x="160" y="62" fontSize="6" textAnchor="middle" fontWeight="bold" fill="var(--color-text-main)">Jammu (Q1)</text>
                 </svg>
               </div>
             </div>
 
-            <div style={{ background: 'white', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2rem', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2rem', boxShadow: 'var(--shadow-sm)' }}>
               <h4 style={{ color: 'var(--color-primary)', marginBottom: '0.75rem' }}>Stability Quadrant Explanation</h4>
               <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: '1.7' }}>
                 Markets mapped in **Quadrant I (Critical Risk)** undergo frequent price shocks coupled with high volatility breakouts. Primary local assembly markets in Shopian (Aglar) are highly vulnerable to seasonal weather disruptions. 
@@ -283,7 +283,7 @@ const EWS: React.FC = () => {
           {/* Interactive Plot Viewer */}
           <div style={{ position: 'sticky', top: '100px' }}>
             {selectedSegment ? (
-              <div style={{ background: 'white', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2rem', boxShadow: 'var(--shadow-sm)' }}>
+              <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '2rem', boxShadow: 'var(--shadow-sm)' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--color-accent)' }}>
                   Interactive Volatility Chart
                 </span>
@@ -295,7 +295,7 @@ const EWS: React.FC = () => {
                 </p>
 
                 {/* SVG representing the specific commodity forecast anomaly wave */}
-                <div style={{ border: '1px solid var(--color-border)', padding: '1rem', background: '#fafafa', borderRadius: 'var(--radius-sm)' }}>
+                <div style={{ border: '1px solid var(--color-border)', padding: '1rem', background: 'var(--color-bg)', borderRadius: 'var(--radius-sm)' }}>
                   <svg viewBox="0 0 300 150" width="100%" height="auto" style={{ overflow: 'visible' }}>
                     {/* Shock boundary bounds (red dotted) */}
                     <line x1="20" y1="40" x2="280" y2="40" stroke="#fecaca" strokeWidth="1.5" strokeDasharray="3" />

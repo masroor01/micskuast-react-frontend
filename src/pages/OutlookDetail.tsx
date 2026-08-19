@@ -46,7 +46,7 @@ const OutlookDetail: React.FC = () => {
       </button>
 
       <div style={{
-        background: 'white',
+        background: 'var(--color-surface)',
         border: '1px solid var(--color-border)',
         borderRadius: 'var(--radius-lg)',
         padding: '3rem',

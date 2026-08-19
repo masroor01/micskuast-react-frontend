@@ -110,7 +110,7 @@ const Home: React.FC = () => {
 
       {/* Redesigned Premium Hero Section */}
       <section className="section-padding" style={{ 
-        background: 'radial-gradient(circle at 50% 0%, var(--color-primary-pale) 0%, var(--color-surface) 100%)', 
+        background: 'radial-gradient(circle at 50% 0%, var(--color-primary-pale) 0%, transparent 100%)', 
         borderBottom: '1px solid var(--color-border)',
         paddingTop: '5rem',
         paddingBottom: '5rem',
@@ -298,7 +298,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* APMC Markets Quick Links Grid */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-surface)', borderTop: '1px solid var(--color-border)' }}>
+      <section className="section-padding" style={{ backgroundColor: 'transparent', borderTop: '1px solid var(--color-border)' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
@@ -322,7 +322,7 @@ const Home: React.FC = () => {
                 key={m.slug}
                 to={`/markets?tab=${m.slug}`}
                 style={{
-                  background: 'white',
+                  background: 'var(--color-surface)',
                   border: '1px solid var(--color-border)',
                   borderRadius: 'var(--radius-md)',
                   padding: '1.5rem',
@@ -343,7 +343,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Core Dynamic Dashboards Section */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--color-bg)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
+      <section className="section-padding" style={{ backgroundColor: 'transparent', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
             <h2 style={{ marginBottom: '1rem' }}>Interactive Analytical Engines</h2>
@@ -399,7 +399,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Meet Our Team Section */}
-      <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg)' }}>
+      <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', backgroundColor: 'transparent' }}>
         <div className="container">
           {/* Header Block */}
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem' }}>
@@ -558,7 +558,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Video Insights Section */}
-      <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', backgroundColor: 'var(--color-surface)' }}>
+      <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', backgroundColor: 'transparent' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem' }}>
             <span style={{ 

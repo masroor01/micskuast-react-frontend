@@ -17,7 +17,7 @@ const Forecasts: React.FC = () => {
     <div className="container section-padding animate-fade-in">
       {/* MIC Announcements Banner */}
       <div style={{
-        background: 'white',
+        background: 'var(--color-surface)',
         border: '1px solid var(--color-border)',
         borderRadius: 'var(--radius-sm)',
         padding: '0.5rem 1rem',
@@ -99,9 +99,9 @@ const Forecasts: React.FC = () => {
               width: '100%',
               maxWidth: 'none',
               borderRadius: '16px',
-              boxShadow: '0 6px 22px rgba(0,0,0,.08)',
-              border: '1px solid #e6eceb',
-              background: '#fff',
+              boxShadow: 'var(--shadow-md)',
+              border: '1px solid var(--color-border)',
+              background: 'var(--color-surface)',
               overflow: 'hidden',
               boxSizing: 'border-box',
               padding: '1.5rem'
@@ -119,7 +119,7 @@ const Forecasts: React.FC = () => {
                   fontSize: 'clamp(16px,2vw,20px)',
                   lineHeight: 1.2,
                   fontWeight: 1000,
-                  color: '#131438'
+                  color: 'var(--color-text-main)'
                 }}>
                   Smart Forecasts by Market, Variety &amp; Grade (₹/Kg)
                 </h3>
@@ -131,9 +131,9 @@ const Forecasts: React.FC = () => {
                 width: '100%',
                 maxWidth: 'none',
                 minHeight: '420px',
-                border: '1px solid #e6eceb',
+                border: '1px solid var(--color-border)',
                 borderRadius: '16px',
-                background: '#fff',
+                background: 'var(--color-surface)',
                 overflow: 'hidden',
                 boxSizing: 'border-box'
               }}>

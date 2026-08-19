@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, ChevronDown } from 'lucide-react';
+import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, ChevronDown, Sun, Moon, Coffee } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [ewsDropdownOpen, setEwsDropdownOpen] = useState(false);
+
+  const [theme, setTheme] = useState<'light' | 'dark' | 'warm'>(() => {
+    return (localStorage.getItem('site_theme') as any) || 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = (newTheme: 'light' | 'dark' | 'warm') => {
+    setTheme(newTheme);
+    localStorage.setItem('site_theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   return (
     <header className="header-wrapper">
@@ -102,6 +116,67 @@ const Header: React.FC = () => {
               <EditableLabel labelKey="nav_market_intel" defaultValue="Market Intelligence" />
             </span>
           </NavLink>
+
+          {/* Theme Switcher Toggle */}
+          <div style={{ display: 'flex', gap: '0.25rem', background: 'var(--color-bg)', padding: '4px', borderRadius: '50px', border: '1px solid var(--color-border)', marginLeft: '0.5rem' }}>
+            <button
+              onClick={() => toggleTheme('light')}
+              style={{
+                background: theme === 'light' ? 'var(--color-primary)' : 'transparent',
+                color: theme === 'light' ? '#fff' : 'var(--color-text-muted)',
+                border: 'none',
+                borderRadius: '50%',
+                width: '28px',
+                height: '28px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+              title="Light Theme"
+            >
+              <Sun size={14} />
+            </button>
+            <button
+              onClick={() => toggleTheme('dark')}
+              style={{
+                background: theme === 'dark' ? 'var(--color-primary)' : 'transparent',
+                color: theme === 'dark' ? '#fff' : 'var(--color-text-muted)',
+                border: 'none',
+                borderRadius: '50%',
+                width: '28px',
+                height: '28px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+              title="Dark Theme"
+            >
+              <Moon size={14} />
+            </button>
+            <button
+              onClick={() => toggleTheme('warm')}
+              style={{
+                background: theme === 'warm' ? 'var(--color-primary)' : 'transparent',
+                color: theme === 'warm' ? '#fff' : 'var(--color-text-muted)',
+                border: 'none',
+                borderRadius: '50%',
+                width: '28px',
+                height: '28px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+              title="Warm Theme"
+            >
+              <Coffee size={14} />
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Toggle Button */}
@@ -155,6 +230,64 @@ const Header: React.FC = () => {
             >
               <EditableLabel labelKey="nav_market_intel" defaultValue="Market Intelligence" />
             </NavLink>
+
+            {/* Mobile Theme Switcher */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem', borderTop: '1px solid var(--color-border)', paddingTop: '1.25rem' }}>
+              <button 
+                onClick={() => toggleTheme('light')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  padding: '6px 12px',
+                  borderRadius: '20px',
+                  border: '1px solid var(--color-border)',
+                  background: theme === 'light' ? 'var(--color-primary)' : 'transparent',
+                  color: theme === 'light' ? '#fff' : 'var(--color-text-muted)',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                <Sun size={14} /> Light
+              </button>
+              <button 
+                onClick={() => toggleTheme('dark')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  padding: '6px 12px',
+                  borderRadius: '20px',
+                  border: '1px solid var(--color-border)',
+                  background: theme === 'dark' ? 'var(--color-primary)' : 'transparent',
+                  color: theme === 'dark' ? '#fff' : 'var(--color-text-muted)',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                <Moon size={14} /> Dark
+              </button>
+              <button 
+                onClick={() => toggleTheme('warm')}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  padding: '6px 12px',
+                  borderRadius: '20px',
+                  border: '1px solid var(--color-border)',
+                  background: theme === 'warm' ? 'var(--color-primary)' : 'transparent',
+                  color: theme === 'warm' ? '#fff' : 'var(--color-text-muted)',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                <Coffee size={14} /> Warm
+              </button>
+            </div>
           </nav>
         </div>
       )}

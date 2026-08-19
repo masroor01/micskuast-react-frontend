@@ -12,11 +12,13 @@ import EWS from './pages/EWS';
 import Publications from './pages/Publications';
 import Team from './pages/Team';
 import Admin from './pages/Admin';
+import { ParticleBackground } from './components/ParticleBackground';
 
 function App() {
   return (
     <Router>
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <ParticleBackground />
         <Header />
         
         <main style={{ flexGrow: 1 }}>
