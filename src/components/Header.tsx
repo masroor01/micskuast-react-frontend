@@ -50,8 +50,8 @@ const Header: React.FC = () => {
           </div>
         </NavLink>
 
-        {/* Desktop Navigation */}
-        <nav className="nav-menu desktop-only">
+        {/* Desktop Navigation Group 1: Core Menu Links */}
+        <nav className="nav-menu desktop-only" style={{ gap: '1.15rem', marginLeft: '3rem' }}>
           <NavLink 
             to="/" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
@@ -115,11 +115,14 @@ const Header: React.FC = () => {
               <EditableLabel labelKey="nav_about" defaultValue="About Us" />
             </span>
           </NavLink>
+        </nav>
 
+        {/* Desktop Navigation Group 2: Actions & Settings */}
+        <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginLeft: 'auto' }}>
           <NavLink 
             to="/forecasts" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            style={{ background: 'var(--color-primary-pale)', border: '1px solid rgba(var(--primary-hue), 72%, 18%, 0.15)' }}
+            style={{ background: 'var(--color-primary-pale)', border: '1px solid rgba(var(--primary-hue), 72%, 18%, 0.15)', borderRadius: '8px', padding: '0.5rem 1rem' }}
           >
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'var(--color-primary)' }}>
               <TrendingUp size={16} /> 
@@ -128,7 +131,7 @@ const Header: React.FC = () => {
           </NavLink>
 
           {/* Theme Switcher Toggle */}
-          <div style={{ display: 'flex', gap: '0.25rem', background: 'var(--color-bg)', padding: '4px', borderRadius: '50px', border: '1px solid var(--color-border)', marginLeft: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '0.25rem', background: 'var(--color-bg)', padding: '4px', borderRadius: '50px', border: '1px solid var(--color-border)' }}>
             <button
               onClick={() => toggleTheme('light')}
               style={{
@@ -187,7 +190,7 @@ const Header: React.FC = () => {
               <Coffee size={14} />
             </button>
           </div>
-        </nav>
+        </div>
 
         {/* Mobile Toggle Button */}
         <button 
