@@ -154,7 +154,7 @@ const Home: React.FC = () => {
               flexWrap: 'wrap'
           }}>
             <div className="logo-wrapper">
-              <img src="/logos/mic.png" alt="MIC Logo" className="logo-img" style={{ height: '70px', objectFit: 'contain' }} />
+              <img src="/logos/mic.jpg" alt="MIC Logo" className="logo-img" style={{ height: '70px', objectFit: 'contain' }} />
             </div>
             <div className="logo-wrapper seal">
               <img src="/logos/skuast.png" alt="SKUAST Seal" className="logo-img" style={{ height: '110px', objectFit: 'contain' }} />
