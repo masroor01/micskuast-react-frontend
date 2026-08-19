@@ -70,7 +70,7 @@ const About: React.FC = () => {
 
         <div className="vc-profile-section">
           <div className="vc-avatar-circle">
-            NG
+            <img src="/team/nazir_ganai.jpg" alt="Prof. Nazir Ahmad Ganai" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
           <div className="vc-signature-block">
             <h4 className="vc-name">Prof. Nazir Ahmad Ganai</h4>
