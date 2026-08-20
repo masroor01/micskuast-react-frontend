@@ -9,6 +9,10 @@
   --color-primary-light: hsl(var(--primary-hue), 45%, 35%);
   --color-primary-pale: hsl(var(--primary-hue), 30%, 95%);
   
+  --gradient-primary: linear-gradient(135deg, #14532d 0%, #15803d 50%, #16a34a 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #15803d 0%, #16a34a 50%, #22c55e 100%);
+  --color-btn-text-primary: #ffffff;
+  
   --color-accent: hsl(var(--accent-hue), 95%, 45%);        /* Rich Amber / Gold */
   --color-accent-light: hsl(var(--accent-hue), 95%, 93%);
   
@@ -49,6 +53,10 @@
   --color-primary-light: hsl(var(--primary-hue), 55%, 60%);
   --color-primary-pale: hsl(var(--primary-hue), 40%, 15%);
   
+  --gradient-primary: linear-gradient(135deg, #86efac 0%, #4ade80 50%, #22c55e 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #a7f3d0 0%, #86efac 50%, #4ade80 100%);
+  --color-btn-text-primary: #022c22;
+  
   --color-accent: hsl(var(--accent-hue), 95%, 65%);        /* Rich Amber / Gold */
   --color-accent-light: hsl(var(--accent-hue), 40%, 20%);
   
@@ -80,6 +88,10 @@
   --color-primary: hsl(142, 60%, 16%);                      /* Forest green */
   --color-primary-light: hsl(142, 45%, 26%);
   --color-primary-pale: hsl(36, 30%, 88%);
+  
+  --gradient-primary: linear-gradient(135deg, #0f4c28 0%, #14532d 50%, #15803d 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #14532d 0%, #15803d 50%, #16a34a 100%);
+  --color-btn-text-primary: #ffffff;
   
   --color-accent: hsl(var(--accent-hue), 85%, 45%);        /* Rich Warm Amber */
   --color-accent-light: hsl(36, 85%, 90%);
@@ -223,10 +235,10 @@ a {
 }
 
 .market-intel-btn {
-  background-color: var(--color-primary) !important;
-  border: 1px solid var(--color-primary) !important;
-  color: #ffffff !important;
-  padding: 0.5rem 1rem !important;
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  color: var(--color-btn-text-primary) !important;
+  padding: 0.5rem 1.15rem !important;
   border-radius: 8px !important;
   font-weight: 700 !important;
   box-shadow: var(--shadow-sm);
@@ -234,16 +246,16 @@ a {
 }
 
 .market-intel-btn:hover {
-  background-color: var(--color-primary-light) !important;
-  color: #ffffff !important;
+  background: var(--gradient-primary-hover) !important;
+  color: var(--color-btn-text-primary) !important;
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 
 .market-intel-btn.active {
-  background-color: var(--color-primary-light) !important;
-  border-color: var(--color-primary-light) !important;
-  color: #ffffff !important;
+  background: var(--gradient-primary-hover) !important;
+  border: none !important;
+  color: var(--color-btn-text-primary) !important;
 }
 
 /* Hero Section */
@@ -322,12 +334,13 @@ a {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--color-btn-text-primary);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-light);
+  background: var(--gradient-primary-hover);
+  color: var(--color-btn-text-primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(12, 42, 24, 0.25);
 }

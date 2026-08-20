@@ -977,20 +977,21 @@ const Home: React.FC = () => {
         }
         .announcement-action-btn {
           text-decoration: none;
-          color: #ffffff;
-          background: var(--color-primary);
+          color: var(--color-btn-text-primary);
+          background: var(--gradient-primary);
           font-size: 0.8rem;
           font-weight: 700;
           padding: 6px 16px;
           border-radius: 6px;
           white-space: nowrap;
           transition: all 0.3s ease;
-          box-shadow: 0 2px 6px rgba(27, 110, 46, 0.2);
+          box-shadow: var(--shadow-sm);
         }
         .announcement-action-btn:hover {
-          background: var(--color-primary-light);
+          background: var(--gradient-primary-hover);
+          color: var(--color-btn-text-primary);
           transform: translateY(-1px);
-          box-shadow: 0 4px 10px rgba(27, 110, 46, 0.3);
+          box-shadow: var(--shadow-md);
         }
 
         /* React CSS Marquee Ticker */
@@ -1007,8 +1008,8 @@ const Home: React.FC = () => {
           flex-shrink: 0;
           display: flex;
           align-items: center;
-          background: var(--color-primary);
-          color: #ffffff;
+          background: var(--gradient-primary);
+          color: var(--color-btn-text-primary);
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.08em;

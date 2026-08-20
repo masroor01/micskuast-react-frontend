@@ -123,7 +123,7 @@ const Header: React.FC = () => {
             to="/forecasts" 
             className={({ isActive }) => `nav-link market-intel-btn ${isActive ? 'active' : ''}`}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#ffffff', whiteSpace: 'nowrap' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'inherit', whiteSpace: 'nowrap' }}>
               <TrendingUp size={14} /> 
               <EditableLabel labelKey="nav_market_intel" defaultValue="Market Intelligence" />
             </span>
