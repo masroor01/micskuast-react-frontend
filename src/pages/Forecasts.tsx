@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { TrendingUp, Layers, LineChart, Landmark } from 'lucide-react';
+import { TrendingUp, Layers, Landmark } from 'lucide-react';
 import RealTimePrices from '../components/RealTimePrices';
 import OrchardLedger from './OrchardLedger';
 import { EditableLabel } from '../components/EditableLabel';
 
 const Forecasts: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeView = (searchParams.get('view') || 'predict') as 'predict' | 'tool' | 'dashboard' | 'ledger';
+  const activeView = (searchParams.get('view') || 'predict') as 'predict' | 'dashboard' | 'ledger';
   
-  const setActiveView = (view: 'predict' | 'tool' | 'dashboard' | 'ledger') => {
+  const [forecastLoaded, setForecastLoaded] = useState(false);
+  const [mandiLoaded, setMandiLoaded] = useState(false);
+
+  const setActiveView = (view: 'predict' | 'dashboard' | 'ledger') => {
     setSearchParams({ view });
   };
+
+  useEffect(() => {
+    setForecastLoaded(false);
+    setMandiLoaded(false);
+  }, [activeView]);
 
   return (
     <div className="container section-padding animate-fade-in">
@@ -58,14 +66,6 @@ const Forecasts: React.FC = () => {
         >
           <TrendingUp size={18} /> 
           <EditableLabel labelKey="forecast_tab_realtime" defaultValue="Real-Time Forecasts" />
-        </button>
-        <button
-          onClick={() => setActiveView('tool')}
-          className={`market-tab-btn ${activeView === 'tool' ? 'active' : ''}`}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
-        >
-          <LineChart size={18} /> 
-          <EditableLabel labelKey="forecast_tab_tool" defaultValue="Smart Forecasting Tool" />
         </button>
         <button
           onClick={() => setActiveView('dashboard')}
@@ -130,26 +130,58 @@ const Forecasts: React.FC = () => {
                 position: 'relative',
                 width: '100%',
                 maxWidth: 'none',
-                minHeight: '420px',
+                minHeight: '80vh',
                 border: '1px solid var(--color-border)',
                 borderRadius: '16px',
                 background: 'var(--color-surface)',
                 overflow: 'hidden',
                 boxSizing: 'border-box'
               }}>
+                {!forecastLoaded && (
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'var(--color-surface)',
+                    borderRadius: '16px',
+                    zIndex: 10
+                  }}>
+                    <div style={{
+                      width: '40px',
+                      height: '40px',
+                      border: '4px solid var(--color-border)',
+                      borderTop: '4px solid var(--color-primary)',
+                      borderRadius: '50%',
+                      animation: 'spin 1s linear infinite',
+                      marginBottom: '1rem'
+                    }} />
+                    <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+                      Loading Price Intelligence Forecasts...
+                    </span>
+                  </div>
+                )}
                 {/* Apple Price Forecasts iframe */}
                 <iframe
-                  src="https://micmandis.onrender.com/ticker-vertical?fruit=apple&days=30"
+                  src="https://micmandis.onrender.com/forecast"
                   loading="lazy"
                   title="Apple Price Forecasts (₹/Kg)"
                   style={{
                     width: '100%',
-                    height: '420px',
+                    height: '80vh',
                     minWidth: '100%',
                     border: 0,
                     display: 'block',
-                    background: 'transparent'
+                    background: 'transparent',
+                    opacity: forecastLoaded ? 1 : 0,
+                    transition: 'opacity 0.3s ease-in-out'
                   }}
+                  onLoad={() => setForecastLoaded(true)}
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -172,44 +204,50 @@ const Forecasts: React.FC = () => {
         </div>
       )}
 
-      {/* VIEW: Forecasting Tool (Live /forecast Iframe Widget) */}
-      {activeView === 'tool' && (
-        <div className="animate-fade-in">
-          <div style={{
-            width: '100%',
-            maxWidth: 'none',
-            margin: '0 auto',
-            padding: 0,
-            boxSizing: 'border-box'
-          }}>
-            <iframe
-              src="https://micmandis.onrender.com/forecast"
-              title="Agricultural Forecasting Tool"
-              style={{
-                width: '100%',
-                height: '80vh',
-                display: 'block',
-                border: 'none',
-                borderRadius: '12px',
-                boxShadow: '0 6px 22px rgba(0,0,0,.08)',
-                margin: 0,
-                padding: 0
-              }}
-            />
-          </div>
-        </div>
-      )}
-
       {/* VIEW 2: Market Intelligence Dashboard (Live mydash Iframe Widget) */}
       {activeView === 'dashboard' && (
         <div className="animate-fade-in">
           <div style={{
+            position: 'relative',
             width: '100%',
             maxWidth: 'none',
-            margin: '0 auto',
-            padding: 0,
+            minHeight: '80vh',
+            borderRadius: '12px',
+            boxShadow: '0 6px 22px rgba(0,0,0,.08)',
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-border)',
+            overflow: 'hidden',
             boxSizing: 'border-box'
           }}>
+            {!mandiLoaded && (
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'var(--color-surface)',
+                borderRadius: '12px',
+                zIndex: 10
+              }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  border: '4px solid var(--color-border)',
+                  borderTop: '4px solid var(--color-primary)',
+                  borderRadius: '50%',
+                  animation: 'spin 1s linear infinite',
+                  marginBottom: '1rem'
+                }} />
+                <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+                  Loading Live Mandi Price matrix...
+                </span>
+              </div>
+            )}
             {/* Embedded Live Market Intelligence Dashboard iframe */}
             <iframe
               src="https://micmandis.onrender.com/forecast/mydash"
@@ -220,10 +258,12 @@ const Forecasts: React.FC = () => {
                 display: 'block',
                 border: 'none',
                 borderRadius: '12px',
-                boxShadow: '0 6px 22px rgba(0,0,0,.08)',
                 margin: 0,
-                padding: 0
+                padding: 0,
+                opacity: mandiLoaded ? 1 : 0,
+                transition: 'opacity 0.3s ease-in-out'
               }}
+              onLoad={() => setMandiLoaded(true)}
             />
           </div>
           {/* Real Time Market Prices */}
@@ -233,7 +273,7 @@ const Forecasts: React.FC = () => {
         </div>
       )}
 
-      {/* VIEW: Orchard Ledger (Historical Stats Dashboard) */}
+      {/* VIEW 3: Orchard Ledger (Historical Stats Dashboard) */}
       {activeView === 'ledger' && (
         <div className="animate-fade-in" style={{ backgroundColor: 'var(--color-surface)', borderRadius: '16px', border: '1px solid var(--color-border)', overflow: 'hidden', padding: '1.5rem' }}>
           <OrchardLedger />
