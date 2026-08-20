@@ -76,10 +76,39 @@ const Home: React.FC = () => {
   const [isTeamLoading, setIsTeamLoading] = useState(true);
 
   useEffect(() => {
+    // 1. Try to load from localStorage cache first
+    const cachedConfigStr = localStorage.getItem('micskuast_config');
+    let hasLoadedFromCache = false;
+    if (cachedConfigStr) {
+      try {
+        const cachedData = JSON.parse(cachedConfigStr);
+        if (cachedData && cachedData.hero_title) {
+          setHeroTitle(cachedData.hero_title);
+          setHeroSubtitle(cachedData.hero_subtitle);
+          if (cachedData.announcement) setAnnouncement(cachedData.announcement);
+          if (cachedData.ticker_items && cachedData.ticker_items.length > 0) setTickerItems(cachedData.ticker_items);
+          if (cachedData.team) {
+            setTeamMembers(cachedData.team);
+          } else {
+            setTeamMembers(defaultTeam);
+          }
+          setIsTeamLoading(false);
+          hasLoadedFromCache = true;
+        }
+      } catch (e) {
+        console.error("Failed to parse cached config:", e);
+      }
+    }
+
+    // 2. Fetch latest config from server in the background
     fetch('/api/config.php')
       .then(res => res.json())
       .then(data => {
         if (data && data.hero_title) {
+          // Update localStorage cache
+          localStorage.setItem('micskuast_config', JSON.stringify(data));
+          
+          // Update state with fresh server data
           setHeroTitle(data.hero_title);
           setHeroSubtitle(data.hero_subtitle);
           if (data.announcement) setAnnouncement(data.announcement);
@@ -90,14 +119,16 @@ const Home: React.FC = () => {
             setTeamMembers(defaultTeam);
           }
         } else {
-          setTeamMembers(defaultTeam);
+          if (!hasLoadedFromCache) setTeamMembers(defaultTeam);
         }
         setIsTeamLoading(false);
       })
       .catch(err => {
         console.log("No custom config loaded, using default site copy", err);
-        setTeamMembers(defaultTeam);
-        setIsTeamLoading(false);
+        if (!hasLoadedFromCache) {
+          setTeamMembers(defaultTeam);
+          setIsTeamLoading(false);
+        }
       });
   }, []);
  

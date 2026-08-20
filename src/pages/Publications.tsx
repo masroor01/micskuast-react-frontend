@@ -68,10 +68,26 @@ const Publications: React.FC = () => {
 
 
   useEffect(() => {
+    // 1. Try to load from localStorage cache first
+    const cachedConfigStr = localStorage.getItem('micskuast_config');
+    if (cachedConfigStr) {
+      try {
+        const cachedData = JSON.parse(cachedConfigStr);
+        if (cachedData && cachedData.publications) {
+          setPublications(cachedData.publications);
+        }
+      } catch (e) {
+        console.error("Failed to parse cached config in publications:", e);
+      }
+    }
+
+    // 2. Fetch latest from server
     fetch('/api/config.php')
       .then(res => res.json())
       .then(data => {
         if (data && data.publications) {
+          // Update cache with full config
+          localStorage.setItem('micskuast_config', JSON.stringify(data));
           setPublications(data.publications);
         }
       })
