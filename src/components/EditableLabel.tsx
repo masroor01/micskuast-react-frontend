@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Edit2 } from 'lucide-react';
 
 interface EditableLabelProps {
@@ -119,7 +120,7 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
         )}
       </span>
 
-      {showModal && (
+      {showModal && createPortal(
         <div style={{
           position: 'fixed',
           top: 0,
@@ -217,7 +218,8 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
