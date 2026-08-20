@@ -3,6 +3,57 @@ import { NavLink } from 'react-router-dom';
 import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
  
+const defaultTeam = [
+  {
+    name: "Prof. F. A. Shaheen",
+    role: "Principal Investigator",
+    affiliation: "Professor cum Chief Scientist, IBPR, SKUAST-K, Shalimar",
+    image: "/team/shaheen.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Prof. S. H. Baba",
+    role: "Co. Principal Investigator",
+    affiliation: "Professor and Head, IBPR, SKUAST-K, Shalimar",
+    image: "/team/baba.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Dr Abid Sultan",
+    role: "Co. Principal Investigator",
+    affiliation: "Assistant Prof. cum Junior Scientist, IBPR, SKUAST-K, Shalimar",
+    image: "/team/abid.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Dr Aqib Gul",
+    role: "Young Professional - III",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/aqib.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  },
+  {
+    name: "Dr Masroor Majid",
+    role: "Young Professional - II",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/masroor.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  },
+  {
+    name: "Dr Mudasir Rashid",
+    role: "Young Professional - II",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/mudasir.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  }
+];
+
 const Home: React.FC = () => {
   const [heroTitle, setHeroTitle] = useState('Market Intelligence Cell');
   const [heroSubtitle, setHeroSubtitle] = useState('Empowering Agri-Decisions with Data Driven Insights');
@@ -20,8 +71,8 @@ const Home: React.FC = () => {
     "🇮🇳 POLICY UPDATE: NITI Aayog's \"Operation Golden Greens\" roadmap proposes transforming J&K into a global horticulture leader.",
     "⚠️ TRADE ALERT: Recent reductions in import duties on apples have raised competitiveness concerns.",
     "🍏 APPLE INDUSTRY: High-density apple plantations continue expanding across J&K.",
-    "🤖 MIC AI ASSISTANT: Farmers can now interact with the MIC AI Assistant for cultivation weather price queries."
   ]);
+  const [teamMembers, setTeamMembers] = useState<any[]>(defaultTeam);
 
   useEffect(() => {
     fetch('/api/config.php')
@@ -32,6 +83,7 @@ const Home: React.FC = () => {
           setHeroSubtitle(data.hero_subtitle);
           if (data.announcement) setAnnouncement(data.announcement);
           if (data.ticker_items && data.ticker_items.length > 0) setTickerItems(data.ticker_items);
+          if (data.team) setTeamMembers(data.team);
         }
       })
       .catch(err => {
@@ -522,131 +574,91 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* Section 1: Senior Investigators */}
-          <div style={{ marginBottom: '4rem' }}>
-            <h3 style={{ 
-              fontSize: '1.35rem', 
-              fontWeight: 800, 
-              color: 'var(--color-primary)', 
-              borderBottom: '2px solid var(--color-primary-pale)', 
-              paddingBottom: '0.75rem',
-              marginBottom: '2.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}>
-              <GraduationCap size={22} style={{ color: 'var(--color-accent)' }} /> Principal Investigators
-            </h3>
-            
-            <div className="team-grid">
-              {[
-                {
-                  name: "Prof. F. A. Shaheen",
-                  role: "Principal Investigator",
-                  affiliation: "Professor cum Chief Scientist, IBPR, SKUAST-K, Shalimar",
-                  image: "/team/shaheen.png",
-                  linkedin: "https://www.linkedin.com/"
-                },
-                {
-                  name: "Prof. S. H. Baba",
-                  role: "Co. Principal Investigator",
-                  affiliation: "Professor and Head, IBPR, SKUAST-K, Shalimar",
-                  image: "/team/baba.png",
-                  linkedin: "https://www.linkedin.com/"
-                },
-                {
-                  name: "Dr Abid Sultan",
-                  role: "Co. Principal Investigator",
-                  affiliation: "Assistant Prof. cum Junior Scientist, IBPR, SKUAST-K, Shalimar",
-                  image: "/team/abid.png",
-                  linkedin: "https://www.linkedin.com/"
-                }
-              ].map((m, idx) => (
-                <div key={idx} className="team-member-card">
-                  <div className="member-photo-container">
-                    <img src={m.image} alt={m.name} className="member-photo" />
-                  </div>
-                  <div className="member-info">
-                    <h4 className="member-name">{m.name}</h4>
-                    <div className="member-role">{m.role}</div>
-                    <p className="member-affiliation">{m.affiliation}</p>
-                    
-                    <div className="member-socials">
-                      <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                      </a>
-                      <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
-                        <Mail size={18} />
-                      </a>
+          {/* Section 1: Principal Investigators */}
+          {teamMembers.filter(m => m.category === 'pi').length > 0 && (
+            <div style={{ marginBottom: '4rem' }}>
+              <h3 style={{ 
+                fontSize: '1.35rem', 
+                fontWeight: 800, 
+                color: 'var(--color-primary)', 
+                borderBottom: '2px solid var(--color-primary-pale)', 
+                paddingBottom: '0.75rem',
+                marginBottom: '2.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <GraduationCap size={22} style={{ color: 'var(--color-accent)' }} /> Principal Investigators
+              </h3>
+              
+              <div className="team-grid">
+                {teamMembers.filter(m => m.category === 'pi').map((m, idx) => (
+                  <div key={idx} className="team-member-card">
+                    <div className="member-photo-container">
+                      <img src={m.image} alt={m.name} className="member-photo" />
+                    </div>
+                    <div className="member-info">
+                      <h4 className="member-name">{m.name}</h4>
+                      <div className="member-role">{m.role}</div>
+                      <p className="member-affiliation">{m.affiliation}</p>
+                      
+                      <div className="member-socials">
+                        <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
+                          <Mail size={18} />
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Section 2: Young Professionals */}
-          <div>
-            <h3 style={{ 
-              fontSize: '1.35rem', 
-              fontWeight: 800, 
-              color: 'var(--color-primary)', 
-              borderBottom: '2px solid var(--color-primary-pale)', 
-              paddingBottom: '0.75rem',
-              marginBottom: '2.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem'
-            }}>
-              <GraduationCap size={22} style={{ color: 'var(--color-accent)' }} /> Research Staff &amp; Young Professionals
-            </h3>
+          {teamMembers.filter(m => m.category === 'yp').length > 0 && (
+            <div>
+              <h3 style={{ 
+                fontSize: '1.35rem', 
+                fontWeight: 800, 
+                color: 'var(--color-primary)', 
+                borderBottom: '2px solid var(--color-primary-pale)', 
+                paddingBottom: '0.75rem',
+                marginBottom: '2.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <GraduationCap size={22} style={{ color: 'var(--color-accent)' }} /> Research Staff &amp; Young Professionals
+              </h3>
 
-            <div className="team-grid">
-              {[
-                {
-                  name: "Dr Aqib Gul",
-                  role: "Young Professional - III",
-                  affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
-                  image: "/team/aqib.png",
-                  linkedin: "https://www.linkedin.com/"
-                },
-                {
-                  name: "Dr Masroor Majid",
-                  role: "Young Professional - II",
-                  affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
-                  image: "/team/masroor.png",
-                  linkedin: "https://www.linkedin.com/"
-                },
-                {
-                  name: "Dr Mudasir Rashid",
-                  role: "Young Professional - II",
-                  affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
-                  image: "/team/mudasir.png",
-                  linkedin: "https://www.linkedin.com/"
-                }
-              ].map((m, idx) => (
-                <div key={idx} className="team-member-card">
-                  <div className="member-photo-container">
-                    <img src={m.image} alt={m.name} className="member-photo" />
-                  </div>
-                  <div className="member-info">
-                    <h4 className="member-name">{m.name}</h4>
-                    <div className="member-role">{m.role}</div>
-                    <p className="member-affiliation">{m.affiliation}</p>
-                    
-                    <div className="member-socials">
-                      <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                      </a>
-                      <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
-                        <Mail size={18} />
-                      </a>
+              <div className="team-grid">
+                {teamMembers.filter(m => m.category === 'yp').map((m, idx) => (
+                  <div key={idx} className="team-member-card">
+                    <div className="member-photo-container">
+                      <img src={m.image} alt={m.name} className="member-photo" />
+                    </div>
+                    <div className="member-info">
+                      <h4 className="member-name">{m.name}</h4>
+                      <div className="member-role">{m.role}</div>
+                      <p className="member-affiliation">{m.affiliation}</p>
+                      
+                      <div className="member-socials">
+                        <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
+                          <Mail size={18} />
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
