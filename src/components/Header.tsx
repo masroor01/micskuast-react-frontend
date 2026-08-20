@@ -50,8 +50,8 @@ const Header: React.FC = () => {
           </div>
         </NavLink>
 
-        {/* Desktop Navigation Group 1: Core Menu Links */}
-        <nav className="nav-menu desktop-only" style={{ gap: '0.45rem', marginLeft: '1rem' }}>
+        {/* Desktop Navigation Group 1: Core Menu Links (Pushed to the right) */}
+        <nav className="nav-menu desktop-only" style={{ gap: '0.45rem', marginLeft: 'auto' }}>
           <NavLink 
             to="/" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
@@ -118,13 +118,12 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Desktop Navigation Group 2: Actions & Settings */}
-        <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginLeft: 'auto' }}>
+        <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <NavLink 
             to="/forecasts" 
-            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            style={{ background: 'var(--color-primary-pale)', border: '1px solid rgba(var(--primary-hue), 72%, 18%, 0.15)', borderRadius: '8px', padding: '0.4rem 0.75rem' }}
+            className={({ isActive }) => `nav-link market-intel-btn ${isActive ? 'active' : ''}`}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#ffffff', whiteSpace: 'nowrap' }}>
               <TrendingUp size={14} /> 
               <EditableLabel labelKey="nav_market_intel" defaultValue="Market Intelligence" />
             </span>

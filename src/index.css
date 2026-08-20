@@ -222,6 +222,30 @@ a {
   background-color: var(--color-primary-pale);
 }
 
+.market-intel-btn {
+  background-color: var(--color-primary) !important;
+  border: 1px solid var(--color-primary) !important;
+  color: #ffffff !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease-in-out !important;
+}
+
+.market-intel-btn:hover {
+  background-color: var(--color-primary-light) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.market-intel-btn.active {
+  background-color: var(--color-primary-light) !important;
+  border-color: var(--color-primary-light) !important;
+  color: #ffffff !important;
+}
+
 /* Hero Section */
 .hero-grid {
   display: grid;
