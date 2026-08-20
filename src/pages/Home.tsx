@@ -72,7 +72,8 @@ const Home: React.FC = () => {
     "⚠️ TRADE ALERT: Recent reductions in import duties on apples have raised competitiveness concerns.",
     "🍏 APPLE INDUSTRY: High-density apple plantations continue expanding across J&K.",
   ]);
-  const [teamMembers, setTeamMembers] = useState<any[]>(defaultTeam);
+  const [teamMembers, setTeamMembers] = useState<any[]>([]);
+  const [isTeamLoading, setIsTeamLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/config.php')
@@ -83,11 +84,20 @@ const Home: React.FC = () => {
           setHeroSubtitle(data.hero_subtitle);
           if (data.announcement) setAnnouncement(data.announcement);
           if (data.ticker_items && data.ticker_items.length > 0) setTickerItems(data.ticker_items);
-          if (data.team) setTeamMembers(data.team);
+          if (data.team) {
+            setTeamMembers(data.team);
+          } else {
+            setTeamMembers(defaultTeam);
+          }
+        } else {
+          setTeamMembers(defaultTeam);
         }
+        setIsTeamLoading(false);
       })
       .catch(err => {
         console.log("No custom config loaded, using default site copy", err);
+        setTeamMembers(defaultTeam);
+        setIsTeamLoading(false);
       });
   }, []);
  
@@ -575,89 +585,105 @@ const Home: React.FC = () => {
           </div>
 
           {/* Section 1: Principal Investigators */}
-          {teamMembers.filter(m => m.category === 'pi').length > 0 && (
+          {isTeamLoading ? (
             <div style={{ marginBottom: '4rem' }}>
-              <h3 style={{ 
-                fontSize: '1.35rem', 
-                fontWeight: 800, 
-                color: 'var(--color-primary)', 
-                borderBottom: '2px solid var(--color-primary-pale)', 
-                paddingBottom: '0.75rem',
-                marginBottom: '2.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}>
-                <GraduationCap size={22} style={{ color: 'var(--color-accent)' }} /> Principal Investigators
-              </h3>
-              
               <div className="team-grid">
-                {teamMembers.filter(m => m.category === 'pi').map((m, idx) => (
-                  <div key={idx} className="team-member-card">
-                    <div className="member-photo-container">
-                      <img src={m.image} alt={m.name} className="member-photo" />
-                    </div>
-                    <div className="member-info">
-                      <h4 className="member-name">{m.name}</h4>
-                      <div className="member-role">{m.role}</div>
-                      <p className="member-affiliation">{m.affiliation}</p>
-                      
-                      <div className="member-socials">
-                        <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                        <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
-                          <Mail size={18} />
-                        </a>
-                      </div>
-                    </div>
+                {[1, 2, 3].map(n => (
+                  <div key={n} className="team-member-card skeleton" style={{ minHeight: '260px', background: 'var(--color-surface)', opacity: 0.6, animation: 'pulse 1.5s infinite ease-in-out', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--color-border)', marginBottom: '1.25rem' }} />
+                    <div style={{ width: '60%', height: '16px', background: 'var(--color-border)', marginBottom: '0.5rem', borderRadius: '4px' }} />
+                    <div style={{ width: '40%', height: '12px', background: 'var(--color-border)', borderRadius: '4px' }} />
                   </div>
                 ))}
               </div>
             </div>
-          )}
-
-          {/* Section 2: Young Professionals */}
-          {teamMembers.filter(m => m.category === 'yp').length > 0 && (
-            <div>
-              <h3 style={{ 
-                fontSize: '1.35rem', 
-                fontWeight: 800, 
-                color: 'var(--color-primary)', 
-                borderBottom: '2px solid var(--color-primary-pale)', 
-                paddingBottom: '0.75rem',
-                marginBottom: '2.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}>
-                <GraduationCap size={22} style={{ color: 'var(--color-accent)' }} /> Research Staff &amp; Young Professionals
-              </h3>
-
-              <div className="team-grid">
-                {teamMembers.filter(m => m.category === 'yp').map((m, idx) => (
-                  <div key={idx} className="team-member-card">
-                    <div className="member-photo-container">
-                      <img src={m.image} alt={m.name} className="member-photo" />
-                    </div>
-                    <div className="member-info">
-                      <h4 className="member-name">{m.name}</h4>
-                      <div className="member-role">{m.role}</div>
-                      <p className="member-affiliation">{m.affiliation}</p>
-                      
-                      <div className="member-socials">
-                        <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                        </a>
-                        <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
-                          <Mail size={18} />
-                        </a>
+          ) : (
+            <>
+              {teamMembers.filter(m => m.category === 'pi').length > 0 && (
+                <div style={{ marginBottom: '4rem' }}>
+                  <h3 style={{ 
+                    fontSize: '1.35rem', 
+                    fontWeight: 800, 
+                    color: 'var(--color-primary)', 
+                    borderBottom: '2px solid var(--color-primary-pale)', 
+                    paddingBottom: '0.75rem',
+                    marginBottom: '2.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}>
+                    <GraduationCap size={22} style={{ color: 'var(--color-accent)' }} /> Principal Investigators
+                  </h3>
+                  
+                  <div className="team-grid">
+                    {teamMembers.filter(m => m.category === 'pi').map((m, idx) => (
+                      <div key={idx} className="team-member-card">
+                        <div className="member-photo-container">
+                          <img src={m.image} alt={m.name} className="member-photo" />
+                        </div>
+                        <div className="member-info">
+                          <h4 className="member-name">{m.name}</h4>
+                          <div className="member-role">{m.role}</div>
+                          <p className="member-affiliation">{m.affiliation}</p>
+                          
+                          <div className="member-socials">
+                            <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                            <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
+                              <Mail size={18} />
+                            </a>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+              )}
+
+              {/* Section 2: Young Professionals */}
+              {teamMembers.filter(m => m.category === 'yp').length > 0 && (
+                <div>
+                  <h3 style={{ 
+                    fontSize: '1.35rem', 
+                    fontWeight: 800, 
+                    color: 'var(--color-primary)', 
+                    borderBottom: '2px solid var(--color-primary-pale)', 
+                    paddingBottom: '0.75rem',
+                    marginBottom: '2.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}>
+                    <GraduationCap size={22} style={{ color: 'var(--color-accent)' }} /> Research Staff &amp; Young Professionals
+                  </h3>
+
+                  <div className="team-grid">
+                    {teamMembers.filter(m => m.category === 'yp').map((m, idx) => (
+                      <div key={idx} className="team-member-card">
+                        <div className="member-photo-container">
+                          <img src={m.image} alt={m.name} className="member-photo" />
+                        </div>
+                        <div className="member-info">
+                          <h4 className="member-name">{m.name}</h4>
+                          <div className="member-role">{m.role}</div>
+                          <p className="member-affiliation">{m.affiliation}</p>
+                          
+                          <div className="member-socials">
+                            <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                            <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
+                              <Mail size={18} />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>

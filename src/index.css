@@ -929,4 +929,13 @@ a {
   color: var(--color-accent);
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.25; }
+}
+
 

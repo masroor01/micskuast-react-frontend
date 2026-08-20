@@ -135,9 +135,15 @@ const EWS: React.FC = () => {
   const [currentTheme, setCurrentTheme] = useState(document.documentElement.getAttribute('data-theme') || 'light');
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+
   const handleTabChange = (tab: string) => {
     setSearchParams({ tab });
   };
+
+  useEffect(() => {
+    setIframeLoaded(false);
+  }, [activeTab, stabilitySubTab]);
 
   useEffect(() => {
     const handleThemeChange = () => {
@@ -236,17 +242,49 @@ const EWS: React.FC = () => {
       {activeTab === 'cherry' && (
         <div className="animate-fade-in">
           <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '1.25rem', boxShadow: 'var(--shadow-sm)' }}>
-            <iframe 
-              ref={iframeRef}
-              src="https://micskuast.in/reports/ews_demo_cherry_20260213_1411/index_public.html" 
-              style={{ width: '100%', height: '850px', border: 'none', borderRadius: '8px', background: 'var(--color-bg)' }}
-              title="Cherry EWS Report"
-              onLoad={() => {
-                if (iframeRef.current) {
-                  applyThemeToIframe(iframeRef.current, currentTheme, 'cherry');
-                }
-              }}
-            />
+            <div style={{ position: 'relative', width: '100%', height: '850px' }}>
+              {!iframeLoaded && (
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'var(--color-surface)',
+                  borderRadius: '8px',
+                  zIndex: 10
+                }}>
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '4px solid var(--color-border)',
+                    borderTop: '4px solid #be123c',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite',
+                    marginBottom: '1rem'
+                  }} />
+                  <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+                    Formatting Cherry Early Warning dashboard...
+                  </span>
+                </div>
+              )}
+              <iframe 
+                ref={iframeRef}
+                src="https://micskuast.in/reports/ews_demo_cherry_20260213_1411/index_public.html" 
+                style={{ width: '100%', height: '850px', border: 'none', borderRadius: '8px', background: 'var(--color-bg)', opacity: iframeLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in-out' }}
+                title="Cherry EWS Report"
+                onLoad={() => {
+                  if (iframeRef.current) {
+                    applyThemeToIframe(iframeRef.current, currentTheme, 'cherry');
+                  }
+                  setIframeLoaded(true);
+                }}
+              />
+            </div>
           </div>
         </div>
       )}
@@ -254,17 +292,49 @@ const EWS: React.FC = () => {
       {activeTab === 'apple' && (
         <div className="animate-fade-in">
           <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '1.25rem', boxShadow: 'var(--shadow-sm)' }}>
-            <iframe 
-              ref={iframeRef}
-              src="https://micskuast.in/reports/ews_demo_apple_20260222_2121/index_public.html" 
-              style={{ width: '100%', height: '850px', border: 'none', borderRadius: '8px', background: 'var(--color-bg)' }}
-              title="Apple EWS Report"
-              onLoad={() => {
-                if (iframeRef.current) {
-                  applyThemeToIframe(iframeRef.current, currentTheme, 'apple');
-                }
-              }}
-            />
+            <div style={{ position: 'relative', width: '100%', height: '850px' }}>
+              {!iframeLoaded && (
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'var(--color-surface)',
+                  borderRadius: '8px',
+                  zIndex: 10
+                }}>
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '4px solid var(--color-border)',
+                    borderTop: '4px solid #15803d',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite',
+                    marginBottom: '1rem'
+                  }} />
+                  <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+                    Formatting Apple Early Warning dashboard...
+                  </span>
+                </div>
+              )}
+              <iframe 
+                ref={iframeRef}
+                src="https://micskuast.in/reports/ews_demo_apple_20260222_2121/index_public.html" 
+                style={{ width: '100%', height: '850px', border: 'none', borderRadius: '8px', background: 'var(--color-bg)', opacity: iframeLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in-out' }}
+                title="Apple EWS Report"
+                onLoad={() => {
+                  if (iframeRef.current) {
+                    applyThemeToIframe(iframeRef.current, currentTheme, 'apple');
+                  }
+                  setIframeLoaded(true);
+                }}
+              />
+            </div>
           </div>
         </div>
       )}
@@ -308,31 +378,64 @@ const EWS: React.FC = () => {
           </div>
 
           <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '1.25rem', boxShadow: 'var(--shadow-sm)' }}>
-            {stabilitySubTab === 'cherry' ? (
-              <iframe 
-                ref={iframeRef}
-                src="https://micskuast.in/reports/cherry_stability_20260212_1244/MIC_Cherry_Stability_Report_Text_IFRAME.html" 
-                style={{ width: '100%', height: '850px', border: 'none', borderRadius: '8px', background: 'var(--color-bg)' }}
-                title="Cherry Stability Report"
-                onLoad={() => {
-                  if (iframeRef.current) {
-                    applyThemeToIframe(iframeRef.current, currentTheme, 'cherry');
-                  }
-                }}
-              />
-            ) : (
-              <iframe 
-                ref={iframeRef}
-                src="https://micskuast.in/reports/apple_stability_20260222_2051/MIC_Apple_Stability_Report.html" 
-                style={{ width: '100%', height: '850px', border: 'none', borderRadius: '8px', background: 'var(--color-bg)' }}
-                title="Apple Stability Report"
-                onLoad={() => {
-                  if (iframeRef.current) {
-                    applyThemeToIframe(iframeRef.current, currentTheme, 'apple');
-                  }
-                }}
-              />
-            )}
+            <div style={{ position: 'relative', width: '100%', height: '850px' }}>
+              {!iframeLoaded && (
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'var(--color-surface)',
+                  borderRadius: '8px',
+                  zIndex: 10
+                }}>
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    border: '4px solid var(--color-border)',
+                    borderTop: `4px solid ${stabilitySubTab === 'cherry' ? '#be123c' : '#15803d'}`,
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite',
+                    marginBottom: '1rem'
+                  }} />
+                  <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+                    Formatting Stability Analysis Report...
+                  </span>
+                </div>
+              )}
+              {stabilitySubTab === 'cherry' ? (
+                <iframe 
+                  ref={iframeRef}
+                  src="https://micskuast.in/reports/cherry_stability_20260212_1244/MIC_Cherry_Stability_Report_Text_IFRAME.html" 
+                  style={{ width: '100%', height: '850px', border: 'none', borderRadius: '8px', background: 'var(--color-bg)', opacity: iframeLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in-out' }}
+                  title="Cherry Stability Report"
+                  onLoad={() => {
+                    if (iframeRef.current) {
+                      applyThemeToIframe(iframeRef.current, currentTheme, 'cherry');
+                    }
+                    setIframeLoaded(true);
+                  }}
+                />
+              ) : (
+                <iframe 
+                  ref={iframeRef}
+                  src="https://micskuast.in/reports/apple_stability_20260222_2051/MIC_Apple_Stability_Report.html" 
+                  style={{ width: '100%', height: '850px', border: 'none', borderRadius: '8px', background: 'var(--color-bg)', opacity: iframeLoaded ? 1 : 0, transition: 'opacity 0.3s ease-in-out' }}
+                  title="Apple Stability Report"
+                  onLoad={() => {
+                    if (iframeRef.current) {
+                      applyThemeToIframe(iframeRef.current, currentTheme, 'apple');
+                    }
+                    setIframeLoaded(true);
+                  }}
+                />
+              )}
+            </div>
           </div>
         </div>
       )}
