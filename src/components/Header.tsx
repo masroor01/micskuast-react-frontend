@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, ChevronDown, Sun, Moon, Coffee, Info } from 'lucide-react';
+import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, ChevronDown, Sun, Moon, Coffee, Info, Users } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
 
 const Header: React.FC = () => {
@@ -67,6 +67,16 @@ const Header: React.FC = () => {
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}>
               <Info size={14} /> 
               <EditableLabel labelKey="nav_about" defaultValue="About Us" />
+            </span>
+          </NavLink>
+
+          <NavLink 
+            to="/team" 
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+          >
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}>
+              <Users size={14} /> 
+              <EditableLabel labelKey="nav_team" defaultValue="Our Team" />
             </span>
           </NavLink>
 
@@ -219,6 +229,13 @@ const Header: React.FC = () => {
               onClick={() => setMobileOpen(false)}
             >
               <EditableLabel labelKey="nav_about" defaultValue="About Us" />
+            </NavLink>
+            <NavLink 
+              to="/team" 
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              <EditableLabel labelKey="nav_team" defaultValue="Our Team" />
             </NavLink>
             <NavLink 
               to="/ews" 
