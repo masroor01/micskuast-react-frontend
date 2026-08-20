@@ -201,64 +201,88 @@ const Home: React.FC = () => {
             {/* Card 1: AI Forecast Engine */}
             <NavLink to="/forecasts" className="react-card forecast">
               <div className="card-pulse-badge">
-                <span className="pulse-dot"></span> Active
+                <span className="pulse-dot"></span> <EditableLabel labelKey="home_hero_card1_pulse" defaultValue="Active" />
               </div>
               <div className="react-card-icon">🔮</div>
-              <h3 className="react-card-title">AI Forecast Engine</h3>
+              <h3 className="react-card-title">
+                <EditableLabel labelKey="home_hero_card1_title" defaultValue="AI Forecast Engine" />
+              </h3>
               <p className="react-card-desc">
-                Query deep-learning LSTM models to forecast daily wholesale Mandi prices for cherry and apple.
+                <EditableLabel labelKey="home_hero_card1_desc" defaultValue="Query deep-learning LSTM models to forecast daily wholesale Mandi prices for cherry and apple." />
               </p>
               <div className="react-card-reveal">
-                <span className="reveal-tag">LSTM Recurrent Model</span>
-                <span className="reveal-metric">94.6% Accuracy</span>
+                <span className="reveal-tag">
+                  <EditableLabel labelKey="home_hero_card1_tag" defaultValue="LSTM Recurrent Model" />
+                </span>
+                <span className="reveal-metric">
+                  <EditableLabel labelKey="home_hero_card1_metric" defaultValue="94.6% Accuracy" />
+                </span>
               </div>
             </NavLink>
 
             {/* Card 2: EWS / Risk Radar */}
             <NavLink to="/ews" className="react-card risk">
               <div className="card-pulse-badge alert">
-                <span className="pulse-dot"></span> Live Alerts
+                <span className="pulse-dot"></span> <EditableLabel labelKey="home_hero_card2_pulse" defaultValue="Live Alerts" />
               </div>
               <div className="react-card-icon">🚨</div>
-              <h3 className="react-card-title">Early Warning System</h3>
+              <h3 className="react-card-title">
+                <EditableLabel labelKey="home_hero_card2_title" defaultValue="Early Warning System" />
+              </h3>
               <p className="react-card-desc">
-                Real-time price anomaly models tracking market volatility parameters and seasonal shocks.
+                <EditableLabel labelKey="home_hero_card2_desc" defaultValue="Real-time price anomaly models tracking market volatility parameters and seasonal shocks." />
               </p>
               <div className="react-card-reveal">
-                <span className="reveal-tag">Anomalies Detected</span>
-                <span className="reveal-metric">Narwal Jammu Cherry</span>
+                <span className="reveal-tag">
+                  <EditableLabel labelKey="home_hero_card2_tag" defaultValue="Anomalies Detected" />
+                </span>
+                <span className="reveal-metric">
+                  <EditableLabel labelKey="home_hero_card2_metric" defaultValue="Narwal Jammu Cherry" />
+                </span>
               </div>
             </NavLink>
 
             {/* Card 3: Mandi Terminals */}
             <NavLink to="/markets" className="react-card markets">
               <div className="card-pulse-badge info">
-                <span className="pulse-dot"></span> 5 Terminals
+                <span className="pulse-dot"></span> <EditableLabel labelKey="home_hero_card3_pulse" defaultValue="5 Terminals" />
               </div>
               <div className="react-card-icon">🏛️</div>
-              <h3 className="react-card-title">APMC Mandi Logs</h3>
+              <h3 className="react-card-title">
+                <EditableLabel labelKey="home_hero_card3_title" defaultValue="APMC Mandi Logs" />
+              </h3>
               <p className="react-card-desc">
-                Track daily arrivals, transaction volume, demand-supply indices, and weather trends in wholesale markets.
+                <EditableLabel labelKey="home_hero_card3_desc" defaultValue="Track daily arrivals, transaction volume, demand-supply indices, and weather trends in wholesale markets." />
               </p>
               <div className="react-card-reveal">
-                <span className="reveal-tag">Markets Synced</span>
-                <span className="reveal-metric">Real-Time Sync</span>
+                <span className="reveal-tag">
+                  <EditableLabel labelKey="home_hero_card3_tag" defaultValue="Markets Synced" />
+                </span>
+                <span className="reveal-metric">
+                  <EditableLabel labelKey="home_hero_card3_metric" defaultValue="Real-Time Sync" />
+                </span>
               </div>
             </NavLink>
 
             {/* Card 4: Publications Library */}
             <NavLink to="/publications" className="react-card library">
               <div className="card-pulse-badge success">
-                <span className="pulse-dot"></span> PDF Bulletins
+                <span className="pulse-dot"></span> <EditableLabel labelKey="home_hero_card4_pulse" defaultValue="PDF Bulletins" />
               </div>
               <div className="react-card-icon">📚</div>
-              <h3 className="react-card-title">Horticulture Digest</h3>
+              <h3 className="react-card-title">
+                <EditableLabel labelKey="home_hero_card4_title" defaultValue="Horticulture Digest" />
+              </h3>
               <p className="react-card-desc">
-                Browse SKUAST weekly bulletins, policy textbooks, and scientific research publications.
+                <EditableLabel labelKey="home_hero_card4_desc" defaultValue="Browse SKUAST weekly bulletins, policy textbooks, and scientific research publications." />
               </p>
               <div className="react-card-reveal">
-                <span className="reveal-tag">Weekly Reports</span>
-                <span className="reveal-metric">Synced from WP</span>
+                <span className="reveal-tag">
+                  <EditableLabel labelKey="home_hero_card4_tag" defaultValue="Weekly Reports" />
+                </span>
+                <span className="reveal-metric">
+                  <EditableLabel labelKey="home_hero_card4_metric" defaultValue="Synced from WP" />
+                </span>
               </div>
             </NavLink>
 
@@ -331,68 +355,92 @@ const Home: React.FC = () => {
             {/* Card 1: Data Ingestion */}
             <div className="tech-card">
               <div className="tech-card-header">
-                <span className="tech-card-badge">Data Ingestion</span>
-                <h3 className="tech-card-title">Mandi Log Pipeline</h3>
+                <span className="tech-card-badge">
+                  <EditableLabel labelKey="home_info_card1_badge" defaultValue="Data Ingestion" />
+                </span>
+                <h3 className="tech-card-title">
+                  <EditableLabel labelKey="home_info_card1_title" defaultValue="Mandi Log Pipeline" />
+                </h3>
                 <p className="tech-card-desc">
-                  Extracting wholesale arrivals, transaction volumes, and daily price sheets dynamically from national APMC databases.
+                  <EditableLabel labelKey="home_info_card1_desc" defaultValue="Extracting wholesale arrivals, transaction volumes, and daily price sheets dynamically from national APMC databases." />
                 </p>
               </div>
               <div className="tech-card-footer">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                  <Landmark size={16} /> Streamer
+                  <Landmark size={16} /> <EditableLabel labelKey="home_info_card1_footer_lbl" defaultValue="Streamer" />
                 </span>
-                <span className="tech-card-metric">Real-Time Data</span>
+                <span className="tech-card-metric">
+                  <EditableLabel labelKey="home_info_card1_footer_metric" defaultValue="Real-Time Data" />
+                </span>
               </div>
             </div>
 
             {/* Card 2: Deep Learning LSTM Engine */}
             <div className="tech-card">
               <div className="tech-card-header">
-                <span className="tech-card-badge">Neural Networks</span>
-                <h3 className="tech-card-title">AI Price Forecasting</h3>
+                <span className="tech-card-badge">
+                  <EditableLabel labelKey="home_info_card2_badge" defaultValue="Neural Networks" />
+                </span>
+                <h3 className="tech-card-title">
+                  <EditableLabel labelKey="home_info_card2_title" defaultValue="AI Price Forecasting" />
+                </h3>
                 <p className="tech-card-desc">
-                  Processing historical time-series with Recurrent Neural Networks (RNN) to forecast daily wholesale cherry and apple prices.
+                  <EditableLabel labelKey="home_info_card2_desc" defaultValue="Processing historical time-series with Recurrent Neural Networks (RNN) to forecast daily wholesale cherry and apple prices." />
                 </p>
               </div>
               <div className="tech-card-footer">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                  <Brain size={16} /> AI Predictive Core
+                  <Brain size={16} /> <EditableLabel labelKey="home_info_card2_footer_lbl" defaultValue="AI Predictive Core" />
                 </span>
-                <span className="tech-card-metric">94.6% Accuracy</span>
+                <span className="tech-card-metric">
+                  <EditableLabel labelKey="home_info_card2_footer_metric" defaultValue="94.6% Accuracy" />
+                </span>
               </div>
             </div>
 
             {/* Card 3: Anomaly Signals (EWS) */}
             <div className="tech-card">
               <div className="tech-card-header">
-                <span className="tech-card-badge">Alerts Core</span>
-                <h3 className="tech-card-title">Early Warning System</h3>
+                <span className="tech-card-badge">
+                  <EditableLabel labelKey="home_info_card3_badge" defaultValue="Alerts Core" />
+                </span>
+                <h3 className="tech-card-title">
+                  <EditableLabel labelKey="home_info_card3_title" defaultValue="Early Warning System" />
+                </h3>
                 <p className="tech-card-desc">
-                  Running automated variance and standard deviation monitors flagging volume anomalies and warning of sudden price shocks.
+                  <EditableLabel labelKey="home_info_card3_desc" defaultValue="Running automated variance and standard deviation monitors flagging volume anomalies and warning of sudden price shocks." />
                 </p>
               </div>
               <div className="tech-card-footer">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                  <Bell size={16} /> Statistical Alarms
+                  <Bell size={16} /> <EditableLabel labelKey="home_info_card3_footer_lbl" defaultValue="Statistical Alarms" />
                 </span>
-                <span className="tech-card-metric">Variance Matrix</span>
+                <span className="tech-card-metric">
+                  <EditableLabel labelKey="home_info_card3_footer_metric" defaultValue="Variance Matrix" />
+                </span>
               </div>
             </div>
 
             {/* Card 4: Agri-Policy Decisions */}
             <div className="tech-card">
               <div className="tech-card-header">
-                <span className="tech-card-badge">Decision Support</span>
-                <h3 className="tech-card-title">HADP Strategic Outreach</h3>
+                <span className="tech-card-badge">
+                  <EditableLabel labelKey="home_info_card4_badge" defaultValue="Decision Support" />
+                </span>
+                <h3 className="tech-card-title">
+                  <EditableLabel labelKey="home_info_card4_title" defaultValue="HADP Strategic Outreach" />
+                </h3>
                 <p className="tech-card-desc">
-                  Structuring regional Outlook Reports and strategic indices to support J&K horticulture farmers and policy planners.
+                  <EditableLabel labelKey="home_info_card4_desc" defaultValue="Structuring regional Outlook Reports and strategic indices to support J&K horticulture farmers and policy planners." />
                 </p>
               </div>
               <div className="tech-card-footer">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                  <Award size={16} /> HADP Project 04
+                  <Award size={16} /> <EditableLabel labelKey="home_info_card4_footer_lbl" defaultValue="HADP Project 04" />
                 </span>
-                <span className="tech-card-metric">Actionable Intel</span>
+                <span className="tech-card-metric">
+                  <EditableLabel labelKey="home_info_card4_footer_metric" defaultValue="Actionable Intel" />
+                </span>
               </div>
             </div>
           </div>

@@ -63,7 +63,62 @@ const defaultLabels: Record<string, string> = {
   footer_research_bulletin: 'Weekly Bulletins',
   footer_research_hadp: 'HADP Projects',
   footer_copyright: '© 2026 Market Intelligence Cell (MIC), SKUAST-K. All rights reserved.',
-  footer_hosting: 'Backend Content Management hosted securely via WordPress on Hostinger.'
+  footer_hosting: 'Backend Content Management hosted securely via WordPress on Hostinger.',
+  
+  // Home Page - Infographic Section Headers
+  home_infographic_badge: 'Core Architecture',
+  home_infographic_title: 'How Agri-Intelligence Empowers Decisions',
+  home_infographic_desc: 'Integrating deep learning networks and statistical anomaly alarms to transform raw agricultural transactions into actionable forecasts.',
+
+  // Home Page - Hero Navigation Cards
+  home_hero_card1_pulse: 'Active',
+  home_hero_card1_title: 'AI Forecast Engine',
+  home_hero_card1_desc: 'Query deep-learning LSTM models to forecast daily wholesale Mandi prices for cherry and apple.',
+  home_hero_card1_tag: 'LSTM Recurrent Model',
+  home_hero_card1_metric: '94.6% Accuracy',
+
+  home_hero_card2_pulse: 'Live Alerts',
+  home_hero_card2_title: 'Early Warning System',
+  home_hero_card2_desc: 'Real-time price anomaly models tracking market volatility parameters and seasonal shocks.',
+  home_hero_card2_tag: 'Anomalies Detected',
+  home_hero_card2_metric: 'Narwal Jammu Cherry',
+
+  home_hero_card3_pulse: '5 Terminals',
+  home_hero_card3_title: 'APMC Mandi Logs',
+  home_hero_card3_desc: 'Track daily arrivals, transaction volume, demand-supply indices, and weather trends in wholesale markets.',
+  home_hero_card3_tag: 'Markets Synced',
+  home_hero_card3_metric: 'Real-Time Sync',
+
+  home_hero_card4_pulse: 'PDF Bulletins',
+  home_hero_card4_title: 'Horticulture Digest',
+  home_hero_card4_desc: 'Browse SKUAST weekly bulletins, policy textbooks, and scientific research publications.',
+  home_hero_card4_tag: 'Weekly Reports',
+  home_hero_card4_metric: 'Synced from WP',
+
+  // Home Page - Infographic Tech-Cards
+  home_info_card1_badge: 'Data Ingestion',
+  home_info_card1_title: 'Mandi Log Pipeline',
+  home_info_card1_desc: 'Extracting wholesale arrivals, transaction volumes, and daily price sheets dynamically from national APMC databases.',
+  home_info_card1_footer_lbl: 'Streamer',
+  home_info_card1_footer_metric: 'Real-Time Data',
+
+  home_info_card2_badge: 'Neural Networks',
+  home_info_card2_title: 'AI Price Forecasting',
+  home_info_card2_desc: 'Processing historical time-series with Recurrent Neural Networks (RNN) to forecast daily wholesale cherry and apple prices.',
+  home_info_card2_footer_lbl: 'AI Predictive Core',
+  home_info_card2_footer_metric: '94.6% Accuracy',
+
+  home_info_card3_badge: 'Alerts Core',
+  home_info_card3_title: 'Early Warning System',
+  home_info_card3_desc: 'Running automated variance and standard deviation monitors flagging volume anomalies and warning of sudden price shocks.',
+  home_info_card3_footer_lbl: 'Statistical Alarms',
+  home_info_card3_footer_metric: 'Variance Matrix',
+
+  home_info_card4_badge: 'Decision Support',
+  home_info_card4_title: 'HADP Strategic Outreach',
+  home_info_card4_desc: 'Structuring regional Outlook Reports and strategic indices to support J&K horticulture farmers and policy planners.',
+  home_info_card4_footer_lbl: 'HADP Project 04',
+  home_info_card4_footer_metric: 'Actionable Intel'
 };
 
 const Admin: React.FC = () => {
@@ -842,7 +897,62 @@ const Admin: React.FC = () => {
                 footer_research_bulletin: "Footer Link Name: Weekly Bulletins",
                 footer_research_hadp: "Footer Link Name: HADP Projects",
                 footer_copyright: "Footer Bottom Copyright Line",
-                footer_hosting: "Footer Bottom Web Hosting Line"
+                footer_hosting: "Footer Bottom Web Hosting Line",
+                
+                // Home Page Infographic Section Header descriptions
+                home_infographic_badge: "Homepage Infographic Section Badge",
+                home_infographic_title: "Homepage Infographic Section Heading Title",
+                home_infographic_desc: "Homepage Infographic Section Description Paragraph",
+
+                // Homepage Hero Card descriptions
+                home_hero_card1_pulse: "Hero Card 1 Pulse Label (e.g. Active)",
+                home_hero_card1_title: "Hero Card 1 Title (AI Forecast Engine)",
+                home_hero_card1_desc: "Hero Card 1 Description Paragraph",
+                home_hero_card1_tag: "Hero Card 1 Hover Tag (e.g. LSTM Recurrent Model)",
+                home_hero_card1_metric: "Hero Card 1 Hover Metric (e.g. 94.6% Accuracy)",
+
+                home_hero_card2_pulse: "Hero Card 2 Pulse Label (e.g. Live Alerts)",
+                home_hero_card2_title: "Hero Card 2 Title (Early Warning System)",
+                home_hero_card2_desc: "Hero Card 2 Description Paragraph",
+                home_hero_card2_tag: "Hero Card 2 Hover Tag (e.g. Anomalies Detected)",
+                home_hero_card2_metric: "Hero Card 2 Hover Metric (e.g. Narwal Jammu Cherry)",
+
+                home_hero_card3_pulse: "Hero Card 3 Pulse Label (e.g. 5 Terminals)",
+                home_hero_card3_title: "Hero Card 3 Title (APMC Mandi Logs)",
+                home_hero_card3_desc: "Hero Card 3 Description Paragraph",
+                home_hero_card3_tag: "Hero Card 3 Hover Tag (e.g. Markets Synced)",
+                home_hero_card3_metric: "Hero Card 3 Hover Metric (e.g. Real-Time Sync)",
+
+                home_hero_card4_pulse: "Hero Card 4 Pulse Label (e.g. PDF Bulletins)",
+                home_hero_card4_title: "Hero Card 4 Title (Horticulture Digest)",
+                home_hero_card4_desc: "Hero Card 4 Description Paragraph",
+                home_hero_card4_tag: "Hero Card 4 Hover Tag (e.g. Weekly Reports)",
+                home_hero_card4_metric: "Hero Card 4 Hover Metric (e.g. Synced from WP)",
+
+                // Homepage Infographic Card descriptions
+                home_info_card1_badge: "Infographic Card 1 Sub-badge (e.g. Data Ingestion)",
+                home_info_card1_title: "Infographic Card 1 Title (Mandi Log Pipeline)",
+                home_info_card1_desc: "Infographic Card 1 Description Paragraph",
+                home_info_card1_footer_lbl: "Infographic Card 1 Footer Label (e.g. Streamer)",
+                home_info_card1_footer_metric: "Infographic Card 1 Footer Value (e.g. Real-Time Data)",
+
+                home_info_card2_badge: "Infographic Card 2 Sub-badge (e.g. Neural Networks)",
+                home_info_card2_title: "Infographic Card 2 Title (AI Price Forecasting)",
+                home_info_card2_desc: "Infographic Card 2 Description Paragraph",
+                home_info_card2_footer_lbl: "Infographic Card 2 Footer Label (e.g. AI Predictive Core)",
+                home_info_card2_footer_metric: "Infographic Card 2 Footer Value (e.g. 94.6% Accuracy)",
+
+                home_info_card3_badge: "Infographic Card 3 Sub-badge (e.g. Alerts Core)",
+                home_info_card3_title: "Infographic Card 3 Title (Early Warning System)",
+                home_info_card3_desc: "Infographic Card 3 Description Paragraph",
+                home_info_card3_footer_lbl: "Infographic Card 3 Footer Label (e.g. Statistical Alarms)",
+                home_info_card3_footer_metric: "Infographic Card 3 Footer Value (e.g. Variance Matrix)",
+
+                home_info_card4_badge: "Infographic Card 4 Sub-badge (e.g. Decision Support)",
+                home_info_card4_title: "Infographic Card 4 Title (HADP Strategic Outreach)",
+                home_info_card4_desc: "Infographic Card 4 Description Paragraph",
+                home_info_card4_footer_lbl: "Infographic Card 4 Footer Label (e.g. HADP Project 04)",
+                home_info_card4_footer_metric: "Infographic Card 4 Footer Value (e.g. Actionable Intel)"
               }[key] || key;
 
               const currentVal = (config.labels || defaultLabels)[key] || defaultLabels[key];
