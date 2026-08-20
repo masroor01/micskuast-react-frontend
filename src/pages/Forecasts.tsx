@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { TrendingUp, Layers, LineChart, Landmark } from 'lucide-react';
 import RealTimePrices from '../components/RealTimePrices';
@@ -8,10 +8,22 @@ import { EditableLabel } from '../components/EditableLabel';
 const Forecasts: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeView = (searchParams.get('view') || 'predict') as 'predict' | 'tool' | 'dashboard' | 'ledger';
-  
+  const [currentTheme, setCurrentTheme] = useState(document.documentElement.getAttribute('data-theme') || 'light');
+
   const setActiveView = (view: 'predict' | 'tool' | 'dashboard' | 'ledger') => {
     setSearchParams({ view });
   };
+
+  useEffect(() => {
+    const handleThemeChange = () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      setCurrentTheme(newTheme);
+    };
+    window.addEventListener('theme-changed', handleThemeChange);
+    return () => {
+      window.removeEventListener('theme-changed', handleThemeChange);
+    };
+  }, []);
 
   return (
     <div className="container section-padding animate-fade-in">
@@ -139,7 +151,7 @@ const Forecasts: React.FC = () => {
               }}>
                 {/* Apple Price Forecasts iframe */}
                 <iframe
-                  src="https://micmandis.onrender.com/ticker-vertical?fruit=apple&days=30"
+                  src={`https://micmandis.onrender.com/ticker-vertical?fruit=apple&days=30&theme=${currentTheme}`}
                   loading="lazy"
                   title="Apple Price Forecasts (₹/Kg)"
                   style={{
@@ -148,7 +160,8 @@ const Forecasts: React.FC = () => {
                     minWidth: '100%',
                     border: 0,
                     display: 'block',
-                    background: 'transparent'
+                    background: 'transparent',
+                    filter: currentTheme === 'dark' ? 'invert(0.9) hue-rotate(180deg)' : 'none'
                   }}
                   referrerPolicy="no-referrer"
                 />
@@ -183,7 +196,7 @@ const Forecasts: React.FC = () => {
             boxSizing: 'border-box'
           }}>
             <iframe
-              src="https://micmandis.onrender.com/forecast"
+              src={`https://micmandis.onrender.com/forecast?theme=${currentTheme}`}
               title="Agricultural Forecasting Tool"
               style={{
                 width: '100%',
@@ -193,7 +206,8 @@ const Forecasts: React.FC = () => {
                 borderRadius: '12px',
                 boxShadow: '0 6px 22px rgba(0,0,0,.08)',
                 margin: 0,
-                padding: 0
+                padding: 0,
+                filter: currentTheme === 'dark' ? 'invert(0.9) hue-rotate(180deg)' : 'none'
               }}
             />
           </div>
@@ -212,7 +226,7 @@ const Forecasts: React.FC = () => {
           }}>
             {/* Embedded Live Market Intelligence Dashboard iframe */}
             <iframe
-              src="https://micmandis.onrender.com/forecast/mydash"
+              src={`https://micmandis.onrender.com/forecast/mydash?theme=${currentTheme}`}
               title="Agricultural Price Intelligence Dashboard"
               style={{
                 width: '100%',
@@ -222,7 +236,8 @@ const Forecasts: React.FC = () => {
                 borderRadius: '12px',
                 boxShadow: '0 6px 22px rgba(0,0,0,.08)',
                 margin: 0,
-                padding: 0
+                padding: 0,
+                filter: currentTheme === 'dark' ? 'invert(0.9) hue-rotate(180deg)' : 'none'
               }}
             />
           </div>
