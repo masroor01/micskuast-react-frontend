@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, BookOpen, AlertTriangle, TrendingUp, Landmark, Mail, GraduationCap } from 'lucide-react';
+import { ArrowRight, BookOpen, AlertTriangle, TrendingUp, Landmark, Mail, GraduationCap, Brain, Bell, Award } from 'lucide-react';
+import { EditableLabel } from '../components/EditableLabel';
  
 const Home: React.FC = () => {
   const [heroTitle, setHeroTitle] = useState('Market Intelligence Cell');
@@ -294,6 +295,107 @@ const Home: React.FC = () => {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* Dynamic AI/ML Tech Infographic Section */}
+      <section className="section-padding" style={{ borderBottom: '1px solid var(--color-border)', backgroundColor: 'transparent' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3.5rem' }}>
+            <span style={{ 
+              color: 'var(--color-primary)', 
+              fontSize: '0.85rem', 
+              fontWeight: 800, 
+              letterSpacing: '0.25em', 
+              textTransform: 'uppercase',
+              backgroundColor: 'var(--color-primary-pale)',
+              padding: '4px 12px',
+              borderRadius: '50px',
+              display: 'inline-block',
+              marginBottom: '1rem'
+            }}>
+              <EditableLabel labelKey="home_infographic_badge" defaultValue="Core Architecture" />
+            </span>
+            <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '1.15rem', color: 'var(--color-text-main)' }}>
+              <EditableLabel labelKey="home_infographic_title" defaultValue="How Agri-Intelligence Empowers Decisions" />
+            </h2>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6', margin: 0 }}>
+              <EditableLabel 
+                labelKey="home_infographic_desc" 
+                defaultValue="Integrating deep learning networks and statistical anomaly alarms to transform raw agricultural transactions into actionable forecasts." 
+              />
+            </p>
+          </div>
+
+          <div className="about-grid" style={{ marginTop: 0 }}>
+            {/* Card 1: Data Ingestion */}
+            <div className="tech-card">
+              <div className="tech-card-header">
+                <span className="tech-card-badge">Data Ingestion</span>
+                <h3 className="tech-card-title">Mandi Log Pipeline</h3>
+                <p className="tech-card-desc">
+                  Extracting wholesale arrivals, transaction volumes, and daily price sheets dynamically from national APMC databases.
+                </p>
+              </div>
+              <div className="tech-card-footer">
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                  <Landmark size={16} /> Streamer
+                </span>
+                <span className="tech-card-metric">Real-Time Data</span>
+              </div>
+            </div>
+
+            {/* Card 2: Deep Learning LSTM Engine */}
+            <div className="tech-card">
+              <div className="tech-card-header">
+                <span className="tech-card-badge">Neural Networks</span>
+                <h3 className="tech-card-title">LSTM Forecasting Model</h3>
+                <p className="tech-card-desc">
+                  Processing historical time-series with Recurrent Neural Networks (RNN) to forecast daily wholesale cherry and apple prices.
+                </p>
+              </div>
+              <div className="tech-card-footer">
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                  <Brain size={16} /> AI Predictive Core
+                </span>
+                <span className="tech-card-metric">94.6% Accuracy</span>
+              </div>
+            </div>
+
+            {/* Card 3: Anomaly Signals (EWS) */}
+            <div className="tech-card">
+              <div className="tech-card-header">
+                <span className="tech-card-badge">Alerts Core</span>
+                <h3 className="tech-card-title">Early Warning System</h3>
+                <p className="tech-card-desc">
+                  Running automated variance and standard deviation monitors flagging volume anomalies and warning of sudden price shocks.
+                </p>
+              </div>
+              <div className="tech-card-footer">
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                  <Bell size={16} /> Statistical Alarms
+                </span>
+                <span className="tech-card-metric">Variance Matrix</span>
+              </div>
+            </div>
+
+            {/* Card 4: Agri-Policy Decisions */}
+            <div className="tech-card">
+              <div className="tech-card-header">
+                <span className="tech-card-badge">Decision Support</span>
+                <h3 className="tech-card-title">HADP Strategic Outreach</h3>
+                <p className="tech-card-desc">
+                  Structuring regional Outlook Reports and strategic indices to support J&K horticulture farmers and policy planners.
+                </p>
+              </div>
+              <div className="tech-card-footer">
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                  <Award size={16} /> HADP Project 04
+                </span>
+                <span className="tech-card-metric">Actionable Intel</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
