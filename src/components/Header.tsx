@@ -51,7 +51,7 @@ const Header: React.FC = () => {
         </NavLink>
 
         {/* Desktop Navigation Group 1: Core Menu Links */}
-        <nav className="nav-menu desktop-only" style={{ gap: '1.15rem', marginLeft: '3rem' }}>
+        <nav className="nav-menu desktop-only" style={{ gap: '0.45rem', marginLeft: '1rem' }}>
           <NavLink 
             to="/" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
@@ -64,8 +64,8 @@ const Header: React.FC = () => {
             to="/about" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-              <Info size={16} /> 
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}>
+              <Info size={14} /> 
               <EditableLabel labelKey="nav_about" defaultValue="About Us" />
             </span>
           </NavLink>
@@ -80,11 +80,11 @@ const Header: React.FC = () => {
             <NavLink 
               to="/ews" 
               className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}
             >
-              <AlertTriangle size={16} /> 
+              <AlertTriangle size={14} /> 
               <EditableLabel labelKey="nav_ews" defaultValue="EWS Reports" />
-              <ChevronDown size={14} />
+              <ChevronDown size={12} />
             </NavLink>
             
             {ewsDropdownOpen && (
@@ -100,8 +100,8 @@ const Header: React.FC = () => {
             to="/markets" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-              <Landmark size={16} /> 
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}>
+              <Landmark size={14} /> 
               <EditableLabel labelKey="nav_apmcs" defaultValue="APMCs" />
             </span>
           </NavLink>
@@ -110,22 +110,22 @@ const Header: React.FC = () => {
             to="/publications" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-              <BookOpen size={16} /> 
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}>
+              <BookOpen size={14} /> 
               <EditableLabel labelKey="nav_publications" defaultValue="Publications" />
             </span>
           </NavLink>
         </nav>
 
         {/* Desktop Navigation Group 2: Actions & Settings */}
-        <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginLeft: 'auto' }}>
+        <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginLeft: 'auto' }}>
           <NavLink 
             to="/forecasts" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            style={{ background: 'var(--color-primary-pale)', border: '1px solid rgba(var(--primary-hue), 72%, 18%, 0.15)', borderRadius: '8px', padding: '0.5rem 1rem' }}
+            style={{ background: 'var(--color-primary-pale)', border: '1px solid rgba(var(--primary-hue), 72%, 18%, 0.15)', borderRadius: '8px', padding: '0.4rem 0.75rem' }}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: 'var(--color-primary)' }}>
-              <TrendingUp size={16} /> 
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', color: 'var(--color-primary)', whiteSpace: 'nowrap' }}>
+              <TrendingUp size={14} /> 
               <EditableLabel labelKey="nav_market_intel" defaultValue="Market Intelligence" />
             </span>
           </NavLink>
