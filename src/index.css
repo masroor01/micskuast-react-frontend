@@ -359,7 +359,7 @@ a {
 /* Card Components */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -780,7 +780,7 @@ a {
 /* About Us premium style cards */
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -936,6 +936,55 @@ a {
 @keyframes pulse {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 0.25; }
+}
+
+/* Responsive utility styles */
+.pub-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: 1.25rem 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .pub-filter-bar {
+    padding: 1rem !important;
+    margin-bottom: 2rem !important;
+    gap: 1rem !important;
+  }
+  .vc-card {
+    padding: 1.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+  .vc-profile-section {
+    gap: 1rem !important;
+  }
+  .logo-text {
+    font-size: 1.05rem !important;
+  }
+  .logo-subtext {
+    font-size: 0.7rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pub-filter-bar {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  .pub-filter-bar .btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
 }
 
 

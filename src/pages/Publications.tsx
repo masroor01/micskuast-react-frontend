@@ -117,19 +117,7 @@ const Publications: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '1.5rem',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        background: 'var(--color-surface)',
-        border: '1px solid var(--color-border)',
-        padding: '1.25rem 2rem',
-        borderRadius: 'var(--radius-md)',
-        boxShadow: 'var(--shadow-sm)',
-        marginBottom: '3rem'
-      }}>
+      <div className="pub-filter-bar">
         {/* Category Buttons */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
           <button

@@ -667,6 +667,16 @@ const OrchardLedger: React.FC = () => {
           .jkh-main{ border-right: none; }
           .jkh-side{ display: none; }
         }
+        @media (max-width: 600px) {
+          #jk-dash .jkh-hero-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+          #jk-dash .jkh-hero-stat {
+            text-align: center;
+            margin-top: 10px;
+          }
+        }
       ` }} />
     </div>
   );
