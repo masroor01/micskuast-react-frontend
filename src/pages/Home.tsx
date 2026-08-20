@@ -349,7 +349,7 @@ const Home: React.FC = () => {
             <div className="tech-card">
               <div className="tech-card-header">
                 <span className="tech-card-badge">Neural Networks</span>
-                <h3 className="tech-card-title">LSTM Forecasting Model</h3>
+                <h3 className="tech-card-title">AI Price Forecasting</h3>
                 <p className="tech-card-desc">
                   Processing historical time-series with Recurrent Neural Networks (RNN) to forecast daily wholesale cherry and apple prices.
                 </p>
