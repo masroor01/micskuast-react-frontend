@@ -8,150 +8,69 @@ const applyThemeToIframe = (iframe: HTMLIFrameElement, theme: string) => {
     const doc = iframe.contentDocument || iframe.contentWindow?.document;
     if (!doc) return;
 
-    // Define CSS variables to inject
-    let cssVars = '';
-    if (theme === 'dark') {
-      cssVars = `
-        :root {
-          --mic-blue: #14532d !important;
-          --mic-blue-2: #1e293b !important;
-          --bg: #0f172a !important;
-          --card: #1e293b !important;
-          --border: #334155 !important;
-          --text: #f8fafc !important;
-          --muted: #94a3b8 !important;
-        }
-        body {
-          color: #f8fafc !important;
-          background: #0f172a !important;
-        }
-        .paper {
-          background: #1e293b !important;
-          color: #f8fafc !important;
-          box-shadow: 0 4px 25px rgba(0,0,0,0.3) !important;
-        }
-        .card {
-          background: #1e293b !important;
-          border-color: #334155 !important;
-          color: #f8fafc !important;
-        }
-        table th {
-          background: #334155 !important;
-          color: #f8fafc !important;
-        }
-        table td {
-          border-color: #334155 !important;
-          color: #e2e8f0 !important;
-        }
-        .topbar {
-          background: linear-gradient(90deg, #14532d, #1e293b) !important;
-        }
-        h1, h2, h3, h4, h5, h6, p, li, span, td, th {
-          color: #f8fafc !important;
-        }
-        .note {
-          color: #94a3b8 !important;
-        }
-        .watermark {
-          color: #ffffff !important;
-          opacity: 0.05 !important;
-        }
-      `;
-    } else if (theme === 'warm') {
-      cssVars = `
-        :root {
-          --mic-blue: #1c3d27 !important;
-          --mic-blue-2: #244c33 !important;
-          --bg: #f4efe6 !important;
-          --card: #fdfbf7 !important;
-          --border: #e6dfd3 !important;
-          --text: #2d2219 !important;
-          --muted: #7c6a59 !important;
-        }
-        body {
-          color: #2d2219 !important;
-          background: #f4efe6 !important;
-        }
-        .paper {
-          background: #fdfbf7 !important;
-          color: #2d2219 !important;
-          box-shadow: 0 4px 25px rgba(0,0,0,0.06) !important;
-        }
-        .card {
-          background: #fdfbf7 !important;
-          border-color: #e6dfd3 !important;
-          color: #2d2219 !important;
-        }
-        table th {
-          background: #e6dfd3 !important;
-          color: #2d2219 !important;
-        }
-        table td {
-          border-color: #e6dfd3 !important;
-          color: #2d2219 !important;
-        }
-        .topbar {
-          background: linear-gradient(90deg, #1c3d27, #244c33) !important;
-        }
-        h1, h2, h3, h4, h5, h6, p, li, span, td, th {
-          color: #2d2219 !important;
-        }
-        .note {
-          color: #7c6a59 !important;
-        }
-        .watermark {
-          color: #000000 !important;
-          opacity: 0.05 !important;
-        }
-      `;
-    } else {
-      cssVars = `
-        :root {
-          --mic-blue: #0b3a6e !important;
-          --mic-blue-2: #114b8a !important;
-          --bg: #f8fafc !important;
-          --card: #ffffff !important;
-          --border: #e2e8f0 !important;
-          --text: #0f172a !important;
-          --muted: #64748b !important;
-        }
-        body {
-          color: #0f172a !important;
-          background: #f8fafc !important;
-        }
-        .paper {
-          background: #ffffff !important;
-          color: #0f172a !important;
-          box-shadow: 0 4px 25px rgba(0,0,0,0.04) !important;
-        }
-        .card {
-          background: #ffffff !important;
-          border-color: #e2e8f0 !important;
-          color: #0f172a !important;
-        }
-        table th {
-          background: #f1f5f9 !important;
-          color: #0f172a !important;
-        }
-        table td {
-          border-color: #e2e8f0 !important;
-          color: #334155 !important;
-        }
-        .topbar {
-          background: linear-gradient(90deg, #0b3a6e, #114b8a) !important;
-        }
-        h1, h2, h3, h4, h5, h6, p, li, span, td, th {
-          color: #0f172a !important;
-        }
-        .note {
-          color: #64748b !important;
-        }
-        .watermark {
-          color: #000000 !important;
-          opacity: 0.07 !important;
-        }
-      `;
-    }
+    // Read computed style variables from the parent document
+    const rootStyles = getComputedStyle(document.documentElement);
+    const primary = rootStyles.getPropertyValue('--color-primary').trim() || '#0b3a6e';
+    const primaryHover = rootStyles.getPropertyValue('--color-primary-hover').trim() || '#114b8a';
+    const bg = rootStyles.getPropertyValue('--color-bg').trim() || '#f8fafc';
+    const surface = rootStyles.getPropertyValue('--color-surface').trim() || '#ffffff';
+    const border = rootStyles.getPropertyValue('--color-border').trim() || '#e2e8f0';
+    const text = rootStyles.getPropertyValue('--color-text-main').trim() || '#0f172a';
+    const muted = rootStyles.getPropertyValue('--color-text-muted').trim() || '#64748b';
+
+    const cssVars = `
+      :root {
+        --mic-blue: ${primary} !important;
+        --mic-blue-2: ${primaryHover} !important;
+        --bg: ${bg} !important;
+        --card: ${surface} !important;
+        --border: ${border} !important;
+        --text: ${text} !important;
+        --muted: ${muted} !important;
+      }
+      body {
+        color: var(--text) !important;
+        background: var(--bg) !important;
+      }
+      .paper {
+        background: var(--card) !important;
+        color: var(--text) !important;
+        box-shadow: 0 4px 25px rgba(0,0,0,0.06) !important;
+      }
+      .card {
+        background: var(--card) !important;
+        border-color: var(--border) !important;
+        color: var(--text) !important;
+      }
+      table th {
+        background: var(--border) !important;
+        color: var(--text) !important;
+      }
+      table td {
+        border-color: var(--border) !important;
+        color: var(--text) !important;
+      }
+      .topbar {
+        background: linear-gradient(90deg, var(--mic-blue), var(--mic-blue-2)) !important;
+      }
+      h1, h2, h3, h4, h5, h6, p, li, span, td, th {
+        color: var(--text) !important;
+      }
+      .note {
+        color: var(--muted) !important;
+      }
+      .watermark {
+        color: var(--text) !important;
+        opacity: 0.05 !important;
+      }
+      .nav a {
+        background: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+      }
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.25) !important;
+      }
+    `;
 
     // Apply styles to current document
     let styleTag = doc.getElementById('mic-iframe-theme-styles');
