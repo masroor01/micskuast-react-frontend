@@ -60,10 +60,100 @@ const PUBLICATIONS_DATA: PublicationItem[] = [
   }
 ];
 
+const getCategoryColors = (category: string) => {
+  switch (category) {
+    case 'Commodity Outlooks':
+      return {
+        bg: '#fef3c7',
+        text: '#b45309',
+        border: '#d97706',
+        gradient: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
+        darkBg: 'rgba(217, 119, 6, 0.15)',
+        darkText: '#fbbf24'
+      };
+    case 'Market Intelligence Reports':
+      return {
+        bg: '#e0f2fe',
+        text: '#0369a1',
+        border: '#0284c7',
+        gradient: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)',
+        darkBg: 'rgba(2, 132, 199, 0.15)',
+        darkText: '#7dd3fc'
+      };
+    case 'Research Papers':
+      return {
+        bg: '#e0e7ff',
+        text: '#4338ca',
+        border: '#4f46e5',
+        gradient: 'linear-gradient(135deg, #4f46e5 0%, #818cf8 100%)',
+        darkBg: 'rgba(79, 70, 229, 0.15)',
+        darkText: '#a5b4fc'
+      };
+    case 'Books':
+      return {
+        bg: '#d1fae5',
+        text: '#047857',
+        border: '#059669',
+        gradient: 'linear-gradient(135deg, #059669 0%, #34d399 100%)',
+        darkBg: 'rgba(5, 150, 105, 0.15)',
+        darkText: '#6ee7b7'
+      };
+    case 'Book Chapters':
+      return {
+        bg: '#ede9fe',
+        text: '#6d28d9',
+        border: '#7c3aed',
+        gradient: 'linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)',
+        darkBg: 'rgba(124, 58, 237, 0.15)',
+        darkText: '#c084fc'
+      };
+    case 'Policy Reports':
+      return {
+        bg: '#ffe4e6',
+        text: '#be123c',
+        border: '#fb7185',
+        gradient: 'linear-gradient(135deg, #be123c 0%, #fb7185 100%)',
+        darkBg: 'rgba(190, 18, 60, 0.15)',
+        darkText: '#fda4af'
+      };
+    default: // 'All'
+      return {
+        bg: 'var(--color-primary-pale)',
+        text: 'var(--color-primary)',
+        border: 'var(--color-primary-light)',
+        gradient: 'var(--gradient-primary)',
+        darkBg: 'rgba(21, 128, 61, 0.15)',
+        darkText: '#4ade80'
+      };
+  }
+};
+
 const Publications: React.FC = () => {
   const [publications, setPublications] = useState<PublicationItem[]>(PUBLICATIONS_DATA);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [currentTheme, setCurrentTheme] = useState(document.documentElement.getAttribute('data-theme') || 'light');
+
+  const categoriesList = [
+    { id: 'All', labelKey: 'pub_tab_all', defaultVal: 'All Publications' },
+    { id: 'Commodity Outlooks', labelKey: 'pub_tab_outlooks', defaultVal: 'Commodity Outlooks' },
+    { id: 'Market Intelligence Reports', labelKey: 'pub_tab_reports', defaultVal: 'Market Intelligence Reports' },
+    { id: 'Research Papers', labelKey: 'pub_tab_papers', defaultVal: 'Research Papers' },
+    { id: 'Books', labelKey: 'pub_tab_books', defaultVal: 'Books' },
+    { id: 'Book Chapters', labelKey: 'pub_tab_chapters', defaultVal: 'Book Chapters' },
+    { id: 'Policy Reports', labelKey: 'pub_tab_policy', defaultVal: 'Policy Reports' }
+  ];
+
+  useEffect(() => {
+    const handleThemeChange = () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      setCurrentTheme(newTheme);
+    };
+    window.addEventListener('theme-changed', handleThemeChange);
+    return () => {
+      window.removeEventListener('theme-changed', handleThemeChange);
+    };
+  }, []);
 
 
 
@@ -120,117 +210,35 @@ const Publications: React.FC = () => {
       <div className="pub-filter-bar">
         {/* Category Buttons */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-          <button
-            onClick={() => setActiveCategory('All')}
-            className="btn"
-            style={{
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              borderRadius: 'var(--radius-sm)',
-              background: activeCategory === 'All' ? 'var(--gradient-primary)' : 'transparent',
-              color: activeCategory === 'All' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
-              border: activeCategory === 'All' ? 'none' : '1px solid var(--color-border)',
-              fontWeight: 600
-            }}
-          >
-            <EditableLabel labelKey="pub_tab_all" defaultValue="All Publications" />
-          </button>
-          
-          <button
-            onClick={() => setActiveCategory('Commodity Outlooks')}
-            className="btn"
-            style={{
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              borderRadius: 'var(--radius-sm)',
-              background: activeCategory === 'Commodity Outlooks' ? 'var(--gradient-primary)' : 'transparent',
-              color: activeCategory === 'Commodity Outlooks' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
-              border: activeCategory === 'Commodity Outlooks' ? 'none' : '1px solid var(--color-border)',
-              fontWeight: 600
-            }}
-          >
-            <EditableLabel labelKey="pub_tab_outlooks" defaultValue="Commodity Outlooks" />
-          </button>
-
-          <button
-            onClick={() => setActiveCategory('Market Intelligence Reports')}
-            className="btn"
-            style={{
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              borderRadius: 'var(--radius-sm)',
-              background: activeCategory === 'Market Intelligence Reports' ? 'var(--gradient-primary)' : 'transparent',
-              color: activeCategory === 'Market Intelligence Reports' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
-              border: activeCategory === 'Market Intelligence Reports' ? 'none' : '1px solid var(--color-border)',
-              fontWeight: 600
-            }}
-          >
-            <EditableLabel labelKey="pub_tab_reports" defaultValue="Market Intelligence Reports" />
-          </button>
-
-          <button
-            onClick={() => setActiveCategory('Research Papers')}
-            className="btn"
-            style={{
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              borderRadius: 'var(--radius-sm)',
-              background: activeCategory === 'Research Papers' ? 'var(--gradient-primary)' : 'transparent',
-              color: activeCategory === 'Research Papers' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
-              border: activeCategory === 'Research Papers' ? 'none' : '1px solid var(--color-border)',
-              fontWeight: 600
-            }}
-          >
-            <EditableLabel labelKey="pub_tab_papers" defaultValue="Research Papers" />
-          </button>
-
-          <button
-            onClick={() => setActiveCategory('Books')}
-            className="btn"
-            style={{
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              borderRadius: 'var(--radius-sm)',
-              background: activeCategory === 'Books' ? 'var(--gradient-primary)' : 'transparent',
-              color: activeCategory === 'Books' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
-              border: activeCategory === 'Books' ? 'none' : '1px solid var(--color-border)',
-              fontWeight: 600
-            }}
-          >
-            <EditableLabel labelKey="pub_tab_books" defaultValue="Books" />
-          </button>
-
-          <button
-            onClick={() => setActiveCategory('Book Chapters')}
-            className="btn"
-            style={{
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              borderRadius: 'var(--radius-sm)',
-              background: activeCategory === 'Book Chapters' ? 'var(--gradient-primary)' : 'transparent',
-              color: activeCategory === 'Book Chapters' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
-              border: activeCategory === 'Book Chapters' ? 'none' : '1px solid var(--color-border)',
-              fontWeight: 600
-            }}
-          >
-            <EditableLabel labelKey="pub_tab_chapters" defaultValue="Book Chapters" />
-          </button>
-
-          <button
-            onClick={() => setActiveCategory('Policy Reports')}
-            className="btn"
-            style={{
-              padding: '0.5rem 1rem',
-              fontSize: '0.85rem',
-              borderRadius: 'var(--radius-sm)',
-              background: activeCategory === 'Policy Reports' ? 'var(--gradient-primary)' : 'transparent',
-              color: activeCategory === 'Policy Reports' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
-              border: activeCategory === 'Policy Reports' ? 'none' : '1px solid var(--color-border)',
-              fontWeight: 600
-            }}
-          >
-            <EditableLabel labelKey="pub_tab_policy" defaultValue="Policy Reports" />
-          </button>
+          {categoriesList.map(cat => {
+            const colors = getCategoryColors(cat.id);
+            const isActive = activeCategory === cat.id;
+            
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className="btn"
+                style={{
+                  padding: '0.5rem 1rem',
+                  fontSize: '0.85rem',
+                  borderRadius: 'var(--radius-sm)',
+                  background: isActive ? colors.gradient : 'transparent',
+                  color: isActive 
+                    ? (cat.id === 'All' ? 'var(--color-btn-text-primary)' : '#ffffff') 
+                    : (currentTheme === 'dark' ? colors.darkText : colors.text),
+                  border: isActive 
+                    ? 'none' 
+                    : `1px solid ${currentTheme === 'dark' ? 'rgba(255,255,255,0.08)' : colors.border}`,
+                  fontWeight: 700,
+                  transition: 'all 0.3s ease',
+                  boxShadow: isActive ? 'var(--shadow-sm)' : 'none'
+                }}
+              >
+                <EditableLabel labelKey={cat.labelKey} defaultValue={cat.defaultVal} />
+              </button>
+            );
+          })}
         </div>
 
         {/* Search Searchbar */}
@@ -253,7 +261,19 @@ const Publications: React.FC = () => {
           {filteredItems.map(item => (
             <div key={item.id} className="card">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                <span className="card-tag">{item.category}</span>
+                <span className="card-tag" style={{
+                  backgroundColor: currentTheme === 'dark' ? getCategoryColors(item.category).darkBg : getCategoryColors(item.category).bg,
+                  color: currentTheme === 'dark' ? getCategoryColors(item.category).darkText : getCategoryColors(item.category).text,
+                  padding: '3px 10px',
+                  borderRadius: '50px',
+                  fontSize: '0.7rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  display: 'inline-block'
+                }}>
+                  {item.category}
+                </span>
                 <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-muted)', display: 'inline-flex', alignItems: 'center', gap: '0.15rem' }}>
                   <Calendar size={12} /> {item.year}
                 </span>
