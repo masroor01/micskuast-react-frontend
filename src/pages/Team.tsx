@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, GraduationCap } from 'lucide-react';
 
 const LinkedinIcon = ({ size = 18 }: { size?: number }) => (
@@ -28,57 +28,75 @@ interface TeamMember {
   category: 'pi' | 'yp';
 }
 
+const fallbackMembers: TeamMember[] = [
+  {
+    name: "Prof. F. A. Shaheen",
+    role: "Principal Investigator",
+    affiliation: "Professor cum Chief Scientist, IBPR, SKUAST-K, Shalimar",
+    image: "/team/shaheen.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Prof. S. H. Baba",
+    role: "Co. Principal Investigator",
+    affiliation: "Professor and Head, IBPR, SKUAST-K, Shalimar",
+    image: "/team/baba.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Dr Abid Sultan",
+    role: "Co. Principal Investigator",
+    affiliation: "Assistant Prof. cum Junior Scientist, IBPR, SKUAST-K, Shalimar",
+    image: "/team/abid.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Dr Aqib Gul",
+    role: "Young Professional - III",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/aqib.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  },
+  {
+    name: "Dr Masroor Majid",
+    role: "Young Professional - II",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/masroor.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  },
+  {
+    name: "Dr Mudasir Rashid",
+    role: "Young Professional - II",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/mudasir.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  }
+];
+
 const Team: React.FC = () => {
-  const members: TeamMember[] = [
-    {
-      name: "Prof. F. A. Shaheen",
-      role: "Principal Investigator",
-      affiliation: "Professor cum Chief Scientist, IBPR, SKUAST-K, Shalimar",
-      image: "/team/shaheen.png",
-      linkedin: "https://www.linkedin.com/",
-      category: 'pi'
-    },
-    {
-      name: "Prof. S. H. Baba",
-      role: "Co. Principal Investigator",
-      affiliation: "Professor and Head, IBPR, SKUAST-K, Shalimar",
-      image: "/team/baba.png",
-      linkedin: "https://www.linkedin.com/",
-      category: 'pi'
-    },
-    {
-      name: "Dr Abid Sultan",
-      role: "Co. Principal Investigator",
-      affiliation: "Assistant Prof. cum Junior Scientist, IBPR, SKUAST-K, Shalimar",
-      image: "/team/abid.png",
-      linkedin: "https://www.linkedin.com/",
-      category: 'pi'
-    },
-    {
-      name: "Dr Aqib Gul",
-      role: "Young Professional - III",
-      affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
-      image: "/team/aqib.png",
-      linkedin: "https://www.linkedin.com/",
-      category: 'yp'
-    },
-    {
-      name: "Dr Masroor Majid",
-      role: "Young Professional - II",
-      affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
-      image: "/team/masroor.png",
-      linkedin: "https://www.linkedin.com/",
-      category: 'yp'
-    },
-    {
-      name: "Dr Mudasir Rashid",
-      role: "Young Professional - II",
-      affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
-      image: "/team/mudasir.png",
-      linkedin: "https://www.linkedin.com/",
-      category: 'yp'
-    }
-  ];
+  const [members, setMembers] = useState<TeamMember[]>([]);
+
+  useEffect(() => {
+    fetch('/api/config.php')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.team) {
+          setMembers(data.team);
+        } else {
+          setMembers(fallbackMembers);
+        }
+      })
+      .catch(err => {
+        console.error("Failed to load team data:", err);
+        setMembers(fallbackMembers);
+      });
+  }, []);
 
   const pis = members.filter(m => m.category === 'pi');
   const yps = members.filter(m => m.category === 'yp');
@@ -116,94 +134,99 @@ const Team: React.FC = () => {
         </div>
 
         {/* Section 1: Senior Investigators */}
-        <div style={{ marginBottom: '5rem' }}>
-          <h2 style={{ 
-            fontSize: '1.5rem', 
-            fontWeight: 800, 
-            color: 'var(--color-primary)', 
-            borderBottom: '2px solid var(--color-primary-pale)', 
-            paddingBottom: '0.75rem',
-            marginBottom: '2.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}>
-            <GraduationCap size={24} style={{ color: 'var(--color-accent)' }} /> Principal Investigators
-          </h2>
-          
-          <div className="team-grid">
-            {pis.map((m, idx) => (
-              <div key={idx} className="team-member-card">
-                <div className="member-photo-container">
-                  <img src={m.image} alt={m.name} className="member-photo" />
-                </div>
-                <div className="member-info">
-                  <h3 className="member-name">{m.name}</h3>
-                  <div className="member-role">{m.role}</div>
-                  <p className="member-affiliation">{m.affiliation}</p>
-                  
-                  <div className="member-socials">
-                    <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
-                      <LinkedinIcon size={18} />
-                    </a>
-                    <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
-                      <Mail size={18} />
-                    </a>
+        {pis.length > 0 && (
+          <div style={{ marginBottom: '5rem' }}>
+            <h2 style={{ 
+              fontSize: '1.5rem', 
+              fontWeight: 800, 
+              color: 'var(--color-primary)', 
+              borderBottom: '2px solid var(--color-primary-pale)', 
+              paddingBottom: '0.75rem',
+              marginBottom: '2.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              <GraduationCap size={24} style={{ color: 'var(--color-accent)' }} /> Principal Investigators
+            </h2>
+            
+            <div className="team-grid">
+              {pis.map((m, idx) => (
+                <div key={idx} className="team-member-card">
+                  <div className="member-photo-container">
+                    <img src={m.image} alt={m.name} className="member-photo" />
+                  </div>
+                  <div className="member-info">
+                    <h3 className="member-name">{m.name}</h3>
+                    <div className="member-role">{m.role}</div>
+                    <p className="member-affiliation">{m.affiliation}</p>
+                    
+                    <div className="member-socials">
+                      <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
+                        <LinkedinIcon size={18} />
+                      </a>
+                      <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
+                        <Mail size={18} />
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Section 2: Young Professionals */}
-        <div>
-          <h2 style={{ 
-            fontSize: '1.5rem', 
-            fontWeight: 800, 
-            color: 'var(--color-primary)', 
-            borderBottom: '2px solid var(--color-primary-pale)', 
-            paddingBottom: '0.75rem',
-            marginBottom: '2.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}>
-            <GraduationCap size={24} style={{ color: 'var(--color-accent)' }} /> Research Staff &amp; Young Professionals
-          </h2>
+        {yps.length > 0 && (
+          <div>
+            <h2 style={{ 
+              fontSize: '1.5rem', 
+              fontWeight: 800, 
+              color: 'var(--color-primary)', 
+              borderBottom: '2px solid var(--color-primary-pale)', 
+              paddingBottom: '0.75rem',
+              marginBottom: '2.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              <GraduationCap size={24} style={{ color: 'var(--color-accent)' }} /> Research Staff &amp; Young Professionals
+            </h2>
 
-          <div className="team-grid">
-            {yps.map((m, idx) => (
-              <div key={idx} className="team-member-card">
-                <div className="member-photo-container">
-                  <img src={m.image} alt={m.name} className="member-photo" />
-                </div>
-                <div className="member-info">
-                  <h3 className="member-name">{m.name}</h3>
-                  <div className="member-role">{m.role}</div>
-                  <p className="member-affiliation">{m.affiliation}</p>
-                  
-                  <div className="member-socials">
-                    <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
-                      <LinkedinIcon size={18} />
-                    </a>
-                    <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
-                      <Mail size={18} />
-                    </a>
+            <div className="team-grid">
+              {yps.map((m, idx) => (
+                <div key={idx} className="team-member-card">
+                  <div className="member-photo-container">
+                    <img src={m.image} alt={m.name} className="member-photo" />
+                  </div>
+                  <div className="member-info">
+                    <h3 className="member-name">{m.name}</h3>
+                    <div className="member-role">{m.role}</div>
+                    <p className="member-affiliation">{m.affiliation}</p>
+                    
+                    <div className="member-socials">
+                      <a href={m.linkedin} target="_blank" rel="noreferrer" className="social-link linkedin" title="LinkedIn Profile">
+                        <LinkedinIcon size={18} />
+                      </a>
+                      <a href="mailto:info@micskuast.in" className="social-link mail" title="Contact Email">
+                        <Mail size={18} />
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
         .team-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1.25fr));
           gap: 2.5rem;
+          justify-content: center;
         }
 
         .team-member-card {
@@ -221,7 +244,6 @@ const Team: React.FC = () => {
           overflow: hidden;
         }
 
-        /* Subtle top border highlights */
         .team-member-card::before {
           content: '';
           position: absolute;

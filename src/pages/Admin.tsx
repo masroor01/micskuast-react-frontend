@@ -11,6 +11,15 @@ interface PublicationItem {
   url: string;
 }
 
+interface TeamMember {
+  name: string;
+  role: string;
+  affiliation: string;
+  image: string;
+  linkedin: string;
+  category: 'pi' | 'yp';
+}
+
 interface SiteConfig {
   hero_title: string;
   hero_subtitle: string;
@@ -23,6 +32,7 @@ interface SiteConfig {
   };
   publications: PublicationItem[];
   labels?: Record<string, string>;
+  team?: TeamMember[];
 }
 
 const defaultLabels: Record<string, string> = {
@@ -121,12 +131,63 @@ const defaultLabels: Record<string, string> = {
   home_info_card4_footer_metric: 'Actionable Intel'
 };
 
+const defaultTeam: TeamMember[] = [
+  {
+    name: "Prof. F. A. Shaheen",
+    role: "Principal Investigator",
+    affiliation: "Professor cum Chief Scientist, IBPR, SKUAST-K, Shalimar",
+    image: "/team/shaheen.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Prof. S. H. Baba",
+    role: "Co. Principal Investigator",
+    affiliation: "Professor and Head, IBPR, SKUAST-K, Shalimar",
+    image: "/team/baba.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Dr Abid Sultan",
+    role: "Co. Principal Investigator",
+    affiliation: "Assistant Prof. cum Junior Scientist, IBPR, SKUAST-K, Shalimar",
+    image: "/team/abid.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'pi'
+  },
+  {
+    name: "Dr Aqib Gul",
+    role: "Young Professional - III",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/aqib.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  },
+  {
+    name: "Dr Masroor Majid",
+    role: "Young Professional - II",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/masroor.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  },
+  {
+    name: "Dr Mudasir Rashid",
+    role: "Young Professional - II",
+    affiliation: "HADP #04: Strengthening Agricultural Marketing in UT of J&K",
+    image: "/team/mudasir.png",
+    linkedin: "https://www.linkedin.com/",
+    category: 'yp'
+  }
+];
+
 const Admin: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState('');
   
-  const [activeTab, setActiveTab] = useState<'home' | 'labels' | 'publications' | 'security'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'labels' | 'publications' | 'security' | 'team'>('home');
   const [config, setConfig] = useState<SiteConfig | null>(null);
   
   const [editingLabelKey, setEditingLabelKey] = useState<string | null>(null);
@@ -146,6 +207,17 @@ const Admin: React.FC = () => {
   const [pubUrl, setPubUrl] = useState('');
   const [uploadedFileUrl, setUploadedFileUrl] = useState('');
   
+  // Add/Edit team member states
+  const [teamEditIdx, setTeamEditIdx] = useState<number | null>(null);
+  const [memberName, setMemberName] = useState('');
+  const [memberRole, setMemberRole] = useState('Principal Investigator');
+  const [memberAffiliation, setMemberAffiliation] = useState('');
+  const [memberLinkedin, setMemberLinkedin] = useState('https://www.linkedin.com/');
+  const [memberCategory, setMemberCategory] = useState<'pi' | 'yp'>('pi');
+  const [memberImage, setMemberImage] = useState('');
+  const [uploadedPhotoUrl, setUploadedPhotoUrl] = useState('');
+  const [photoUploadStatus, setPhotoUploadStatus] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+  
   // New Password states
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -156,6 +228,9 @@ const Admin: React.FC = () => {
       data.labels = { ...defaultLabels };
     } else {
       data.labels = { ...defaultLabels, ...data.labels };
+    }
+    if (!data.team) {
+      data.team = [ ...defaultTeam ];
     }
     return data as SiteConfig;
   };
@@ -344,6 +419,102 @@ const Admin: React.FC = () => {
     });
   };
 
+  // Add/Update team members
+  const handleTeamSave = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!config) return;
+
+    let updatedTeam = config.team ? [...config.team] : [...defaultTeam];
+    const finalPhoto = uploadedPhotoUrl || memberImage || '/team/default.png';
+
+    const newMember: TeamMember = {
+      name: memberName,
+      role: memberRole,
+      affiliation: memberAffiliation,
+      linkedin: memberLinkedin,
+      category: memberCategory,
+      image: finalPhoto
+    };
+
+    if (teamEditIdx !== null) {
+      // Edit mode
+      updatedTeam = updatedTeam.map((m, idx) => idx === teamEditIdx ? newMember : m);
+    } else {
+      // Add mode
+      updatedTeam.push(newMember);
+    }
+
+    const updatedConfig = { ...config, team: updatedTeam };
+    saveConfig(updatedConfig);
+    clearTeamForm();
+  };
+
+  // Delete Team Member
+  const handleTeamDelete = (idx: number) => {
+    if (!config) return;
+    if (!window.confirm("Are you sure you want to delete this team member?")) return;
+
+    const currentTeam = config.team || [...defaultTeam];
+    const updatedTeam = currentTeam.filter((_, i) => i !== idx);
+    const updatedConfig = { ...config, team: updatedTeam };
+    saveConfig(updatedConfig);
+  };
+
+  // Prepare edit form
+  const handleTeamEdit = (item: TeamMember, idx: number) => {
+    setTeamEditIdx(idx);
+    setMemberName(item.name);
+    setMemberRole(item.role);
+    setMemberAffiliation(item.affiliation);
+    setMemberLinkedin(item.linkedin);
+    setMemberCategory(item.category);
+    setMemberImage(item.image.startsWith('/api/') ? '' : item.image);
+    setUploadedPhotoUrl(item.image.startsWith('/api/') ? item.image : '');
+  };
+
+  const clearTeamForm = () => {
+    setTeamEditIdx(null);
+    setMemberName('');
+    setMemberRole('Principal Investigator');
+    setMemberAffiliation('');
+    setMemberLinkedin('https://www.linkedin.com/');
+    setMemberCategory('pi');
+    setMemberImage('');
+    setUploadedPhotoUrl('');
+    setPhotoUploadStatus(null);
+  };
+
+  // Handle Portrait Photo Upload to Hostinger API
+  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fileList = e.target.files;
+    if (!fileList || fileList.length === 0) return;
+
+    const file = fileList[0];
+    const formData = new FormData();
+    formData.append('password', password);
+    formData.append('action', 'upload_file');
+    formData.append('file', file);
+
+    setPhotoUploadStatus(null);
+    fetch('/api/config.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(async res => {
+      const data = await res.json();
+      if (res.ok) {
+        setUploadedPhotoUrl(data.url);
+        setMemberImage('');
+        setPhotoUploadStatus({ type: 'success', text: `Uploaded successfully: ${file.name}` });
+      } else {
+        setPhotoUploadStatus({ type: 'error', text: data.error || 'Upload failed' });
+      }
+    })
+    .catch(() => {
+      setPhotoUploadStatus({ type: 'error', text: 'Connection error during upload' });
+    });
+  };
+
   // Change Admin Password
   const handlePasswordChange = (e: React.FormEvent) => {
     e.preventDefault();
@@ -527,6 +698,12 @@ const Admin: React.FC = () => {
           className={`market-tab-btn ${activeTab === 'labels' ? 'active' : ''}`}
         >
           🏷️ Header & Page Labels
+        </button>
+        <button
+          onClick={() => setActiveTab('team')}
+          className={`market-tab-btn ${activeTab === 'team' ? 'active' : ''}`}
+        >
+          👥 Manage Team Members
         </button>
         <button
           onClick={() => setActiveTab('security')}
@@ -1023,6 +1200,189 @@ const Admin: React.FC = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+      )}
+
+      {/* TAB: Team Manager */}
+      {activeTab === 'team' && config && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '2rem' }}>
+          {/* Left Column: Form Editor */}
+          <div style={{ background: '#fff', padding: '2.25rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)', height: 'fit-content' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              {teamEditIdx !== null ? '✏️ Edit Team Member' : '👥 Add Team Member'}
+            </h3>
+            
+            <form onSubmit={handleTeamSave} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Full Name</label>
+                <input
+                  type="text"
+                  required
+                  value={memberName}
+                  onChange={e => setMemberName(e.target.value)}
+                  placeholder="e.g. Prof. F. A. Shaheen"
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Category</label>
+                  <select
+                    value={memberCategory}
+                    onChange={e => setMemberCategory(e.target.value as 'pi' | 'yp')}
+                    className="form-input"
+                    style={{ width: '100%', height: '38px' }}
+                  >
+                    <option value="pi">Principal Investigator</option>
+                    <option value="yp">Research Staff / YP</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Role/Designation</label>
+                  <input
+                    type="text"
+                    required
+                    value={memberRole}
+                    onChange={e => setMemberRole(e.target.value)}
+                    placeholder="e.g. Principal Investigator"
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Affiliation / Sub-Text</label>
+                <textarea
+                  required
+                  value={memberAffiliation}
+                  onChange={e => setMemberAffiliation(e.target.value)}
+                  placeholder="e.g. Professor cum Chief Scientist, IBPR..."
+                  className="form-input"
+                  rows={2}
+                  style={{ width: '100%', resize: 'vertical' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>LinkedIn Profile URL</label>
+                <input
+                  type="text"
+                  value={memberLinkedin}
+                  onChange={e => setMemberLinkedin(e.target.value)}
+                  placeholder="https://www.linkedin.com/in/username"
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              {/* Photo Upload Section */}
+              <div style={{ background: 'var(--color-bg)', border: '1px dashed var(--color-border)', borderRadius: '8px', padding: '1rem', marginTop: '0.5rem' }}>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.5rem' }}>
+                  Portrait Photo Upload
+                </label>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  <label className="btn" style={{ fontSize: '0.75rem', padding: '6px 12px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', background: '#fff' }}>
+                    <Upload size={14} /> Upload Portrait
+                    <input
+                      type="file"
+                      onChange={handlePhotoUpload}
+                      style={{ display: 'none' }}
+                      accept=".png,.jpg,.jpeg,.gif"
+                    />
+                  </label>
+                  {uploadedPhotoUrl && (
+                    <span style={{ fontSize: '0.75rem', color: '#2e7d32', fontWeight: 700, wordBreak: 'break-all' }}>
+                      ✓ Photo uploaded
+                    </span>
+                  )}
+                </div>
+                {photoUploadStatus && (
+                  <div style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: photoUploadStatus.type === 'success' ? '#2e7d32' : '#c62828', fontWeight: 600 }}>
+                    {photoUploadStatus.text}
+                  </div>
+                )}
+              </div>
+
+              <div style={{ textAlign: 'center', margin: '0.25rem 0', fontWeight: 700, fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>
+                — OR —
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Direct Image Path URL</label>
+                <input
+                  type="text"
+                  value={memberImage}
+                  disabled={!!uploadedPhotoUrl}
+                  onChange={e => setMemberImage(e.target.value)}
+                  placeholder="e.g. /team/name.png or external link..."
+                  className="form-input"
+                  style={{ width: '100%', opacity: uploadedPhotoUrl ? 0.5 : 1 }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
+                <button type="submit" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', fontWeight: 700 }}>
+                  {teamEditIdx !== null ? 'Update Team Member' : 'Add Team Member'}
+                </button>
+                {(teamEditIdx !== null || uploadedPhotoUrl || memberName) && (
+                  <button type="button" onClick={clearTeamForm} className="btn" style={{ padding: '0.5rem 1rem' }}>
+                    Cancel
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+
+          {/* Right Column: Existing Team Members List */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              👥 Team Members List ({(config.team || defaultTeam).length})
+            </h3>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxHeight: '550px', overflowY: 'auto', paddingRight: '0.5rem' }}>
+              {(config.team || defaultTeam).map((item, idx) => (
+                <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'center', padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                  <img 
+                    src={item.image} 
+                    alt={item.name} 
+                    style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--color-primary-pale)' }} 
+                  />
+                  <div style={{ flex: 1 }}>
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.25rem' }}>
+                      <span className="card-tag" style={{ fontSize: '0.62rem', padding: '1px 6px', background: item.category === 'pi' ? 'var(--color-accent-light)' : 'var(--color-primary-pale)', color: item.category === 'pi' ? 'var(--color-accent)' : 'var(--color-primary)' }}>
+                        {item.category === 'pi' ? 'PI' : 'YP/Staff'}
+                      </span>
+                      <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 700 }}>{item.role}</span>
+                    </div>
+                    <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--color-primary)', margin: 0 }}>
+                      {item.name}
+                    </h4>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', margin: '0.2rem 0 0' }}>{item.affiliation}</p>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '0.35rem' }}>
+                    <button 
+                      onClick={() => handleTeamEdit(item, idx)}
+                      style={{ padding: '6px', color: 'var(--color-primary)', background: '#fff', border: '1px solid var(--color-border)', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                      title="Edit"
+                    >
+                      <Edit size={14} />
+                    </button>
+                    <button 
+                      onClick={() => handleTeamDelete(idx)}
+                      style={{ padding: '6px', color: '#c62828', background: '#fff', border: '1px solid var(--color-border)', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                      title="Delete"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
