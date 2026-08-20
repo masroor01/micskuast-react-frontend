@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, BookOpen, AlertTriangle, TrendingUp, Landmark, Mail, GraduationCap, Brain, Bell, Award } from 'lucide-react';
+import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
  
 const Home: React.FC = () => {
@@ -443,63 +443,6 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Core Dynamic Dashboards Section */}
-      <section className="section-padding" style={{ backgroundColor: 'transparent', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
-            <h2 style={{ marginBottom: '1rem' }}>Interactive Analytical Engines</h2>
-            <p style={{ color: 'var(--color-text-muted)' }}>
-              Decoupling our frontend allows us to run state-of-the-art interactive graphs, alerts triggers, and forecasting dashboards.
-            </p>
-          </div>
-          
-          <div className="card-grid">
-            <div className="card">
-              <div className="card-tag">Anomaly Engine</div>
-              <h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <AlertTriangle size={20} style={{ color: 'var(--color-accent)' }} />
-                Early Warning System (EWS)
-              </h3>
-              <p className="card-desc">
-                Real-time price anomaly models tracking risk thresholds, seasonal drawdowns, and price shocks for Cherry and Apple crops.
-              </p>
-              <NavLink to="/ews" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)' }}>
-                Open EWS Alerts <ArrowRight size={14} />
-              </NavLink>
-            </div>
-
-            <div className="card">
-              <div className="card-tag">Prediction Model</div>
-              <h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <TrendingUp size={20} style={{ color: 'var(--color-accent)' }} />
-                LSTM Market Intelligence
-              </h3>
-              <p className="card-desc">
-                An interactive React module querying deep learning Keras LSTM models to forecast daily wholesale prices (7 and 14 day windows).
-              </p>
-              <NavLink to="/forecasts" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)' }}>
-                Open Market Intelligence <ArrowRight size={14} />
-              </NavLink>
-            </div>
-
-            <div className="card">
-              <div className="card-tag">Academic Hub</div>
-              <h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <BookOpen size={20} style={{ color: 'var(--color-accent)' }} />
-                Publications & Books
-              </h3>
-              <p className="card-desc">
-                A repository of SKUAST research documents, weekly price bulletins, and policy textbooks synced directly from WordPress.
-              </p>
-              <NavLink to="/publications" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-primary)' }}>
-                Search Documents <ArrowRight size={14} />
-              </NavLink>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Meet Our Team Section */}
       <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', backgroundColor: 'transparent' }}>
         <div className="container">
