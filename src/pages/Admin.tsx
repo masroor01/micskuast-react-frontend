@@ -892,6 +892,8 @@ const Admin: React.FC = () => {
                     <option value="Market Intelligence Reports">Market Intelligence Reports</option>
                     <option value="Research Papers">Research Papers</option>
                     <option value="Books">Books</option>
+                    <option value="Book Chapters">Book Chapters</option>
+                    <option value="Policy Reports">Policy Reports</option>
                   </select>
                 </div>
                 <div>
