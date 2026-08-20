@@ -3,20 +3,46 @@ import { useSearchParams } from 'react-router-dom';
 import { ShieldAlert } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
 
-const applyThemeToIframe = (iframe: HTMLIFrameElement, theme: string) => {
+const applyThemeToIframe = (iframe: HTMLIFrameElement, theme: string, crop: 'cherry' | 'apple') => {
   try {
     const doc = iframe.contentDocument || iframe.contentWindow?.document;
     if (!doc) return;
 
     // Read computed style variables from the parent document
     const rootStyles = getComputedStyle(document.documentElement);
-    const primary = rootStyles.getPropertyValue('--color-primary').trim() || '#0b3a6e';
-    const primaryHover = rootStyles.getPropertyValue('--color-primary-hover').trim() || '#114b8a';
     const bg = rootStyles.getPropertyValue('--color-bg').trim() || '#f8fafc';
     const surface = rootStyles.getPropertyValue('--color-surface').trim() || '#ffffff';
     const border = rootStyles.getPropertyValue('--color-border').trim() || '#e2e8f0';
     const text = rootStyles.getPropertyValue('--color-text-main').trim() || '#0f172a';
     const muted = rootStyles.getPropertyValue('--color-text-muted').trim() || '#64748b';
+
+    // Crop colors
+    let primary = '';
+    let primaryHover = '';
+    
+    if (crop === 'cherry') {
+      if (theme === 'dark') {
+        primary = '#f43f5e'; // Light Rose
+        primaryHover = '#e11d48';
+      } else if (theme === 'warm') {
+        primary = '#9f1239'; // Deep Warm Rose
+        primaryHover = '#be123c';
+      } else {
+        primary = '#be123c'; // Rose 700 (Cherry Red)
+        primaryHover = '#e11d48';
+      }
+    } else { // apple
+      if (theme === 'dark') {
+        primary = '#4ade80'; // Light Green
+        primaryHover = '#22c55e';
+      } else if (theme === 'warm') {
+        primary = '#14532d'; // Deep Warm Green
+        primaryHover = '#15803d';
+      } else {
+        primary = '#15803d'; // Green 700 (Apple Green)
+        primaryHover = '#16a34a';
+      }
+    }
 
     const cssVars = `
       :root {
@@ -89,10 +115,10 @@ const applyThemeToIframe = (iframe: HTMLIFrameElement, theme: string) => {
         if (!subIframe.getAttribute('data-theme-listener')) {
           subIframe.setAttribute('data-theme-listener', 'true');
           subIframe.addEventListener('load', () => {
-            applyThemeToIframe(subIframe, theme);
+            applyThemeToIframe(subIframe, theme, crop);
           });
         }
-        applyThemeToIframe(subIframe, theme);
+        applyThemeToIframe(subIframe, theme, crop);
       } catch (err) {
         console.error("Sub-iframe access failed", err);
       }
@@ -127,14 +153,48 @@ const EWS: React.FC = () => {
   // Update theme when state updates
   useEffect(() => {
     if (iframeRef.current) {
-      applyThemeToIframe(iframeRef.current, currentTheme);
+      const activeCrop = (activeTab === 'cherry' || (activeTab === 'stability' && stabilitySubTab === 'cherry')) ? 'cherry' : 'apple';
+      applyThemeToIframe(iframeRef.current, currentTheme, activeCrop);
     }
   }, [currentTheme, activeTab, stabilitySubTab]);
+
+  // Dynamic banner gradient based on selected crop
+  const isCherryActive = activeTab === 'cherry' || (activeTab === 'stability' && stabilitySubTab === 'cherry');
+  const bannerGradient = isCherryActive
+    ? 'linear-gradient(135deg, #4c0519 0%, #881337 50%, #be123c 100%)'
+    : 'linear-gradient(135deg, #064e3b 0%, #14532d 50%, #15803d 100%)';
+
+  // Helper to determine the style of the tab button
+  const getTabButtonStyle = (tabName: 'cherry' | 'apple' | 'stability') => {
+    const isActive = activeTab === tabName;
+    if (!isActive) return {};
+    
+    if (tabName === 'cherry') {
+      return {
+        borderBottom: '3px solid #be123c',
+        color: '#be123c',
+        fontWeight: 700
+      };
+    } else if (tabName === 'apple') {
+      return {
+        borderBottom: '3px solid #15803d',
+        color: '#15803d',
+        fontWeight: 700
+      };
+    } else { // stability
+      const activeColor = stabilitySubTab === 'cherry' ? '#be123c' : '#15803d';
+      return {
+        borderBottom: `3px solid ${activeColor}`,
+        color: activeColor,
+        fontWeight: 700
+      };
+    }
+  };
 
   return (
     <div className="container section-padding animate-fade-in">
       {/* Intro Banner */}
-      <div className="ews-intro-banner" style={{ marginBottom: '2.5rem' }}>
+      <div className="ews-intro-banner" style={{ marginBottom: '2.5rem', background: bannerGradient }}>
         <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
           <ShieldAlert size={36} /> 
           <EditableLabel labelKey="ews_title" defaultValue="Early Warning System (EWS)" />
@@ -152,18 +212,21 @@ const EWS: React.FC = () => {
         <button
           onClick={() => handleTabChange('cherry')}
           className={`market-tab-btn ${activeTab === 'cherry' ? 'active' : ''}`}
+          style={getTabButtonStyle('cherry')}
         >
           🍒 Cherry EWS (Demo 2026)
         </button>
         <button
           onClick={() => handleTabChange('apple')}
           className={`market-tab-btn ${activeTab === 'apple' ? 'active' : ''}`}
+          style={getTabButtonStyle('apple')}
         >
           🍏 Apple EWS (Demo 2026)
         </button>
         <button
           onClick={() => handleTabChange('stability')}
           className={`market-tab-btn ${activeTab === 'stability' ? 'active' : ''}`}
+          style={getTabButtonStyle('stability')}
         >
           🛡️ Horticultural Stability
         </button>
@@ -180,7 +243,7 @@ const EWS: React.FC = () => {
               title="Cherry EWS Report"
               onLoad={() => {
                 if (iframeRef.current) {
-                  applyThemeToIframe(iframeRef.current, currentTheme);
+                  applyThemeToIframe(iframeRef.current, currentTheme, 'cherry');
                 }
               }}
             />
@@ -198,7 +261,7 @@ const EWS: React.FC = () => {
               title="Apple EWS Report"
               onLoad={() => {
                 if (iframeRef.current) {
-                  applyThemeToIframe(iframeRef.current, currentTheme);
+                  applyThemeToIframe(iframeRef.current, currentTheme, 'apple');
                 }
               }}
             />
@@ -217,9 +280,9 @@ const EWS: React.FC = () => {
                 padding: '0.5rem 1.25rem', 
                 fontSize: '0.85rem', 
                 borderRadius: '50px',
-                border: stabilitySubTab === 'cherry' ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
-                background: stabilitySubTab === 'cherry' ? 'var(--color-primary-pale)' : 'var(--color-surface)',
-                color: stabilitySubTab === 'cherry' ? 'var(--color-primary)' : 'var(--color-text-muted)',
+                border: stabilitySubTab === 'cherry' ? '2px solid #be123c' : '1px solid var(--color-border)',
+                background: stabilitySubTab === 'cherry' ? '#fff1f2' : 'var(--color-surface)',
+                color: stabilitySubTab === 'cherry' ? '#be123c' : 'var(--color-text-muted)',
                 fontWeight: 700,
                 cursor: 'pointer'
               }}
@@ -233,9 +296,9 @@ const EWS: React.FC = () => {
                 padding: '0.5rem 1.25rem', 
                 fontSize: '0.85rem', 
                 borderRadius: '50px',
-                border: stabilitySubTab === 'apple' ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
-                background: stabilitySubTab === 'apple' ? 'var(--color-primary-pale)' : 'var(--color-surface)',
-                color: stabilitySubTab === 'apple' ? 'var(--color-primary)' : 'var(--color-text-muted)',
+                border: stabilitySubTab === 'apple' ? '2px solid #15803d' : '1px solid var(--color-border)',
+                background: stabilitySubTab === 'apple' ? '#f0fdf4' : 'var(--color-surface)',
+                color: stabilitySubTab === 'apple' ? '#15803d' : 'var(--color-text-muted)',
                 fontWeight: 700,
                 cursor: 'pointer'
               }}
@@ -253,7 +316,7 @@ const EWS: React.FC = () => {
                 title="Cherry Stability Report"
                 onLoad={() => {
                   if (iframeRef.current) {
-                    applyThemeToIframe(iframeRef.current, currentTheme);
+                    applyThemeToIframe(iframeRef.current, currentTheme, 'cherry');
                   }
                 }}
               />
@@ -265,7 +328,7 @@ const EWS: React.FC = () => {
                 title="Apple Stability Report"
                 onLoad={() => {
                   if (iframeRef.current) {
-                    applyThemeToIframe(iframeRef.current, currentTheme);
+                    applyThemeToIframe(iframeRef.current, currentTheme, 'apple');
                   }
                 }}
               />
