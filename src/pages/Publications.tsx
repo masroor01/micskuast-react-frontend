@@ -123,8 +123,8 @@ const Publications: React.FC = () => {
               padding: '0.5rem 1rem',
               fontSize: '0.85rem',
               borderRadius: 'var(--radius-sm)',
-              backgroundColor: activeCategory === 'All' ? 'var(--color-primary)' : 'transparent',
-              color: activeCategory === 'All' ? 'white' : 'var(--color-text-muted)',
+              background: activeCategory === 'All' ? 'var(--gradient-primary)' : 'transparent',
+              color: activeCategory === 'All' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
               border: activeCategory === 'All' ? 'none' : '1px solid var(--color-border)',
               fontWeight: 600
             }}
@@ -139,8 +139,8 @@ const Publications: React.FC = () => {
               padding: '0.5rem 1rem',
               fontSize: '0.85rem',
               borderRadius: 'var(--radius-sm)',
-              backgroundColor: activeCategory === 'Commodity Outlooks' ? 'var(--color-primary)' : 'transparent',
-              color: activeCategory === 'Commodity Outlooks' ? 'white' : 'var(--color-text-muted)',
+              background: activeCategory === 'Commodity Outlooks' ? 'var(--gradient-primary)' : 'transparent',
+              color: activeCategory === 'Commodity Outlooks' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
               border: activeCategory === 'Commodity Outlooks' ? 'none' : '1px solid var(--color-border)',
               fontWeight: 600
             }}
@@ -155,8 +155,8 @@ const Publications: React.FC = () => {
               padding: '0.5rem 1rem',
               fontSize: '0.85rem',
               borderRadius: 'var(--radius-sm)',
-              backgroundColor: activeCategory === 'Market Intelligence Reports' ? 'var(--color-primary)' : 'transparent',
-              color: activeCategory === 'Market Intelligence Reports' ? 'white' : 'var(--color-text-muted)',
+              background: activeCategory === 'Market Intelligence Reports' ? 'var(--gradient-primary)' : 'transparent',
+              color: activeCategory === 'Market Intelligence Reports' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
               border: activeCategory === 'Market Intelligence Reports' ? 'none' : '1px solid var(--color-border)',
               fontWeight: 600
             }}
@@ -171,8 +171,8 @@ const Publications: React.FC = () => {
               padding: '0.5rem 1rem',
               fontSize: '0.85rem',
               borderRadius: 'var(--radius-sm)',
-              backgroundColor: activeCategory === 'Research Papers' ? 'var(--color-primary)' : 'transparent',
-              color: activeCategory === 'Research Papers' ? 'white' : 'var(--color-text-muted)',
+              background: activeCategory === 'Research Papers' ? 'var(--gradient-primary)' : 'transparent',
+              color: activeCategory === 'Research Papers' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
               border: activeCategory === 'Research Papers' ? 'none' : '1px solid var(--color-border)',
               fontWeight: 600
             }}
@@ -187,13 +187,45 @@ const Publications: React.FC = () => {
               padding: '0.5rem 1rem',
               fontSize: '0.85rem',
               borderRadius: 'var(--radius-sm)',
-              backgroundColor: activeCategory === 'Books' ? 'var(--color-primary)' : 'transparent',
-              color: activeCategory === 'Books' ? 'white' : 'var(--color-text-muted)',
+              background: activeCategory === 'Books' ? 'var(--gradient-primary)' : 'transparent',
+              color: activeCategory === 'Books' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
               border: activeCategory === 'Books' ? 'none' : '1px solid var(--color-border)',
               fontWeight: 600
             }}
           >
             <EditableLabel labelKey="pub_tab_books" defaultValue="Books" />
+          </button>
+
+          <button
+            onClick={() => setActiveCategory('Book Chapters')}
+            className="btn"
+            style={{
+              padding: '0.5rem 1rem',
+              fontSize: '0.85rem',
+              borderRadius: 'var(--radius-sm)',
+              background: activeCategory === 'Book Chapters' ? 'var(--gradient-primary)' : 'transparent',
+              color: activeCategory === 'Book Chapters' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
+              border: activeCategory === 'Book Chapters' ? 'none' : '1px solid var(--color-border)',
+              fontWeight: 600
+            }}
+          >
+            <EditableLabel labelKey="pub_tab_chapters" defaultValue="Book Chapters" />
+          </button>
+
+          <button
+            onClick={() => setActiveCategory('Policy Reports')}
+            className="btn"
+            style={{
+              padding: '0.5rem 1rem',
+              fontSize: '0.85rem',
+              borderRadius: 'var(--radius-sm)',
+              background: activeCategory === 'Policy Reports' ? 'var(--gradient-primary)' : 'transparent',
+              color: activeCategory === 'Policy Reports' ? 'var(--color-btn-text-primary)' : 'var(--color-text-muted)',
+              border: activeCategory === 'Policy Reports' ? 'none' : '1px solid var(--color-border)',
+              fontWeight: 600
+            }}
+          >
+            <EditableLabel labelKey="pub_tab_policy" defaultValue="Policy Reports" />
           </button>
         </div>
 

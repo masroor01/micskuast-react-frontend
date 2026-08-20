@@ -51,7 +51,7 @@ const Header: React.FC = () => {
         </NavLink>
 
         {/* Desktop Navigation Group 1: Core Menu Links (Pushed to the right) */}
-        <nav className="nav-menu desktop-only" style={{ gap: '0.45rem', marginLeft: 'auto' }}>
+        <nav className="nav-menu desktop-only" style={{ gap: '0.45rem', marginLeft: 'auto', marginRight: '1.25rem' }}>
           <NavLink 
             to="/" 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}

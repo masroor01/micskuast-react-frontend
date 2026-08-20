@@ -53,6 +53,8 @@ const defaultLabels: Record<string, string> = {
   pub_tab_reports: 'Market Intelligence Reports',
   pub_tab_papers: 'Research Papers',
   pub_tab_books: 'Books',
+  pub_tab_chapters: 'Book Chapters',
+  pub_tab_policy: 'Policy Reports',
   footer_logo_text: 'MARKET INTELLIGENCE CELL',
   footer_desc_text: 'Sher-e-Kashmir University of Agricultural Sciences and Technology of Kashmir (SKUAST-K). Providing real-time price reports and forecasting models.',
   footer_address: 'Shalimar, Srinagar, Jammu & Kashmir, 190025',
@@ -873,6 +875,8 @@ const Admin: React.FC = () => {
                     <option value="Market Intelligence Reports">Market Intelligence Reports</option>
                     <option value="Research Papers">Research Papers</option>
                     <option value="Books">Books</option>
+                    <option value="Book Chapters">Book Chapters</option>
+                    <option value="Policy Reports">Policy Reports</option>
                   </select>
                 </div>
                 <div>
@@ -1054,6 +1058,8 @@ const Admin: React.FC = () => {
                 pub_tab_reports: "Publications page Filter Tab 3 (e.g. Market Intelligence Reports)",
                 pub_tab_papers: "Publications page Filter Tab 4 (e.g. Research Papers)",
                 pub_tab_books: "Publications page Filter Tab 5 (e.g. Books)",
+                pub_tab_chapters: "Publications page Filter Tab 6 (e.g. Book Chapters)",
+                pub_tab_policy: "Publications page Filter Tab 7 (e.g. Policy Reports)",
                 footer_logo_text: "Footer Logo Brand Heading",
                 footer_desc_text: "Footer Short Description Text",
                 footer_address: "Footer Office Address Info",
