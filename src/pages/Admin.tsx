@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Key, Plus, Trash2, Edit, Save, Upload, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Shield, Key, Plus, Trash2, Edit, Save, Upload, CheckCircle, AlertTriangle, ArrowUp, ArrowDown } from 'lucide-react';
 
 interface PublicationItem {
   id: number;
@@ -515,6 +515,23 @@ const Admin: React.FC = () => {
     .catch(() => {
       setPhotoUploadStatus({ type: 'error', text: 'Connection error during upload' });
     });
+  };
+
+  // Move Team Member Up / Down
+  const moveTeamMember = (index: number, direction: 'up' | 'down') => {
+    if (!config) return;
+    const currentTeam = config.team ? [...config.team] : [...defaultTeam];
+    const swapIndex = direction === 'up' ? index - 1 : index + 1;
+
+    if (swapIndex < 0 || swapIndex >= currentTeam.length) return;
+
+    // Swap items
+    const temp = currentTeam[index];
+    currentTeam[index] = currentTeam[swapIndex];
+    currentTeam[swapIndex] = temp;
+
+    const updatedConfig = { ...config, team: currentTeam };
+    saveConfig(updatedConfig);
   };
 
   // Change Admin Password
@@ -1370,6 +1387,45 @@ const Admin: React.FC = () => {
 
                   <div style={{ display: 'flex', gap: '0.35rem' }}>
                     <button 
+                      type="button"
+                      onClick={() => moveTeamMember(idx, 'up')}
+                      disabled={idx === 0}
+                      style={{ 
+                        padding: '6px', 
+                        color: idx === 0 ? 'var(--color-border)' : 'var(--color-primary)', 
+                        background: '#fff', 
+                        border: '1px solid var(--color-border)', 
+                        borderRadius: '4px', 
+                        cursor: idx === 0 ? 'not-allowed' : 'pointer', 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        opacity: idx === 0 ? 0.35 : 1
+                      }}
+                      title="Move Up"
+                    >
+                      <ArrowUp size={14} />
+                    </button>
+                    <button 
+                      type="button"
+                      onClick={() => moveTeamMember(idx, 'down')}
+                      disabled={idx === (config.team || defaultTeam).length - 1}
+                      style={{ 
+                        padding: '6px', 
+                        color: idx === (config.team || defaultTeam).length - 1 ? 'var(--color-border)' : 'var(--color-primary)', 
+                        background: '#fff', 
+                        border: '1px solid var(--color-border)', 
+                        borderRadius: '4px', 
+                        cursor: idx === (config.team || defaultTeam).length - 1 ? 'not-allowed' : 'pointer', 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        opacity: idx === (config.team || defaultTeam).length - 1 ? 0.35 : 1
+                      }}
+                      title="Move Down"
+                    >
+                      <ArrowDown size={14} />
+                    </button>
+                    <button 
+                      type="button"
                       onClick={() => handleTeamEdit(item, idx)}
                       style={{ padding: '6px', color: 'var(--color-primary)', background: '#fff', border: '1px solid var(--color-border)', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                       title="Edit"
@@ -1377,6 +1433,7 @@ const Admin: React.FC = () => {
                       <Edit size={14} />
                     </button>
                     <button 
+                      type="button"
                       onClick={() => handleTeamDelete(idx)}
                       style={{ padding: '6px', color: '#c62828', background: '#fff', border: '1px solid var(--color-border)', borderRadius: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                       title="Delete"
