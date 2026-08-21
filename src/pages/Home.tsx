@@ -253,11 +253,11 @@ const Home: React.FC = () => {
               justifyContent: 'center',
               transition: 'all 0.3s ease'
             }}>
-              <img src="/logos/mic.png" alt="MIC Logo" style={{ height: '52px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.03))' }} />
+              <img src="/logos/mic.png" alt="MIC Logo" style={{ height: '70px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.04))' }} />
               <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
-              <img src="/logos/skuast.png" alt="SKUAST Seal" style={{ height: '80px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.06))' }} />
+              <img src="/logos/skuast.png" alt="SKUAST Seal" style={{ height: '75px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.06))' }} />
               <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
-              <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '52px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.03))' }} />
+              <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '66px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.04))' }} />
             </div>
           </div>
 

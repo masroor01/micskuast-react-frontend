@@ -30,14 +30,10 @@ const Header: React.FC = () => {
             src="/logos/mic.png" 
             alt="MIC Logo" 
             style={{ 
-              height: '40px', 
-              width: '40px',
+              height: '46px', 
+              width: '46px',
               objectFit: 'contain',
-              background: '#ffffff',
-              padding: '2px',
-              borderRadius: '8px',
-              border: '1px solid var(--color-border)',
-              boxShadow: 'var(--shadow-sm)'
+              filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.06))'
             }} 
           />
           <div>
