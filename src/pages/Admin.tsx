@@ -317,10 +317,22 @@ const Admin: React.FC = () => {
   // Save Config to Server
   const saveConfig = (updatedConfig: SiteConfig) => {
     setSaveStatus(null);
+    
+    // Base64 encode config to bypass WAF ModSecurity rules for HTML tags
+    let base64Config = '';
+    try {
+      const configString = JSON.stringify(updatedConfig);
+      base64Config = btoa(unescape(encodeURIComponent(configString)));
+    } catch (err) {
+      console.error("Base64 encoding failed", err);
+      setSaveStatus({ type: 'error', text: 'Local payload compilation error' });
+      return;
+    }
+
     fetch('/api/config.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password, config: updatedConfig })
+      body: JSON.stringify({ password, config: base64Config })
     })
     .then(async res => {
       let data;

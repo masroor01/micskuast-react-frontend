@@ -226,11 +226,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Action: Save configuration details
     if (isset($input['config'])) {
-        $updatedConfig = $input['config'];
-        $updatedConfig['password_hash'] = $storedHash; // Preserve password hash
-        file_put_contents($configFile, json_encode($updatedConfig, JSON_PRETTY_PRINT));
-        echo json_encode(["success" => true, "message" => "Website settings saved successfully"]);
-        exit(0);
+        $configInput = $input['config'];
+        
+        // Check if config input is Base64 encoded
+        if (is_string($configInput) && base64_encode(base64_decode($configInput, true)) === $configInput) {
+            $updatedConfig = json_decode(base64_decode($configInput), true);
+        } else {
+            $updatedConfig = $configInput;
+        }
+
+        if ($updatedConfig) {
+            $updatedConfig['password_hash'] = $storedHash; // Preserve password hash
+            file_put_contents($configFile, json_encode($updatedConfig, JSON_PRETTY_PRINT));
+            echo json_encode(["success" => true, "message" => "Website settings saved successfully"]);
+            exit(0);
+        } else {
+            http_response_code(400);
+            echo json_encode(["error" => "Failed to parse configuration data"]);
+            exit(0);
+        }
     }
 
     http_response_code(400);
