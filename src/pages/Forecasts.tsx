@@ -97,7 +97,7 @@ const Forecasts: React.FC = () => {
         </button>
       </div>
 
-      {/* VIEW 1: Smart Forecasts Panel (Live Apple Forecasts Iframe Widget) */}
+      {/* VIEW 1: Smart Forecasts Panel (Full Real-Time Price Forecasts Dashboard) */}
       {activeView === 'predict' && (
         <div className="animate-fade-in">
           <div style={{
@@ -107,80 +107,21 @@ const Forecasts: React.FC = () => {
             padding: 0,
             boxSizing: 'border-box'
           }}>
-            <div className="mic-widget" style={{
-              width: '100%',
-              maxWidth: 'none',
-              borderRadius: '16px',
-              boxShadow: 'var(--shadow-md)',
-              border: '1px solid var(--color-border)',
-              background: 'var(--color-surface)',
-              overflow: 'hidden',
-              boxSizing: 'border-box',
-              padding: '1.5rem'
-            }}>
-              {/* Header */}
-              <div className="mic-head" style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '12px',
-                textAlign: 'center'
-              }}>
-                <h3 style={{
-                  margin: 0,
-                  fontSize: 'clamp(16px,2vw,20px)',
-                  lineHeight: 1.2,
-                  fontWeight: 1000,
-                  color: 'var(--color-text-main)'
-                }}>
-                  Smart Forecasts by Market, Variety &amp; Grade (₹/Kg)
-                </h3>
-              </div>
-
-              {/* Main Forecast Box */}
-              <div className="mic-framewrap" style={{
-                position: 'relative',
+            <iframe
+              src={`https://micmandis.onrender.com/forecast?theme=${currentTheme}`}
+              title="Real-Time Price Forecasts Dashboard"
+              style={{
                 width: '100%',
-                maxWidth: 'none',
-                minHeight: '420px',
-                border: '1px solid var(--color-border)',
-                borderRadius: '16px',
-                background: 'var(--color-surface)',
-                overflow: 'hidden',
-                boxSizing: 'border-box'
-              }}>
-                {/* Apple Price Forecasts iframe */}
-                <iframe
-                  src={`https://micmandis.onrender.com/ticker-vertical?fruit=apple&days=30&theme=${currentTheme}`}
-                  loading="lazy"
-                  title="Apple Price Forecasts (₹/Kg)"
-                  style={{
-                    width: '100%',
-                    height: '420px',
-                    minWidth: '100%',
-                    border: 0,
-                    display: 'block',
-                    background: 'transparent',
-                    filter: currentTheme === 'dark' ? 'invert(0.9) hue-rotate(180deg)' : 'none'
-                  }}
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-
-              {/* Disclaimer */}
-              <p style={{
-                textAlign: 'center',
-                fontSize: '0.85rem',
-                color: 'var(--color-text-muted)',
-                fontStyle: 'italic',
-                marginTop: '1.5rem',
-                lineHeight: '1.6',
-                maxWidth: '850px',
-                margin: '1.5rem auto 0'
-              }}>
-                The forecasts provided here are for informational purposes only. Actual market prices may vary based on local conditions and external factors. No liability is accepted for any financial decisions based on these forecasts.
-              </p>
-            </div>
+                height: '82vh',
+                display: 'block',
+                border: 'none',
+                borderRadius: '12px',
+                boxShadow: '0 6px 22px rgba(0,0,0,.08)',
+                margin: 0,
+                padding: 0,
+                filter: currentTheme === 'dark' ? 'invert(0.9) hue-rotate(180deg)' : 'none'
+              }}
+            />
           </div>
         </div>
       )}
