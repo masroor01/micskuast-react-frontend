@@ -70,10 +70,10 @@ const getCategoryColors = (category: string) => {
         gradient: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
         darkBg: 'rgba(217, 119, 6, 0.15)',
         darkText: '#fbbf24',
-        authorColor: '#7c2d12',
-        descColor: '#451a03',
-        darkAuthorColor: '#fde047',
-        darkDescColor: '#fef08a'
+        authorColor: '#4f46e5', // Vibrant Indigo
+        descColor: '#0d9488', // Teal
+        darkAuthorColor: '#818cf8',
+        darkDescColor: '#2dd4bf'
       };
     case 'Market Intelligence Reports':
       return {
@@ -83,10 +83,10 @@ const getCategoryColors = (category: string) => {
         gradient: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)',
         darkBg: 'rgba(2, 132, 199, 0.15)',
         darkText: '#7dd3fc',
-        authorColor: '#0369a1',
-        descColor: '#075985',
-        darkAuthorColor: '#38bdf8',
-        darkDescColor: '#bae6fd'
+        authorColor: '#be123c', // Crimson Rose
+        descColor: '#059669', // Emerald
+        darkAuthorColor: '#fb7185',
+        darkDescColor: '#34d399'
       };
     case 'Research Papers':
       return {
@@ -96,10 +96,10 @@ const getCategoryColors = (category: string) => {
         gradient: 'linear-gradient(135deg, #4f46e5 0%, #818cf8 100%)',
         darkBg: 'rgba(79, 70, 229, 0.15)',
         darkText: '#a5b4fc',
-        authorColor: '#4338ca',
-        descColor: '#3730a3',
-        darkAuthorColor: '#818cf8',
-        darkDescColor: '#c7d2fe'
+        authorColor: '#d97706', // Warm Amber
+        descColor: '#0891b2', // Cyan
+        darkAuthorColor: '#fbbf24',
+        darkDescColor: '#22d3ee'
       };
     case 'Books':
       return {
@@ -109,10 +109,10 @@ const getCategoryColors = (category: string) => {
         gradient: 'linear-gradient(135deg, #059669 0%, #34d399 100%)',
         darkBg: 'rgba(5, 150, 105, 0.15)',
         darkText: '#6ee7b7',
-        authorColor: '#047857',
-        descColor: '#065f46',
-        darkAuthorColor: '#34d399',
-        darkDescColor: '#a7f3d0'
+        authorColor: '#7c3aed', // Purple
+        descColor: '#ea580c', // Bright Orange
+        darkAuthorColor: '#a78bfa',
+        darkDescColor: '#ff9756'
       };
     case 'Book Chapters':
       return {
@@ -122,10 +122,10 @@ const getCategoryColors = (category: string) => {
         gradient: 'linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)',
         darkBg: 'rgba(124, 58, 237, 0.15)',
         darkText: '#c084fc',
-        authorColor: '#6d28d9',
-        descColor: '#5b21b6',
-        darkAuthorColor: '#a78bfa',
-        darkDescColor: '#ddd6fe'
+        authorColor: '#0891b2', // Teal-Cyan
+        descColor: '#e11d48', // Deep Pink
+        darkAuthorColor: '#22d3ee',
+        darkDescColor: '#fda4af'
       };
     case 'Policy Reports':
       return {
@@ -135,10 +135,10 @@ const getCategoryColors = (category: string) => {
         gradient: 'linear-gradient(135deg, #be123c 0%, #fb7185 100%)',
         darkBg: 'rgba(190, 18, 60, 0.15)',
         darkText: '#fda4af',
-        authorColor: '#be123c',
-        descColor: '#9f1239',
-        darkAuthorColor: '#fb7185',
-        darkDescColor: '#fecdd3'
+        authorColor: '#6366f1', // Royal Indigo
+        descColor: '#b45309', // Golden Amber
+        darkAuthorColor: '#818cf8',
+        darkDescColor: '#fbbf24'
       };
     default: // 'All'
       return {
@@ -148,10 +148,10 @@ const getCategoryColors = (category: string) => {
         gradient: 'var(--gradient-primary)',
         darkBg: 'rgba(21, 128, 61, 0.15)',
         darkText: '#4ade80',
-        authorColor: '#166534',
-        descColor: '#14532d',
-        darkAuthorColor: '#4ade80',
-        darkDescColor: '#a7f3d0'
+        authorColor: '#2563eb', // Pure Blue
+        descColor: '#7c3aed', // Pure Violet
+        darkAuthorColor: '#60a5fa',
+        darkDescColor: '#a78bfa'
       };
   }
 };
