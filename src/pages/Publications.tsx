@@ -324,7 +324,7 @@ const Publications: React.FC = () => {
               
               <p className="card-desc" style={{ 
                 color: currentTheme === 'dark' ? getCategoryColors(item.category).darkDescColor : getCategoryColors(item.category).descColor 
-              }}>{item.description}</p>
+              }} dangerouslySetInnerHTML={{ __html: item.description }} />
               
               <div className="card-footer" style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
                 {item.url !== '#' ? (

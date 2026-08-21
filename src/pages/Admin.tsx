@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Shield, Key, Plus, Trash2, Edit, Save, Upload, CheckCircle, AlertTriangle, ArrowUp, ArrowDown } from 'lucide-react';
 
 interface PublicationItem {
@@ -188,6 +188,28 @@ const Admin: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState('');
+
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const applyFormatting = (tagOpen: string, tagClose: string) => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const text = textarea.value;
+
+    const selectedText = text.substring(start, end);
+    const replacement = tagOpen + selectedText + tagClose;
+
+    const newValue = text.substring(0, start) + replacement + text.substring(end);
+    setPubDescription(newValue);
+
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(start + tagOpen.length, start + tagOpen.length + selectedText.length);
+    }, 0);
+  };
   
   const [activeTab, setActiveTab] = useState<'home' | 'labels' | 'publications' | 'security' | 'team'>('home');
   const [config, setConfig] = useState<SiteConfig | null>(null);
@@ -924,8 +946,45 @@ const Admin: React.FC = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Brief Description</label>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, margin: 0 }}>Brief Description</label>
+                  <div style={{ display: 'flex', gap: '0.25rem' }}>
+                    <button
+                      type="button"
+                      onClick={() => applyFormatting('<b>', '</b>')}
+                      style={{ padding: '2px 8px', fontSize: '0.7rem', fontWeight: 'bold', cursor: 'pointer', background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '4px', color: 'var(--color-text-main)' }}
+                      title="Bold"
+                    >
+                      B
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => applyFormatting('<i>', '</i>')}
+                      style={{ padding: '2px 8px', fontSize: '0.7rem', fontStyle: 'italic', cursor: 'pointer', background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '4px', color: 'var(--color-text-main)' }}
+                      title="Italic"
+                    >
+                      I
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => applyFormatting('<u>', '</u>')}
+                      style={{ padding: '2px 8px', fontSize: '0.7rem', textDecoration: 'underline', cursor: 'pointer', background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '4px', color: 'var(--color-text-main)' }}
+                      title="Underline"
+                    >
+                      U
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => applyFormatting('<div style="text-align: justify;">', '</div>')}
+                      style={{ padding: '2px 6px', fontSize: '0.7rem', cursor: 'pointer', background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '4px', color: 'var(--color-text-main)' }}
+                      title="Justify text alignment"
+                    >
+                      Justify
+                    </button>
+                  </div>
+                </div>
                 <textarea
+                  ref={textareaRef}
                   required
                   value={pubDescription}
                   onChange={e => setPubDescription(e.target.value)}
