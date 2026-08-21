@@ -108,7 +108,7 @@ const Forecasts: React.FC = () => {
             boxSizing: 'border-box'
           }}>
             <iframe
-              src={`https://micmandis.onrender.com/forecast?theme=${currentTheme}`}
+              src={`https://micmandis.onrender.com/forecast/mydash?theme=${currentTheme}`}
               title="Real-Time Price Forecasts Dashboard"
               style={{
                 width: '100%',
