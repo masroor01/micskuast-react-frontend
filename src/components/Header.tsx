@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, ChevronDown, Sun, Moon, Coffee, Info } from 'lucide-react';
+import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, Sun, Moon, Coffee, Info } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [ewsDropdownOpen, setEwsDropdownOpen] = useState(false);
 
   const [theme, setTheme] = useState<'light' | 'dark' | 'warm'>(() => {
     return (localStorage.getItem('site_theme') as any) || 'light';
@@ -68,31 +67,15 @@ const Header: React.FC = () => {
 
 
 
-          {/* EWS Dropdown Menu */}
-          <div 
-            className="nav-dropdown-trigger"
-            onMouseEnter={() => setEwsDropdownOpen(true)}
-            onMouseLeave={() => setEwsDropdownOpen(false)}
-            style={{ position: 'relative' }}
+          <NavLink 
+            to="/ews" 
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
           >
-            <NavLink 
-              to="/ews" 
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}
-            >
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', whiteSpace: 'nowrap' }}>
               <AlertTriangle size={14} /> 
               <EditableLabel labelKey="nav_ews" defaultValue="EWS Reports" />
-              <ChevronDown size={12} />
-            </NavLink>
-            
-            {ewsDropdownOpen && (
-              <div className="dropdown-menu">
-                <NavLink to="/ews?tab=cherry" className="dropdown-item">Cherry EWS (2026)</NavLink>
-                <NavLink to="/ews?tab=apple" className="dropdown-item">Apple EWS (2026)</NavLink>
-                <NavLink to="/ews?tab=stability" className="dropdown-item">Horticultural Stability</NavLink>
-              </div>
-            )}
-          </div>
+            </span>
+          </NavLink>
 
           <NavLink 
             to="/markets" 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, Search, FileText, Download, Calendar, ExternalLink } from 'lucide-react';
+import { BookOpen, Search, FileText, Calendar, ExternalLink } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
 
 interface PublicationItem {
@@ -328,31 +328,17 @@ const Publications: React.FC = () => {
               
               <div className="card-footer" style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
                 {item.url !== '#' ? (
-                  <>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn"
-                      style={{ flex: 1, justifyContent: 'center', padding: '0.5rem', fontSize: '0.82rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-primary)', color: 'var(--color-primary)', background: 'transparent', fontWeight: 700 }}
-                    >
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                        <ExternalLink size={14} /> View
-                      </span>
-                    </a>
-                    <a
-                      href={item.url}
-                      download
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary"
-                      style={{ flex: 1, justifyContent: 'center', padding: '0.5rem', fontSize: '0.82rem', borderRadius: 'var(--radius-sm)', fontWeight: 700 }}
-                    >
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                        <Download size={14} /> Download
-                      </span>
-                    </a>
-                  </>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn"
+                    style={{ width: '100%', justifyContent: 'center', padding: '0.5rem', fontSize: '0.82rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-primary)', color: 'var(--color-primary)', background: 'transparent', fontWeight: 700 }}
+                  >
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                      <ExternalLink size={14} /> View
+                    </span>
+                  </a>
                 ) : (
                   <a
                     href="#"
