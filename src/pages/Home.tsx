@@ -845,7 +845,10 @@ const Home: React.FC = () => {
         .apmc-card:hover {
           transform: translateY(-3px);
           border-color: var(--color-primary-light) !important;
-                /* Redesigned Hero Elements Styles */
+          box-shadow: var(--shadow-md) !important;
+        }
+
+        /* Redesigned Hero Elements Styles */
         .hero-logo-pill:hover {
           transform: translateY(-2px);
           box-shadow: var(--shadow-md);
