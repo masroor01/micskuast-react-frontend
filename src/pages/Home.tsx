@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw, TrendingUp, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
  
 const defaultTeam = [
@@ -236,166 +236,53 @@ const Home: React.FC = () => {
         }} />
 
         <div className="container">
-          <div className="hero-flex-container">
-            {/* Left Column: Heading, Subtitle and CTAs */}
-            <div className="hero-left-col">
-              <h1 className="hero-gradient-title" style={{
-                  fontSize: 'clamp(36px, 5.5vw, 54px)',
-                  fontWeight: 900,
-                  letterSpacing: '-0.03em',
-                  lineHeight: '1.15',
-                  marginBottom: '1.25rem',
-                  fontFamily: "'Plus Jakarta Sans', sans-serif"
-              }}>
-                {heroTitle}
-              </h1>
-              <p style={{
-                  fontSize: 'clamp(15px, 2.2vw, 18px)',
-                  fontWeight: 500,
-                  color: 'var(--color-text-muted)',
-                  lineHeight: '1.6',
-                  margin: '0 0 2rem',
-                  letterSpacing: '0.01em'
-              }}>
-                "{heroSubtitle}"
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <NavLink 
-                  to="/forecasts" 
-                  className="btn btn-primary" 
-                  style={{ 
-                    padding: '0.75rem 1.75rem', 
-                    borderRadius: '50px', 
-                    fontWeight: 700, 
-                    fontSize: '0.9rem', 
-                    display: 'inline-flex', 
-                    alignItems: 'center', 
-                    gap: '0.5rem',
-                    boxShadow: 'var(--shadow-sm)'
-                  }}
-                >
-                  <TrendingUp size={16} /> Explore AI Forecasts
-                </NavLink>
-                <NavLink 
-                  to="/ews" 
-                  className="btn" 
-                  style={{ 
-                    padding: '0.75rem 1.75rem', 
-                    borderRadius: '50px', 
-                    fontWeight: 700, 
-                    fontSize: '0.9rem', 
-                    border: '1px solid var(--color-border)', 
-                    color: 'var(--color-text)', 
-                    background: 'var(--color-surface)', 
-                    display: 'inline-flex', 
-                    alignItems: 'center', 
-                    gap: '0.5rem',
-                    boxShadow: 'var(--shadow-sm)'
-                  }}
-                >
-                  <AlertTriangle size={16} /> View EWS Alerts
-                </NavLink>
-              </div>
+          {/* Logo Row - Modern Glassmorphic Pill */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
+            <div className="hero-logo-pill" style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '2.25rem',
+              background: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
+              padding: '0.65rem 2.5rem',
+              borderRadius: '100px',
+              boxShadow: 'var(--shadow-sm)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease'
+            }}>
+              <img src="/logos/mic.png" alt="MIC Logo" style={{ height: '70px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.04))' }} />
+              <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
+              <img src="/logos/skuast.png" alt="SKUAST Seal" style={{ height: '75px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.06))' }} />
+              <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
+              <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '66px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.04))' }} />
             </div>
+          </div>
 
-            {/* Right Column: Theme-based dynamic infographic */}
-            <div className="hero-right-col">
-              <div className="hero-infographic-card animate-fade-in">
-                <svg viewBox="0 0 460 340" style={{ width: '100%', height: 'auto', display: 'block' }}>
-                  {/* Grid Background */}
-                  <g opacity="0.15">
-                    <line x1="40" y1="40" x2="40" y2="300" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="120" y1="40" x2="120" y2="300" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="200" y1="40" x2="200" y2="300" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="280" y1="40" x2="280" y2="300" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="360" y1="40" x2="360" y2="300" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    
-                    <line x1="40" y1="60" x2="420" y2="60" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="40" y1="120" x2="420" y2="120" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="40" y1="180" x2="420" y2="180" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="40" y1="240" x2="420" y2="240" stroke="var(--color-text)" strokeWidth="1" strokeDasharray="3 3" />
-                    <line x1="40" y1="300" x2="420" y2="300" stroke="var(--color-text)" strokeWidth="2" />
-                  </g>
-
-                  {/* Gradient fill under the curve */}
-                  <defs>
-                    <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.25" />
-                      <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0.0" />
-                    </linearGradient>
-                  </defs>
-                  
-                  {/* Fill Area */}
-                  <path 
-                    d="M 40,300 C 100,260 140,290 200,210 C 260,130 320,240 380,120 C 400,80 410,90 420,70 L 420,300 Z" 
-                    fill="url(#curveGrad)" 
-                  />
-
-                  {/* Main Time-Series Forecast Curve */}
-                  <path 
-                    d="M 40,300 C 100,260 140,290 200,210 C 260,130 320,240 380,120 C 400,80 410,90 420,70" 
-                    fill="none" 
-                    stroke="var(--color-primary)" 
-                    strokeWidth="4" 
-                    strokeLinecap="round"
-                    className="svg-draw-path"
-                  />
-
-                  {/* Dynamic Flow Line */}
-                  <path 
-                    d="M 40,300 C 100,260 140,290 200,210 C 260,130 320,240 380,120 C 400,80 410,90 420,70" 
-                    fill="none" 
-                    stroke="var(--color-primary-light)" 
-                    strokeWidth="2" 
-                    strokeLinecap="round"
-                    opacity="0.6"
-                    className="svg-flow-dash"
-                  />
-
-                  {/* Nodes & Pulse Rings */}
-                  {/* Node 1 */}
-                  <g transform="translate(100, 260)">
-                    <circle cx="0" cy="0" r="10" fill="var(--color-primary)" opacity="0.2" className="svg-pulse-node" />
-                    <circle cx="0" cy="0" r="5" fill="var(--color-primary)" stroke="var(--color-surface)" strokeWidth="1.5" />
-                  </g>
-                  {/* Node 2 */}
-                  <g transform="translate(200, 210)">
-                    <circle cx="0" cy="0" r="10" fill="var(--color-primary)" opacity="0.2" className="svg-pulse-node" />
-                    <circle cx="0" cy="0" r="5" fill="var(--color-primary)" stroke="var(--color-surface)" strokeWidth="1.5" />
-                  </g>
-                  {/* Node 3 */}
-                  <g transform="translate(320, 202)">
-                    <circle cx="0" cy="0" r="10" fill="var(--color-primary)" opacity="0.2" className="svg-pulse-node" />
-                    <circle cx="0" cy="0" r="5" fill="var(--color-primary)" stroke="var(--color-surface)" strokeWidth="1.5" />
-                  </g>
-                  {/* Node 4 (Peak) */}
-                  <g transform="translate(420, 70)">
-                    <circle cx="0" cy="0" r="14" fill="var(--color-primary)" opacity="0.3" className="svg-pulse-node" />
-                    <circle cx="0" cy="0" r="7" fill="var(--color-primary)" stroke="var(--color-surface)" strokeWidth="2" />
-                  </g>
-
-                  {/* Floating Glassmorphic Labels */}
-                  {/* Label 1: AI Prediction */}
-                  <g transform="translate(250, 60)">
-                    <rect x="0" y="0" width="150" height="34" rx="8" fill="var(--color-surface)" stroke="var(--color-border)" strokeWidth="1" filter="drop-shadow(0 2px 8px rgba(0,0,0,0.06))" />
-                    <circle cx="15" cy="17" r="4" fill="#22c55e" />
-                    <text x="28" y="21" fontFamily="Montserrat, sans-serif" fontSize="10" fontWeight="700" fill="var(--color-text)">AI FORECAST: ACTIVE</text>
-                  </g>
-
-                  {/* Label 2: Price Trend */}
-                  <g transform="translate(60, 150)">
-                    <rect x="0" y="0" width="130" height="34" rx="8" fill="var(--color-surface)" stroke="var(--color-border)" strokeWidth="1" filter="drop-shadow(0 2px 8px rgba(0,0,0,0.06))" />
-                    <path d="M15,22 L20,15 L24,18 L30,12" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <text x="36" y="21" fontFamily="Montserrat, sans-serif" fontSize="10" fontWeight="700" fill="var(--color-text)">ACCURACY: 94.6%</text>
-                  </g>
-
-                  {/* Axis Legend labels */}
-                  <text x="40" y="322" fontFamily="Montserrat, sans-serif" fontSize="9" fontWeight="600" fill="var(--color-text-muted)" opacity="0.8">T-7d</text>
-                  <text x="190" y="322" fontFamily="Montserrat, sans-serif" fontSize="9" fontWeight="600" fill="var(--color-text-muted)" opacity="0.8">Today</text>
-                  <text x="385" y="322" fontFamily="Montserrat, sans-serif" fontSize="9" fontWeight="600" fill="var(--color-text-muted)" opacity="0.8">Forecast +30d</text>
-                </svg>
-              </div>
-            </div>
+          {/* Heading and Subtitle */}
+          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3.5rem' }}>
+            <h1 className="hero-gradient-title" style={{
+                fontSize: 'clamp(36px, 5.5vw, 54px)',
+                fontWeight: 900,
+                letterSpacing: '-0.03em',
+                lineHeight: '1.15',
+                marginBottom: '1rem',
+                fontFamily: "'Plus Jakarta Sans', sans-serif"
+            }}>
+              {heroTitle}
+            </h1>
+            <p style={{
+                fontSize: 'clamp(15px, 2.2vw, 18px)',
+                fontWeight: 500,
+                color: 'var(--color-text-muted)',
+                lineHeight: '1.6',
+                margin: 0,
+                letterSpacing: '0.01em'
+            }}>
+              "{heroSubtitle}"
+            </p>
           </div>
 
           {/* Dynamic Interactive React Cards Grid */}
