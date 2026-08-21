@@ -474,7 +474,7 @@ const Home: React.FC = () => {
 
           <div className="about-grid" style={{ marginTop: 0 }}>
             {/* Card 1: Data Ingestion */}
-            <div className="tech-card">
+            <div className="tech-card data-ingestion">
               <div className="tech-card-header">
                 <span className="tech-card-badge">
                   <EditableLabel labelKey="home_info_card1_badge" defaultValue="Data Ingestion" />
@@ -497,7 +497,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Card 2: Deep Learning LSTM Engine */}
-            <div className="tech-card">
+            <div className="tech-card neural-networks">
               <div className="tech-card-header">
                 <span className="tech-card-badge">
                   <EditableLabel labelKey="home_info_card2_badge" defaultValue="Neural Networks" />
@@ -520,7 +520,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Card 3: Anomaly Signals (EWS) */}
-            <div className="tech-card">
+            <div className="tech-card alerts-core">
               <div className="tech-card-header">
                 <span className="tech-card-badge">
                   <EditableLabel labelKey="home_info_card3_badge" defaultValue="Alerts Core" />
@@ -543,7 +543,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Card 4: Agri-Policy Decisions */}
-            <div className="tech-card">
+            <div className="tech-card decision-support">
               <div className="tech-card-header">
                 <span className="tech-card-badge">
                   <EditableLabel labelKey="home_info_card4_badge" defaultValue="Decision Support" />
@@ -574,7 +574,7 @@ const Home: React.FC = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
               <span className="card-tag">Market Coverage</span>
-              <h2 style={{ marginTop: '0.25rem' }}>Wholesale APMC Terminals</h2>
+              <h2 className="text-gradient" style={{ marginTop: '0.25rem' }}>Wholesale APMC Terminals</h2>
             </div>
             <NavLink to="/markets" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontWeight: 700, color: 'var(--color-primary)' }}>
               See All Markets <ArrowRight size={16} />
@@ -592,16 +592,6 @@ const Home: React.FC = () => {
               <NavLink 
                 key={m.slug}
                 to={`/markets?tab=${m.slug}`}
-                style={{
-                  background: 'var(--color-surface)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-md)',
-                  padding: '1.5rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.5rem',
-                  boxShadow: 'var(--shadow-sm)'
-                }}
                 className="apmc-card"
               >
                 <Landmark size={20} style={{ color: 'var(--color-accent)' }} />
@@ -629,10 +619,9 @@ const Home: React.FC = () => {
             }}>
               HADP Project Members
             </span>
-            <h2 style={{ 
+            <h2 className="text-gradient" style={{ 
               fontSize: 'clamp(24px, 3.5vw, 32px)', 
               fontWeight: 900, 
-              color: 'var(--color-primary)', 
               marginTop: '0.75rem',
               marginBottom: '0.75rem'
             }}>
@@ -763,7 +752,7 @@ const Home: React.FC = () => {
             }}>
               Media &amp; Learning
             </span>
-            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 32px)', fontWeight: 900, color: 'var(--color-primary)', marginTop: '0.75rem', marginBottom: '0.75rem' }}>
+            <h2 className="text-gradient" style={{ fontSize: 'clamp(24px, 3.5vw, 32px)', fontWeight: 900, marginTop: '0.75rem', marginBottom: '0.75rem' }}>
               Video Insights
             </h2>
             <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6' }}>
@@ -771,18 +760,7 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          <div className="video-card-wrapper" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '2.5rem',
-            background: 'var(--color-bg)',
-            border: '1px solid var(--color-border)',
-            borderRadius: '20px',
-            padding: '2.5rem',
-            boxShadow: 'var(--shadow-sm)',
-            maxWidth: '1050px',
-            margin: '0 auto'
-          }}>
+          <div className="video-card-wrapper">
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <div style={{ 
                 color: 'var(--color-primary)', 
@@ -805,8 +783,8 @@ const Home: React.FC = () => {
                   href="https://youtu.be/fiw2_PPNQys?si=A5YZMs2ILJZ4jWZF" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="announcement-action-btn" 
-                  style={{ fontSize: '0.8rem', padding: '8px 18px', background: '#ff0000', color: '#ffffff', borderColor: '#ff0000', boxShadow: '0 2px 6px rgba(255,0,0,0.2)' }}
+                  className="announcement-action-btn youtube-btn-polish" 
+                  style={{ fontSize: '0.8rem', padding: '8px 18px', color: '#ffffff' }}
                 >
                   Watch on YouTube
                 </a>
@@ -1219,13 +1197,13 @@ const Home: React.FC = () => {
         .team-member-card {
           background: var(--color-surface);
           border: 1px solid var(--color-border);
-          border-radius: var(--radius-lg);
-          padding: 2rem 1.5rem;
+          border-radius: 20px;
+          padding: 2.25rem 1.5rem;
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
-          box-shadow: var(--shadow-sm);
+          box-shadow: 0 4px 15px rgba(0,0,0,0.012);
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           position: relative;
           overflow: hidden;
@@ -1243,7 +1221,7 @@ const Home: React.FC = () => {
         }
         .team-member-card:hover {
           transform: translateY(-6px);
-          box-shadow: var(--shadow-lg);
+          box-shadow: 0 12px 25px rgba(21, 128, 61, 0.08);
           border-color: var(--color-primary-light);
         }
         .team-member-card:hover::before {
@@ -1256,13 +1234,13 @@ const Home: React.FC = () => {
           overflow: hidden;
           margin-bottom: 1.5rem;
           background: var(--color-primary-pale);
-          border: 3px solid var(--color-surface);
-          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+          border: 3px solid var(--color-border);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .team-member-card:hover .member-photo-container {
-          transform: scale(1.03);
-          border-color: var(--color-primary-pale);
+          transform: scale(1.05);
+          border-color: var(--color-primary-light);
           box-shadow: 0 6px 20px rgba(27, 110, 46, 0.12);
         }
         .member-photo {
