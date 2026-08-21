@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award } from 'lucide-react';
+import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
  
 const defaultTeam = [
@@ -236,47 +236,50 @@ const Home: React.FC = () => {
         }} />
 
         <div className="container">
-          {/* Logo Row */}
-          <div style={{
-              display: 'flex',
-              justifyContent: 'center',
+          {/* Logo Row - Modern Glassmorphic Pill */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
+            <div className="hero-logo-pill" style={{
+              display: 'inline-flex',
               alignItems: 'center',
-              gap: '3.5rem',
-              width: '100%',
-              maxWidth: '850px',
-              margin: '0 auto 2.5rem',
-              flexWrap: 'wrap'
-          }}>
-            <div className="logo-wrapper">
-              <img src="/logos/mic.png" alt="MIC Logo" className="logo-img" style={{ height: '70px', objectFit: 'contain' }} />
-            </div>
-            <div className="logo-wrapper seal">
-              <img src="/logos/skuast.png" alt="SKUAST Seal" className="logo-img" style={{ height: '110px', objectFit: 'contain' }} />
-            </div>
-            <div className="logo-wrapper">
-              <img src="/logos/hadp.png" alt="HADP Logo" className="logo-img" style={{ height: '70px', objectFit: 'contain' }} />
+              gap: '2.25rem',
+              background: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
+              padding: '0.65rem 2.5rem',
+              borderRadius: '100px',
+              boxShadow: 'var(--shadow-sm)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease'
+            }}>
+              <img src="/logos/mic.png" alt="MIC Logo" style={{ height: '52px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.03))' }} />
+              <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
+              <img src="/logos/skuast.png" alt="SKUAST Seal" style={{ height: '80px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.06))' }} />
+              <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
+              <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '52px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.03))' }} />
             </div>
           </div>
 
           {/* Heading and Subtitle */}
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3.5rem' }}>
-            <h1 style={{
-                fontSize: 'clamp(32px, 5.5vw, 48px)',
+            <h1 className="hero-gradient-title" style={{
+                fontSize: 'clamp(36px, 5.5vw, 54px)',
                 fontWeight: 900,
-                letterSpacing: '-0.025em',
-                color: 'var(--color-primary)',
+                letterSpacing: '-0.03em',
                 lineHeight: '1.15',
-                marginBottom: '0.75rem',
+                marginBottom: '1rem',
                 fontFamily: "'Plus Jakarta Sans', sans-serif"
             }}>
               {heroTitle}
             </h1>
             <p style={{
-                fontSize: 'clamp(16px, 2.5vw, 20px)',
-                fontWeight: 600,
+                fontSize: 'clamp(15px, 2.2vw, 18px)',
+                fontWeight: 500,
                 color: 'var(--color-text-muted)',
-                lineHeight: '1.5',
-                margin: 0
+                lineHeight: '1.6',
+                margin: 0,
+                letterSpacing: '0.01em'
             }}>
               "{heroSubtitle}"
             </p>
@@ -381,34 +384,59 @@ const Home: React.FC = () => {
 
           </div>
 
-          {/* Quick Stats Banner */}
-          <div style={{
-              background: 'var(--color-surface)',
-              border: '1px solid var(--color-border)',
-              borderRadius: 'var(--radius-md)',
-              padding: '1.5rem 3rem',
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '2rem',
-              maxWidth: '850px',
-              margin: '0 auto',
-              boxShadow: 'var(--shadow-sm)'
-          }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-primary)' }}>15+</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.2rem' }}>APMC Wholesale Mandis</div>
-            </div>
-            <div style={{ width: '1px', height: '30px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-primary)' }}>19 Years</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.2rem' }}>Horticultural Series</div>
-            </div>
-            <div style={{ width: '1px', height: '30px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-accent)' }}>Real-Time</div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.2rem' }}>Price Feeds Synced</div>
+          {/* Quick Stats Banner - Modern Dynamic Glassmorphic Deck */}
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div className="hero-stats-deck" style={{
+                background: 'var(--color-surface)',
+                border: '1px solid var(--color-border)',
+                borderRadius: '24px',
+                padding: '1.6rem 3.5rem',
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '2.5rem',
+                width: '100%',
+                maxWidth: '920px',
+                boxShadow: 'var(--shadow-md)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                position: 'relative',
+                transition: 'all 0.3s ease'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: 'center', minWidth: '200px' }}>
+                <div className="stat-icon-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '12px', background: 'var(--color-primary-pale)', color: 'var(--color-primary)' }}>
+                  <MapPin size={22} style={{ margin: 'auto' }} />
+                </div>
+                <div style={{ textAlign: 'left' }}>
+                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-primary)', lineHeight: 1.1 }}>15+</div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>APMC Mandis</div>
+                </div>
+              </div>
+              
+              <div style={{ width: '1px', height: '40px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: 'center', minWidth: '200px' }}>
+                <div className="stat-icon-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(230, 126, 34, 0.08)', color: '#d97706' }}>
+                  <CalendarRange size={22} style={{ margin: 'auto' }} />
+                </div>
+                <div style={{ textAlign: 'left' }}>
+                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: '#d97706', lineHeight: 1.1 }}>19 Years</div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>Price Series</div>
+                </div>
+              </div>
+              
+              <div style={{ width: '1px', height: '40px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: 'center', minWidth: '200px' }}>
+                <div className="stat-icon-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '12px', background: 'var(--color-accent-light)', color: 'var(--color-accent)' }}>
+                  <RefreshCw size={20} className="spin-slow" style={{ margin: 'auto' }} />
+                </div>
+                <div style={{ textAlign: 'left' }}>
+                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-accent)', lineHeight: 1.1 }}>Real-Time</div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>Feeds Synced</div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -817,33 +845,18 @@ const Home: React.FC = () => {
         .apmc-card:hover {
           transform: translateY(-3px);
           border-color: var(--color-primary-light) !important;
-          box-shadow: var(--shadow-md) !important;
-        }
-
-        /* Redesigned Hero Elements Styles */
-        .logo-wrapper {
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--color-surface);
-          padding: 10px;
-          border-radius: 16px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-          border: 1px solid var(--color-border);
-        }
-        .logo-wrapper.seal {
-          border-radius: 50%;
-          padding: 12px;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
-        }
-        .logo-wrapper:hover {
-          transform: translateY(-6px) scale(1.05);
-          border-color: var(--color-primary-light);
+                /* Redesigned Hero Elements Styles */
+        .hero-logo-pill:hover {
+          transform: translateY(-2px);
           box-shadow: var(--shadow-md);
+          border-color: var(--color-primary-light);
         }
-        .logo-img {
-          transition: all 0.3s ease;
+        .hero-stats-deck:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-lg);
+        }
+        .spin-slow {
+          animation: spin 8s linear infinite;
         }
 
         /* Redesigned React Cards */
@@ -852,77 +865,123 @@ const Home: React.FC = () => {
           color: inherit;
           background: var(--color-surface);
           border: 1px solid var(--color-border);
-          border-radius: 16px;
-          padding: 2.25rem 1.5rem 2rem;
+          border-radius: 20px;
+          padding: 2.5rem 1.75rem 2.25rem;
           display: flex;
           flex-direction: column;
           position: relative;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: var(--shadow-sm);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
           overflow: hidden;
+        }
+        .react-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(circle at 80% 20%, var(--glow-color, rgba(21, 128, 61, 0.03)) 0%, transparent 55%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
         }
         .react-card:hover {
           transform: translateY(-8px);
-          box-shadow: var(--shadow-lg);
-          border-color: var(--color-primary);
+          border-color: var(--theme-color);
+          box-shadow: 0 12px 30px var(--shadow-color);
         }
+        .react-card:hover::before {
+          opacity: 1;
+        }
+        
+        /* Define theme variables for each card */
+        .react-card.forecast {
+          --theme-color: #8b5cf6;
+          --shadow-color: rgba(139, 92, 246, 0.12);
+          --glow-color: rgba(139, 92, 246, 0.05);
+        }
+        .react-card.risk {
+          --theme-color: #f43f5e;
+          --shadow-color: rgba(244, 63, 94, 0.12);
+          --glow-color: rgba(244, 63, 94, 0.05);
+        }
+        .react-card.markets {
+          --theme-color: #0284c7;
+          --shadow-color: rgba(2, 132, 199, 0.12);
+          --glow-color: rgba(2, 132, 199, 0.05);
+        }
+        .react-card.library {
+          --theme-color: #10b981;
+          --shadow-color: rgba(16, 185, 129, 0.12);
+          --glow-color: rgba(16, 185, 129, 0.05);
+        }
+
         .react-card-icon {
-          font-size: 28px;
-          margin-bottom: 1.25rem;
-          width: 52px;
-          height: 52px;
-          border-radius: 12px;
-          background: var(--color-primary-pale);
+          font-size: 24px;
+          margin-bottom: 1.5rem;
+          width: 56px;
+          height: 56px;
+          border-radius: 14px;
+          background: var(--color-bg);
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.3s ease;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           border: 1px solid var(--color-border);
         }
         .react-card:hover .react-card-icon {
-          background: var(--color-primary);
-          color: white;
-          border-color: var(--color-primary);
-          transform: scale(1.08) rotate(5deg);
+          background: var(--theme-color);
+          color: white !important;
+          border-color: var(--theme-color);
+          transform: scale(1.1) rotate(5deg);
+          box-shadow: 0 4px 12px var(--shadow-color);
         }
         .react-card-title {
-          font-size: 1.15rem;
+          font-size: 1.25rem;
           font-weight: 800;
-          color: var(--color-primary);
-          margin: 0 0 0.5rem;
+          color: var(--color-text-main);
+          margin: 0 0 0.6rem;
+          transition: color 0.3s ease;
+        }
+        .react-card:hover .react-card-title {
+          color: var(--theme-color);
         }
         .react-card-desc {
-          font-size: 0.85rem;
+          font-size: 0.88rem;
           color: var(--color-text-muted);
           line-height: 1.6;
-          margin: 0 0 1.5rem;
+          margin: 0 0 1.75rem;
           flex-grow: 1;
         }
         
         /* Reveal panel at bottom of card */
         .react-card-reveal {
           border-top: 1px solid var(--color-border);
-          padding-top: 1rem;
+          padding-top: 1.25rem;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           font-weight: 700;
-          transition: all 0.3s ease;
         }
         .reveal-tag {
           color: var(--color-text-muted);
           text-transform: uppercase;
+          letter-spacing: 0.05em;
         }
         .reveal-metric {
-          color: var(--color-primary-light);
-          background: var(--color-primary-pale);
-          padding: 2px 8px;
-          border-radius: 4px;
+          color: var(--theme-color);
+          background: var(--color-bg);
+          border: 1px solid var(--color-border);
+          padding: 3px 10px;
+          border-radius: 6px;
+          transition: all 0.3s ease;
         }
         .react-card:hover .reveal-metric {
-          background: var(--color-primary);
-          color: white;
+          background: var(--theme-color);
+          color: white !important;
+          border-color: var(--theme-color);
         }
 
         /* Pulsing badges on cards */
@@ -930,25 +989,19 @@ const Home: React.FC = () => {
           position: absolute;
           top: 1.5rem;
           right: 1.5rem;
-          font-size: 0.68rem;
+          font-size: 0.7rem;
           font-weight: 800;
           text-transform: uppercase;
-          color: var(--color-primary-light);
-          background: var(--color-primary-pale);
-          padding: 3px 8px 3px 20px;
+          color: var(--theme-color);
+          background: var(--color-bg);
+          border: 1px solid var(--color-border);
+          padding: 4px 10px 4px 22px;
           border-radius: 50px;
+          transition: all 0.3s ease;
         }
-        .card-pulse-badge.alert {
-          color: #d32f2f;
-          background: #ffebee;
-        }
-        .card-pulse-badge.info {
-          color: #0073aa;
-          background: #e1f5fe;
-        }
-        .card-pulse-badge.success {
-          color: #2e7d32;
-          background: #e8f5e9;
+        .react-card:hover .card-pulse-badge {
+          border-color: var(--theme-color);
+          box-shadow: 0 2px 8px var(--shadow-color);
         }
         .pulse-dot {
           position: absolute;
