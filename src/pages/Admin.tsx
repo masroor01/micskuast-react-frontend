@@ -299,14 +299,18 @@ const Admin: React.FC = () => {
         window.dispatchEvent(new Event('config-updated'));
         // Load secure data
         fetch('/api/config.php')
-          .then(r => r.json())
-          .then(d => setConfig(sanitizeConfigData(d)));
+          .then(r => {
+            if (!r.ok) throw new Error();
+            return r.json();
+          })
+          .then(d => setConfig(sanitizeConfigData(d)))
+          .catch(e => console.error("Failed to fetch fresh config:", e));
       } else {
         setAuthError(data.error || 'Authentication failed');
       }
     })
-    .catch(() => {
-      setAuthError('Connection error to server API');
+    .catch((err) => {
+      setAuthError(err.message || 'Connection error to server API');
     });
   };
 
@@ -319,7 +323,12 @@ const Admin: React.FC = () => {
       body: JSON.stringify({ password, config: updatedConfig })
     })
     .then(async res => {
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch (err) {
+        throw new Error(`Server error: Received non-JSON response (HTTP ${res.status})`);
+      }
       if (res.ok) {
         setConfig(updatedConfig);
         setSaveStatus({ type: 'success', text: 'Settings saved successfully!' });
@@ -327,8 +336,8 @@ const Admin: React.FC = () => {
         setSaveStatus({ type: 'error', text: data.error || 'Failed to save settings' });
       }
     })
-    .catch(() => {
-      setSaveStatus({ type: 'error', text: 'Server connection error' });
+    .catch((err) => {
+      setSaveStatus({ type: 'error', text: err.message || 'Server connection error' });
     });
   };
 
@@ -575,7 +584,12 @@ const Admin: React.FC = () => {
       })
     })
     .then(async res => {
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch (err) {
+        throw new Error(`Server error: Received non-JSON response (HTTP ${res.status})`);
+      }
       if (res.ok) {
         setPassword(newPassword);
         setNewPassword('');
@@ -585,8 +599,8 @@ const Admin: React.FC = () => {
         setSaveStatus({ type: 'error', text: data.error || 'Failed to change password' });
       }
     })
-    .catch(() => {
-      setSaveStatus({ type: 'error', text: 'Server connection error' });
+    .catch((err) => {
+      setSaveStatus({ type: 'error', text: err.message || 'Server connection error' });
     });
   };
 
