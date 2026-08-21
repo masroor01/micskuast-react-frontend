@@ -1141,7 +1141,16 @@ a {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
+  display: block;
+}
+
+.video-player-container {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.video-card-wrapper:hover .video-player-container {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(21, 128, 61, 0.12) !important;
+  border-color: var(--color-primary-light) !important;
 }
 
 

@@ -603,7 +603,7 @@ const Home: React.FC = () => {
         </div>
       </section>
       {/* Meet Our Team Section */}
-      <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', backgroundColor: 'transparent' }}>
+      <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', background: 'radial-gradient(circle at 50% 100%, var(--color-primary-pale) 0%, transparent 70%)' }}>
         <div className="container">
           {/* Header Block */}
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem' }}>
@@ -737,7 +737,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Video Insights Section */}
-      <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', backgroundColor: 'transparent' }}>
+      <section className="section-padding" style={{ borderTop: '1px solid var(--color-border)', background: 'radial-gradient(circle at 50% 0%, var(--color-primary-pale) 0%, transparent 60%)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3rem' }}>
             <span style={{ 

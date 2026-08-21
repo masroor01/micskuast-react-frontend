@@ -37,7 +37,6 @@ const Footer: React.FC = () => {
             <li><NavLink to="/markets" className="footer-link"><EditableLabel labelKey="footer_nav_apmcs" defaultValue="APMC Market Analysis" /></NavLink></li>
             <li><NavLink to="/publications" className="footer-link"><EditableLabel labelKey="footer_nav_outlooks" defaultValue="Commodity Outlooks" /></NavLink></li>
             <li><NavLink to="/forecasts" className="footer-link"><EditableLabel labelKey="footer_nav_intel" defaultValue="Market Intelligence" /></NavLink></li>
-            <li><NavLink to="/team" className="footer-link"><EditableLabel labelKey="footer_nav_team" defaultValue="Our Team" /></NavLink></li>
           </ul>
         </div>
 
