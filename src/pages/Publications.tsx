@@ -69,7 +69,11 @@ const getCategoryColors = (category: string) => {
         border: '#d97706',
         gradient: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
         darkBg: 'rgba(217, 119, 6, 0.15)',
-        darkText: '#fbbf24'
+        darkText: '#fbbf24',
+        authorColor: '#7c2d12',
+        descColor: '#451a03',
+        darkAuthorColor: '#fde047',
+        darkDescColor: '#fef08a'
       };
     case 'Market Intelligence Reports':
       return {
@@ -78,7 +82,11 @@ const getCategoryColors = (category: string) => {
         border: '#0284c7',
         gradient: 'linear-gradient(135deg, #0284c7 0%, #38bdf8 100%)',
         darkBg: 'rgba(2, 132, 199, 0.15)',
-        darkText: '#7dd3fc'
+        darkText: '#7dd3fc',
+        authorColor: '#0369a1',
+        descColor: '#075985',
+        darkAuthorColor: '#38bdf8',
+        darkDescColor: '#bae6fd'
       };
     case 'Research Papers':
       return {
@@ -87,7 +95,11 @@ const getCategoryColors = (category: string) => {
         border: '#4f46e5',
         gradient: 'linear-gradient(135deg, #4f46e5 0%, #818cf8 100%)',
         darkBg: 'rgba(79, 70, 229, 0.15)',
-        darkText: '#a5b4fc'
+        darkText: '#a5b4fc',
+        authorColor: '#4338ca',
+        descColor: '#3730a3',
+        darkAuthorColor: '#818cf8',
+        darkDescColor: '#c7d2fe'
       };
     case 'Books':
       return {
@@ -96,7 +108,11 @@ const getCategoryColors = (category: string) => {
         border: '#059669',
         gradient: 'linear-gradient(135deg, #059669 0%, #34d399 100%)',
         darkBg: 'rgba(5, 150, 105, 0.15)',
-        darkText: '#6ee7b7'
+        darkText: '#6ee7b7',
+        authorColor: '#047857',
+        descColor: '#065f46',
+        darkAuthorColor: '#34d399',
+        darkDescColor: '#a7f3d0'
       };
     case 'Book Chapters':
       return {
@@ -105,7 +121,11 @@ const getCategoryColors = (category: string) => {
         border: '#7c3aed',
         gradient: 'linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)',
         darkBg: 'rgba(124, 58, 237, 0.15)',
-        darkText: '#c084fc'
+        darkText: '#c084fc',
+        authorColor: '#6d28d9',
+        descColor: '#5b21b6',
+        darkAuthorColor: '#a78bfa',
+        darkDescColor: '#ddd6fe'
       };
     case 'Policy Reports':
       return {
@@ -114,7 +134,11 @@ const getCategoryColors = (category: string) => {
         border: '#fb7185',
         gradient: 'linear-gradient(135deg, #be123c 0%, #fb7185 100%)',
         darkBg: 'rgba(190, 18, 60, 0.15)',
-        darkText: '#fda4af'
+        darkText: '#fda4af',
+        authorColor: '#be123c',
+        descColor: '#9f1239',
+        darkAuthorColor: '#fb7185',
+        darkDescColor: '#fecdd3'
       };
     default: // 'All'
       return {
@@ -123,7 +147,11 @@ const getCategoryColors = (category: string) => {
         border: 'var(--color-primary-light)',
         gradient: 'var(--gradient-primary)',
         darkBg: 'rgba(21, 128, 61, 0.15)',
-        darkText: '#4ade80'
+        darkText: '#4ade80',
+        authorColor: '#166534',
+        descColor: '#14532d',
+        darkAuthorColor: '#4ade80',
+        darkDescColor: '#a7f3d0'
       };
   }
 };
@@ -284,11 +312,19 @@ const Publications: React.FC = () => {
                 {item.title}
               </h3>
               
-              <p style={{ fontSize: '0.8rem', fontStyle: 'italic', color: 'var(--color-text-muted)', marginBottom: '0.75rem' }}>
+              <p style={{ 
+                fontSize: '0.82rem', 
+                fontStyle: 'italic', 
+                color: currentTheme === 'dark' ? getCategoryColors(item.category).darkAuthorColor : getCategoryColors(item.category).authorColor, 
+                marginBottom: '0.75rem',
+                fontWeight: 600
+              }}>
                 By {item.author}
               </p>
               
-              <p className="card-desc">{item.description}</p>
+              <p className="card-desc" style={{ 
+                color: currentTheme === 'dark' ? getCategoryColors(item.category).darkDescColor : getCategoryColors(item.category).descColor 
+              }}>{item.description}</p>
               
               <div className="card-footer" style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
                 {item.url !== '#' ? (
