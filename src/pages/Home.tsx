@@ -241,27 +241,29 @@ const Home: React.FC = () => {
             <div className="skuast-affiliation-banner" style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.85rem',
+              gap: '1rem',
               background: 'var(--color-surface)',
               border: '1px solid var(--color-border)',
-              padding: '0.65rem 1.6rem',
+              padding: '0.65rem 1.8rem',
               borderRadius: '100px',
               boxShadow: 'var(--shadow-sm)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              maxWidth: '95%'
             }}>
-              <img src="/logos/skuast.png" alt="SKUAST-K Logo" style={{ height: '34px', objectFit: 'contain' }} />
-              <div style={{ width: '1px', height: '22px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
+              <img src="/logos/skuast.png" alt="SKUAST-K Logo" style={{ height: '48px', objectFit: 'contain' }} />
+              <div style={{ width: '1px', height: '28px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
               <span style={{
-                fontSize: '0.9rem',
+                fontSize: 'clamp(11px, 2vw, 13px)',
                 fontWeight: 800,
                 color: 'var(--color-text)',
-                letterSpacing: '0.04em',
+                letterSpacing: '0.03em',
                 textTransform: 'uppercase',
-                fontFamily: "'Montserrat', sans-serif"
+                fontFamily: "'Montserrat', sans-serif",
+                lineHeight: 1.2
               }}>
-                SKUAST-Kashmir
+                Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir
               </span>
             </div>
           </div>
@@ -284,8 +286,6 @@ const Home: React.FC = () => {
               transition: 'all 0.3s ease'
             }}>
               <img src="/logos/mic.png" alt="MIC Logo" style={{ height: '70px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.04))' }} />
-              <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
-              <img src="/logos/skuast.png" alt="SKUAST Seal" style={{ height: '75px', objectFit: 'contain', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.06))' }} />
               <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
               <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '66px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.04))' }} />
             </div>
