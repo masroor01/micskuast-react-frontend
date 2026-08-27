@@ -36,7 +36,7 @@ interface SiteConfig {
 }
 
 const defaultLabels: Record<string, string> = {
-  header_brand_name: 'MIC SKUAST',
+  header_brand_name: 'MIC SKUAST-K',
   header_brand_sub: 'Market Intelligence Cell',
   nav_home: 'Home',
   nav_apmcs: 'APMCs',
@@ -1143,7 +1143,7 @@ const Admin: React.FC = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {Object.keys(defaultLabels).map(key => {
               const labelDesc = {
-                header_brand_name: "Header Navigation Main Brand Text (e.g. MIC SKUAST)",
+                header_brand_name: "Header Navigation Main Brand Text (e.g. MIC SKUAST-K)",
                 header_brand_sub: "Header Navigation Brand Subtitle (e.g. Market Intelligence Cell)",
                 nav_home: "Navigation Link to Homepage (e.g. Home)",
                 nav_apmcs: "Navigation Link to APMC logs page (e.g. APMCs)",

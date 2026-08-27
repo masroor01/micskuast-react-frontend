@@ -78,7 +78,7 @@ if (!file_exists($configFile)) {
             ]
         ],
         "labels" => [
-            "header_brand_name" => "MIC SKUAST",
+            "header_brand_name" => "MIC SKUAST-K",
             "header_brand_sub" => "Market Intelligence Cell",
             "nav_home" => "Home",
             "nav_apmcs" => "APMCs",
@@ -124,6 +124,11 @@ if (!file_exists($configFile)) {
 $configData = [];
 if (file_exists($configFile)) {
     $configData = json_decode(@file_get_contents($configFile), true) ?? [];
+    // Migration: Change MIC SKUAST label to MIC SKUAST-K
+    if (isset($configData['labels']['header_brand_name']) && $configData['labels']['header_brand_name'] === 'MIC SKUAST') {
+        $configData['labels']['header_brand_name'] = 'MIC SKUAST-K';
+        @file_put_contents($configFile, json_encode($configData, JSON_PRETTY_PRINT));
+    }
 }
 
 // GET Method: Fetch current configuration (sanitize password hash)

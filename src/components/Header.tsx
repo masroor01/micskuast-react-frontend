@@ -37,7 +37,7 @@ const Header: React.FC = () => {
           />
           <div>
             <span className="logo-text" style={{ display: 'block', fontWeight: 800, color: 'var(--color-primary)', fontSize: '1.2rem', lineHeight: 1.1 }}>
-              <EditableLabel labelKey="header_brand_name" defaultValue="MIC SKUAST" />
+              <EditableLabel labelKey="header_brand_name" defaultValue="MIC SKUAST-K" />
             </span>
             <span className="logo-subtext" style={{ display: 'block', fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600, lineHeight: 1.1 }}>
               <EditableLabel labelKey="header_brand_sub" defaultValue="Market Intelligence Cell" />

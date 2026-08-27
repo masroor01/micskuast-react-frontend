@@ -1153,4 +1153,16 @@ a {
   border-color: var(--color-primary-light) !important;
 }
 
+.skuast-affiliation-banner:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary-light) !important;
+  box-shadow: var(--shadow-md), 0 0 12px var(--color-primary-pale) !important;
+}
+
+.hadp-project-banner-card:hover {
+  transform: scale(1.01);
+  border-style: solid !important;
+  box-shadow: var(--shadow-md), 0 0 15px var(--color-primary-pale) !important;
+}
+
 

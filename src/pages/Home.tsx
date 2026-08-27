@@ -236,6 +236,36 @@ const Home: React.FC = () => {
         }} />
 
         <div className="container">
+          {/* SKUAST-Kashmir Institutional Affiliation Header Banner */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2.5rem' }}>
+            <div className="skuast-affiliation-banner" style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.85rem',
+              background: 'var(--color-surface)',
+              border: '1px solid var(--color-border)',
+              padding: '0.65rem 1.6rem',
+              borderRadius: '100px',
+              boxShadow: 'var(--shadow-sm)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+              transition: 'all 0.3s ease'
+            }}>
+              <img src="/logos/skuast.png" alt="SKUAST-K Logo" style={{ height: '34px', objectFit: 'contain' }} />
+              <div style={{ width: '1px', height: '22px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
+              <span style={{
+                fontSize: '0.9rem',
+                fontWeight: 800,
+                color: 'var(--color-text)',
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+                fontFamily: "'Montserrat', sans-serif"
+              }}>
+                SKUAST-Kashmir
+              </span>
+            </div>
+          </div>
+
           {/* Logo Row - Modern Glassmorphic Pill */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
             <div className="hero-logo-pill" style={{
@@ -262,17 +292,47 @@ const Home: React.FC = () => {
           </div>
 
           {/* Heading and Subtitle */}
-          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3.5rem' }}>
+          <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3.5rem' }}>
             <h1 className="hero-gradient-title" style={{
                 fontSize: 'clamp(36px, 5.5vw, 54px)',
                 fontWeight: 900,
                 letterSpacing: '-0.03em',
                 lineHeight: '1.15',
-                marginBottom: '1rem',
+                marginBottom: '1.25rem',
                 fontFamily: "'Plus Jakarta Sans', sans-serif"
             }}>
               {heroTitle}
             </h1>
+            
+            {/* HADP Project Banner */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+              <div className="hadp-project-banner-card" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.85rem',
+                background: 'var(--color-primary-pale)',
+                border: '1px dashed var(--color-primary)',
+                padding: '0.6rem 1.5rem',
+                borderRadius: '12px',
+                boxShadow: 'var(--shadow-sm)',
+                transition: 'all 0.3s ease',
+                maxWidth: '100%'
+              }}>
+                <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '30px', objectFit: 'contain' }} />
+                <div style={{ width: '1.5px', height: '22px', backgroundColor: 'var(--color-primary-light)', opacity: 0.5 }} />
+                <span style={{
+                  fontSize: 'clamp(13px, 1.8vw, 14px)',
+                  fontWeight: 600,
+                  color: 'var(--color-primary)',
+                  textAlign: 'left',
+                  lineHeight: 1.45,
+                  fontFamily: "'Montserrat', sans-serif"
+                }}>
+                  Falls under <strong style={{ fontWeight: 800 }}>HADP-04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir</strong>
+                </span>
+              </div>
+            </div>
+
             <p style={{
                 fontSize: 'clamp(15px, 2.2vw, 18px)',
                 fontWeight: 500,
