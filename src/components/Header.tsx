@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, Sun, Moon, Coffee, Info } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const [theme, setTheme] = useState<'light' | 'dark' | 'warm'>(() => {
     return (localStorage.getItem('site_theme') as any) || 'light';
@@ -21,8 +23,30 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="header-wrapper">
-      <div className="container header-container">
+    <>
+      {isHomePage && (
+        <div className="skuast-top-bar" style={{
+          background: 'var(--color-primary)',
+          color: '#ffffff',
+          fontSize: 'clamp(9px, 1.8vw, 11px)',
+          fontWeight: 700,
+          letterSpacing: '0.05em',
+          padding: '8px 0',
+          borderBottom: '1px solid rgba(255,255,255,0.1)',
+          fontFamily: "'Montserrat', sans-serif",
+          textAlign: 'center',
+          width: '100%',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
+        }}>
+          <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+            <img src="/logos/skuast.png" alt="SKUAST-K Logo" style={{ height: '22px', width: '22px', objectFit: 'contain', background: '#fff', borderRadius: '50%', padding: '1px' }} />
+            <span>SHER-E-KASHMIR UNIVERSITY OF AGRICULTURAL SCIENCES & TECHNOLOGY OF KASHMIR (SKUAST-K)</span>
+          </div>
+        </div>
+      )}
+
+      <header className="header-wrapper">
+        <div className="container header-container">
         {/* Logo Section */}
         <NavLink to="/" className="logo-section" onClick={() => setMobileOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
           <img 
@@ -293,6 +317,7 @@ const Header: React.FC = () => {
         </div>
       )}
     </header>
+  </>
   );
 };
 

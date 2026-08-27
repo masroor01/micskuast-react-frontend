@@ -235,38 +235,7 @@ const Home: React.FC = () => {
           pointerEvents: 'none'
         }} />
 
-        <div className="container">
-          {/* SKUAST-Kashmir Institutional Affiliation Header Banner */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2.5rem' }}>
-            <div className="skuast-affiliation-banner" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '1rem',
-              background: 'var(--color-surface)',
-              border: '1px solid var(--color-border)',
-              padding: '0.65rem 1.8rem',
-              borderRadius: '100px',
-              boxShadow: 'var(--shadow-sm)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              transition: 'all 0.3s ease',
-              maxWidth: '95%'
-            }}>
-              <img src="/logos/skuast.png" alt="SKUAST-K Logo" style={{ height: '48px', objectFit: 'contain' }} />
-              <div style={{ width: '1px', height: '28px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
-              <span style={{
-                fontSize: 'clamp(11px, 2vw, 13px)',
-                fontWeight: 800,
-                color: 'var(--color-text)',
-                letterSpacing: '0.03em',
-                textTransform: 'uppercase',
-                fontFamily: "'Montserrat', sans-serif",
-                lineHeight: 1.2
-              }}>
-                Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir
-              </span>
-            </div>
-          </div>
+        <div className="container" style={{ paddingTop: '2.5rem' }}>
 
           {/* Logo Row - Modern Glassmorphic Pill */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
