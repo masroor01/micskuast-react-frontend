@@ -309,7 +309,6 @@ const Home: React.FC = () => {
               <div className="hadp-project-banner-card" style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.85rem',
                 background: 'var(--color-primary-pale)',
                 border: '1px dashed var(--color-primary)',
                 padding: '0.6rem 1.5rem',
@@ -318,17 +317,15 @@ const Home: React.FC = () => {
                 transition: 'all 0.3s ease',
                 maxWidth: '100%'
               }}>
-                <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '30px', objectFit: 'contain' }} />
-                <div style={{ width: '1.5px', height: '22px', backgroundColor: 'var(--color-primary-light)', opacity: 0.5 }} />
                 <span style={{
                   fontSize: 'clamp(13px, 1.8vw, 14px)',
-                  fontWeight: 600,
+                  fontWeight: 800,
                   color: 'var(--color-primary)',
-                  textAlign: 'left',
+                  textAlign: 'center',
                   lineHeight: 1.45,
                   fontFamily: "'Montserrat', sans-serif"
                 }}>
-                  Falls under <strong style={{ fontWeight: 800 }}>HADP-04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir</strong>
+                  HADP-04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir
                 </span>
               </div>
             </div>
