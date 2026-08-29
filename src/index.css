@@ -1565,38 +1565,26 @@ a {
 
 .home-page {
   position: relative;
-  background-color: var(--color-bg);
+  background-color: transparent;
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(22, 163, 74, 0.08) 0px, transparent 40%),
-    radial-gradient(circle at 90% 30%, rgba(217, 119, 6, 0.06) 0px, transparent 35%),
-    radial-gradient(circle at 15% 65%, rgba(16, 185, 129, 0.07) 0px, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(22, 163, 74, 0.08) 0px, transparent 40%),
-    linear-gradient(rgba(22, 163, 74, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(22, 163, 74, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    linear-gradient(rgba(22, 163, 74, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 163, 74, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px;
   overflow-x: hidden;
 }
 
 [data-theme='dark'] .home-page {
-  background-color: #06150c;
+  background-color: transparent;
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(34, 197, 94, 0.14) 0px, transparent 40%),
-    radial-gradient(circle at 90% 30%, rgba(245, 158, 11, 0.09) 0px, transparent 35%),
-    radial-gradient(circle at 15% 65%, rgba(16, 185, 129, 0.12) 0px, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(34, 197, 94, 0.14) 0px, transparent 40%),
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 [data-theme='warm'] .home-page {
-  background-color: #fbf8f0;
+  background-color: transparent;
   background-image: 
-    radial-gradient(circle at 10% 10%, rgba(20, 83, 45, 0.07) 0px, transparent 40%),
-    radial-gradient(circle at 90% 30%, rgba(217, 119, 6, 0.07) 0px, transparent 35%),
-    radial-gradient(circle at 15% 65%, rgba(22, 101, 52, 0.06) 0px, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(20, 83, 45, 0.07) 0px, transparent 40%),
-    linear-gradient(rgba(20, 83, 45, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(20, 83, 45, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(20, 83, 45, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 83, 45, 0.03) 1px, transparent 1px);
 }
 
 .sp-intel-grid {
