@@ -1221,22 +1221,24 @@ a {
 
 /* Main Dark / High-Contrast Corporate Navigation */
 .sp-header-bar {
-  background: #111827;
+  background: #0f381e;
   color: #ffffff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease;
 }
 
 [data-theme='dark'] .sp-header-bar {
-  background: #0b0f17;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: #061c10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 [data-theme='warm'] .sp-header-bar {
-  background: #1e293b;
+  background: #143522;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sp-nav-container {
@@ -1264,7 +1266,7 @@ a {
 
 .sp-brand-subtitle {
   font-size: 0.72rem;
-  color: #9ca3af;
+  color: #a7f3d0;
   font-weight: 500;
   letter-spacing: 0.02em;
   display: block;
@@ -1279,7 +1281,7 @@ a {
 }
 
 .sp-nav-item {
-  color: #d1d5db;
+  color: #d1fae5;
   text-decoration: none;
   font-size: 0.88rem;
   font-weight: 600;
@@ -1294,11 +1296,11 @@ a {
 
 .sp-nav-item:hover, .sp-nav-item.active {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .sp-cta-btn {
-  background: #dc2626;
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
   color: #ffffff !important;
   font-weight: 700;
   font-size: 0.85rem;
@@ -1311,32 +1313,33 @@ a {
   transition: all 0.25s ease;
   white-space: nowrap;
   letter-spacing: 0.01em;
-  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(22, 163, 74, 0.35);
 }
 
 .sp-cta-btn:hover {
-  background: #b91c1c;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.45);
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.5);
 }
 
-/* S&P Global Cinematic Hero Section */
+/* S&P Global Style Market Intelligence Hero Section */
 .sp-hero-wrapper {
   position: relative;
-  min-height: 480px;
-  background: #0b1120;
+  min-height: 500px;
+  background: #062012;
   background-image: 
-    radial-gradient(at 100% 0%, rgba(21, 128, 61, 0.25) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(220, 38, 38, 0.15) 0px, transparent 50%),
-    linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(11, 17, 32, 0.92) 100%),
-    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80');
+    radial-gradient(at 100% 0%, rgba(34, 197, 94, 0.3) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(217, 119, 6, 0.18) 0px, transparent 50%),
+    linear-gradient(135deg, rgba(6, 28, 16, 0.92) 0%, rgba(10, 42, 24, 0.88) 100%),
+    url('https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?auto=format&fit=crop&w=2000&q=80');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #ffffff;
   display: flex;
   align-items: center;
-  padding: 4.5rem 0 4rem;
+  padding: 5rem 0 4.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
@@ -1344,8 +1347,8 @@ a {
 .sp-hero-grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
 }
@@ -1355,12 +1358,17 @@ a {
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #6ee7b7;
+  color: #86efac;
   margin-bottom: 1.25rem;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   font-family: 'Montserrat', sans-serif;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 12px;
+  border-radius: 50px;
+  width: fit-content;
 }
 
 .sp-hero-title {
@@ -1369,18 +1377,20 @@ a {
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: #ffffff;
-  max-width: 860px;
+  max-width: 880px;
   margin-bottom: 1.25rem;
   font-family: 'Montserrat', sans-serif;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .sp-hero-subtitle {
   font-size: clamp(15px, 1.8vw, 18px);
-  color: #cbd5e1;
-  max-width: 720px;
+  color: #d1fae5;
+  max-width: 760px;
   line-height: 1.6;
   margin-bottom: 2.25rem;
   font-weight: 400;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .sp-hero-actions {
@@ -1390,8 +1400,8 @@ a {
   flex-wrap: wrap;
 }
 
-.sp-hero-btn-red {
-  background: #dc2626;
+.sp-hero-btn-primary {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
   color: #ffffff !important;
   font-weight: 700;
   font-size: 0.95rem;
@@ -1402,17 +1412,18 @@ a {
   align-items: center;
   gap: 0.6rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.4);
 }
 
-.sp-hero-btn-red:hover {
-  background: #b91c1c;
+.sp-hero-btn-primary:hover {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+  box-shadow: 0 6px 22px rgba(22, 163, 74, 0.55);
 }
 
 .sp-hero-btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff !important;
   font-weight: 600;
   font-size: 0.95rem;
@@ -1422,14 +1433,14 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
   transition: all 0.25s ease;
 }
 
 .sp-hero-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
 }
 

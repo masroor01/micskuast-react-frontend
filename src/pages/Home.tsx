@@ -228,7 +228,7 @@ const Home: React.FC = () => {
           </p>
 
           <div className="sp-hero-actions">
-            <NavLink to="/forecasts" className="sp-hero-btn-red">
+            <NavLink to="/forecasts" className="sp-hero-btn-primary">
               <TrendingUp size={18} />
               <span>Explore Live Forecasts</span>
             </NavLink>
