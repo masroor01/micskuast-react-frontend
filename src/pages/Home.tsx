@@ -206,9 +206,24 @@ const Home: React.FC = () => {
       <section className="sp-hero-wrapper">
         <div className="sp-hero-grid-overlay" />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="sp-hero-eyebrow">
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
-            SKUAST-K | HADP-04 AGRICULTURAL MARKET INTELLIGENCE
+          <div className="sp-hero-eyebrow" style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            background: 'rgba(16, 185, 129, 0.14)',
+            border: '1px solid rgba(16, 185, 129, 0.35)',
+            padding: '6px 14px',
+            borderRadius: '50px',
+            color: '#86efac',
+            fontSize: 'clamp(11px, 1.8vw, 13px)',
+            fontWeight: 700,
+            letterSpacing: '0.03em',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)'
+          }}>
+            <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '22px', objectFit: 'contain' }} />
+            <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(134, 239, 172, 0.35)' }} />
+            <span>HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir</span>
           </div>
 
           <h1 className="sp-hero-title">
