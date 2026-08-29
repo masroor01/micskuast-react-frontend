@@ -1173,24 +1173,118 @@ a {
 .sp-utility-strip {
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
-  padding: 6px 0;
+  padding: 8px 0;
   font-size: 0.8rem;
   color: var(--color-text-muted);
   font-family: 'Montserrat', sans-serif;
   transition: var(--transition-smooth);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .sp-utility-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .sp-utility-left, .sp-utility-right {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+}
+
+.sp-utility-institution-lockup {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sp-university-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--color-text-main);
+  transition: var(--transition-smooth);
+}
+
+.sp-univ-logo {
+  height: 22px;
+  width: 22px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+}
+
+.sp-univ-name {
+  font-size: 0.84rem;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  color: var(--color-text-main);
+  line-height: 1.2;
+}
+
+.sp-university-link:hover .sp-univ-name {
+  color: var(--color-primary);
+}
+
+.sp-univ-ext-icon {
+  opacity: 0.5;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.sp-university-link:hover .sp-univ-ext-icon {
+  opacity: 1;
+  color: var(--color-primary);
+  transform: translate(1px, -1px);
+}
+
+.sp-hadp-subtitle-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  padding-left: 1px;
+  flex-wrap: wrap;
+}
+
+.sp-hadp-logo {
+  height: 16px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.sp-hadp-pill {
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.14) 0%, rgba(16, 185, 129, 0.08) 100%);
+  color: var(--color-primary);
+  border: 1px solid rgba(22, 163, 74, 0.28);
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.70rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+[data-theme="dark"] .sp-hadp-pill {
+  background: rgba(34, 197, 94, 0.18);
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.35);
+}
+
+.sp-hadp-text {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.sp-hadp-mic-tag {
+  color: var(--color-primary);
+  font-weight: 750;
+  font-size: 0.75rem;
 }
 
 .sp-utility-item {

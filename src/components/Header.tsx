@@ -25,31 +25,42 @@ const Header: React.FC = () => {
       {/* Tier 1: S&P Global Style Top Utility Bar */}
       <div className="sp-utility-strip">
         <div className="container sp-utility-container">
-          <div className="sp-utility-left" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
-            <a 
-              href="https://skuastkashmir.ac.in" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="sp-utility-item"
-              title="Official SKUAST-K Website"
-              style={{ fontWeight: 700 }}
-            >
-              <img 
-                src="/logos/skuast.png" 
-                alt="SKUAST-K Seal" 
-                style={{ height: '20px', width: '20px', objectFit: 'contain' }} 
-              />
-              <span className="university-full-title" style={{ fontSize: '0.82rem', fontWeight: 700 }}>
-                Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir
-              </span>
-              <ExternalLink size={11} style={{ opacity: 0.6 }} />
-            </a>
+          <div className="sp-utility-left">
+            <div className="sp-utility-institution-lockup">
+              {/* Top Row: University Crest + Name */}
+              <a 
+                href="https://skuastkashmir.ac.in" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="sp-university-link"
+                title="Official SKUAST-K Website"
+              >
+                <img 
+                  src="/logos/skuast.png" 
+                  alt="SKUAST-K Seal" 
+                  className="sp-univ-logo"
+                />
+                <span className="sp-univ-name">
+                  Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir
+                </span>
+                <ExternalLink size={12} className="sp-univ-ext-icon" />
+              </a>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', paddingLeft: '24px', fontSize: '0.74rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
-              <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '14px', width: 'auto', objectFit: 'contain' }} />
-              <span style={{ color: 'var(--color-text-muted)' }}>
-                HADP-04: Strengthening Agricultural Marketting in UT of Jammu and Kashmir
-              </span>
+              {/* Bottom Row: HADP Badge & Project Statement */}
+              <div className="sp-hadp-subtitle-bar">
+                <img 
+                  src="/logos/hadp.png" 
+                  alt="HADP Logo" 
+                  className="sp-hadp-logo"
+                />
+                <span className="sp-hadp-pill">HADP #04</span>
+                <span className="sp-hadp-text">
+                  Strengthening Agricultural Marketing in UT of Jammu and Kashmir
+                </span>
+                <span className="sp-hadp-mic-tag">
+                  (Market Intelligence Cell)
+                </span>
+              </div>
             </div>
           </div>
 
