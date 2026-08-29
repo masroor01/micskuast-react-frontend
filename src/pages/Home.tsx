@@ -327,28 +327,50 @@ const Home: React.FC = () => {
         )}
       </div>
 
-      {/* S&P Global Style "Recommended for You" Intelligence Section */}
+      {/* Unified Agricultural Market Intelligence Core Architecture Section */}
       <section className="section-padding" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem', borderBottom: '1px solid var(--color-border)', background: 'transparent' }}>
         <div className="container">
-          <div className="sp-section-heading">
-            <span>Recommended for You</span>
-            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-text-muted)' }}>
-              Core Intelligence & Analytical Engines
+          <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3rem' }}>
+            <span style={{ 
+              color: 'var(--color-primary)', 
+              fontSize: '0.82rem', 
+              fontWeight: 800, 
+              letterSpacing: '0.2em', 
+              textTransform: 'uppercase',
+              backgroundColor: 'var(--color-primary-pale)',
+              padding: '4px 14px',
+              borderRadius: '50px',
+              display: 'inline-block',
+              marginBottom: '0.85rem',
+              border: '1px solid rgba(22, 163, 74, 0.2)'
+            }}>
+              <EditableLabel labelKey="home_infographic_badge" defaultValue="Core Architecture & Solutions" />
             </span>
+            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 34px)', fontWeight: 800, marginBottom: '0.85rem', color: 'var(--color-text-main)' }}>
+              <EditableLabel labelKey="home_infographic_title" defaultValue="How Agri-Intelligence Empowers Decisions" />
+            </h2>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6', margin: 0, fontSize: '0.95rem' }}>
+              <EditableLabel 
+                labelKey="home_infographic_desc" 
+                defaultValue="Integrating deep learning neural networks, real-time APMC mandi streams, and early warning anomaly radars into actionable decision tools." 
+              />
+            </p>
           </div>
 
           <div className="sp-intel-grid">
             {/* Card 1: AI Forecast Engine */}
             <NavLink to="/forecasts" className="sp-intel-card">
               <div>
-                <span className="sp-card-tag">AI & Machine Learning</span>
-                <h3 className="sp-card-headline">Apple Price Forecast Engine 2026–27</h3>
+                <span className="sp-card-tag">AI & Neural Networks</span>
+                <h3 className="sp-card-headline">Apple & Cherry Price Forecasting</h3>
                 <p className="sp-card-summary">
-                  Query deep-learning LSTM models to forecast daily wholesale Mandi prices for commercial apple varieties.
+                  Query deep-learning LSTM recurrent models trained on 19 years of daily wholesale arrivals to forecast future mandi price realizations.
                 </p>
               </div>
               <div className="sp-card-footer">
-                <span>LSTM Recurrent Models</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <Brain size={15} /> LSTM Models
+                </span>
                 <span style={{ color: '#16a34a' }}>94.6% Accuracy →</span>
               </div>
             </NavLink>
@@ -356,14 +378,16 @@ const Home: React.FC = () => {
             {/* Card 2: EWS / Risk Radar */}
             <NavLink to="/ews" className="sp-intel-card">
               <div>
-                <span className="sp-card-tag" style={{ color: '#dc2626' }}>Risk & Early Warning</span>
-                <h3 className="sp-card-headline">Cherry Market Volatility Assessment</h3>
+                <span className="sp-card-tag" style={{ color: '#dc2626' }}>Anomaly Detection & Risk</span>
+                <h3 className="sp-card-headline">Early Warning Volatility Radar</h3>
                 <p className="sp-card-summary">
-                  Real-time price anomaly models tracking market volatility parameters, supply chain bottlenecks, and seasonal shocks.
+                  Running automated variance and standard deviation monitors flagging volume anomalies and warning of sudden price shocks.
                 </p>
               </div>
               <div className="sp-card-footer">
-                <span>Volatility Radar</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#dc2626' }}>
+                  <Bell size={15} /> Statistical Alarms
+                </span>
                 <span style={{ color: '#dc2626' }}>Active Alerts →</span>
               </div>
             </NavLink>
@@ -371,14 +395,16 @@ const Home: React.FC = () => {
             {/* Card 3: Mandi Terminals */}
             <NavLink to="/markets" className="sp-intel-card">
               <div>
-                <span className="sp-card-tag" style={{ color: '#2563eb' }}>APMC Wholesale Mandis</span>
-                <h3 className="sp-card-headline">Live Mandi Terminal Arrivals</h3>
+                <span className="sp-card-tag" style={{ color: '#2563eb' }}>Data Ingestion Pipeline</span>
+                <h3 className="sp-card-headline">Live APMC Mandi Terminal Sync</h3>
                 <p className="sp-card-summary">
-                  Track daily arrivals, transaction volume, demand-supply indices across Srinagar, Shopian, Jammu, and Azadpur.
+                  Continuous data ingestion of wholesale arrivals, transaction volume, grade-wise realizations, and interstate trade across 15+ terminals.
                 </p>
               </div>
               <div className="sp-card-footer">
-                <span>15+ APMC Terminals</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#2563eb' }}>
+                  <Landmark size={15} /> 15+ Terminals
+                </span>
                 <span style={{ color: '#2563eb' }}>Real-Time Sync →</span>
               </div>
             </NavLink>
@@ -386,15 +412,17 @@ const Home: React.FC = () => {
             {/* Card 4: Publications Library */}
             <NavLink to="/publications" className="sp-intel-card">
               <div>
-                <span className="sp-card-tag" style={{ color: '#7c3aed' }}>Research & Policy</span>
-                <h3 className="sp-card-headline">Horticulture Intelligence Bulletins</h3>
+                <span className="sp-card-tag" style={{ color: '#7c3aed' }}>Policy & Decision Support</span>
+                <h3 className="sp-card-headline">HADP Strategic Outreach & Reports</h3>
                 <p className="sp-card-summary">
-                  Browse SKUAST weekly bulletins, policy textbooks, HADP research papers, and commodity price compendiums.
+                  Structuring regional commodity outlook reports, policy compendiums, and peer-reviewed research for farmers and planners.
                 </p>
               </div>
               <div className="sp-card-footer">
-                <span>Peer-Reviewed Data</span>
-                <span style={{ color: '#7c3aed' }}>View Repository →</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#7c3aed' }}>
+                  <Award size={15} /> HADP Project 04
+                </span>
+                <span style={{ color: '#7c3aed' }}>View Reports →</span>
               </div>
             </NavLink>
           </div>
@@ -455,131 +483,6 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* Dynamic AI/ML Tech Infographic Section */}
-      <section className="section-padding" style={{ borderBottom: '1px solid var(--color-border)', backgroundColor: 'transparent' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 3.5rem' }}>
-            <span style={{ 
-              color: 'var(--color-primary)', 
-              fontSize: '0.85rem', 
-              fontWeight: 800, 
-              letterSpacing: '0.25em', 
-              textTransform: 'uppercase',
-              backgroundColor: 'var(--color-primary-pale)',
-              padding: '4px 12px',
-              borderRadius: '50px',
-              display: 'inline-block',
-              marginBottom: '1rem'
-            }}>
-              <EditableLabel labelKey="home_infographic_badge" defaultValue="Core Architecture" />
-            </span>
-            <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '1.15rem', color: 'var(--color-text-main)' }}>
-              <EditableLabel labelKey="home_infographic_title" defaultValue="How Agri-Intelligence Empowers Decisions" />
-            </h2>
-            <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6', margin: 0 }}>
-              <EditableLabel 
-                labelKey="home_infographic_desc" 
-                defaultValue="Integrating deep learning networks and statistical anomaly alarms to transform raw agricultural transactions into actionable forecasts." 
-              />
-            </p>
-          </div>
-
-          <div className="about-grid" style={{ marginTop: 0 }}>
-            {/* Card 1: Data Ingestion */}
-            <div className="tech-card data-ingestion">
-              <div className="tech-card-header">
-                <span className="tech-card-badge">
-                  <EditableLabel labelKey="home_info_card1_badge" defaultValue="Data Ingestion" />
-                </span>
-                <h3 className="tech-card-title">
-                  <EditableLabel labelKey="home_info_card1_title" defaultValue="Mandi Log Pipeline" />
-                </h3>
-                <p className="tech-card-desc">
-                  <EditableLabel labelKey="home_info_card1_desc" defaultValue="Extracting wholesale arrivals, transaction volumes, and daily price sheets dynamically from national APMC databases." />
-                </p>
-              </div>
-              <div className="tech-card-footer">
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                  <Landmark size={16} /> <EditableLabel labelKey="home_info_card1_footer_lbl" defaultValue="Streamer" />
-                </span>
-                <span className="tech-card-metric">
-                  <EditableLabel labelKey="home_info_card1_footer_metric" defaultValue="Real-Time Data" />
-                </span>
-              </div>
-            </div>
-
-            {/* Card 2: Deep Learning LSTM Engine */}
-            <div className="tech-card neural-networks">
-              <div className="tech-card-header">
-                <span className="tech-card-badge">
-                  <EditableLabel labelKey="home_info_card2_badge" defaultValue="Neural Networks" />
-                </span>
-                <h3 className="tech-card-title">
-                  <EditableLabel labelKey="home_info_card2_title" defaultValue="AI Price Forecasting" />
-                </h3>
-                <p className="tech-card-desc">
-                  <EditableLabel labelKey="home_info_card2_desc" defaultValue="Processing historical time-series with Recurrent Neural Networks (RNN) to forecast daily wholesale cherry and apple prices." />
-                </p>
-              </div>
-              <div className="tech-card-footer">
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                  <Brain size={16} /> <EditableLabel labelKey="home_info_card2_footer_lbl" defaultValue="AI Predictive Core" />
-                </span>
-                <span className="tech-card-metric">
-                  <EditableLabel labelKey="home_info_card2_footer_metric" defaultValue="94.6% Accuracy" />
-                </span>
-              </div>
-            </div>
-
-            {/* Card 3: Anomaly Signals (EWS) */}
-            <div className="tech-card alerts-core">
-              <div className="tech-card-header">
-                <span className="tech-card-badge">
-                  <EditableLabel labelKey="home_info_card3_badge" defaultValue="Alerts Core" />
-                </span>
-                <h3 className="tech-card-title">
-                  <EditableLabel labelKey="home_info_card3_title" defaultValue="Early Warning System" />
-                </h3>
-                <p className="tech-card-desc">
-                  <EditableLabel labelKey="home_info_card3_desc" defaultValue="Running automated variance and standard deviation monitors flagging volume anomalies and warning of sudden price shocks." />
-                </p>
-              </div>
-              <div className="tech-card-footer">
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                  <Bell size={16} /> <EditableLabel labelKey="home_info_card3_footer_lbl" defaultValue="Statistical Alarms" />
-                </span>
-                <span className="tech-card-metric">
-                  <EditableLabel labelKey="home_info_card3_footer_metric" defaultValue="Variance Matrix" />
-                </span>
-              </div>
-            </div>
-
-            {/* Card 4: Agri-Policy Decisions */}
-            <div className="tech-card decision-support">
-              <div className="tech-card-header">
-                <span className="tech-card-badge">
-                  <EditableLabel labelKey="home_info_card4_badge" defaultValue="Decision Support" />
-                </span>
-                <h3 className="tech-card-title">
-                  <EditableLabel labelKey="home_info_card4_title" defaultValue="HADP Strategic Outreach" />
-                </h3>
-                <p className="tech-card-desc">
-                  <EditableLabel labelKey="home_info_card4_desc" defaultValue="Structuring regional Outlook Reports and strategic indices to support J&K horticulture farmers and policy planners." />
-                </p>
-              </div>
-              <div className="tech-card-footer">
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
-                  <Award size={16} /> <EditableLabel labelKey="home_info_card4_footer_lbl" defaultValue="HADP Project 04" />
-                </span>
-                <span className="tech-card-metric">
-                  <EditableLabel labelKey="home_info_card4_footer_metric" defaultValue="Actionable Intel" />
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
