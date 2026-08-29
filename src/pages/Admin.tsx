@@ -373,7 +373,13 @@ const Admin: React.FC = () => {
       body: JSON.stringify({ password, action: 'verify' })
     })
     .then(async res => {
-      const data = await res.json();
+      let data: any = {};
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error('Server returned an invalid response. Please ensure public_html/api/config.php is uploaded to Hostinger.');
+      }
+
       if (res.ok) {
         sessionStorage.setItem('admin_authenticated', 'true');
         sessionStorage.setItem('admin_password', password);
@@ -381,14 +387,11 @@ const Admin: React.FC = () => {
         window.dispatchEvent(new Event('config-updated'));
         // Load secure data
         fetch('/api/config.php')
-          .then(r => {
-            if (!r.ok) throw new Error();
-            return r.json();
-          })
+          .then(r => r.json())
           .then(d => setConfig(sanitizeConfigData(d)))
           .catch(e => console.error("Failed to fetch fresh config:", e));
       } else {
-        setAuthError(data.error || 'Authentication failed');
+        setAuthError(data.error || 'Authentication failed. Please verify your password.');
       }
     })
     .catch((err) => {
