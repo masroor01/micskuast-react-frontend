@@ -1,8 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw, TrendingUp, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw, TrendingUp, AlertTriangle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
- 
+
+export interface HeroSlide {
+  id: number;
+  eyebrow: string;
+  show_hadp_logo?: boolean;
+  title: string;
+  subtitle: string;
+  btn_primary_text: string;
+  btn_primary_link: string;
+  btn_secondary_text: string;
+  btn_secondary_link: string;
+  bg_image: string;
+}
+
+const defaultHeroSlides: HeroSlide[] = [
+  {
+    id: 1,
+    eyebrow: "HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir",
+    show_hadp_logo: true,
+    title: "AI-Powered Price Forecasting & Decision Intelligence",
+    subtitle: "Forecasting daily wholesale Mandi prices for Apple and Cherry with Deep Learning LSTM models to guide harvesting, storage, and market dispatch.",
+    btn_primary_text: "Explore Live Forecasts",
+    btn_primary_link: "/forecasts",
+    btn_secondary_text: "View EWS Reports",
+    btn_secondary_link: "/ews",
+    bg_image: "https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?auto=format&fit=crop&w=2000&q=80"
+  },
+  {
+    id: 2,
+    eyebrow: "HADP-04: Market Stability & Early Warning Systems",
+    show_hadp_logo: true,
+    title: "Early Warning Systems & Price Volatility Risk Radar",
+    subtitle: "Monitoring market volatility parameters, supply chain shocks, and abnormal price movements across regional and national trading corridors.",
+    btn_primary_text: "View EWS Reports",
+    btn_primary_link: "/ews",
+    btn_secondary_text: "Market Stability Report",
+    btn_secondary_link: "https://micskuast.in/reports/cherry_stability_20260212_1244/MIC_Cherry_Stability_Report_Text_IFRAME.html",
+    bg_image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=2000&q=80"
+  },
+  {
+    id: 3,
+    eyebrow: "HADP-04: Digital Agricultural Trade Infrastructure",
+    show_hadp_logo: true,
+    title: "Live APMC Mandi Arrival Logs & Real-Time Sync",
+    subtitle: "Tracking daily arrivals, transaction volume, grade-wise realizations, and interstate commodity trade across 15+ wholesale terminal markets.",
+    btn_primary_text: "Explore APMC Markets",
+    btn_primary_link: "/markets",
+    btn_secondary_text: "Price Realizations",
+    btn_secondary_link: "/forecasts",
+    bg_image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=2000&q=80"
+  },
+  {
+    id: 4,
+    eyebrow: "HADP-04: Research, Policy & Scientific Impact",
+    show_hadp_logo: true,
+    title: "Horticulture Intelligence Bulletins & Policy Reports",
+    subtitle: "Access peer-reviewed SKUAST research publications, HADP project bulletins, and actionable market intelligence outlooks.",
+    btn_primary_text: "Browse Publications",
+    btn_primary_link: "/publications",
+    btn_secondary_text: "Our Research Team",
+    btn_secondary_link: "/team",
+    bg_image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2000&q=80"
+  }
+];
+
 const defaultTeam = [
   {
     name: "Prof. F. A. Shaheen",
@@ -55,14 +119,10 @@ const defaultTeam = [
 ];
 
 const Home: React.FC = () => {
-  const [heroTitle, setHeroTitle] = useState('We deliver unrivaled agricultural market insights and leading data and AI solutions');
-  const [heroSubtitle, setHeroSubtitle] = useState('Empowering Farmers, Policy Makers, and Traders across Jammu & Kashmir with Deep Learning Price Forecasts, Mandi Terminals Sync & Real-Time Early Warning Signals.');
-  const [announcement, setAnnouncement] = useState({
-    tag: 'New Release',
-    stability: '92.4%',
-    message: 'Technical Report: Cherry Market Stability Assessment (MIC, 2026) is now published.',
-    link: 'https://micskuast.in/reports/cherry_stability_20260212_1244/MIC_Cherry_Stability_Report_Text_IFRAME.html'
-  });
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(defaultHeroSlides);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
   const [tickerItems, setTickerItems] = useState<string[]>([
     "🍎 AI-powered Apple Price Forecasts for the 2026–27 marketing season are now LIVE on MIC — providing 7-day and 30-day price forecasts across major wholesale markets of Jammu & Kashmir for informed harvesting, storage and marketing decisions.",
     "📈 NEW REPORT (July 23, 2026): 2026 Cherry Model Performance Review is now live — forecast accuracy across 13 market/grade combinations with an overall prediction accuracy of 81.7%.",
@@ -75,17 +135,33 @@ const Home: React.FC = () => {
   const [teamMembers, setTeamMembers] = useState<any[]>([]);
   const [isTeamLoading, setIsTeamLoading] = useState(true);
 
+  // Auto-advance carousel timer (5 seconds)
+  useEffect(() => {
+    if (heroSlides.length <= 1 || isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroSlides.length, isPaused]);
+
+  const handlePrevSlide = () => {
+    setCurrentSlide(prev => (prev - 1 + heroSlides.length) % heroSlides.length);
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide(prev => (prev + 1) % heroSlides.length);
+  };
+
   useEffect(() => {
     // 1. Try to load from localStorage cache first
     const cachedConfigStr = localStorage.getItem('micskuast_config');
-    let hasLoadedFromCache = false;
     if (cachedConfigStr) {
       try {
         const cachedData = JSON.parse(cachedConfigStr);
-        if (cachedData && cachedData.hero_title) {
-          setHeroTitle(cachedData.hero_title);
-          setHeroSubtitle(cachedData.hero_subtitle);
-          if (cachedData.announcement) setAnnouncement(cachedData.announcement);
+        if (cachedData) {
+          if (cachedData.hero_slides && cachedData.hero_slides.length > 0) {
+            setHeroSlides(cachedData.hero_slides);
+          }
           if (cachedData.ticker_items && cachedData.ticker_items.length > 0) setTickerItems(cachedData.ticker_items);
           if (cachedData.team) {
             setTeamMembers(cachedData.team);
@@ -93,7 +169,6 @@ const Home: React.FC = () => {
             setTeamMembers(defaultTeam);
           }
           setIsTeamLoading(false);
-          hasLoadedFromCache = true;
         }
       } catch (e) {
         console.error("Failed to parse cached config:", e);
@@ -104,79 +179,35 @@ const Home: React.FC = () => {
     fetch('/api/config.php')
       .then(res => res.json())
       .then(data => {
-        if (data && data.hero_title) {
+        if (data) {
           // Update localStorage cache
           localStorage.setItem('micskuast_config', JSON.stringify(data));
           
-          // Update state with fresh server data
-          setHeroTitle(data.hero_title);
-          setHeroSubtitle(data.hero_subtitle);
-          if (data.announcement) setAnnouncement(data.announcement);
+          if (data.hero_slides && data.hero_slides.length > 0) {
+            setHeroSlides(data.hero_slides);
+          }
           if (data.ticker_items && data.ticker_items.length > 0) setTickerItems(data.ticker_items);
           if (data.team) {
             setTeamMembers(data.team);
           } else {
             setTeamMembers(defaultTeam);
           }
-        } else {
-          if (!hasLoadedFromCache) setTeamMembers(defaultTeam);
         }
-        setIsTeamLoading(false);
       })
       .catch(err => {
-        console.log("No custom config loaded, using default site copy", err);
-        if (!hasLoadedFromCache) {
-          setTeamMembers(defaultTeam);
-          setIsTeamLoading(false);
-        }
+        console.warn("Could not fetch site config from server, using cached/fallback values:", err);
+      })
+      .finally(() => {
+        setIsTeamLoading(false);
       });
   }, []);
  
   return (
-    <div className="home-dashboard-wrapper animate-fade-in">
-      {/* Premium Redesigned Announcement Banner Card */}
-      <div className="announcement-banner-wrapper">
-        <div className="announcement-card">
-          <div className="announcement-left">
-            {/* React style infographic: Custom SVG Sparkline */}
-            <div className="announcement-graphic" style={{ display: 'flex', alignItems: 'center' }}>
-              <svg width="48" height="24" viewBox="0 0 48 24" fill="none" style={{ opacity: 0.95, marginRight: '0.5rem' }}>
-                <path d="M2 18 L10 14 L18 19 L26 9 L34 12 L46 3" stroke="var(--color-primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="46" cy="3" r="3" fill="var(--color-primary-light)" />
-                <path d="M2 18 L10 14 L18 19 L26 9 L34 12 L46 3 L46 22 L2 22 Z" fill="url(#sparkline-grad-ann)" opacity="0.12" />
-                <defs>
-                  <linearGradient id="sparkline-grad-ann" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--color-primary)" />
-                    <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <div className="announcement-text" style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                <span className="announcement-tag">{announcement.tag}</span>
-                <span className="announcement-metric-tag">{announcement.stability}</span>
-              </div>
-              <span className="announcement-msg">
-                {announcement.message}
-              </span>
-            </div>
-          </div>
-          <a 
-            href={announcement.link} 
-            target="_blank" 
-            rel="noreferrer" 
-            className="announcement-action-btn"
-          >
-            Click Here →
-          </a>
-        </div>
-      </div>
- 
-      {/* Smooth CSS-driven React Marquee Ticker */}
+    <div className="home-page animate-fade-in">
+      {/* Dynamic News Ticker Banner */}
       <div className="react-marquee-container">
         <div className="react-marquee-label">
-          <span className="live-dot"></span>
+          <span className="live-dot animate-pulse"></span>
           <span>MIC UPDATE</span>
         </div>
         
@@ -189,8 +220,6 @@ const Home: React.FC = () => {
               </React.Fragment>
             ))}
           </div>
-          
-          {/* Doubled track content for seamless continuous looping */}
           <div className="react-marquee-content" aria-hidden="true">
             {tickerItems.map((item, idx) => (
               <React.Fragment key={`double-${idx}`}>
@@ -202,59 +231,112 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* S&P Global Style Full-Width Cinematic Hero Section */}
-      <section className="sp-hero-wrapper">
-        <div className="sp-hero-grid-overlay" />
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="sp-hero-eyebrow" style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            background: 'rgba(16, 185, 129, 0.14)',
-            border: '1px solid rgba(16, 185, 129, 0.35)',
-            padding: '6px 14px',
-            borderRadius: '50px',
-            color: '#86efac',
-            fontSize: 'clamp(11px, 1.8vw, 13px)',
-            fontWeight: 700,
-            letterSpacing: '0.03em',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)'
-          }}>
-            <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '22px', objectFit: 'contain' }} />
-            <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(134, 239, 172, 0.35)' }} />
-            <span>HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir</span>
+      {/* S&P Global Style Dynamic Hero Image Carousel */}
+      <div 
+        className="sp-hero-carousel-container"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {heroSlides.map((slide, idx) => (
+          <div 
+            key={slide.id || idx}
+            className={`sp-hero-slide ${idx === currentSlide ? 'active' : ''}`}
+            style={{
+              backgroundImage: `url('${slide.bg_image || "https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?auto=format&fit=crop&w=2000&q=80"}')`
+            }}
+          >
+            <div className="sp-hero-slide-overlay" />
+            <div className="sp-hero-grid-overlay" />
+            
+            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+              {/* Slide Eyebrow Badge */}
+              <div className="sp-hero-eyebrow">
+                {slide.show_hadp_logo !== false && (
+                  <>
+                    <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '22px', objectFit: 'contain' }} />
+                    <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(134, 239, 172, 0.35)' }} />
+                  </>
+                )}
+                <span>{slide.eyebrow}</span>
+              </div>
+
+              {/* Slide Title */}
+              <h1 className="sp-hero-title">
+                {slide.title}
+              </h1>
+
+              {/* Slide Subtitle */}
+              <p className="sp-hero-subtitle">
+                {slide.subtitle}
+              </p>
+
+              {/* Slide CTA Buttons */}
+              <div className="sp-hero-actions">
+                {slide.btn_primary_link.startsWith('http') ? (
+                  <a href={slide.btn_primary_link} target="_blank" rel="noopener noreferrer" className="sp-hero-btn-primary">
+                    <TrendingUp size={18} />
+                    <span>{slide.btn_primary_text || "Explore Live Forecasts"}</span>
+                  </a>
+                ) : (
+                  <NavLink to={slide.btn_primary_link || "/forecasts"} className="sp-hero-btn-primary">
+                    <TrendingUp size={18} />
+                    <span>{slide.btn_primary_text || "Explore Live Forecasts"}</span>
+                  </NavLink>
+                )}
+
+                {slide.btn_secondary_link && (
+                  slide.btn_secondary_link.startsWith('http') ? (
+                    <a href={slide.btn_secondary_link} target="_blank" rel="noopener noreferrer" className="sp-hero-btn-secondary">
+                      <AlertTriangle size={18} />
+                      <span>{slide.btn_secondary_text || "View EWS Reports"}</span>
+                    </a>
+                  ) : (
+                    <NavLink to={slide.btn_secondary_link} className="sp-hero-btn-secondary">
+                      <AlertTriangle size={18} />
+                      <span>{slide.btn_secondary_text || "View EWS Reports"}</span>
+                    </NavLink>
+                  )
+                )}
+              </div>
+            </div>
           </div>
+        ))}
 
-          <h1 className="sp-hero-title">
-            <EditableLabel 
-              labelKey="home_hero_title" 
-              defaultValue={heroTitle} 
-              style={{ color: '#ffffff' }}
-            />
-          </h1>
+        {/* Carousel Navigation Arrow Controls */}
+        {heroSlides.length > 1 && (
+          <>
+            <button 
+              className="sp-carousel-arrow prev"
+              onClick={handlePrevSlide}
+              aria-label="Previous Slide"
+              title="Previous Slide"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button 
+              className="sp-carousel-arrow next"
+              onClick={handleNextSlide}
+              aria-label="Next Slide"
+              title="Next Slide"
+            >
+              <ChevronRight size={24} />
+            </button>
 
-          <p className="sp-hero-subtitle">
-            <EditableLabel 
-              labelKey="home_hero_subtitle" 
-              defaultValue={heroSubtitle} 
-              style={{ color: '#cbd5e1' }}
-            />
-          </p>
-
-          <div className="sp-hero-actions">
-            <NavLink to="/forecasts" className="sp-hero-btn-primary">
-              <TrendingUp size={18} />
-              <span>Explore Live Forecasts</span>
-            </NavLink>
-
-            <NavLink to="/ews" className="sp-hero-btn-secondary">
-              <AlertTriangle size={18} />
-              <span>View EWS Reports</span>
-            </NavLink>
-          </div>
-        </div>
-      </section>
+            {/* Carousel Dot Indicators */}
+            <div className="sp-carousel-indicators">
+              {heroSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`sp-carousel-dot ${idx === currentSlide ? 'active' : ''}`}
+                  onClick={() => setCurrentSlide(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  title={`Slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
 
       {/* S&P Global Style "Recommended for You" Intelligence Section */}
       <section className="section-padding" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem', borderBottom: '1px solid var(--color-border)', background: 'var(--color-bg)' }}>

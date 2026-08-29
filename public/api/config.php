@@ -14,11 +14,62 @@ $configFile = __DIR__ . '/config.json';
 $defaultPasswordHash = password_hash('mic_skuast_2026', PASSWORD_DEFAULT);
 
 // Load or create default configurations
-if (!file_exists($configFile)) {
+    $defaultHeroSlides = [
+        [
+            "id" => 1,
+            "eyebrow" => "HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir",
+            "show_hadp_logo" => true,
+            "title" => "AI-Powered Price Forecasting & Decision Intelligence",
+            "subtitle" => "Forecasting daily wholesale Mandi prices for Apple and Cherry with Deep Learning LSTM models to guide harvesting, storage, and market dispatch.",
+            "btn_primary_text" => "Explore Live Forecasts",
+            "btn_primary_link" => "/forecasts",
+            "btn_secondary_text" => "View EWS Reports",
+            "btn_secondary_link" => "/ews",
+            "bg_image" => "https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?auto=format&fit=crop&w=2000&q=80"
+        ],
+        [
+            "id" => 2,
+            "eyebrow" => "HADP-04: Market Stability & Early Warning Systems",
+            "show_hadp_logo" => true,
+            "title" => "Early Warning Systems & Price Volatility Risk Radar",
+            "subtitle" => "Monitoring market volatility parameters, supply chain shocks, and abnormal price movements across regional and national trading corridors.",
+            "btn_primary_text" => "View EWS Reports",
+            "btn_primary_link" => "/ews",
+            "btn_secondary_text" => "Market Stability Report",
+            "btn_secondary_link" => "https://micskuast.in/reports/cherry_stability_20260212_1244/MIC_Cherry_Stability_Report_Text_IFRAME.html",
+            "bg_image" => "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=2000&q=80"
+        ],
+        [
+            "id" => 3,
+            "eyebrow" => "HADP-04: Digital Agricultural Trade Infrastructure",
+            "show_hadp_logo" => true,
+            "title" => "Live APMC Mandi Arrival Logs & Real-Time Sync",
+            "subtitle" => "Tracking daily arrivals, transaction volume, grade-wise realizations, and interstate commodity trade across 15+ wholesale terminal markets.",
+            "btn_primary_text" => "Explore APMC Markets",
+            "btn_primary_link" => "/markets",
+            "btn_secondary_text" => "Price Realizations",
+            "btn_secondary_link" => "/forecasts",
+            "bg_image" => "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=2000&q=80"
+        ],
+        [
+            "id" => 4,
+            "eyebrow" => "HADP-04: Research, Policy & Scientific Impact",
+            "show_hadp_logo" => true,
+            "title" => "Horticulture Intelligence Bulletins & Policy Reports",
+            "subtitle" => "Access peer-reviewed SKUAST research publications, HADP project bulletins, and actionable market intelligence outlooks.",
+            "btn_primary_text" => "Browse Publications",
+            "btn_primary_link" => "/publications",
+            "btn_secondary_text" => "Our Research Team",
+            "btn_secondary_link" => "/team",
+            "bg_image" => "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2000&q=80"
+        ]
+    ];
+
     $defaultConfig = [
         "password_hash" => $defaultPasswordHash,
-        "hero_title" => "Market Intelligence Cell",
-        "hero_subtitle" => "Empowering Agri-Decisions with Data Driven Insights",
+        "hero_title" => "AI-Powered Price Forecasting & Decision Intelligence",
+        "hero_subtitle" => "Forecasting daily wholesale Mandi prices for Apple and Cherry with Deep Learning LSTM models to guide harvesting, storage, and market dispatch.",
+        "hero_slides" => $defaultHeroSlides,
         "ticker_items" => [
             "🍎 AI-powered Apple Price Forecasts for the 2026–27 marketing season are now LIVE on MIC — providing 7-day and 30-day price forecasts across major wholesale markets of Jammu & Kashmir.",
             "🍒 Cherry Market Stability Assessment (MIC, 2026) report has been released. Check out the latest guidelines.",
@@ -124,9 +175,21 @@ if (!file_exists($configFile)) {
 $configData = [];
 if (file_exists($configFile)) {
     $configData = json_decode(@file_get_contents($configFile), true) ?? [];
+    $needsUpdate = false;
+
     // Migration: Change MIC SKUAST label to MIC SKUAST-K
     if (isset($configData['labels']['header_brand_name']) && $configData['labels']['header_brand_name'] === 'MIC SKUAST') {
         $configData['labels']['header_brand_name'] = 'MIC SKUAST-K';
+        $needsUpdate = true;
+    }
+
+    // Migration: Initialize hero_slides if missing or empty
+    if (!isset($configData['hero_slides']) || empty($configData['hero_slides'])) {
+        $configData['hero_slides'] = $defaultHeroSlides;
+        $needsUpdate = true;
+    }
+
+    if ($needsUpdate) {
         @file_put_contents($configFile, json_encode($configData, JSON_PRETTY_PRINT));
     }
 }

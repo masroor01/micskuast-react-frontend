@@ -1323,25 +1323,45 @@ a {
   box-shadow: 0 4px 16px rgba(22, 163, 74, 0.5);
 }
 
-/* S&P Global Style Market Intelligence Hero Section */
-.sp-hero-wrapper {
+/* S&P Global Style Market Intelligence Hero Carousel */
+.sp-hero-carousel-container {
   position: relative;
-  min-height: 500px;
+  min-height: 520px;
   background: #062012;
-  background-image: 
-    radial-gradient(at 100% 0%, rgba(34, 197, 94, 0.3) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(217, 119, 6, 0.18) 0px, transparent 50%),
-    linear-gradient(135deg, rgba(6, 28, 16, 0.92) 0%, rgba(10, 42, 24, 0.88) 100%),
-    url('https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?auto=format&fit=crop&w=2000&q=80');
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sp-hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s ease, visibility 0.7s ease;
+  transform: scale(1.02);
+  display: flex;
+  align-items: center;
+  padding: 5rem 0 4.5rem;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: #ffffff;
-  display: flex;
-  align-items: center;
-  padding: 5rem 0 4.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
+}
+
+.sp-hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.sp-hero-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(6, 28, 16, 0.93) 0%, rgba(10, 42, 24, 0.88) 100%),
+              radial-gradient(at 100% 0%, rgba(34, 197, 94, 0.28) 0px, transparent 50%),
+              radial-gradient(at 0% 100%, rgba(217, 119, 6, 0.15) 0px, transparent 50%);
+  pointer-events: none;
 }
 
 .sp-hero-grid-overlay {
@@ -1364,17 +1384,19 @@ a {
   align-items: center;
   gap: 0.6rem;
   font-family: 'Montserrat', sans-serif;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 4px 12px;
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 5px 14px;
   border-radius: 50px;
   width: fit-content;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .sp-hero-title {
-  font-size: clamp(32px, 4.5vw, 50px);
+  font-size: clamp(30px, 4.2vw, 48px);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.18;
   letter-spacing: -0.02em;
   color: #ffffff;
   max-width: 880px;
@@ -1384,7 +1406,7 @@ a {
 }
 
 .sp-hero-subtitle {
-  font-size: clamp(15px, 1.8vw, 18px);
+  font-size: clamp(15px, 1.8vw, 17px);
   color: #d1fae5;
   max-width: 760px;
   line-height: 1.6;
@@ -1404,8 +1426,8 @@ a {
   background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
   color: #ffffff !important;
   font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.85rem 2rem;
+  font-size: 0.92rem;
+  padding: 0.85rem 1.85rem;
   border-radius: 4px;
   text-decoration: none;
   display: inline-flex;
@@ -1426,8 +1448,8 @@ a {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff !important;
   font-weight: 600;
-  font-size: 0.95rem;
-  padding: 0.85rem 1.8rem;
+  font-size: 0.92rem;
+  padding: 0.85rem 1.75rem;
   border-radius: 4px;
   text-decoration: none;
   display: inline-flex;
@@ -1435,6 +1457,7 @@ a {
   gap: 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: all 0.25s ease;
 }
 
@@ -1442,6 +1465,83 @@ a {
   background: rgba(255, 255, 255, 0.22);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
+}
+
+/* Carousel Arrow Controls */
+.sp-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(6, 28, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+}
+
+.sp-carousel-arrow:hover {
+  background: #16a34a;
+  border-color: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.5);
+}
+
+.sp-carousel-arrow.prev {
+  left: 24px;
+}
+
+.sp-carousel-arrow.next {
+  right: 24px;
+}
+
+/* Carousel Indicators */
+.sp-carousel-indicators {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.sp-carousel-dot {
+  width: 12px;
+  height: 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sp-carousel-dot.active {
+  width: 32px;
+  background: #22c55e;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
+}
+
+@media (max-width: 768px) {
+  .sp-carousel-arrow {
+    display: none;
+  }
 }
 
 /* S&P Global "Recommended for You" Intelligence Section */

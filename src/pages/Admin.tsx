@@ -20,9 +20,23 @@ interface TeamMember {
   category: 'pi' | 'yp';
 }
 
+interface HeroSlide {
+  id: number;
+  eyebrow: string;
+  show_hadp_logo?: boolean;
+  title: string;
+  subtitle: string;
+  btn_primary_text: string;
+  btn_primary_link: string;
+  btn_secondary_text: string;
+  btn_secondary_link: string;
+  bg_image: string;
+}
+
 interface SiteConfig {
   hero_title: string;
   hero_subtitle: string;
+  hero_slides?: HeroSlide[];
   ticker_items: string[];
   announcement: {
     tag: string;
@@ -34,6 +48,57 @@ interface SiteConfig {
   labels?: Record<string, string>;
   team?: TeamMember[];
 }
+
+const defaultHeroSlides: HeroSlide[] = [
+  {
+    id: 1,
+    eyebrow: "HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir",
+    show_hadp_logo: true,
+    title: "AI-Powered Price Forecasting & Decision Intelligence",
+    subtitle: "Forecasting daily wholesale Mandi prices for Apple and Cherry with Deep Learning LSTM models to guide harvesting, storage, and market dispatch.",
+    btn_primary_text: "Explore Live Forecasts",
+    btn_primary_link: "/forecasts",
+    btn_secondary_text: "View EWS Reports",
+    btn_secondary_link: "/ews",
+    bg_image: "https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?auto=format&fit=crop&w=2000&q=80"
+  },
+  {
+    id: 2,
+    eyebrow: "HADP-04: Market Stability & Early Warning Systems",
+    show_hadp_logo: true,
+    title: "Early Warning Systems & Price Volatility Risk Radar",
+    subtitle: "Monitoring market volatility parameters, supply chain shocks, and abnormal price movements across regional and national trading corridors.",
+    btn_primary_text: "View EWS Reports",
+    btn_primary_link: "/ews",
+    btn_secondary_text: "Market Stability Report",
+    btn_secondary_link: "https://micskuast.in/reports/cherry_stability_20260212_1244/MIC_Cherry_Stability_Report_Text_IFRAME.html",
+    bg_image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=2000&q=80"
+  },
+  {
+    id: 3,
+    eyebrow: "HADP-04: Digital Agricultural Trade Infrastructure",
+    show_hadp_logo: true,
+    title: "Live APMC Mandi Arrival Logs & Real-Time Sync",
+    subtitle: "Tracking daily arrivals, transaction volume, grade-wise realizations, and interstate commodity trade across 15+ wholesale terminal markets.",
+    btn_primary_text: "Explore APMC Markets",
+    btn_primary_link: "/markets",
+    btn_secondary_text: "Price Realizations",
+    btn_secondary_link: "/forecasts",
+    bg_image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=2000&q=80"
+  },
+  {
+    id: 4,
+    eyebrow: "HADP-04: Research, Policy & Scientific Impact",
+    show_hadp_logo: true,
+    title: "Horticulture Intelligence Bulletins & Policy Reports",
+    subtitle: "Access peer-reviewed SKUAST research publications, HADP project bulletins, and actionable market intelligence outlooks.",
+    btn_primary_text: "Browse Publications",
+    btn_primary_link: "/publications",
+    btn_secondary_text: "Our Research Team",
+    btn_secondary_link: "/team",
+    bg_image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2000&q=80"
+  }
+];
 
 const defaultLabels: Record<string, string> = {
   header_brand_name: 'MIC SKUAST-K',
@@ -211,7 +276,7 @@ const Admin: React.FC = () => {
     }, 0);
   };
   
-  const [activeTab, setActiveTab] = useState<'home' | 'labels' | 'publications' | 'security' | 'team'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'slides' | 'labels' | 'publications' | 'security' | 'team'>('home');
   const [config, setConfig] = useState<SiteConfig | null>(null);
   
   const [editingLabelKey, setEditingLabelKey] = useState<string | null>(null);
@@ -221,6 +286,20 @@ const Admin: React.FC = () => {
   const [saveStatus, setSaveStatus] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const [uploadStatus, setUploadStatus] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   
+  // Hero slide states
+  const [slideEditId, setSlideEditId] = useState<number | null>(null);
+  const [slideEyebrow, setSlideEyebrow] = useState('HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir');
+  const [slideShowHadpLogo, setSlideShowHadpLogo] = useState(true);
+  const [slideTitle, setSlideTitle] = useState('');
+  const [slideSubtitle, setSlideSubtitle] = useState('');
+  const [slideBtnPrimaryText, setSlideBtnPrimaryText] = useState('Explore Live Forecasts');
+  const [slideBtnPrimaryLink, setSlideBtnPrimaryLink] = useState('/forecasts');
+  const [slideBtnSecondaryText, setSlideBtnSecondaryText] = useState('View EWS Reports');
+  const [slideBtnSecondaryLink, setSlideBtnSecondaryLink] = useState('/ews');
+  const [slideBgImage, setSlideBgImage] = useState('');
+  const [uploadedSlideBgUrl, setUploadedSlideBgUrl] = useState('');
+  const [slideUploadStatus, setSlideUploadStatus] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+
   // Add/Edit publication states
   const [pubEditId, setPubEditId] = useState<number | null>(null);
   const [pubTitle, setPubTitle] = useState('');
@@ -255,6 +334,9 @@ const Admin: React.FC = () => {
     }
     if (!data.team) {
       data.team = [ ...defaultTeam ];
+    }
+    if (!data.hero_slides || data.hero_slides.length === 0) {
+      data.hero_slides = [ ...defaultHeroSlides ];
     }
     return data as SiteConfig;
   };
@@ -577,6 +659,131 @@ const Admin: React.FC = () => {
     saveConfig(updatedConfig);
   };
 
+  // Handle Slide Background Upload
+  const handleSlideBgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fileList = e.target.files;
+    if (!fileList || fileList.length === 0) return;
+
+    const file = fileList[0];
+    const formData = new FormData();
+    formData.append('password', password);
+    formData.append('action', 'upload_file');
+    formData.append('file', file);
+
+    setSlideUploadStatus(null);
+    fetch('/api/config.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(async res => {
+      const data = await res.json();
+      if (res.ok) {
+        setUploadedSlideBgUrl(data.url);
+        setSlideBgImage('');
+        setSlideUploadStatus({ type: 'success', text: `Uploaded successfully: ${file.name}` });
+      } else {
+        setSlideUploadStatus({ type: 'error', text: data.error || 'Upload failed' });
+      }
+    })
+    .catch(() => {
+      setSlideUploadStatus({ type: 'error', text: 'Connection error during upload' });
+    });
+  };
+
+  const handleSaveSlide = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!config) return;
+    const currentSlides = config.hero_slides ? [...config.hero_slides] : [...defaultHeroSlides];
+    const finalBg = uploadedSlideBgUrl || slideBgImage || "https://images.unsplash.com/photo-1592982537447-6f2a6a0c7c18?auto=format&fit=crop&w=2000&q=80";
+
+    if (slideEditId !== null) {
+      const updated = currentSlides.map(s => s.id === slideEditId ? {
+        ...s,
+        eyebrow: slideEyebrow,
+        show_hadp_logo: slideShowHadpLogo,
+        title: slideTitle,
+        subtitle: slideSubtitle,
+        btn_primary_text: slideBtnPrimaryText,
+        btn_primary_link: slideBtnPrimaryLink,
+        btn_secondary_text: slideBtnSecondaryText,
+        btn_secondary_link: slideBtnSecondaryLink,
+        bg_image: finalBg
+      } : s);
+      const updatedConfig = { ...config, hero_slides: updated };
+      saveConfig(updatedConfig);
+    } else {
+      const newSlide: HeroSlide = {
+        id: Date.now(),
+        eyebrow: slideEyebrow,
+        show_hadp_logo: slideShowHadpLogo,
+        title: slideTitle,
+        subtitle: slideSubtitle,
+        btn_primary_text: slideBtnPrimaryText,
+        btn_primary_link: slideBtnPrimaryLink,
+        btn_secondary_text: slideBtnSecondaryText,
+        btn_secondary_link: slideBtnSecondaryLink,
+        bg_image: finalBg
+      };
+      const updatedConfig = { ...config, hero_slides: [...currentSlides, newSlide] };
+      saveConfig(updatedConfig);
+    }
+
+    setSlideEditId(null);
+    setSlideEyebrow('HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir');
+    setSlideShowHadpLogo(true);
+    setSlideTitle('');
+    setSlideSubtitle('');
+    setSlideBtnPrimaryText('Explore Live Forecasts');
+    setSlideBtnPrimaryLink('/forecasts');
+    setSlideBtnSecondaryText('View EWS Reports');
+    setSlideBtnSecondaryLink('/ews');
+    setSlideBgImage('');
+    setUploadedSlideBgUrl('');
+    setSlideUploadStatus(null);
+  };
+
+  const handleEditSlide = (slide: HeroSlide) => {
+    setSlideEditId(slide.id);
+    setSlideEyebrow(slide.eyebrow);
+    setSlideShowHadpLogo(slide.show_hadp_logo !== false);
+    setSlideTitle(slide.title);
+    setSlideSubtitle(slide.subtitle);
+    setSlideBtnPrimaryText(slide.btn_primary_text || 'Explore Live Forecasts');
+    setSlideBtnPrimaryLink(slide.btn_primary_link || '/forecasts');
+    setSlideBtnSecondaryText(slide.btn_secondary_text || 'View EWS Reports');
+    setSlideBtnSecondaryLink(slide.btn_secondary_link || '/ews');
+    setSlideBgImage(slide.bg_image);
+    setUploadedSlideBgUrl('');
+    setSlideUploadStatus(null);
+    window.scrollTo({ top: 350, behavior: 'smooth' });
+  };
+
+  const handleDeleteSlide = (id: number) => {
+    if (!config || !window.confirm("Are you sure you want to delete this carousel slide?")) return;
+    const currentSlides = config.hero_slides ? [...config.hero_slides] : [...defaultHeroSlides];
+    if (currentSlides.length <= 1) {
+      alert("At least one slide must remain in the hero carousel.");
+      return;
+    }
+    const updated = currentSlides.filter(s => s.id !== id);
+    const updatedConfig = { ...config, hero_slides: updated };
+    saveConfig(updatedConfig);
+  };
+
+  const moveSlide = (index: number, direction: 'up' | 'down') => {
+    if (!config) return;
+    const currentSlides = config.hero_slides ? [...config.hero_slides] : [...defaultHeroSlides];
+    const swapIndex = direction === 'up' ? index - 1 : index + 1;
+    if (swapIndex < 0 || swapIndex >= currentSlides.length) return;
+
+    const temp = currentSlides[index];
+    currentSlides[index] = currentSlides[swapIndex];
+    currentSlides[swapIndex] = temp;
+
+    const updatedConfig = { ...config, hero_slides: currentSlides };
+    saveConfig(updatedConfig);
+  };
+
   // Change Admin Password
   const handlePasswordChange = (e: React.FormEvent) => {
     e.preventDefault();
@@ -755,6 +962,12 @@ const Admin: React.FC = () => {
           ⚙️ Homepage Settings
         </button>
         <button
+          onClick={() => setActiveTab('slides')}
+          className={`market-tab-btn ${activeTab === 'slides' ? 'active' : ''}`}
+        >
+          🎠 Hero Carousel Slides
+        </button>
+        <button
           onClick={() => setActiveTab('publications')}
           className={`market-tab-btn ${activeTab === 'publications' ? 'active' : ''}`}
         >
@@ -902,6 +1115,313 @@ const Admin: React.FC = () => {
             </button>
           </div>
         </form>
+      )}
+
+      {/* TAB: Hero Carousel Slides Manager */}
+      {activeTab === 'slides' && config && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '2rem' }}>
+          {/* Left Column: Form Editor */}
+          <div style={{ background: '#fff', padding: '2.25rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)', height: 'fit-content' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              {slideEditId !== null ? '✏️ Edit Carousel Slide' : '➕ Add New Carousel Slide'}
+            </h3>
+
+            <form onSubmit={handleSaveSlide} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Eyebrow Badge Text
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={slideEyebrow}
+                  onChange={e => setSlideEyebrow(e.target.value)}
+                  placeholder="e.g. HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir"
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <input
+                  type="checkbox"
+                  id="slideShowHadpLogo"
+                  checked={slideShowHadpLogo}
+                  onChange={e => setSlideShowHadpLogo(e.target.checked)}
+                  style={{ width: '16px', height: '16px', accentColor: 'var(--color-primary)' }}
+                />
+                <label htmlFor="slideShowHadpLogo" style={{ fontSize: '0.85rem', fontWeight: 600, cursor: 'pointer' }}>
+                  Display Official HADP Logo in Eyebrow
+                </label>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Slide Headline / Title
+                </label>
+                <textarea
+                  required
+                  rows={2}
+                  value={slideTitle}
+                  onChange={e => setSlideTitle(e.target.value)}
+                  placeholder="e.g. AI-Powered Price Forecasting & Decision Intelligence"
+                  className="form-input"
+                  style={{ width: '100%', resize: 'vertical' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Slide Subtitle / Description
+                </label>
+                <textarea
+                  required
+                  rows={3}
+                  value={slideSubtitle}
+                  onChange={e => setSlideSubtitle(e.target.value)}
+                  placeholder="Detailed description of what this feature or data system does..."
+                  className="form-input"
+                  style={{ width: '100%', resize: 'vertical' }}
+                />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                    Primary Button Text
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={slideBtnPrimaryText}
+                    onChange={e => setSlideBtnPrimaryText(e.target.value)}
+                    placeholder="Explore Live Forecasts"
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                    Primary Button Link
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={slideBtnPrimaryLink}
+                    onChange={e => setSlideBtnPrimaryLink(e.target.value)}
+                    placeholder="/forecasts"
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                    Secondary Button Text (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={slideBtnSecondaryText}
+                    onChange={e => setSlideBtnSecondaryText(e.target.value)}
+                    placeholder="View EWS Reports"
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                    Secondary Button Link (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={slideBtnSecondaryLink}
+                    onChange={e => setSlideBtnSecondaryLink(e.target.value)}
+                    placeholder="/ews"
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+
+              {/* Background Image Upload / Direct URL */}
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Background Image
+                </label>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  <input
+                    type="text"
+                    value={uploadedSlideBgUrl || slideBgImage}
+                    onChange={e => {
+                      setSlideBgImage(e.target.value);
+                      setUploadedSlideBgUrl('');
+                    }}
+                    placeholder="Paste Image URL (e.g. Unsplash or server path)..."
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <label className="btn" style={{ fontSize: '0.75rem', padding: '6px 12px', cursor: 'pointer', background: 'var(--color-surface)', border: '1px solid var(--color-border)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                      <Upload size={14} /> Upload Custom Background
+                      <input 
+                        type="file" 
+                        accept="image/*" 
+                        onChange={handleSlideBgUpload} 
+                        style={{ display: 'none' }} 
+                      />
+                    </label>
+                    {uploadedSlideBgUrl && (
+                      <span style={{ fontSize: '0.75rem', color: '#15803d', fontWeight: 600 }}>
+                        ✓ Custom photo uploaded
+                      </span>
+                    )}
+                  </div>
+
+                  {slideUploadStatus && (
+                    <div style={{ fontSize: '0.75rem', color: slideUploadStatus.type === 'success' ? '#15803d' : '#b91c1c' }}>
+                      {slideUploadStatus.text}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem' }}>
+                <button type="submit" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center', fontWeight: 700 }}>
+                  <Save size={16} /> {slideEditId !== null ? 'Update Slide' : 'Add Slide to Carousel'}
+                </button>
+                {slideEditId !== null && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSlideEditId(null);
+                      setSlideEyebrow('HADP-04: Strengthening Market Intelligence in UT of Jammu and Kashmir');
+                      setSlideShowHadpLogo(true);
+                      setSlideTitle('');
+                      setSlideSubtitle('');
+                      setSlideBtnPrimaryText('Explore Live Forecasts');
+                      setSlideBtnPrimaryLink('/forecasts');
+                      setSlideBtnSecondaryText('View EWS Reports');
+                      setSlideBtnSecondaryLink('/ews');
+                      setSlideBgImage('');
+                      setUploadedSlideBgUrl('');
+                      setSlideUploadStatus(null);
+                    }}
+                    className="btn"
+                    style={{ background: '#f3f4f6', color: '#374151' }}
+                  >
+                    Cancel
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+
+          {/* Right Column: Slide List & Live Previews */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h3 style={{ margin: 0, color: 'var(--color-primary)' }}>
+                Active Carousel Slides ({config.hero_slides ? config.hero_slides.length : defaultHeroSlides.length})
+              </h3>
+            </div>
+
+            {(config.hero_slides || defaultHeroSlides).map((slide, idx) => (
+              <div 
+                key={slide.id || idx}
+                style={{
+                  background: '#fff',
+                  borderRadius: '12px',
+                  border: slideEditId === slide.id ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
+                  boxShadow: 'var(--shadow-sm)',
+                  overflow: 'hidden',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {/* Slide Preview Header */}
+                <div style={{
+                  position: 'relative',
+                  height: '110px',
+                  backgroundImage: `linear-gradient(135deg, rgba(6, 28, 16, 0.85), rgba(10, 42, 24, 0.75)), url('${slide.bg_image}')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  padding: '1rem',
+                  color: '#fff',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.72rem', background: 'rgba(16, 185, 129, 0.25)', border: '1px solid rgba(16, 185, 129, 0.4)', padding: '2px 8px', borderRadius: '20px', color: '#86efac', fontWeight: 700 }}>
+                      Slide #{idx + 1}
+                    </span>
+                    <div style={{ display: 'flex', gap: '0.25rem' }}>
+                      <button
+                        type="button"
+                        title="Move Slide Up"
+                        onClick={() => moveSlide(idx, 'up')}
+                        disabled={idx === 0}
+                        style={{ background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: '4px', padding: '4px 6px', cursor: idx === 0 ? 'not-allowed' : 'pointer', opacity: idx === 0 ? 0.4 : 1 }}
+                      >
+                        <ArrowUp size={14} />
+                      </button>
+                      <button
+                        type="button"
+                        title="Move Slide Down"
+                        onClick={() => moveSlide(idx, 'down')}
+                        disabled={idx === (config.hero_slides || defaultHeroSlides).length - 1}
+                        style={{ background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: '4px', padding: '4px 6px', cursor: idx === (config.hero_slides || defaultHeroSlides).length - 1 ? 'not-allowed' : 'pointer', opacity: idx === (config.hero_slides || defaultHeroSlides).length - 1 ? 0.4 : 1 }}
+                      >
+                        <ArrowDown size={14} />
+                      </button>
+                    </div>
+                  </div>
+                  <div style={{ fontWeight: 800, fontSize: '0.95rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {slide.title}
+                  </div>
+                </div>
+
+                {/* Slide Details */}
+                <div style={{ padding: '1.25rem' }}>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)', margin: '0 0 1rem 0', lineHeight: 1.5 }}>
+                    {slide.subtitle}
+                  </p>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem', fontSize: '0.75rem' }}>
+                    <span style={{ background: '#f0fdf4', color: '#15803d', padding: '3px 8px', borderRadius: '4px', border: '1px solid #bbf7d0', fontWeight: 600 }}>
+                      Primary: {slide.btn_primary_text} ({slide.btn_primary_link})
+                    </span>
+                    {slide.btn_secondary_text && (
+                      <span style={{ background: '#f3f4f6', color: '#374151', padding: '3px 8px', borderRadius: '4px', border: '1px solid #e5e7eb', fontWeight: 600 }}>
+                        Secondary: {slide.btn_secondary_text} ({slide.btn_secondary_link})
+                      </span>
+                    )}
+                  </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', borderTop: '1px solid var(--color-border)', paddingTop: '0.75rem' }}>
+                    <button
+                      type="button"
+                      onClick={() => handleEditSlide(slide)}
+                      className="btn"
+                      style={{ fontSize: '0.75rem', padding: '4px 10px', gap: '0.25rem' }}
+                    >
+                      <Edit size={13} /> Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteSlide(slide.id)}
+                      className="btn"
+                      style={{ fontSize: '0.75rem', padding: '4px 10px', color: '#c62828', borderColor: '#ffcdd2', gap: '0.25rem' }}
+                    >
+                      <Trash2 size={13} /> Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
 
       {/* TAB 2: Publications Manager */}
