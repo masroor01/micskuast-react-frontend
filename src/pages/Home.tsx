@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw } from 'lucide-react';
+import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw, TrendingUp, AlertTriangle } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
  
 const defaultTeam = [
@@ -55,8 +55,8 @@ const defaultTeam = [
 ];
 
 const Home: React.FC = () => {
-  const [heroTitle, setHeroTitle] = useState('Market Intelligence Cell');
-  const [heroSubtitle, setHeroSubtitle] = useState('Empowering Agri-Decisions with Data Driven Insights');
+  const [heroTitle, setHeroTitle] = useState('We deliver unrivaled agricultural market insights and leading data and AI solutions');
+  const [heroSubtitle, setHeroSubtitle] = useState('Empowering Farmers, Policy Makers, and Traders across Jammu & Kashmir with Deep Learning Price Forecasts, Mandi Terminals Sync & Real-Time Early Warning Signals.');
   const [announcement, setAnnouncement] = useState({
     tag: 'New Release',
     stability: '92.4%',
@@ -202,212 +202,115 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Redesigned Premium Hero Section */}
-      <section className="section-padding" style={{ 
-        background: 'radial-gradient(circle at 50% 0%, var(--color-primary-pale) 0%, transparent 100%)', 
-        borderBottom: '1px solid var(--color-border)',
-        paddingTop: '5rem',
-        paddingBottom: '5rem',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        {/* Subtle decorative background shapes */}
-        <div style={{
-          position: 'absolute',
-          top: '-10%',
-          right: '-5%',
-          width: '400px',
-          height: '400px',
-          background: 'rgba(27, 110, 46, 0.03)',
-          borderRadius: '50%',
-          filter: 'blur(80px)',
-          pointerEvents: 'none'
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '-10%',
-          left: '-5%',
-          width: '300px',
-          height: '300px',
-          background: 'rgba(230, 126, 34, 0.02)',
-          borderRadius: '50%',
-          filter: 'blur(60px)',
-          pointerEvents: 'none'
-        }} />
-
-        <div className="container" style={{ paddingTop: '2.5rem' }}>
-
-          {/* Logo Row - Modern Glassmorphic Pill */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
-            <div className="hero-logo-pill" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '2.25rem',
-              background: 'var(--color-surface)',
-              border: '1px solid var(--color-border)',
-              padding: '0.65rem 2.5rem',
-              borderRadius: '100px',
-              boxShadow: 'var(--shadow-sm)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              transition: 'all 0.3s ease'
-            }}>
-              <img src="/logos/mic.png" alt="MIC Logo" style={{ height: '70px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.04))' }} />
-              <div style={{ width: '1px', height: '32px', backgroundColor: 'var(--color-border)' }} className="divider-hide" />
-              <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '66px', objectFit: 'contain', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.04))' }} />
-            </div>
+      {/* S&P Global Style Full-Width Cinematic Hero Section */}
+      <section className="sp-hero-wrapper">
+        <div className="sp-hero-grid-overlay" />
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="sp-hero-eyebrow">
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+            SKUAST-K | HADP-04 AGRICULTURAL MARKET INTELLIGENCE
           </div>
 
-          {/* Heading and Subtitle */}
-          <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3.5rem' }}>
-            <h1 className="hero-gradient-title" style={{
-                fontSize: 'clamp(36px, 5.5vw, 54px)',
-                fontWeight: 900,
-                letterSpacing: '-0.03em',
-                lineHeight: '1.15',
-                marginBottom: '1.25rem',
-                fontFamily: "'Plus Jakarta Sans', sans-serif"
-            }}>
-              {heroTitle}
-            </h1>
-            
-            {/* HADP Project Banner */}
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
-              <div className="hadp-project-banner-card" style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                background: 'var(--color-primary-pale)',
-                border: '1px dashed var(--color-primary)',
-                padding: '0.6rem 1.5rem',
-                borderRadius: '12px',
-                boxShadow: 'var(--shadow-sm)',
-                transition: 'all 0.3s ease',
-                maxWidth: '100%'
-              }}>
-                <span style={{
-                  fontSize: 'clamp(13px, 1.8vw, 14px)',
-                  fontWeight: 800,
-                  color: 'var(--color-primary)',
-                  textAlign: 'center',
-                  lineHeight: 1.45,
-                  fontFamily: "'Montserrat', sans-serif"
-                }}>
-                  HADP-04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir
-                </span>
-              </div>
-            </div>
+          <h1 className="sp-hero-title">
+            <EditableLabel 
+              labelKey="home_hero_title" 
+              defaultValue={heroTitle} 
+              style={{ color: '#ffffff' }}
+            />
+          </h1>
 
-            <p style={{
-                fontSize: 'clamp(15px, 2.2vw, 18px)',
-                fontWeight: 500,
-                color: 'var(--color-text-muted)',
-                lineHeight: '1.6',
-                margin: 0,
-                letterSpacing: '0.01em'
-            }}>
-              "{heroSubtitle}"
-            </p>
+          <p className="sp-hero-subtitle">
+            <EditableLabel 
+              labelKey="home_hero_subtitle" 
+              defaultValue={heroSubtitle} 
+              style={{ color: '#cbd5e1' }}
+            />
+          </p>
+
+          <div className="sp-hero-actions">
+            <NavLink to="/forecasts" className="sp-hero-btn-red">
+              <TrendingUp size={18} />
+              <span>Explore Live Forecasts</span>
+            </NavLink>
+
+            <NavLink to="/ews" className="sp-hero-btn-secondary">
+              <AlertTriangle size={18} />
+              <span>View EWS Reports</span>
+            </NavLink>
+          </div>
+        </div>
+      </section>
+
+      {/* S&P Global Style "Recommended for You" Intelligence Section */}
+      <section className="section-padding" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem', borderBottom: '1px solid var(--color-border)', background: 'var(--color-bg)' }}>
+        <div className="container">
+          <div className="sp-section-heading">
+            <span>Recommended for You</span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-text-muted)' }}>
+              Core Intelligence & Analytical Engines
+            </span>
           </div>
 
-          {/* Dynamic Interactive React Cards Grid */}
-          <div className="interactive-grid" style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '1.5rem',
-              maxWidth: '1140px',
-              margin: '0 auto 4rem'
-          }}>
-            
+          <div className="sp-intel-grid">
             {/* Card 1: AI Forecast Engine */}
-            <NavLink to="/forecasts" className="react-card forecast">
-              <div className="card-pulse-badge">
-                <span className="pulse-dot"></span> <EditableLabel labelKey="home_hero_card1_pulse" defaultValue="Active" />
+            <NavLink to="/forecasts" className="sp-intel-card">
+              <div>
+                <span className="sp-card-tag">AI & Machine Learning</span>
+                <h3 className="sp-card-headline">Apple Price Forecast Engine 2026–27</h3>
+                <p className="sp-card-summary">
+                  Query deep-learning LSTM models to forecast daily wholesale Mandi prices for commercial apple varieties.
+                </p>
               </div>
-              <div className="react-card-icon">🔮</div>
-              <h3 className="react-card-title">
-                <EditableLabel labelKey="home_hero_card1_title" defaultValue="AI Forecast Engine" />
-              </h3>
-              <p className="react-card-desc">
-                <EditableLabel labelKey="home_hero_card1_desc" defaultValue="Query deep-learning LSTM models to forecast daily wholesale Mandi prices for cherry and apple." />
-              </p>
-              <div className="react-card-reveal">
-                <span className="reveal-tag">
-                  <EditableLabel labelKey="home_hero_card1_tag" defaultValue="LSTM Recurrent Model" />
-                </span>
-                <span className="reveal-metric">
-                  <EditableLabel labelKey="home_hero_card1_metric" defaultValue="94.6% Accuracy" />
-                </span>
+              <div className="sp-card-footer">
+                <span>LSTM Recurrent Models</span>
+                <span style={{ color: '#16a34a' }}>94.6% Accuracy →</span>
               </div>
             </NavLink>
 
             {/* Card 2: EWS / Risk Radar */}
-            <NavLink to="/ews" className="react-card risk">
-              <div className="card-pulse-badge alert">
-                <span className="pulse-dot"></span> <EditableLabel labelKey="home_hero_card2_pulse" defaultValue="Live Alerts" />
+            <NavLink to="/ews" className="sp-intel-card">
+              <div>
+                <span className="sp-card-tag" style={{ color: '#dc2626' }}>Risk & Early Warning</span>
+                <h3 className="sp-card-headline">Cherry Market Volatility Assessment</h3>
+                <p className="sp-card-summary">
+                  Real-time price anomaly models tracking market volatility parameters, supply chain bottlenecks, and seasonal shocks.
+                </p>
               </div>
-              <div className="react-card-icon">🚨</div>
-              <h3 className="react-card-title">
-                <EditableLabel labelKey="home_hero_card2_title" defaultValue="Early Warning System" />
-              </h3>
-              <p className="react-card-desc">
-                <EditableLabel labelKey="home_hero_card2_desc" defaultValue="Real-time price anomaly models tracking market volatility parameters and seasonal shocks." />
-              </p>
-              <div className="react-card-reveal">
-                <span className="reveal-tag">
-                  <EditableLabel labelKey="home_hero_card2_tag" defaultValue="Anomalies Detected" />
-                </span>
-                <span className="reveal-metric">
-                  <EditableLabel labelKey="home_hero_card2_metric" defaultValue="Narwal Jammu Cherry" />
-                </span>
+              <div className="sp-card-footer">
+                <span>Volatility Radar</span>
+                <span style={{ color: '#dc2626' }}>Active Alerts →</span>
               </div>
             </NavLink>
 
             {/* Card 3: Mandi Terminals */}
-            <NavLink to="/markets" className="react-card markets">
-              <div className="card-pulse-badge info">
-                <span className="pulse-dot"></span> <EditableLabel labelKey="home_hero_card3_pulse" defaultValue="5 Terminals" />
+            <NavLink to="/markets" className="sp-intel-card">
+              <div>
+                <span className="sp-card-tag" style={{ color: '#2563eb' }}>APMC Wholesale Mandis</span>
+                <h3 className="sp-card-headline">Live Mandi Terminal Arrivals</h3>
+                <p className="sp-card-summary">
+                  Track daily arrivals, transaction volume, demand-supply indices across Srinagar, Shopian, Jammu, and Azadpur.
+                </p>
               </div>
-              <div className="react-card-icon">🏛️</div>
-              <h3 className="react-card-title">
-                <EditableLabel labelKey="home_hero_card3_title" defaultValue="APMC Mandi Logs" />
-              </h3>
-              <p className="react-card-desc">
-                <EditableLabel labelKey="home_hero_card3_desc" defaultValue="Track daily arrivals, transaction volume, demand-supply indices, and weather trends in wholesale markets." />
-              </p>
-              <div className="react-card-reveal">
-                <span className="reveal-tag">
-                  <EditableLabel labelKey="home_hero_card3_tag" defaultValue="Markets Synced" />
-                </span>
-                <span className="reveal-metric">
-                  <EditableLabel labelKey="home_hero_card3_metric" defaultValue="Real-Time Sync" />
-                </span>
+              <div className="sp-card-footer">
+                <span>15+ APMC Terminals</span>
+                <span style={{ color: '#2563eb' }}>Real-Time Sync →</span>
               </div>
             </NavLink>
 
             {/* Card 4: Publications Library */}
-            <NavLink to="/publications" className="react-card library">
-              <div className="card-pulse-badge success">
-                <span className="pulse-dot"></span> <EditableLabel labelKey="home_hero_card4_pulse" defaultValue="PDF Bulletins" />
+            <NavLink to="/publications" className="sp-intel-card">
+              <div>
+                <span className="sp-card-tag" style={{ color: '#7c3aed' }}>Research & Policy</span>
+                <h3 className="sp-card-headline">Horticulture Intelligence Bulletins</h3>
+                <p className="sp-card-summary">
+                  Browse SKUAST weekly bulletins, policy textbooks, HADP research papers, and commodity price compendiums.
+                </p>
               </div>
-              <div className="react-card-icon">📚</div>
-              <h3 className="react-card-title">
-                <EditableLabel labelKey="home_hero_card4_title" defaultValue="Horticulture Digest" />
-              </h3>
-              <p className="react-card-desc">
-                <EditableLabel labelKey="home_hero_card4_desc" defaultValue="Browse SKUAST weekly bulletins, policy textbooks, and scientific research publications." />
-              </p>
-              <div className="react-card-reveal">
-                <span className="reveal-tag">
-                  <EditableLabel labelKey="home_hero_card4_tag" defaultValue="Weekly Reports" />
-                </span>
-                <span className="reveal-metric">
-                  <EditableLabel labelKey="home_hero_card4_metric" defaultValue="Synced from WP" />
-                </span>
+              <div className="sp-card-footer">
+                <span>Peer-Reviewed Data</span>
+                <span style={{ color: '#7c3aed' }}>View Repository →</span>
               </div>
             </NavLink>
-
           </div>
 
           {/* Quick Stats Banner - Modern Dynamic Glassmorphic Deck */}
