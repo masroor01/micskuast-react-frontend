@@ -25,28 +25,32 @@ const Header: React.FC = () => {
       {/* Tier 1: S&P Global Style Top Utility Bar */}
       <div className="sp-utility-strip">
         <div className="container sp-utility-container">
-          <div className="sp-utility-left">
+          <div className="sp-utility-left" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '2px' }}>
             <a 
               href="https://skuastkashmir.ac.in" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="sp-utility-item"
               title="Official SKUAST-K Website"
+              style={{ fontWeight: 700 }}
             >
               <img 
                 src="/logos/skuast.png" 
                 alt="SKUAST-K Seal" 
                 style={{ height: '20px', width: '20px', objectFit: 'contain' }} 
               />
-              <span className="university-full-title">
+              <span className="university-full-title" style={{ fontSize: '0.82rem', fontWeight: 700 }}>
                 Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir
               </span>
               <ExternalLink size={11} style={{ opacity: 0.6 }} />
             </a>
 
-            <span className="sp-utility-pill">
-              HADP-04 J&K
-            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', paddingLeft: '24px', fontSize: '0.74rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+              <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '14px', width: 'auto', objectFit: 'contain' }} />
+              <span style={{ color: 'var(--color-text-muted)' }}>
+                HADP-04: Strengthening Agricultural Marketting in UT of Jammu and Kashmir
+              </span>
+            </div>
           </div>
 
           <div className="sp-utility-right">

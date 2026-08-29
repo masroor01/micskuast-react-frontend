@@ -249,17 +249,6 @@ const Home: React.FC = () => {
             <div className="sp-hero-grid-overlay" />
             
             <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-              {/* Slide Eyebrow Badge */}
-              <div className="sp-hero-eyebrow">
-                {slide.show_hadp_logo !== false && (
-                  <>
-                    <img src="/logos/hadp.png" alt="HADP Logo" style={{ height: '22px', objectFit: 'contain' }} />
-                    <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(134, 239, 172, 0.35)' }} />
-                  </>
-                )}
-                <span>{slide.eyebrow}</span>
-              </div>
-
               {/* Slide Title */}
               <h1 className="sp-hero-title">
                 {slide.title}
