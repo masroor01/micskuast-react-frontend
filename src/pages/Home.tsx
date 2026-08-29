@@ -328,7 +328,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* S&P Global Style "Recommended for You" Intelligence Section */}
-      <section className="section-padding" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem', borderBottom: '1px solid var(--color-border)', background: 'var(--color-bg)' }}>
+      <section className="section-padding" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem', borderBottom: '1px solid var(--color-border)', background: 'transparent' }}>
         <div className="container">
           <div className="sp-section-heading">
             <span>Recommended for You</span>
