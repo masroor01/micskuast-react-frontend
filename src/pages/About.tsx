@@ -50,24 +50,44 @@ const About: React.FC = () => {
         {/* 2. KEY PERFORMANCE INDICATORS (KPI DECK) */}
         <div className="about-kpi-grid">
           <div className="about-kpi-card">
-            <div className="about-kpi-val">19+</div>
-            <div className="about-kpi-lbl">Years Price Series Data</div>
+            <div className="about-kpi-val">
+              <EditableLabel labelKey="about_kpi1_val" defaultValue="19+" />
+            </div>
+            <div className="about-kpi-lbl">
+              <EditableLabel labelKey="about_kpi1_lbl" defaultValue="Years Price Series Data" />
+            </div>
           </div>
           <div className="about-kpi-card">
-            <div className="about-kpi-val">15+</div>
-            <div className="about-kpi-lbl">APMC Mandis Synchronized</div>
+            <div className="about-kpi-val">
+              <EditableLabel labelKey="about_kpi2_val" defaultValue="15+" />
+            </div>
+            <div className="about-kpi-lbl">
+              <EditableLabel labelKey="about_kpi2_lbl" defaultValue="APMC Mandis Synchronized" />
+            </div>
           </div>
           <div className="about-kpi-card">
-            <div className="about-kpi-val">94.6%</div>
-            <div className="about-kpi-lbl">LSTM Predictive Accuracy</div>
+            <div className="about-kpi-val">
+              <EditableLabel labelKey="about_kpi3_val" defaultValue="94.6%" />
+            </div>
+            <div className="about-kpi-lbl">
+              <EditableLabel labelKey="about_kpi3_lbl" defaultValue="LSTM Predictive Accuracy" />
+            </div>
           </div>
           <div className="about-kpi-card">
-            <div className="about-kpi-val">6+</div>
-            <div className="about-kpi-lbl">Commercial Crop Varieties</div>
+            <div className="about-kpi-val">
+              <EditableLabel labelKey="about_kpi4_val" defaultValue="6+" />
+            </div>
+            <div className="about-kpi-lbl">
+              <EditableLabel labelKey="about_kpi4_lbl" defaultValue="Commercial Crop Varieties" />
+            </div>
           </div>
           <div className="about-kpi-card">
-            <div className="about-kpi-val">100%</div>
-            <div className="about-kpi-lbl">Open Access for Growers</div>
+            <div className="about-kpi-val">
+              <EditableLabel labelKey="about_kpi5_val" defaultValue="100%" />
+            </div>
+            <div className="about-kpi-lbl">
+              <EditableLabel labelKey="about_kpi5_lbl" defaultValue="Open Access for Growers" />
+            </div>
           </div>
         </div>
 
@@ -83,7 +103,10 @@ const About: React.FC = () => {
               marginBottom: '0.75rem',
               display: 'block' 
             }}>
-              The Genesis & Mission
+              <EditableLabel 
+                labelKey="about_mission_badge" 
+                defaultValue="The Genesis & Mission" 
+              />
             </span>
             <h3>
               <EditableLabel 
@@ -92,13 +115,22 @@ const About: React.FC = () => {
               />
             </h3>
             <p>
-              Jammu & Kashmir produces over <strong>70% of India's total apple output</strong> and the vast majority of its commercial cherry harvest. Despite this agricultural abundance, smallholder orchardists and fruit growers have historically faced severe structural challenges: extreme seasonal price volatility, information asymmetry between rural orchards and urban terminal markets, geographic bottlenecks along the Jammu–Srinagar highway, and distress sales during peak harvest gluts.
+              <EditableLabel 
+                labelKey="about_mission_p1" 
+                defaultValue="Jammu & Kashmir produces over 70% of India's total apple output and the vast majority of its commercial cherry harvest. Despite this agricultural abundance, smallholder orchardists and fruit growers have historically faced severe structural challenges: extreme seasonal price volatility, information asymmetry between rural orchards and urban terminal markets, geographic bottlenecks along the Jammu–Srinagar highway, and distress sales during peak harvest gluts." 
+              />
             </p>
             <p>
-              To eliminate these systemic vulnerabilities, the Government of Jammu & Kashmir instituted <strong>Project HADP-04: "Strengthening Agricultural Marketing in UT of Jammu and Kashmir"</strong> under the landmark Holistic Agriculture Development Programme.
+              <EditableLabel 
+                labelKey="about_mission_p2" 
+                defaultValue="To eliminate these systemic vulnerabilities, the Government of Jammu & Kashmir instituted Project HADP-04: 'Strengthening Agricultural Marketing in UT of Jammu and Kashmir' under the landmark Holistic Agriculture Development Programme." 
+              />
             </p>
             <p style={{ margin: 0 }}>
-              Under this mandate, SKUAST-Kashmir established the <strong>Market Intelligence Cell (MIC)</strong> — a specialized research and computational unit tasked with replacing speculation with empirical science, giving every farmer the foresight needed to sell at optimal times and the right markets.
+              <EditableLabel 
+                labelKey="about_mission_p3" 
+                defaultValue="Under this mandate, SKUAST-Kashmir established the Market Intelligence Cell (MIC) — a specialized research and computational unit tasked with replacing speculation with empirical science, giving every farmer the foresight needed to sell at optimal times and the right markets." 
+              />
             </p>
           </div>
 
@@ -117,30 +149,58 @@ const About: React.FC = () => {
                   />
                 </div>
                 <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600, marginTop: '2px' }}>
-                  Government of Jammu & Kashmir
+                  <EditableLabel 
+                    labelKey="about_mandate_sub" 
+                    defaultValue="Government of Jammu & Kashmir" 
+                  />
                 </div>
               </div>
             </div>
 
             <div className="about-mandate-item">
               <CheckCircle2 size={18} className="about-mandate-icon" />
-              <span>Real-time price & arrival tracking across regional & national Mandis</span>
+              <span>
+                <EditableLabel 
+                  labelKey="about_mandate_item1" 
+                  defaultValue="Real-time price & arrival tracking across regional & national Mandis" 
+                />
+              </span>
             </div>
             <div className="about-mandate-item">
               <CheckCircle2 size={18} className="about-mandate-icon" />
-              <span>Deep-learning price forecasts for Apple & Cherry varieties</span>
+              <span>
+                <EditableLabel 
+                  labelKey="about_mandate_item2" 
+                  defaultValue="Deep-learning price forecasts for Apple & Cherry varieties" 
+                />
+              </span>
             </div>
             <div className="about-mandate-item">
               <CheckCircle2 size={18} className="about-mandate-icon" />
-              <span>Early Warning System (EWS) to detect market volatility and price crashes</span>
+              <span>
+                <EditableLabel 
+                  labelKey="about_mandate_item3" 
+                  defaultValue="Early Warning System (EWS) to detect market volatility and price crashes" 
+                />
+              </span>
             </div>
             <div className="about-mandate-item">
               <CheckCircle2 size={18} className="about-mandate-icon" />
-              <span>Post-harvest CA storage & logistics decision support for orchardists</span>
+              <span>
+                <EditableLabel 
+                  labelKey="about_mandate_item4" 
+                  defaultValue="Post-harvest CA storage & logistics decision support for orchardists" 
+                />
+              </span>
             </div>
             <div className="about-mandate-item">
               <CheckCircle2 size={18} className="about-mandate-icon" />
-              <span>Weekly policy briefs & scientific market intelligence bulletins</span>
+              <span>
+                <EditableLabel 
+                  labelKey="about_mandate_item5" 
+                  defaultValue="Weekly policy briefs & scientific market intelligence bulletins" 
+                />
+              </span>
             </div>
           </div>
         </div>
@@ -160,13 +220,22 @@ const About: React.FC = () => {
               display: 'inline-block',
               marginBottom: '0.75rem' 
             }}>
-              Platform Capabilities
+              <EditableLabel 
+                labelKey="about_pillars_section_badge" 
+                defaultValue="Platform Capabilities" 
+              />
             </span>
             <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 34px)', fontWeight: 800, color: 'var(--color-text-main)', margin: '0 0 0.85rem' }}>
-              What This Website Is All About
+              <EditableLabel 
+                labelKey="about_pillars_section_title" 
+                defaultValue="What This Website Is All About" 
+              />
             </h2>
             <p style={{ color: 'var(--color-text-muted)', margin: 0, fontSize: '0.95rem', lineHeight: '1.6' }}>
-              Comprehensive digital tools purpose-built to transform raw agricultural data into commercial value for the farming community.
+              <EditableLabel 
+                labelKey="about_pillars_section_desc" 
+                defaultValue="Comprehensive digital tools purpose-built to transform raw agricultural data into commercial value for the farming community." 
+              />
             </p>
           </div>
 
@@ -177,15 +246,31 @@ const About: React.FC = () => {
                 <div className="about-pillar-icon-box">
                   <Brain size={24} />
                 </div>
-                <h3 className="about-pillar-title">AI Price Forecasting Engine</h3>
+                <h3 className="about-pillar-title">
+                  <EditableLabel 
+                    labelKey="about_pillar1_title" 
+                    defaultValue="AI Price Forecasting Engine" 
+                  />
+                </h3>
                 <p className="about-pillar-desc">
-                  Utilizes state-of-the-art Long Short-Term Memory (LSTM) recurrent neural network architectures trained on 19 years of daily wholesale transactions. Generates 7-day, 15-day, and 30-day ahead modal, minimum, and maximum price projections across apple and cherry varieties.
+                  <EditableLabel 
+                    labelKey="about_pillar1_desc" 
+                    defaultValue="Utilizes state-of-the-art Long Short-Term Memory (LSTM) recurrent neural network architectures trained on 19 years of daily wholesale transactions. Generates 7-day, 15-day, and 30-day ahead modal, minimum, and maximum price projections across apple and cherry varieties." 
+                  />
                 </p>
               </div>
               <div className="about-pillar-footer">
-                <span>94.6% Historical Precision</span>
+                <span>
+                  <EditableLabel 
+                    labelKey="about_pillar1_metric" 
+                    defaultValue="94.6% Historical Precision" 
+                  />
+                </span>
                 <NavLink to="/forecasts" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  Explore Forecasts →
+                  <EditableLabel 
+                    labelKey="about_pillar1_btn" 
+                    defaultValue="Explore Forecasts →" 
+                  />
                 </NavLink>
               </div>
             </div>
@@ -196,15 +281,31 @@ const About: React.FC = () => {
                 <div className="about-pillar-icon-box">
                   <Bell size={24} />
                 </div>
-                <h3 className="about-pillar-title">Early Warning System (EWS)</h3>
+                <h3 className="about-pillar-title">
+                  <EditableLabel 
+                    labelKey="about_pillar2_title" 
+                    defaultValue="Early Warning System (EWS)" 
+                  />
+                </h3>
                 <p className="about-pillar-desc">
-                  Automated statistical anomaly detection monitors standard deviations and rolling volatility indices. Identifies sudden supply gluts, highway transportation shocks, and demand anomalies to sound timely alerts before catastrophic price drops occur.
+                  <EditableLabel 
+                    labelKey="about_pillar2_desc" 
+                    defaultValue="Automated statistical anomaly detection monitors standard deviations and rolling volatility indices. Identifies sudden supply gluts, highway transportation shocks, and demand anomalies to sound timely alerts before catastrophic price drops occur." 
+                  />
                 </p>
               </div>
               <div className="about-pillar-footer">
-                <span>Real-Time Volatility Radar</span>
+                <span>
+                  <EditableLabel 
+                    labelKey="about_pillar2_metric" 
+                    defaultValue="Real-Time Volatility Radar" 
+                  />
+                </span>
                 <NavLink to="/ews" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  View Active Alerts →
+                  <EditableLabel 
+                    labelKey="about_pillar2_btn" 
+                    defaultValue="View Active Alerts →" 
+                  />
                 </NavLink>
               </div>
             </div>
@@ -215,15 +316,31 @@ const About: React.FC = () => {
                 <div className="about-pillar-icon-box">
                   <Landmark size={24} />
                 </div>
-                <h3 className="about-pillar-title">Live APMC Mandi Telemetry</h3>
+                <h3 className="about-pillar-title">
+                  <EditableLabel 
+                    labelKey="about_pillar3_title" 
+                    defaultValue="Live APMC Mandi Telemetry" 
+                  />
+                </h3>
                 <p className="about-pillar-desc">
-                  Continuous data ingestion and daily transaction logs from key production mandis — Parimpora (Srinagar), Aglar (Shopian), Nowpora (Sopore), Zazna (Ganderbal), and Narwal (Jammu) — alongside major consuming hubs like Azadpur Delhi, Bangalore, and Mumbai.
+                  <EditableLabel 
+                    labelKey="about_pillar3_desc" 
+                    defaultValue="Continuous data ingestion and daily transaction logs from key production mandis — Parimpora (Srinagar), Aglar (Shopian), Nowpora (Sopore), Zazna (Ganderbal), and Narwal (Jammu) — alongside major consuming hubs like Azadpur Delhi, Bangalore, and Mumbai." 
+                  />
                 </p>
               </div>
               <div className="about-pillar-footer">
-                <span>15+ Wholesale Terminals</span>
+                <span>
+                  <EditableLabel 
+                    labelKey="about_pillar3_metric" 
+                    defaultValue="15+ Wholesale Terminals" 
+                  />
+                </span>
                 <NavLink to="/markets" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  Browse Mandis →
+                  <EditableLabel 
+                    labelKey="about_pillar3_btn" 
+                    defaultValue="Browse Mandis →" 
+                  />
                 </NavLink>
               </div>
             </div>
@@ -234,15 +351,31 @@ const About: React.FC = () => {
                 <div className="about-pillar-icon-box">
                   <Scale size={24} />
                 </div>
-                <h3 className="about-pillar-title">Storage & Harvest Timing</h3>
+                <h3 className="about-pillar-title">
+                  <EditableLabel 
+                    labelKey="about_pillar4_title" 
+                    defaultValue="Storage & Harvest Timing" 
+                  />
+                </h3>
                 <p className="about-pillar-desc">
-                  Empirical cost-benefit models comparing immediate harvest-season selling against Controlled Atmosphere (CA) cold storage holding costs, helping orchardists make evidence-based storage and dispatch timing decisions to capture premium off-season rates.
+                  <EditableLabel 
+                    labelKey="about_pillar4_desc" 
+                    defaultValue="Empirical cost-benefit models comparing immediate harvest-season selling against Controlled Atmosphere (CA) cold storage holding costs, helping orchardists make evidence-based storage and dispatch timing decisions to capture premium off-season rates." 
+                  />
                 </p>
               </div>
               <div className="about-pillar-footer">
-                <span>Value Realization Models</span>
+                <span>
+                  <EditableLabel 
+                    labelKey="about_pillar4_metric" 
+                    defaultValue="Value Realization Models" 
+                  />
+                </span>
                 <NavLink to="/forecasts" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  Storage Analysis →
+                  <EditableLabel 
+                    labelKey="about_pillar4_btn" 
+                    defaultValue="Storage Analysis →" 
+                  />
                 </NavLink>
               </div>
             </div>
@@ -253,15 +386,31 @@ const About: React.FC = () => {
                 <div className="about-pillar-icon-box">
                   <BookOpen size={24} />
                 </div>
-                <h3 className="about-pillar-title">Publications & Policy Bulletins</h3>
+                <h3 className="about-pillar-title">
+                  <EditableLabel 
+                    labelKey="about_pillar5_title" 
+                    defaultValue="Publications & Policy Bulletins" 
+                  />
+                </h3>
                 <p className="about-pillar-desc">
-                  Weekly market outlook bulletins, comprehensive annual crop price compendiums, and peer-reviewed research papers produced by SKUAST-Kashmir agricultural economists, offering strategic insights for planners and researchers.
+                  <EditableLabel 
+                    labelKey="about_pillar5_desc" 
+                    defaultValue="Weekly market outlook bulletins, comprehensive annual crop price compendiums, and peer-reviewed research papers produced by SKUAST-Kashmir agricultural economists, offering strategic insights for planners and researchers." 
+                  />
                 </p>
               </div>
               <div className="about-pillar-footer">
-                <span>Peer-Reviewed Repository</span>
+                <span>
+                  <EditableLabel 
+                    labelKey="about_pillar5_metric" 
+                    defaultValue="Peer-Reviewed Repository" 
+                  />
+                </span>
                 <NavLink to="/publications" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  Read Bulletins →
+                  <EditableLabel 
+                    labelKey="about_pillar5_btn" 
+                    defaultValue="Read Bulletins →" 
+                  />
                 </NavLink>
               </div>
             </div>
@@ -272,14 +421,32 @@ const About: React.FC = () => {
                 <div className="about-pillar-icon-box">
                   <ShieldCheck size={24} />
                 </div>
-                <h3 className="about-pillar-title">Transparent Price Discovery</h3>
+                <h3 className="about-pillar-title">
+                  <EditableLabel 
+                    labelKey="about_pillar6_title" 
+                    defaultValue="Transparent Price Discovery" 
+                  />
+                </h3>
                 <p className="about-pillar-desc">
-                  Leveling the playing field by dismantling information monopolies. Real-time access to actual market realizations ensures small and marginal farmers have equal bargaining leverage when negotiating with commission agents and buyers.
+                  <EditableLabel 
+                    labelKey="about_pillar6_desc" 
+                    defaultValue="Leveling the playing field by dismantling information monopolies. Real-time access to actual market realizations ensures small and marginal farmers have equal bargaining leverage when negotiating with commission agents and buyers." 
+                  />
                 </p>
               </div>
               <div className="about-pillar-footer">
-                <span>Direct Farmer Empowerment</span>
-                <span style={{ color: 'var(--pillar-accent)' }}>100% Free Access</span>
+                <span>
+                  <EditableLabel 
+                    labelKey="about_pillar6_metric" 
+                    defaultValue="Direct Farmer Empowerment" 
+                  />
+                </span>
+                <span style={{ color: 'var(--pillar-accent)' }}>
+                  <EditableLabel 
+                    labelKey="about_pillar6_btn" 
+                    defaultValue="100% Free Access" 
+                  />
+                </span>
               </div>
             </div>
           </div>
@@ -300,13 +467,22 @@ const About: React.FC = () => {
               display: 'inline-block',
               marginBottom: '0.75rem' 
             }}>
-              Scientific Architecture
+              <EditableLabel 
+                labelKey="about_pipeline_section_badge" 
+                defaultValue="Scientific Architecture" 
+              />
             </span>
             <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 34px)', fontWeight: 800, color: 'var(--color-text-main)', margin: '0 0 0.85rem' }}>
-              How Raw Mandi Data Becomes Actionable Intelligence
+              <EditableLabel 
+                labelKey="about_pipeline_section_title" 
+                defaultValue="How Raw Mandi Data Becomes Actionable Intelligence" 
+              />
             </h2>
             <p style={{ color: 'var(--color-text-muted)', margin: 0, fontSize: '0.95rem', lineHeight: '1.6' }}>
-              An automated, rigorous 4-stage pipeline translating wholesale market volatility into clear, trustworthy decision support.
+              <EditableLabel 
+                labelKey="about_pipeline_section_desc" 
+                defaultValue="An automated, rigorous 4-stage pipeline translating wholesale market volatility into clear, trustworthy decision support." 
+              />
             </p>
           </div>
 
@@ -317,9 +493,17 @@ const About: React.FC = () => {
               <div className="about-step-icon">
                 <Database size={22} />
               </div>
-              <h4 className="about-step-title">Mandi Ingestion</h4>
+              <h4 className="about-step-title">
+                <EditableLabel 
+                  labelKey="about_step1_title" 
+                  defaultValue="Mandi Ingestion" 
+                />
+              </h4>
               <p className="about-step-desc">
-                Daily automated extraction of modal prices, arrivals (quintals/boxes), and quality grades from APMC records, AGMARKNET, and direct market logs.
+                <EditableLabel 
+                  labelKey="about_step1_desc" 
+                  defaultValue="Daily automated extraction of modal prices, arrivals (quintals/boxes), and quality grades from APMC records, AGMARKNET, and direct market logs." 
+                />
               </p>
             </div>
 
@@ -329,9 +513,17 @@ const About: React.FC = () => {
               <div className="about-step-icon">
                 <Cpu size={22} />
               </div>
-              <h4 className="about-step-title">Neural Modeling</h4>
+              <h4 className="about-step-title">
+                <EditableLabel 
+                  labelKey="about_step2_title" 
+                  defaultValue="Neural Modeling" 
+                />
+              </h4>
               <p className="about-step-desc">
-                Normalizing data series and applying Deep Learning Recurrent Neural Networks (LSTM) trained on 19 years of seasonal supply dynamics.
+                <EditableLabel 
+                  labelKey="about_step2_desc" 
+                  defaultValue="Normalizing data series and applying Deep Learning Recurrent Neural Networks (LSTM) trained on 19 years of seasonal supply dynamics." 
+                />
               </p>
             </div>
 
@@ -341,9 +533,17 @@ const About: React.FC = () => {
               <div className="about-step-icon">
                 <BarChart3 size={22} />
               </div>
-              <h4 className="about-step-title">Econometric Review</h4>
+              <h4 className="about-step-title">
+                <EditableLabel 
+                  labelKey="about_step3_title" 
+                  defaultValue="Econometric Review" 
+                />
+              </h4>
               <p className="about-step-desc">
-                Validation by agricultural economists at SKUAST-Kashmir, cross-verifying anomaly signals with highway conditions and harvest schedules.
+                <EditableLabel 
+                  labelKey="about_step3_desc" 
+                  defaultValue="Validation by agricultural economists at SKUAST-Kashmir, cross-verifying anomaly signals with highway conditions and harvest schedules." 
+                />
               </p>
             </div>
 
@@ -353,9 +553,17 @@ const About: React.FC = () => {
               <div className="about-step-icon">
                 <Workflow size={22} />
               </div>
-              <h4 className="about-step-title">Open Dissemination</h4>
+              <h4 className="about-step-title">
+                <EditableLabel 
+                  labelKey="about_step4_title" 
+                  defaultValue="Open Dissemination" 
+                />
+              </h4>
               <p className="about-step-desc">
-                Instant delivery via interactive web dashboards, SMS advisories, weekly PDF bulletins, and FPO briefing notes to guide real-world selling.
+                <EditableLabel 
+                  labelKey="about_step4_desc" 
+                  defaultValue="Instant delivery via interactive web dashboards, SMS advisories, weekly PDF bulletins, and FPO briefing notes to guide real-world selling." 
+                />
               </p>
             </div>
           </div>
@@ -376,46 +584,83 @@ const About: React.FC = () => {
               display: 'inline-block',
               marginBottom: '0.75rem' 
             }}>
-              Impact & Stakeholders
+              <EditableLabel 
+                labelKey="about_stakeholders_section_badge" 
+                defaultValue="Impact & Stakeholders" 
+              />
             </span>
             <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 34px)', fontWeight: 800, color: 'var(--color-text-main)', margin: '0 0 0.85rem' }}>
-              Who Benefits from This Platform?
+              <EditableLabel 
+                labelKey="about_stakeholders_section_title" 
+                defaultValue="Who Benefits from This Platform?" 
+              />
             </h2>
             <p style={{ color: 'var(--color-text-muted)', margin: 0, fontSize: '0.95rem', lineHeight: '1.6' }}>
-              Tailored value creation across the entire agricultural value chain in Jammu and Kashmir.
+              <EditableLabel 
+                labelKey="about_stakeholders_section_desc" 
+                defaultValue="Tailored value creation across the entire agricultural value chain in Jammu and Kashmir." 
+              />
             </p>
           </div>
 
           <div className="stakeholder-grid">
             <div className="stakeholder-card">
-              <span className="stakeholder-badge">Growers</span>
-              <h4 className="stakeholder-title">Fruit Growers & Orchardists</h4>
+              <span className="stakeholder-badge">
+                <EditableLabel labelKey="about_stakeholder1_badge" defaultValue="Growers" />
+              </span>
+              <h4 className="stakeholder-title">
+                <EditableLabel labelKey="about_stakeholder1_title" defaultValue="Fruit Growers & Orchardists" />
+              </h4>
               <p className="stakeholder-desc">
-                Access accurate 7 to 30-day price predictions to schedule harvest dates, compare terminal market rates before shipping, and eliminate distress sales during peak season.
+                <EditableLabel 
+                  labelKey="about_stakeholder1_desc" 
+                  defaultValue="Access accurate 7 to 30-day price predictions to schedule harvest dates, compare terminal market rates before shipping, and eliminate distress sales during peak season." 
+                />
               </p>
             </div>
 
             <div className="stakeholder-card">
-              <span className="stakeholder-badge" style={{ background: 'rgba(37, 99, 235, 0.1)', color: '#2563eb' }}>Cooperatives</span>
-              <h4 className="stakeholder-title">FPOs & Producer Groups</h4>
+              <span className="stakeholder-badge" style={{ background: 'rgba(37, 99, 235, 0.1)', color: '#2563eb' }}>
+                <EditableLabel labelKey="about_stakeholder2_badge" defaultValue="Cooperatives" />
+              </span>
+              <h4 className="stakeholder-title">
+                <EditableLabel labelKey="about_stakeholder2_title" defaultValue="FPOs & Producer Groups" />
+              </h4>
               <p className="stakeholder-desc">
-                Aggregate member produce effectively, negotiate equitable terms with institutional buyers, and plan collective utilization of CA cold-chain storage facilities.
+                <EditableLabel 
+                  labelKey="about_stakeholder2_desc" 
+                  defaultValue="Aggregate member produce effectively, negotiate equitable terms with institutional buyers, and plan collective utilization of CA cold-chain storage facilities." 
+                />
               </p>
             </div>
 
             <div className="stakeholder-card">
-              <span className="stakeholder-badge" style={{ background: 'rgba(217, 119, 6, 0.1)', color: '#d97706' }}>Trade</span>
-              <h4 className="stakeholder-title">Traders & Commission Agents</h4>
+              <span className="stakeholder-badge" style={{ background: 'rgba(217, 119, 6, 0.1)', color: '#d97706' }}>
+                <EditableLabel labelKey="about_stakeholder3_badge" defaultValue="Trade" />
+              </span>
+              <h4 className="stakeholder-title">
+                <EditableLabel labelKey="about_stakeholder3_title" defaultValue="Traders & Commission Agents" />
+              </h4>
               <p className="stakeholder-desc">
-                Monitor transparent arrival volumes and inter-state price spreads to optimize procurement logistics, manage inventory, and minimize price shock exposures.
+                <EditableLabel 
+                  labelKey="about_stakeholder3_desc" 
+                  defaultValue="Monitor transparent arrival volumes and inter-state price spreads to optimize procurement logistics, manage inventory, and minimize price shock exposures." 
+                />
               </p>
             </div>
 
             <div className="stakeholder-card">
-              <span className="stakeholder-badge" style={{ background: 'rgba(124, 58, 237, 0.1)', color: '#7c3aed' }}>Policy</span>
-              <h4 className="stakeholder-title">Government & Planners</h4>
+              <span className="stakeholder-badge" style={{ background: 'rgba(124, 58, 237, 0.1)', color: '#7c3aed' }}>
+                <EditableLabel labelKey="about_stakeholder4_badge" defaultValue="Policy" />
+              </span>
+              <h4 className="stakeholder-title">
+                <EditableLabel labelKey="about_stakeholder4_title" defaultValue="Government & Planners" />
+              </h4>
               <p className="stakeholder-desc">
-                Empirical baseline data for timely Market Intervention Scheme (MIS) triggers, post-harvest infrastructure investment, and regional agricultural policy design.
+                <EditableLabel 
+                  labelKey="about_stakeholder4_desc" 
+                  defaultValue="Empirical baseline data for timely Market Intervention Scheme (MIS) triggers, post-harvest infrastructure investment, and regional agricultural policy design." 
+                />
               </p>
             </div>
           </div>
@@ -426,7 +671,7 @@ const About: React.FC = () => {
           <img src="/logos/skuast.png" alt="SKUAST Watermark" className="about-vc-watermark" />
           
           <span className="about-vc-badge">
-            Leadership Vision
+            <EditableLabel labelKey="about_vc_badge_text" defaultValue="Leadership Vision" />
           </span>
           
           <h2 className="about-vc-heading">
@@ -452,10 +697,14 @@ const About: React.FC = () => {
               />
             </div>
             <div className="vc-signature-block">
-              <h4 className="vc-name">Prof. Nazir Ahmad Ganai</h4>
-              <span className="vc-title">Hon'ble Vice Chancellor, SKUAST-Kashmir</span>
+              <h4 className="vc-name">
+                <EditableLabel labelKey="about_vc_name_text" defaultValue="Prof. Nazir Ahmad Ganai" />
+              </h4>
+              <span className="vc-title">
+                <EditableLabel labelKey="about_vc_title_text" defaultValue="Hon'ble Vice Chancellor, SKUAST-Kashmir" />
+              </span>
               <span style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: 750, marginTop: '2px' }}>
-                Patron & Visionary Leader, HADP Project-04
+                <EditableLabel labelKey="about_vc_role_text" defaultValue="Patron & Visionary Leader, HADP Project-04" />
               </span>
             </div>
           </div>
@@ -464,36 +713,46 @@ const About: React.FC = () => {
         {/* 8. EXPLORE PORTAL CTAS */}
         <div className="about-cta-deck">
           <h3 style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--color-text-main)', margin: '0 0 0.65rem' }}>
-            Explore the Market Intelligence Platform
+            <EditableLabel labelKey="about_cta_deck_title" defaultValue="Explore the Market Intelligence Platform" />
           </h3>
           <p style={{ color: 'var(--color-text-muted)', margin: 0, fontSize: '0.95rem' }}>
-            Access our real-time forecasting tools, wholesale terminal arrivals, and research compendiums.
+            <EditableLabel labelKey="about_cta_deck_desc" defaultValue="Access our real-time forecasting tools, wholesale terminal arrivals, and research compendiums." />
           </p>
 
           <div className="about-cta-grid">
             <NavLink to="/forecasts" className="about-cta-link">
               <Brain size={24} />
-              <span>AI Price Forecasts</span>
+              <span>
+                <EditableLabel labelKey="about_cta1_btn" defaultValue="AI Price Forecasts" />
+              </span>
             </NavLink>
 
             <NavLink to="/ews" className="about-cta-link">
               <Bell size={24} />
-              <span>Early Warning Alerts</span>
+              <span>
+                <EditableLabel labelKey="about_cta2_btn" defaultValue="Early Warning Alerts" />
+              </span>
             </NavLink>
 
             <NavLink to="/markets" className="about-cta-link">
               <Landmark size={24} />
-              <span>Live APMC Mandis</span>
+              <span>
+                <EditableLabel labelKey="about_cta3_btn" defaultValue="Live APMC Mandis" />
+              </span>
             </NavLink>
 
             <NavLink to="/publications" className="about-cta-link">
               <BookOpen size={24} />
-              <span>Research Bulletins</span>
+              <span>
+                <EditableLabel labelKey="about_cta4_btn" defaultValue="Research Bulletins" />
+              </span>
             </NavLink>
 
             <NavLink to="/team" className="about-cta-link">
               <Users size={24} />
-              <span>Meet Research Team</span>
+              <span>
+                <EditableLabel labelKey="about_cta5_btn" defaultValue="Meet Research Team" />
+              </span>
             </NavLink>
           </div>
         </div>
@@ -504,4 +763,5 @@ const About: React.FC = () => {
 };
 
 export default About;
+
 

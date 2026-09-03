@@ -195,7 +195,119 @@ const defaultLabels: Record<string, string> = {
   home_info_card4_title: 'HADP Strategic Outreach',
   home_info_card4_desc: 'Structuring regional Outlook Reports and strategic indices to support J&K horticulture farmers and policy planners.',
   home_info_card4_footer_lbl: 'HADP Project 04',
-  home_info_card4_footer_metric: 'Actionable Intel'
+  home_info_card4_footer_metric: 'Actionable Intel',
+
+  // About Page - Hero & KPIs
+  about_hero_badge_text: 'HADP #04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir',
+  about_hero_title_v2: "Empowering J&K's Horticulture Economy Through Market Intelligence",
+  about_hero_subtitle_v2: "The Market Intelligence Cell (MIC) at SKUAST-Kashmir is the digital nerve center dedicated to transforming agricultural marketing in Jammu and Kashmir. Powered by deep-learning LSTM neural networks, real-time APMC mandi telemetry, and price anomaly early warning radars, we deliver transparent, actionable foresight to fruit growers, FPOs, traders, and agricultural policy makers.",
+  about_kpi1_val: '19+',
+  about_kpi1_lbl: 'Years Price Series Data',
+  about_kpi2_val: '15+',
+  about_kpi2_lbl: 'APMC Mandis Synchronized',
+  about_kpi3_val: '94.6%',
+  about_kpi3_lbl: 'LSTM Predictive Accuracy',
+  about_kpi4_val: '6+',
+  about_kpi4_lbl: 'Commercial Crop Varieties',
+  about_kpi5_val: '100%',
+  about_kpi5_lbl: 'Open Access for Growers',
+
+  // About Page - Mission & Genesis
+  about_mission_badge: 'The Genesis & Mission',
+  about_mission_heading: 'Why Was the Market Intelligence Cell Established?',
+  about_mission_p1: "Jammu & Kashmir produces over 70% of India's total apple output and the vast majority of its commercial cherry harvest. Despite this agricultural abundance, smallholder orchardists and fruit growers have historically faced severe structural challenges: extreme seasonal price volatility, information asymmetry between rural orchards and urban terminal markets, geographic bottlenecks along the Jammu–Srinagar highway, and distress sales during peak harvest gluts.",
+  about_mission_p2: "To eliminate these systemic vulnerabilities, the Government of Jammu & Kashmir instituted Project HADP-04: 'Strengthening Agricultural Marketing in UT of Jammu and Kashmir' under the landmark Holistic Agriculture Development Programme.",
+  about_mission_p3: "Under this mandate, SKUAST-Kashmir established the Market Intelligence Cell (MIC) — a specialized research and computational unit tasked with replacing speculation with empirical science, giving every farmer the foresight needed to sell at optimal times and the right markets.",
+
+  // About Page - Official Mandate Card (The Card from User Screenshot)
+  about_mandate_title: 'HADP #04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir',
+  about_mandate_sub: 'Government of Jammu & Kashmir',
+  about_mandate_item1: 'Real-time price & arrival tracking across regional & national Mandis',
+  about_mandate_item2: 'Deep-learning price forecasts for Apple & Cherry varieties',
+  about_mandate_item3: 'Early Warning System (EWS) to detect market volatility and price crashes',
+  about_mandate_item4: 'Post-harvest CA storage & logistics decision support for orchardists',
+  about_mandate_item5: 'Weekly policy briefs & scientific market intelligence bulletins',
+
+  // About Page - 6 Capability Pillars
+  about_pillars_section_badge: 'Platform Capabilities',
+  about_pillars_section_title: 'What This Website Is All About',
+  about_pillars_section_desc: 'Comprehensive digital tools purpose-built to transform raw agricultural data into commercial value for the farming community.',
+  about_pillar1_title: 'AI Price Forecasting Engine',
+  about_pillar1_desc: 'Utilizes state-of-the-art Long Short-Term Memory (LSTM) recurrent neural network architectures trained on 19 years of daily wholesale transactions. Generates 7-day, 15-day, and 30-day ahead modal, minimum, and maximum price projections across apple and cherry varieties.',
+  about_pillar1_metric: '94.6% Historical Precision',
+  about_pillar1_btn: 'Explore Forecasts →',
+
+  about_pillar2_title: 'Early Warning System (EWS)',
+  about_pillar2_desc: 'Automated statistical anomaly detection monitors standard deviations and rolling volatility indices. Identifies sudden supply gluts, highway transportation shocks, and demand anomalies to sound timely alerts before catastrophic price drops occur.',
+  about_pillar2_metric: 'Real-Time Volatility Radar',
+  about_pillar2_btn: 'View Active Alerts →',
+
+  about_pillar3_title: 'Live APMC Mandi Telemetry',
+  about_pillar3_desc: 'Continuous data ingestion and daily transaction logs from key production mandis — Parimpora (Srinagar), Aglar (Shopian), Nowpora (Sopore), Zazna (Ganderbal), and Narwal (Jammu) — alongside major consuming hubs like Azadpur Delhi, Bangalore, and Mumbai.',
+  about_pillar3_metric: '15+ Wholesale Terminals',
+  about_pillar3_btn: 'Browse Mandis →',
+
+  about_pillar4_title: 'Storage & Harvest Timing',
+  about_pillar4_desc: 'Empirical cost-benefit models comparing immediate harvest-season selling against Controlled Atmosphere (CA) cold storage holding costs, helping orchardists make evidence-based storage and dispatch timing decisions to capture premium off-season rates.',
+  about_pillar4_metric: 'Value Realization Models',
+  about_pillar4_btn: 'Storage Analysis →',
+
+  about_pillar5_title: 'Publications & Policy Bulletins',
+  about_pillar5_desc: 'Weekly market outlook bulletins, comprehensive annual crop price compendiums, and peer-reviewed research papers produced by SKUAST-Kashmir agricultural economists, offering strategic insights for planners and researchers.',
+  about_pillar5_metric: 'Peer-Reviewed Repository',
+  about_pillar5_btn: 'Read Bulletins →',
+
+  about_pillar6_title: 'Transparent Price Discovery',
+  about_pillar6_desc: 'Leveling the playing field by dismantling information monopolies. Real-time access to actual market realizations ensures small and marginal farmers have equal bargaining leverage when negotiating with commission agents and buyers.',
+  about_pillar6_metric: 'Direct Farmer Empowerment',
+  about_pillar6_btn: '100% Free Access',
+
+  // About Page - Scientific Pipeline
+  about_pipeline_section_badge: 'Scientific Architecture',
+  about_pipeline_section_title: 'How Raw Mandi Data Becomes Actionable Intelligence',
+  about_pipeline_section_desc: 'An automated, rigorous 4-stage pipeline translating wholesale market volatility into clear, trustworthy decision support.',
+  about_step1_title: 'Mandi Ingestion',
+  about_step1_desc: 'Daily automated extraction of modal prices, arrivals (quintals/boxes), and quality grades from APMC records, AGMARKNET, and direct market logs.',
+  about_step2_title: 'Neural Modeling',
+  about_step2_desc: 'Normalizing data series and applying Deep Learning Recurrent Neural Networks (LSTM) trained on 19 years of seasonal supply dynamics.',
+  about_step3_title: 'Econometric Review',
+  about_step3_desc: 'Validation by agricultural economists at SKUAST-Kashmir, cross-verifying anomaly signals with highway conditions and harvest schedules.',
+  about_step4_title: 'Open Dissemination',
+  about_step4_desc: 'Instant delivery via interactive web dashboards, SMS advisories, weekly PDF bulletins, and FPO briefing notes to guide real-world selling.',
+
+  // About Page - Stakeholders
+  about_stakeholders_section_badge: 'Impact & Stakeholders',
+  about_stakeholders_section_title: 'Who Benefits from This Platform?',
+  about_stakeholders_section_desc: 'Tailored value creation across the entire agricultural value chain in Jammu and Kashmir.',
+  about_stakeholder1_badge: 'Growers',
+  about_stakeholder1_title: 'Fruit Growers & Orchardists',
+  about_stakeholder1_desc: 'Access accurate 7 to 30-day price predictions to schedule harvest dates, compare terminal market rates before shipping, and eliminate distress sales during peak season.',
+  about_stakeholder2_badge: 'Cooperatives',
+  about_stakeholder2_title: 'FPOs & Producer Groups',
+  about_stakeholder2_desc: 'Aggregate member produce effectively, negotiate equitable terms with institutional buyers, and plan collective utilization of CA cold-chain storage facilities.',
+  about_stakeholder3_badge: 'Trade',
+  about_stakeholder3_title: 'Traders & Commission Agents',
+  about_stakeholder3_desc: 'Monitor transparent arrival volumes and inter-state price spreads to optimize procurement logistics, manage inventory, and minimize price shock exposures.',
+  about_stakeholder4_badge: 'Policy',
+  about_stakeholder4_title: 'Government & Planners',
+  about_stakeholder4_desc: 'Empirical baseline data for timely Market Intervention Scheme (MIS) triggers, post-harvest infrastructure investment, and regional agricultural policy design.',
+
+  // About Page - Leadership
+  about_vc_badge_text: 'Leadership Vision',
+  about_vc_title_v2: 'A Scientific Foundation for Agri-Decision Science',
+  about_vc_quote_v2: "In our pursuit of transforming agricultural landscapes through scientific excellence, the SKUAST-K Market Intelligence Cell stands as a pioneering beacon. By translating complex data paradigms into actionable market forecasts, we are equipping Jammu & Kashmir's farming community with the resources needed to navigate volatile marketing dynamics, safeguard their hard-earned yields, and capture the true economic value of their produce.",
+  about_vc_name_text: 'Prof. Nazir Ahmad Ganai',
+  about_vc_title_text: "Hon'ble Vice Chancellor, SKUAST-Kashmir",
+  about_vc_role_text: 'Patron & Visionary Leader, HADP Project-04',
+
+  // About Page - CTAs
+  about_cta_deck_title: 'Explore the Market Intelligence Platform',
+  about_cta_deck_desc: 'Access our real-time forecasting tools, wholesale terminal arrivals, and research compendiums.',
+  about_cta1_btn: 'AI Price Forecasts',
+  about_cta2_btn: 'Early Warning Alerts',
+  about_cta3_btn: 'Live APMC Mandis',
+  about_cta4_btn: 'Research Bulletins',
+  about_cta5_btn: 'Meet Research Team'
 };
 
 const defaultTeam: TeamMember[] = [
@@ -276,7 +388,7 @@ const Admin: React.FC = () => {
     }, 0);
   };
   
-  const [activeTab, setActiveTab] = useState<'home' | 'slides' | 'labels' | 'publications' | 'security' | 'team'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'slides' | 'about' | 'labels' | 'publications' | 'security' | 'team'>('home');
   const [config, setConfig] = useState<SiteConfig | null>(null);
   
   const [editingLabelKey, setEditingLabelKey] = useState<string | null>(null);
@@ -971,6 +1083,12 @@ const Admin: React.FC = () => {
           🎠 Hero Carousel Slides
         </button>
         <button
+          onClick={() => setActiveTab('about')}
+          className={`market-tab-btn ${activeTab === 'about' ? 'active' : ''}`}
+        >
+          🏛️ About Us Page Content
+        </button>
+        <button
           onClick={() => setActiveTab('publications')}
           className={`market-tab-btn ${activeTab === 'publications' ? 'active' : ''}`}
         >
@@ -1425,6 +1543,574 @@ const Admin: React.FC = () => {
             ))}
           </div>
         </div>
+      )}
+
+      {/* TAB: About Us Page Editor */}
+      {activeTab === 'about' && config && (
+        <form onSubmit={(e) => { e.preventDefault(); saveConfig(config); }} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          
+          {/* Top Bar with Title and Save Button */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#fff', padding: '1.25rem 1.75rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <h2 style={{ margin: 0, fontSize: '1.35rem', color: 'var(--color-primary)', fontWeight: 800 }}>
+                🏛️ About Us Page Content & Cards Editor
+              </h2>
+              <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>
+                Customize every card, mandate deliverable, metric, and narrative section on the About Us page.
+              </p>
+            </div>
+            <button 
+              type="submit" 
+              className="btn btn-primary"
+              style={{ fontWeight: 700, gap: '0.5rem', padding: '8px 20px', fontSize: '0.9rem' }}
+            >
+              <Save size={16} /> Save About Page Changes
+            </button>
+          </div>
+
+          {/* 1. Official Mandate Card (The Card from User Screenshot) */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '2px solid rgba(22, 163, 74, 0.3)', boxShadow: 'var(--shadow-sm)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.5rem' }}>
+              <span style={{ fontSize: '1.4rem' }}>📋</span>
+              <div>
+                <h3 style={{ margin: 0, color: 'var(--color-primary)', fontSize: '1.15rem' }}>
+                  Official HADP Project #04 Mandate Card
+                </h3>
+                <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+                  This is the prominent card featuring the SKUAST-K & HADP logos with the 5 deliverables checklist.
+                </span>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.35rem' }}>
+                  Mandate Card Header Title
+                </label>
+                <input
+                  type="text"
+                  value={config.labels?.about_mandate_title ?? defaultLabels.about_mandate_title}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_mandate_title: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', fontWeight: 700 }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.35rem' }}>
+                  Mandate Subtitle (e.g. Government of Jammu & Kashmir)
+                </label>
+                <input
+                  type="text"
+                  value={config.labels?.about_mandate_sub ?? defaultLabels.about_mandate_sub}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_mandate_sub: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              <div style={{ marginTop: '0.5rem' }}>
+                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-primary)', marginBottom: '0.75rem' }}>
+                  Checklist Deliverables (5 Items):
+                </label>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  {[1, 2, 3, 4, 5].map((idx) => {
+                    const key = `about_mandate_item${idx}`;
+                    return (
+                      <div key={key} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary)', width: '24px' }}>
+                          #{idx}
+                        </span>
+                        <input
+                          type="text"
+                          value={config.labels?.[key] ?? defaultLabels[key]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [key]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          style={{ flex: 1 }}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. Hero Section & KPI Metrics */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              ✨ About Page Hero Header & KPI Metrics Deck
+            </h3>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.5rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Hero Eyebrow Pill Badge Text
+                </label>
+                <input
+                  type="text"
+                  value={config.labels?.about_hero_badge_text ?? defaultLabels.about_hero_badge_text}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_hero_badge_text: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Hero Main Heading
+                </label>
+                <input
+                  type="text"
+                  value={config.labels?.about_hero_title_v2 ?? defaultLabels.about_hero_title_v2}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_hero_title_v2: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', fontWeight: 700 }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Hero Subtitle Paragraph
+                </label>
+                <textarea
+                  value={config.labels?.about_hero_subtitle_v2 ?? defaultLabels.about_hero_subtitle_v2}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_hero_subtitle_v2: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={3}
+                  style={{ width: '100%', resize: 'vertical' }}
+                />
+              </div>
+            </div>
+
+            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1.25rem' }}>
+              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-primary)', marginBottom: '0.75rem' }}>
+                Key Performance Indicators (5 KPI Metrics):
+              </label>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                {[1, 2, 3, 4, 5].map((idx) => {
+                  const valKey = `about_kpi${idx}_val`;
+                  const lblKey = `about_kpi${idx}_lbl`;
+                  return (
+                    <div key={idx} style={{ padding: '0.75rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                      <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.25rem' }}>
+                        KPI #{idx} Value
+                      </label>
+                      <input
+                        type="text"
+                        value={config.labels?.[valKey] ?? defaultLabels[valKey]}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), [valKey]: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        style={{ width: '100%', marginBottom: '0.5rem', fontWeight: 700 }}
+                      />
+                      <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-muted)', marginBottom: '0.25rem' }}>
+                        KPI #{idx} Label
+                      </label>
+                      <input
+                        type="text"
+                        value={config.labels?.[lblKey] ?? defaultLabels[lblKey]}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), [lblKey]: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        style={{ width: '100%', fontSize: '0.8rem' }}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Genesis & Mission Narrative Card */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              📖 The Genesis & Institutional Mission Narrative
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                    Eyebrow Sub-Badge
+                  </label>
+                  <input
+                    type="text"
+                    value={config.labels?.about_mission_badge ?? defaultLabels.about_mission_badge}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), about_mission_badge: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                    Section Heading
+                  </label>
+                  <input
+                    type="text"
+                    value={config.labels?.about_mission_heading ?? defaultLabels.about_mission_heading}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), about_mission_heading: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%', fontWeight: 700 }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Paragraph 1 (The Context & Challenges)
+                </label>
+                <textarea
+                  value={config.labels?.about_mission_p1 ?? defaultLabels.about_mission_p1}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_mission_p1: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={3}
+                  style={{ width: '100%', resize: 'vertical' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Paragraph 2 (HADP Project #04 Mandate)
+                </label>
+                <textarea
+                  value={config.labels?.about_mission_p2 ?? defaultLabels.about_mission_p2}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_mission_p2: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={2}
+                  style={{ width: '100%', resize: 'vertical' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                  Paragraph 3 (MIC Role & Vision)
+                </label>
+                <textarea
+                  value={config.labels?.about_mission_p3 ?? defaultLabels.about_mission_p3}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_mission_p3: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={2}
+                  style={{ width: '100%', resize: 'vertical' }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* 4. The 6 Capability Pillars */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              💡 What This Website Is All About (6 Core Capability Pillars)
+            </h3>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+              {[1, 2, 3, 4, 5, 6].map((num) => {
+                const titleKey = `about_pillar${num}_title`;
+                const descKey = `about_pillar${num}_desc`;
+                const metricKey = `about_pillar${num}_metric`;
+                const btnKey = `about_pillar${num}_btn`;
+                return (
+                  <div key={num} style={{ padding: '1.25rem', background: 'var(--color-bg)', borderRadius: '10px', border: '1px solid var(--color-border)' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--color-primary)', textTransform: 'uppercase' }}>
+                      Card #{num}
+                    </span>
+                    <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.25rem' }}>Card Title</label>
+                        <input
+                          type="text"
+                          value={config.labels?.[titleKey] ?? defaultLabels[titleKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [titleKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          style={{ width: '100%', fontWeight: 700 }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.25rem' }}>Description</label>
+                        <textarea
+                          value={config.labels?.[descKey] ?? defaultLabels[descKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [descKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          rows={3}
+                          style={{ width: '100%', resize: 'vertical' }}
+                        />
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.25rem' }}>Footer Metric</label>
+                          <input
+                            type="text"
+                            value={config.labels?.[metricKey] ?? defaultLabels[metricKey]}
+                            onChange={e => {
+                              const updated = { ...(config.labels || defaultLabels), [metricKey]: e.target.value };
+                              setConfig({ ...config, labels: updated });
+                            }}
+                            className="form-input"
+                            style={{ width: '100%', fontSize: '0.8rem' }}
+                          />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.25rem' }}>Action Link Text</label>
+                          <input
+                            type="text"
+                            value={config.labels?.[btnKey] ?? defaultLabels[btnKey]}
+                            onChange={e => {
+                              const updated = { ...(config.labels || defaultLabels), [btnKey]: e.target.value };
+                              setConfig({ ...config, labels: updated });
+                            }}
+                            className="form-input"
+                            style={{ width: '100%', fontSize: '0.8rem' }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 5. 4-Stage Scientific Pipeline */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              🔬 The 4-Stage Scientific Pipeline (Data to Decisions)
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+              {[1, 2, 3, 4].map((step) => {
+                const titleKey = `about_step${step}_title`;
+                const descKey = `about_step${step}_desc`;
+                return (
+                  <div key={step} style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--color-primary)' }}>
+                      Stage 0{step}
+                    </span>
+                    <div style={{ marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <input
+                        type="text"
+                        value={config.labels?.[titleKey] ?? defaultLabels[titleKey]}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), [titleKey]: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        style={{ width: '100%', fontWeight: 700 }}
+                      />
+                      <textarea
+                        value={config.labels?.[descKey] ?? defaultLabels[descKey]}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), [descKey]: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        rows={3}
+                        style={{ width: '100%', resize: 'vertical', fontSize: '0.82rem' }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 6. Stakeholder Impact Cards */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              🤝 Stakeholder Impact Matrix (Who Benefits?)
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
+              {[1, 2, 3, 4].map((st) => {
+                const badgeKey = `about_stakeholder${st}_badge`;
+                const titleKey = `about_stakeholder${st}_title`;
+                const descKey = `about_stakeholder${st}_desc`;
+                return (
+                  <div key={st} style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                      <input
+                        type="text"
+                        value={config.labels?.[badgeKey] ?? defaultLabels[badgeKey]}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), [badgeKey]: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        placeholder="Badge"
+                        style={{ width: '90px', fontSize: '0.75rem', fontWeight: 800 }}
+                      />
+                      <input
+                        type="text"
+                        value={config.labels?.[titleKey] ?? defaultLabels[titleKey]}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), [titleKey]: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        placeholder="Title"
+                        style={{ flex: 1, fontWeight: 700 }}
+                      />
+                    </div>
+                    <textarea
+                      value={config.labels?.[descKey] ?? defaultLabels[descKey]}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), [descKey]: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      rows={3}
+                      style={{ width: '100%', resize: 'vertical', fontSize: '0.82rem' }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 7. Vice Chancellor Leadership Card */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              🎓 Vice Chancellor Leadership Vision Card
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Sub-Badge</label>
+                  <input
+                    type="text"
+                    value={config.labels?.about_vc_badge_text ?? defaultLabels.about_vc_badge_text}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), about_vc_badge_text: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Section Title</label>
+                  <input
+                    type="text"
+                    value={config.labels?.about_vc_title_v2 ?? defaultLabels.about_vc_title_v2}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), about_vc_title_v2: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%', fontWeight: 700 }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Quote Content</label>
+                <textarea
+                  value={config.labels?.about_vc_quote_v2 ?? defaultLabels.about_vc_quote_v2}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), about_vc_quote_v2: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={3}
+                  style={{ width: '100%', resize: 'vertical', fontStyle: 'italic' }}
+                />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Leader Name</label>
+                  <input
+                    type="text"
+                    value={config.labels?.about_vc_name_text ?? defaultLabels.about_vc_name_text}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), about_vc_name_text: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%', fontWeight: 700 }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Designation / Title</label>
+                  <input
+                    type="text"
+                    value={config.labels?.about_vc_title_text ?? defaultLabels.about_vc_title_text}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), about_vc_title_text: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Role Subtitle</label>
+                  <input
+                    type="text"
+                    value={config.labels?.about_vc_role_text ?? defaultLabels.about_vc_role_text}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), about_vc_role_text: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Save Button */}
+          <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '1rem 0' }}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ fontWeight: 700, gap: '0.5rem', padding: '10px 28px', fontSize: '0.95rem' }}
+            >
+              <Save size={18} /> Save All About Page Changes
+            </button>
+          </div>
+
+        </form>
       )}
 
       {/* TAB 2: Publications Manager */}
