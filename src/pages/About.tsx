@@ -110,10 +110,13 @@ const About: React.FC = () => {
                 <img src="/logos/hadp.png" alt="HADP Logo" className="about-mandate-logo-img" />
               </div>
               <div>
-                <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-text-main)' }}>
-                  HADP Project #04
+                <div style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--color-text-main)', lineHeight: '1.3' }}>
+                  <EditableLabel 
+                    labelKey="about_mandate_title" 
+                    defaultValue="HADP #04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir" 
+                  />
                 </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontWeight: 600, marginTop: '2px' }}>
                   Government of Jammu & Kashmir
                 </div>
               </div>
