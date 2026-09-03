@@ -1773,4 +1773,521 @@ a {
   }
 }
 
+/* ===================================================
+   ABOUT US PAGE COMPREHENSIVE REDESIGN STYLES
+   =================================================== */
+
+.about-page-wrapper {
+  padding-top: 3.5rem;
+  padding-bottom: 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px rgba(22, 163, 74, 0.08);
+}
+
+[data-theme='dark'] .about-hero-badge {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+.about-hero-title {
+  font-size: clamp(30px, 4.5vw, 48px);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+}
+
+.about-hero-subtitle {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  font-weight: 500;
+}
+
+/* KPI Metrics Deck */
+.about-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 5rem;
+}
+
+.about-kpi-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  opacity: 0.7;
+}
+
+.about-kpi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md), 0 10px 25px rgba(22, 163, 74, 0.1);
+  border-color: var(--color-primary-light);
+}
+
+.about-kpi-val {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+[data-theme='dark'] .about-kpi-val {
+  color: #4ade80;
+}
+
+.about-kpi-lbl {
+  font-size: 0.75rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+/* Institutional Narrative Grid */
+.about-narrative-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 960px) {
+  .about-narrative-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.about-narrative-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+}
+
+.about-narrative-card h3 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: 1.25rem;
+}
+
+.about-narrative-card p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-size: 0.98rem;
+  margin-bottom: 1.25rem;
+}
+
+.about-mandate-card {
+  background: linear-gradient(145deg, rgba(22, 163, 74, 0.06) 0%, rgba(14, 165, 233, 0.04) 100%);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme='dark'] .about-mandate-card {
+  background: linear-gradient(145deg, rgba(34, 197, 94, 0.1) 0%, rgba(56, 189, 248, 0.06) 100%);
+  border-color: rgba(74, 222, 128, 0.25);
+}
+
+.about-mandate-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-mandate-logos {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.about-mandate-logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.about-mandate-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+.about-mandate-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Feature Pillars Grid */
+.about-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5.5rem;
+}
+
+.about-pillar-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--pillar-accent, var(--color-primary));
+  opacity: 0.9;
+}
+
+.about-pillar-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-md), 0 14px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--pillar-accent, var(--color-primary));
+}
+
+.about-pillar-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.35rem;
+  background: var(--pillar-pale, var(--color-primary-pale));
+  color: var(--pillar-accent, var(--color-primary));
+}
+
+.about-pillar-title {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: 0.75rem;
+}
+
+.about-pillar-desc {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.about-pillar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: var(--pillar-accent, var(--color-primary));
+}
+
+/* Workflow Steps */
+.about-workflow-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 5.5rem;
+  position: relative;
+}
+
+.about-step-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.about-step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
+}
+
+.about-step-num {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: var(--color-border);
+  line-height: 1;
+}
+
+.about-step-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+[data-theme='dark'] .about-step-icon {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.about-step-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: 0.6rem;
+}
+
+.about-step-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Stakeholder Value Cards */
+.stakeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 5.5rem;
+}
+
+.stakeholder-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.stakeholder-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.stakeholder-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+}
+
+.stakeholder-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: 0.85rem;
+}
+
+.stakeholder-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Redesigned Vice Chancellor Card */
+.about-vc-container {
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.05) 0%, rgba(20, 83, 45, 0.03) 100%);
+  border: 1px solid rgba(22, 163, 74, 0.22);
+  border-radius: 24px;
+  padding: 3.5rem;
+  margin-bottom: 5.5rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .about-vc-container {
+  background: linear-gradient(135deg, rgba(6, 32, 16, 0.7) 0%, rgba(10, 42, 22, 0.5) 100%);
+  border-color: rgba(74, 222, 128, 0.25);
+}
+
+.about-vc-watermark {
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 220px;
+  height: 220px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.about-vc-badge {
+  display: inline-block;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-primary);
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.about-vc-heading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+}
+
+.about-vc-quote {
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.75;
+  color: var(--color-text-main);
+  font-style: italic;
+  font-weight: 500;
+  margin: 0 0 2.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+}
+
+/* Explore Portal CTA Grid */
+.about-cta-deck {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+}
+
+.about-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.about-cta-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  border-radius: 14px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  color: var(--color-text-main);
+  font-weight: 750;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-cta-link:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
+}
+
+.about-cta-link svg {
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.about-cta-link:hover svg {
+  color: #ffffff !important;
+  transform: scale(1.15);
+}
+
+
 
