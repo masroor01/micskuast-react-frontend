@@ -26,7 +26,10 @@ const About: React.FC = () => {
         <div style={{ textAlign: 'center', maxWidth: '960px', margin: '0 auto 3.5rem' }}>
           <div className="about-hero-badge">
             <Sparkles size={14} />
-            <span>HADP #04 • Government of Jammu & Kashmir • SKUAST-Kashmir</span>
+            <EditableLabel 
+              labelKey="about_hero_badge_text" 
+              defaultValue="HADP #04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir" 
+            />
           </div>
 
           <h1 className="about-hero-title">
