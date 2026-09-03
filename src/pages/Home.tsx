@@ -452,8 +452,12 @@ const Home: React.FC = () => {
                   <MapPin size={22} style={{ margin: 'auto' }} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-primary)', lineHeight: 1.1 }}>15+</div>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>APMC Mandis</div>
+                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-primary)', lineHeight: 1.1 }}>
+                    <EditableLabel labelKey="home_stat1_val" defaultValue="15+" />
+                  </div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>
+                    <EditableLabel labelKey="home_stat1_lbl" defaultValue="APMC Mandis" />
+                  </div>
                 </div>
               </div>
               
@@ -464,8 +468,12 @@ const Home: React.FC = () => {
                   <CalendarRange size={22} style={{ margin: 'auto' }} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: '#d97706', lineHeight: 1.1 }}>19 Years</div>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>Price Series</div>
+                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: '#d97706', lineHeight: 1.1 }}>
+                    <EditableLabel labelKey="home_stat2_val" defaultValue="19 Years" />
+                  </div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>
+                    <EditableLabel labelKey="home_stat2_lbl" defaultValue="Price Series" />
+                  </div>
                 </div>
               </div>
               
@@ -476,8 +484,12 @@ const Home: React.FC = () => {
                   <RefreshCw size={20} className="spin-slow" style={{ margin: 'auto' }} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-accent)', lineHeight: 1.1 }}>Real-Time</div>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>Feeds Synced</div>
+                  <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-accent)', lineHeight: 1.1 }}>
+                    <EditableLabel labelKey="home_stat3_val" defaultValue="Real-Time" />
+                  </div>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-text-muted)', marginTop: '0.15rem', letterSpacing: '0.02em' }}>
+                    <EditableLabel labelKey="home_stat3_lbl" defaultValue="Feeds Synced" />
+                  </div>
                 </div>
               </div>
             </div>

@@ -197,6 +197,14 @@ const defaultLabels: Record<string, string> = {
   home_info_card4_footer_lbl: 'HADP Project 04',
   home_info_card4_footer_metric: 'Actionable Intel',
 
+  // Home Page - Floating Stats Strip
+  home_stat1_val: '15+',
+  home_stat1_lbl: 'APMC Mandis',
+  home_stat2_val: '19 Years',
+  home_stat2_lbl: 'Price Series',
+  home_stat3_val: 'Real-Time',
+  home_stat3_lbl: 'Feeds Synced',
+
   // About Page - Hero & KPIs
   about_hero_badge_text: 'HADP #04: Strengthening Agricultural Marketing in UT of Jammu and Kashmir',
   about_hero_title_v2: "Empowering J&K's Horticulture Economy Through Market Intelligence",
@@ -1227,6 +1235,104 @@ const Admin: React.FC = () => {
                   </button>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Floating Key Statistics Strip */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              📊 Homepage Floating Key Statistics Strip
+            </h3>
+            <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', marginTop: '-0.5rem', marginBottom: '1.25rem' }}>
+              Edit the three highlight metrics displayed on the floating card beneath the core architecture grid.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem' }}>
+              {/* Stat 1 */}
+              <div style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary)', display: 'block', marginBottom: '0.5rem' }}>
+                  Stat #1 (Mandis)
+                </span>
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Value</label>
+                <input
+                  type="text"
+                  value={config.labels?.home_stat1_val ?? defaultLabels.home_stat1_val}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), home_stat1_val: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', marginBottom: '0.5rem', fontWeight: 700 }}
+                />
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Label</label>
+                <input
+                  type="text"
+                  value={config.labels?.home_stat1_lbl ?? defaultLabels.home_stat1_lbl}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), home_stat1_lbl: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              {/* Stat 2 */}
+              <div style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#d97706', display: 'block', marginBottom: '0.5rem' }}>
+                  Stat #2 (Price Series)
+                </span>
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Value</label>
+                <input
+                  type="text"
+                  value={config.labels?.home_stat2_val ?? defaultLabels.home_stat2_val}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), home_stat2_val: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', marginBottom: '0.5rem', fontWeight: 700 }}
+                />
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Label</label>
+                <input
+                  type="text"
+                  value={config.labels?.home_stat2_lbl ?? defaultLabels.home_stat2_lbl}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), home_stat2_lbl: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              {/* Stat 3 */}
+              <div style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-accent)', display: 'block', marginBottom: '0.5rem' }}>
+                  Stat #3 (Sync Feeds)
+                </span>
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Value</label>
+                <input
+                  type="text"
+                  value={config.labels?.home_stat3_val ?? defaultLabels.home_stat3_val}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), home_stat3_val: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', marginBottom: '0.5rem', fontWeight: 700 }}
+                />
+                <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Label</label>
+                <input
+                  type="text"
+                  value={config.labels?.home_stat3_lbl ?? defaultLabels.home_stat3_lbl}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), home_stat3_lbl: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
             </div>
           </div>
 
@@ -2446,7 +2552,15 @@ const Admin: React.FC = () => {
                 home_info_card4_title: "Infographic Card 4 Title (HADP Strategic Outreach)",
                 home_info_card4_desc: "Infographic Card 4 Description Paragraph",
                 home_info_card4_footer_lbl: "Infographic Card 4 Footer Label (e.g. HADP Project 04)",
-                home_info_card4_footer_metric: "Infographic Card 4 Footer Value (e.g. Actionable Intel)"
+                home_info_card4_footer_metric: "Infographic Card 4 Footer Value (e.g. Actionable Intel)",
+
+                // Homepage Stats Strip descriptions
+                home_stat1_val: "Homepage Stats Strip - Stat 1 Value (e.g. 15+)",
+                home_stat1_lbl: "Homepage Stats Strip - Stat 1 Label (e.g. APMC Mandis)",
+                home_stat2_val: "Homepage Stats Strip - Stat 2 Value (e.g. 19 Years)",
+                home_stat2_lbl: "Homepage Stats Strip - Stat 2 Label (e.g. Price Series)",
+                home_stat3_val: "Homepage Stats Strip - Stat 3 Value (e.g. Real-Time)",
+                home_stat3_lbl: "Homepage Stats Strip - Stat 3 Label (e.g. Feeds Synced)"
               }[key] || key;
 
               const currentVal = (config.labels || defaultLabels)[key] || defaultLabels[key];
