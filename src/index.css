@@ -1313,6 +1313,93 @@ a {
   text-transform: uppercase;
 }
 
+/* ===================================================
+   Language Switcher Toggle (English, Hindi, Urdu)
+   =================================================== */
+.sp-language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.sp-lang-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+.sp-lang-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 50px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.sp-lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.25;
+}
+
+.sp-lang-btn:hover {
+  color: var(--color-primary);
+}
+
+.sp-lang-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(22, 163, 74, 0.25);
+}
+
+/* Mobile Full-Width Language Selector */
+.sp-lang-full {
+  width: 100%;
+}
+
+.sp-lang-full .sp-lang-pill {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.sp-lang-full .sp-lang-btn {
+  flex: 1;
+  text-align: center;
+  padding: 7px 10px;
+  font-size: 0.88rem;
+}
+
+/* Urdu and Hindi typography and RTL styles */
+html[data-lang="ur"] {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html[data-lang="hi"] {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Devanagari', Roboto, sans-serif;
+}
+
+html[dir="rtl"] .sp-univ-ext-icon {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] .sp-nav-links {
+  direction: rtl;
+}
+
+
 /* Main Dark / High-Contrast Corporate Navigation */
 .sp-header-bar {
   background: #0f381e;

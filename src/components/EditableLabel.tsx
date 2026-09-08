@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Edit2, Bold, Italic, Underline, AlignJustify } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface EditableLabelProps {
   labelKey: string;
@@ -9,6 +10,7 @@ interface EditableLabelProps {
 }
 
 export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultValue, style }) => {
+  const { language, t } = useLanguage();
   const [value, setValue] = useState(defaultValue);
   const [isAdmin, setIsAdmin] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -17,17 +19,26 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const fetchLabel = () => {
+    const translatedDefault = language !== 'en' ? t(labelKey, defaultValue) : defaultValue;
+
     fetch('/api/config.php')
       .then(res => res.json())
       .then(data => {
-        if (data && data.labels && data.labels[labelKey]) {
+        // 1. Check for language-specific override (e.g., labelKey_hi, labelKey_ur)
+        if (data && data.labels && data.labels[`${labelKey}_${language}`]) {
+          setValue(data.labels[`${labelKey}_${language}`]);
+        } else if (language !== 'en') {
+          // 2. In non-English mode, use built-in translation
+          setValue(translatedDefault);
+        } else if (data && data.labels && data.labels[labelKey]) {
+          // 3. In English mode, use admin saved label
           setValue(data.labels[labelKey]);
         } else {
           setValue(defaultValue);
         }
       })
       .catch(() => {
-        setValue(defaultValue);
+        setValue(translatedDefault);
       });
   };
 
@@ -48,7 +59,7 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
     return () => {
       window.removeEventListener('config-updated', handleUpdate);
     };
-  }, [labelKey, defaultValue]);
+  }, [labelKey, defaultValue, language]);
 
   const applyFormatting = (tagOpen: string, tagClose: string) => {
     const textarea = textareaRef.current;
@@ -84,7 +95,8 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
         if (!config.labels) {
           config.labels = {};
         }
-        config.labels[labelKey] = editValue;
+        const targetKey = language !== 'en' ? `${labelKey}_${language}` : labelKey;
+        config.labels[targetKey] = editValue;
 
         return fetch('/api/config.php', {
           method: 'POST',

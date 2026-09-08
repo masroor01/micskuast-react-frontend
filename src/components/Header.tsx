@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, Sun, Moon, Coffee, Info, Lock, ExternalLink } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
+import { LanguageToggle } from './LanguageToggle';
+import { useLanguage } from '../context/LanguageContext';
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLanguage();
 
   const [theme, setTheme] = useState<'light' | 'dark' | 'warm'>(() => {
     return (localStorage.getItem('site_theme') as any) || 'light';
@@ -33,7 +36,7 @@ const Header: React.FC = () => {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="sp-university-link"
-                title="Official SKUAST-K Website"
+                title={t('univ_name', 'Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir')}
               >
                 <img 
                   src="/logos/skuast.png" 
@@ -41,7 +44,7 @@ const Header: React.FC = () => {
                   className="sp-univ-logo"
                 />
                 <span className="sp-univ-name">
-                  Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir
+                  {t('univ_name', 'Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir')}
                 </span>
                 <ExternalLink size={12} className="sp-univ-ext-icon" />
               </a>
@@ -53,18 +56,21 @@ const Header: React.FC = () => {
                   alt="HADP Logo" 
                   className="sp-hadp-logo"
                 />
-                <span className="sp-hadp-pill">HADP #04</span>
+                <span className="sp-hadp-pill">{t('hadp_tag', 'HADP #04')}</span>
                 <span className="sp-hadp-text">
-                  Strengthening Agricultural Marketing in UT of Jammu and Kashmir
+                  {t('hadp_statement', 'Strengthening Agricultural Marketing in UT of Jammu and Kashmir')}
                 </span>
                 <span className="sp-hadp-mic-tag">
-                  (Market Intelligence Cell)
+                  {t('mic_tag', '(Market Intelligence Cell)')}
                 </span>
               </div>
             </div>
           </div>
 
           <div className="sp-utility-right">
+            {/* Language Toggle Button (English, Hindi, Urdu) */}
+            <LanguageToggle />
+
             {/* Theme Switcher Toggle */}
             <div style={{ display: 'flex', gap: '0.2rem', background: 'var(--color-bg)', padding: '2px 4px', borderRadius: '50px', border: '1px solid var(--color-border)' }}>
               <button
@@ -82,7 +88,7 @@ const Header: React.FC = () => {
                   cursor: 'pointer',
                   transition: 'all 0.2s'
                 }}
-                title="Light Theme"
+                title={t('light_theme', 'Light Theme')}
               >
                 <Sun size={12} />
               </button>
@@ -101,7 +107,7 @@ const Header: React.FC = () => {
                   cursor: 'pointer',
                   transition: 'all 0.2s'
                 }}
-                title="Dark Theme"
+                title={t('dark_theme', 'Dark Theme')}
               >
                 <Moon size={12} />
               </button>
@@ -120,7 +126,7 @@ const Header: React.FC = () => {
                   cursor: 'pointer',
                   transition: 'all 0.2s'
                 }}
-                title="Warm Theme"
+                title={t('warm_theme', 'Warm Theme')}
               >
                 <Coffee size={12} />
               </button>
@@ -129,7 +135,7 @@ const Header: React.FC = () => {
             {/* Admin Login Link */}
             <NavLink to="/admin" className="sp-utility-item" style={{ fontSize: '0.76rem' }}>
               <Lock size={12} />
-              <span>Admin Portal</span>
+              <span>{t('admin_portal_btn', 'Admin Portal')}</span>
             </NavLink>
           </div>
         </div>
@@ -233,6 +239,14 @@ const Header: React.FC = () => {
         {/* Mobile Drawer Navigation */}
         {mobileOpen && (
           <div className="mobile-nav animate-fade-in" style={{ background: '#111827', color: '#ffffff' }}>
+            {/* Language Switcher in Mobile Drawer */}
+            <div style={{ marginBottom: '1.25rem', paddingBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+              <div style={{ fontSize: '0.72rem', color: '#9ca3af', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
+                {t('select_language', 'Language')}
+              </div>
+              <LanguageToggle variant="full" />
+            </div>
+
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <NavLink 
                 to="/" 
@@ -289,7 +303,7 @@ const Header: React.FC = () => {
                 onClick={() => setMobileOpen(false)}
                 style={{ color: '#9ca3af', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem', marginTop: '0.5rem' }}
               >
-                <Lock size={14} style={{ marginRight: '0.5rem' }} /> Admin Portal
+                <Lock size={14} style={{ marginRight: '0.5rem' }} /> {t('admin_portal_btn', 'Admin Portal')}
               </NavLink>
             </nav>
           </div>
