@@ -251,12 +251,18 @@ const Home: React.FC = () => {
             <div className="container" style={{ position: 'relative', zIndex: 2 }}>
               {/* Slide Title */}
               <h1 className="sp-hero-title">
-                {slide.title}
+                <EditableLabel 
+                  labelKey={`hero_slide_title_${slide.id || idx + 1}`} 
+                  defaultValue={slide.title} 
+                />
               </h1>
 
               {/* Slide Subtitle */}
               <p className="sp-hero-subtitle">
-                {slide.subtitle}
+                <EditableLabel 
+                  labelKey={`hero_slide_subtitle_${slide.id || idx + 1}`} 
+                  defaultValue={slide.subtitle} 
+                />
               </p>
 
               {/* Slide CTA Buttons */}
@@ -264,12 +270,22 @@ const Home: React.FC = () => {
                 {slide.btn_primary_link.startsWith('http') ? (
                   <a href={slide.btn_primary_link} target="_blank" rel="noopener noreferrer" className="sp-hero-btn-primary">
                     <TrendingUp size={18} />
-                    <span>{slide.btn_primary_text || "Explore Live Forecasts"}</span>
+                    <span>
+                      <EditableLabel 
+                        labelKey={`hero_slide_btn_primary_${slide.id || idx + 1}`} 
+                        defaultValue={slide.btn_primary_text || "Explore Live Forecasts"} 
+                      />
+                    </span>
                   </a>
                 ) : (
                   <NavLink to={slide.btn_primary_link || "/forecasts"} className="sp-hero-btn-primary">
                     <TrendingUp size={18} />
-                    <span>{slide.btn_primary_text || "Explore Live Forecasts"}</span>
+                    <span>
+                      <EditableLabel 
+                        labelKey={`hero_slide_btn_primary_${slide.id || idx + 1}`} 
+                        defaultValue={slide.btn_primary_text || "Explore Live Forecasts"} 
+                      />
+                    </span>
                   </NavLink>
                 )}
 
@@ -277,12 +293,22 @@ const Home: React.FC = () => {
                   slide.btn_secondary_link.startsWith('http') ? (
                     <a href={slide.btn_secondary_link} target="_blank" rel="noopener noreferrer" className="sp-hero-btn-secondary">
                       <AlertTriangle size={18} />
-                      <span>{slide.btn_secondary_text || "View EWS Reports"}</span>
+                      <span>
+                        <EditableLabel 
+                          labelKey={`hero_slide_btn_secondary_${slide.id || idx + 1}`} 
+                          defaultValue={slide.btn_secondary_text || "View EWS Reports"} 
+                        />
+                      </span>
                     </a>
                   ) : (
                     <NavLink to={slide.btn_secondary_link} className="sp-hero-btn-secondary">
                       <AlertTriangle size={18} />
-                      <span>{slide.btn_secondary_text || "View EWS Reports"}</span>
+                      <span>
+                        <EditableLabel 
+                          labelKey={`hero_slide_btn_secondary_${slide.id || idx + 1}`} 
+                          defaultValue={slide.btn_secondary_text || "View EWS Reports"} 
+                        />
+                      </span>
                     </NavLink>
                   )
                 )}
@@ -361,68 +387,104 @@ const Home: React.FC = () => {
             {/* Card 1: AI Forecast Engine */}
             <NavLink to="/forecasts" className="sp-intel-card">
               <div>
-                <span className="sp-card-tag">AI & Neural Networks</span>
-                <h3 className="sp-card-headline">Apple & Cherry Price Forecasting</h3>
+                <span className="sp-card-tag">
+                  <EditableLabel labelKey="home_card1_tag" defaultValue="AI & Neural Networks" />
+                </span>
+                <h3 className="sp-card-headline">
+                  <EditableLabel labelKey="home_card1_title" defaultValue="Apple & Cherry Price Forecasting" />
+                </h3>
                 <p className="sp-card-summary">
-                  Query deep-learning LSTM recurrent models trained on 19 years of daily wholesale arrivals to forecast future mandi price realizations.
+                  <EditableLabel 
+                    labelKey="home_card1_desc" 
+                    defaultValue="Query deep-learning LSTM recurrent models trained on 19 years of daily wholesale arrivals to forecast future mandi price realizations." 
+                  />
                 </p>
               </div>
               <div className="sp-card-footer">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                  <Brain size={15} /> LSTM Models
+                  <Brain size={15} /> <EditableLabel labelKey="home_card1_meta" defaultValue="LSTM Models" />
                 </span>
-                <span style={{ color: '#16a34a' }}>94.6% Accuracy →</span>
+                <span style={{ color: '#16a34a' }}>
+                  <EditableLabel labelKey="home_card1_stat" defaultValue="94.6% Accuracy →" />
+                </span>
               </div>
             </NavLink>
 
             {/* Card 2: EWS / Risk Radar */}
             <NavLink to="/ews" className="sp-intel-card">
               <div>
-                <span className="sp-card-tag" style={{ color: '#dc2626' }}>Anomaly Detection & Risk</span>
-                <h3 className="sp-card-headline">Early Warning Volatility Radar</h3>
+                <span className="sp-card-tag" style={{ color: '#dc2626' }}>
+                  <EditableLabel labelKey="home_card2_tag" defaultValue="Anomaly Detection & Risk" />
+                </span>
+                <h3 className="sp-card-headline">
+                  <EditableLabel labelKey="home_card2_title" defaultValue="Early Warning Volatility Radar" />
+                </h3>
                 <p className="sp-card-summary">
-                  Running automated variance and standard deviation monitors flagging volume anomalies and warning of sudden price shocks.
+                  <EditableLabel 
+                    labelKey="home_card2_desc" 
+                    defaultValue="Running automated variance and standard deviation monitors flagging volume anomalies and warning of sudden price shocks." 
+                  />
                 </p>
               </div>
               <div className="sp-card-footer">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#dc2626' }}>
-                  <Bell size={15} /> Statistical Alarms
+                  <Bell size={15} /> <EditableLabel labelKey="home_card2_meta" defaultValue="Statistical Alarms" />
                 </span>
-                <span style={{ color: '#dc2626' }}>Active Alerts →</span>
+                <span style={{ color: '#dc2626' }}>
+                  <EditableLabel labelKey="home_card2_stat" defaultValue="Active Alerts →" />
+                </span>
               </div>
             </NavLink>
 
             {/* Card 3: Mandi Terminals */}
             <NavLink to="/markets" className="sp-intel-card">
               <div>
-                <span className="sp-card-tag" style={{ color: '#2563eb' }}>Data Ingestion Pipeline</span>
-                <h3 className="sp-card-headline">Live APMC Mandi Terminal Sync</h3>
+                <span className="sp-card-tag" style={{ color: '#2563eb' }}>
+                  <EditableLabel labelKey="home_card3_tag" defaultValue="Data Ingestion Pipeline" />
+                </span>
+                <h3 className="sp-card-headline">
+                  <EditableLabel labelKey="home_card3_title" defaultValue="Live APMC Mandi Terminal Sync" />
+                </h3>
                 <p className="sp-card-summary">
-                  Continuous data ingestion of wholesale arrivals, transaction volume, grade-wise realizations, and interstate trade across 15+ terminals.
+                  <EditableLabel 
+                    labelKey="home_card3_desc" 
+                    defaultValue="Continuous data ingestion of wholesale arrivals, transaction volume, grade-wise realizations, and interstate trade across 15+ terminals." 
+                  />
                 </p>
               </div>
               <div className="sp-card-footer">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#2563eb' }}>
-                  <Landmark size={15} /> 15+ Terminals
+                  <Landmark size={15} /> <EditableLabel labelKey="home_card3_meta" defaultValue="15+ Terminals" />
                 </span>
-                <span style={{ color: '#2563eb' }}>Real-Time Sync →</span>
+                <span style={{ color: '#2563eb' }}>
+                  <EditableLabel labelKey="home_card3_stat" defaultValue="Real-Time Sync →" />
+                </span>
               </div>
             </NavLink>
 
             {/* Card 4: Publications Library */}
             <NavLink to="/publications" className="sp-intel-card">
               <div>
-                <span className="sp-card-tag" style={{ color: '#7c3aed' }}>Policy & Decision Support</span>
-                <h3 className="sp-card-headline">HADP Strategic Outreach & Reports</h3>
+                <span className="sp-card-tag" style={{ color: '#7c3aed' }}>
+                  <EditableLabel labelKey="home_card4_tag" defaultValue="Policy & Decision Support" />
+                </span>
+                <h3 className="sp-card-headline">
+                  <EditableLabel labelKey="home_card4_title" defaultValue="HADP Strategic Outreach & Reports" />
+                </h3>
                 <p className="sp-card-summary">
-                  Structuring regional commodity outlook reports, policy compendiums, and peer-reviewed research for farmers and planners.
+                  <EditableLabel 
+                    labelKey="home_card4_desc" 
+                    defaultValue="Structuring regional commodity outlook reports, policy compendiums, and peer-reviewed research for farmers and planners." 
+                  />
                 </p>
               </div>
               <div className="sp-card-footer">
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#7c3aed' }}>
-                  <Award size={15} /> HADP Project 04
+                  <Award size={15} /> <EditableLabel labelKey="home_card4_meta" defaultValue="HADP Project 04" />
                 </span>
-                <span style={{ color: '#7c3aed' }}>View Reports →</span>
+                <span style={{ color: '#7c3aed' }}>
+                  <EditableLabel labelKey="home_card4_stat" defaultValue="View Reports →" />
+                </span>
               </div>
             </NavLink>
           </div>
@@ -451,7 +513,7 @@ const Home: React.FC = () => {
                 <div className="stat-icon-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '12px', background: 'var(--color-primary-pale)', color: 'var(--color-primary)' }}>
                   <MapPin size={22} style={{ margin: 'auto' }} />
                 </div>
-                <div style={{ textAlign: 'left' }}>
+                <div style={{ textAlign: 'start' }}>
                   <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-primary)', lineHeight: 1.1 }}>
                     <EditableLabel labelKey="home_stat1_val" defaultValue="15+" />
                   </div>
@@ -467,7 +529,7 @@ const Home: React.FC = () => {
                 <div className="stat-icon-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(230, 126, 34, 0.08)', color: '#d97706' }}>
                   <CalendarRange size={22} style={{ margin: 'auto' }} />
                 </div>
-                <div style={{ textAlign: 'left' }}>
+                <div style={{ textAlign: 'start' }}>
                   <div style={{ fontSize: '1.85rem', fontWeight: 900, color: '#d97706', lineHeight: 1.1 }}>
                     <EditableLabel labelKey="home_stat2_val" defaultValue="19 Years" />
                   </div>
@@ -483,7 +545,7 @@ const Home: React.FC = () => {
                 <div className="stat-icon-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '12px', background: 'var(--color-accent-light)', color: 'var(--color-accent)' }}>
                   <RefreshCw size={20} className="spin-slow" style={{ margin: 'auto' }} />
                 </div>
-                <div style={{ textAlign: 'left' }}>
+                <div style={{ textAlign: 'start' }}>
                   <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-accent)', lineHeight: 1.1 }}>
                     <EditableLabel labelKey="home_stat3_val" defaultValue="Real-Time" />
                   </div>

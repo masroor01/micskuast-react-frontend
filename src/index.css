@@ -1444,7 +1444,8 @@ a {
   box-shadow: 0 1px 4px rgba(22, 163, 74, 0.3);
 }
 
-.sp-lang-txt-ur {
+.sp-lang-txt-ur,
+.sp-lang-txt-ks {
   font-family: 'Al-Qalam', 'Noto Naskh Arabic', 'Noto Nastaliq Urdu', Tahoma, sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
@@ -1532,37 +1533,57 @@ a {
   transform: translateY(-1px);
 }
 
-/* Urdu Typography (Al-Qalam, Noto Naskh Arabic, high legibility) */
-html[data-lang="ur"] {
+/* Urdu & Kashmiri Typography (Al-Qalam, Noto Naskh Arabic, high legibility) */
+html[data-lang="ur"],
+html[data-lang="ks"] {
   font-family: 'Al-Qalam', 'Al Qalam Taj Nastaleeq', 'Noto Naskh Arabic', 'Noto Nastaliq Urdu', 'Urdu Typesetting', 'Jameel Noori Nastaleeq', 'Segoe UI', Tahoma, sans-serif;
   letter-spacing: 0;
 }
 
 html[data-lang="ur"] body,
+html[data-lang="ks"] body,
 html[data-lang="ur"] .sp-univ-heading,
+html[data-lang="ks"] .sp-univ-heading,
 html[data-lang="ur"] .sp-project-statement,
+html[data-lang="ks"] .sp-project-statement,
 html[data-lang="ur"] .sp-mic-tag-highlight,
+html[data-lang="ks"] .sp-mic-tag-highlight,
 html[data-lang="ur"] .sp-brand-title,
+html[data-lang="ks"] .sp-brand-title,
 html[data-lang="ur"] .sp-brand-subtitle,
+html[data-lang="ks"] .sp-brand-subtitle,
 html[data-lang="ur"] .sp-nav-item,
+html[data-lang="ks"] .sp-nav-item,
 html[data-lang="ur"] .sp-cta-btn,
+html[data-lang="ks"] .sp-cta-btn,
 html[data-lang="ur"] h1, 
+html[data-lang="ks"] h1, 
 html[data-lang="ur"] h2, 
+html[data-lang="ks"] h2, 
 html[data-lang="ur"] h3, 
+html[data-lang="ks"] h3, 
 html[data-lang="ur"] h4, 
+html[data-lang="ks"] h4, 
 html[data-lang="ur"] p,
+html[data-lang="ks"] p,
 html[data-lang="ur"] span,
+html[data-lang="ks"] span,
 html[data-lang="ur"] a,
-html[data-lang="ur"] button {
+html[data-lang="ks"] a,
+html[data-lang="ur"] button,
+html[data-lang="ks"] button {
   font-family: 'Al-Qalam', 'Al Qalam Taj Nastaleeq', 'Noto Naskh Arabic', 'Noto Nastaliq Urdu', 'Urdu Typesetting', 'Jameel Noori Nastaleeq', 'Segoe UI', Tahoma, sans-serif !important;
 }
 
 html[data-lang="ur"] .sp-project-statement,
-html[data-lang="ur"] .sp-mic-tag-highlight {
+html[data-lang="ks"] .sp-project-statement,
+html[data-lang="ur"] .sp-mic-tag-highlight,
+html[data-lang="ks"] .sp-mic-tag-highlight {
   font-size: 0.80rem;
 }
 
-html[data-lang="ur"] .sp-univ-heading {
+html[data-lang="ur"] .sp-univ-heading,
+html[data-lang="ks"] .sp-univ-heading {
   font-size: 0.88rem;
 }
 
@@ -1571,12 +1592,42 @@ html[data-lang="hi"] {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans Devanagari', Roboto, sans-serif;
 }
 
+/* RTL Global Rules & BiDi Text Protection */
 html[dir="rtl"] .sp-univ-external-icon {
   transform: scaleX(-1);
 }
 
 html[dir="rtl"] .sp-nav-links {
   direction: rtl;
+}
+
+html[dir="rtl"] .sp-hero-title {
+  text-align: right;
+  direction: rtl;
+  unicode-bidi: isolate;
+  line-height: 1.38 !important;
+  font-size: clamp(26px, 3.8vw, 42px) !important;
+}
+
+html[dir="rtl"] .sp-hero-subtitle {
+  text-align: right;
+  direction: rtl;
+  unicode-bidi: isolate;
+  line-height: 1.8 !important;
+}
+
+html[dir="rtl"] .sp-hero-actions {
+  justify-content: flex-start;
+  direction: rtl;
+}
+
+/* Protect Latin acronyms like AI, HADP, APMC, LSTM within RTL text */
+html[dir="rtl"] abbr,
+html[dir="rtl"] .bidi-isolate,
+html[dir="rtl"] bdi {
+  unicode-bidi: isolate;
+  direction: ltr;
+  display: inline-block;
 }
 
 
