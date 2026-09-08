@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 import { Edit2, Bold, Italic, Underline, AlignJustify } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
+import { getCachedConfig, getCachedConfigSync, setCachedConfig } from '../utils/configCache';
+
 interface EditableLabelProps {
   labelKey: string;
   defaultValue: string;
@@ -11,53 +13,54 @@ interface EditableLabelProps {
 
 export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultValue, style }) => {
   const { language, t } = useLanguage();
-  const [value, setValue] = useState(defaultValue);
+
+  const resolveLabel = (lang: string, configData: any) => {
+    if (configData && configData.labels && configData.labels[`${labelKey}_${lang}`]) {
+      return configData.labels[`${labelKey}_${lang}`];
+    }
+    if (lang !== 'en') {
+      return t(labelKey, defaultValue);
+    }
+    if (configData && configData.labels && configData.labels[labelKey]) {
+      return configData.labels[labelKey];
+    }
+    return defaultValue;
+  };
+
+  const [value, setValue] = useState(() => resolveLabel(language, getCachedConfigSync()));
   const [isAdmin, setIsAdmin] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [editValue, setEditValue] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
-  const fetchLabel = () => {
-    const translatedDefault = language !== 'en' ? t(labelKey, defaultValue) : defaultValue;
-
-    fetch('/api/config.php')
-      .then(res => res.json())
-      .then(data => {
-        // 1. Check for language-specific override (e.g., labelKey_hi, labelKey_ur)
-        if (data && data.labels && data.labels[`${labelKey}_${language}`]) {
-          setValue(data.labels[`${labelKey}_${language}`]);
-        } else if (language !== 'en') {
-          // 2. In non-English mode, use built-in translation
-          setValue(translatedDefault);
-        } else if (data && data.labels && data.labels[labelKey]) {
-          // 3. In English mode, use admin saved label
-          setValue(data.labels[labelKey]);
-        } else {
-          setValue(defaultValue);
-        }
-      })
-      .catch(() => {
-        setValue(translatedDefault);
-      });
-  };
-
   useEffect(() => {
-    // Check if admin is authenticated
+    // 1. Immediately update value synchronously when language changes - 0ms delay!
+    setValue(resolveLabel(language, getCachedConfigSync()));
+
+    // 2. If config isn't cached yet, resolve once loaded
+    getCachedConfig().then(data => {
+      if (data) {
+        setValue(resolveLabel(language, data));
+      }
+    });
+
     const authenticated = sessionStorage.getItem('admin_authenticated') === 'true';
     setIsAdmin(authenticated);
 
-    fetchLabel();
-
     // Listen for global updates
     const handleUpdate = () => {
-      fetchLabel();
+      getCachedConfig().then(data => {
+        if (data) setValue(resolveLabel(language, data));
+      });
       setIsAdmin(sessionStorage.getItem('admin_authenticated') === 'true');
     };
 
     window.addEventListener('config-updated', handleUpdate);
+    window.addEventListener('config-cache-refreshed', handleUpdate);
     return () => {
       window.removeEventListener('config-updated', handleUpdate);
+      window.removeEventListener('config-cache-refreshed', handleUpdate);
     };
   }, [labelKey, defaultValue, language]);
 
@@ -102,10 +105,11 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ password, config })
-        });
+        }).then(res => ({ res, config }));
       })
-      .then(res => {
+      .then(({ res, config }) => {
         if (res.ok) {
+          setCachedConfig(config);
           setValue(editValue);
           setShowModal(false);
           window.dispatchEvent(new Event('config-updated'));

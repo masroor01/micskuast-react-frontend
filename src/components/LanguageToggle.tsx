@@ -29,11 +29,11 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = 'compa
               key={lang.code}
               type="button"
               onClick={() => setLanguage(lang.code as SupportedLanguage)}
-              className={`sp-lang-btn ${isActive ? 'active' : ''}`}
+              className={`sp-lang-btn ${isActive ? 'active' : ''} sp-lang-btn-${lang.code}`}
               title={`${lang.label} (${lang.nativeName})`}
               aria-pressed={isActive}
             >
-              <span className="sp-lang-native">{lang.nativeName}</span>
+              <span className={`sp-lang-native sp-lang-native-${lang.code}`}>{lang.nativeName}</span>
             </button>
           );
         })}
