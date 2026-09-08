@@ -13,8 +13,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<SupportedLanguage>(() => {
     const saved = localStorage.getItem('site_language');
-    if (saved === 'hi' || saved === 'ur' || saved === 'en' || saved === 'ks') {
-      return saved as SupportedLanguage;
+    if (saved === 'ur') {
+      return 'ur';
     }
     return 'en';
   });
@@ -25,9 +25,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const syncGoogleTranslate = (targetLang: SupportedLanguage) => {
     try {
       const host = window.location.hostname;
-      const cookieVal = targetLang === 'en' || targetLang === 'ks' ? '' : `/en/${targetLang}`;
+      const cookieVal = targetLang === 'en' ? '' : `/en/${targetLang}`;
 
-      if (targetLang === 'en' || targetLang === 'ks') {
+      if (targetLang === 'en') {
         const past = 'Thu, 01 Jan 1970 00:00:00 UTC';
         document.cookie = `googtrans=; expires=${past}; path=/;`;
         document.cookie = `googtrans=; expires=${past}; path=/; domain=${host};`;
@@ -42,9 +42,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       const triggerSelect = () => {
         const combo = document.querySelector<HTMLSelectElement>('.goog-te-combo');
         if (combo) {
-          const comboVal = targetLang === 'ks' ? 'en' : targetLang;
-          if (combo.value !== comboVal) {
-            combo.value = comboVal;
+          if (combo.value !== targetLang) {
+            combo.value = targetLang;
             combo.dispatchEvent(new Event('change', { bubbles: true }));
           }
           return true;

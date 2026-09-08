@@ -20,15 +20,15 @@
         }
 
         var savedLang = localStorage.getItem('site_language');
-        if (savedLang === 'hi' || savedLang === 'ur' || savedLang === 'ks') {
-          document.documentElement.setAttribute('lang', savedLang);
-          document.documentElement.setAttribute('data-lang', savedLang);
-          if (savedLang === 'ur' || savedLang === 'ks') {
-            document.documentElement.setAttribute('dir', 'rtl');
-          }
-          if (savedLang === 'hi' || savedLang === 'ur') {
-            document.cookie = "googtrans=/en/" + savedLang + "; path=/;";
-          }
+        if (savedLang === 'ur') {
+          document.documentElement.setAttribute('lang', 'ur');
+          document.documentElement.setAttribute('data-lang', 'ur');
+          document.documentElement.setAttribute('dir', 'rtl');
+          document.cookie = "googtrans=/en/ur; path=/;";
+        } else {
+          document.documentElement.setAttribute('lang', 'en');
+          document.documentElement.setAttribute('data-lang', 'en');
+          document.documentElement.setAttribute('dir', 'ltr');
         }
       })();
     </script>
@@ -40,7 +40,7 @@
         if (window.google && window.google.translate) {
           new window.google.translate.TranslateElement({
             pageLanguage: 'en',
-            includedLanguages: 'en,hi,ur',
+            includedLanguages: 'en,ur',
             autoDisplay: false
           }, 'google_translate_element');
         }
