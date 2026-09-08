@@ -25,116 +25,107 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {/* Tier 1: S&P Global Style Top Utility Bar */}
+      {/* Tier 1: Executive Top Institutional Utility Bar */}
       <div className="sp-utility-strip">
         <div className="container sp-utility-container">
+          {/* Left: Official University & Project Lockup */}
           <div className="sp-utility-left">
-            <div className="sp-utility-institution-lockup">
-              {/* Top Row: University Crest + Name */}
-              <a 
-                href="https://skuastkashmir.ac.in" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="sp-university-link"
-                title={t('univ_name', 'Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir')}
-              >
-                <img 
-                  src="/logos/skuast.png" 
-                  alt="SKUAST-K Seal" 
-                  className="sp-univ-logo"
-                />
-                <span className="sp-univ-name">
-                  {t('univ_name', 'Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir')}
+            <div className="sp-institution-cluster">
+              {/* Dual Emblem Badge Group */}
+              <div className="sp-emblems-group">
+                <a 
+                  href="https://skuastkashmir.ac.in" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="sp-emblem-anchor"
+                  title="Official SKUAST-K Website"
+                >
+                  <img 
+                    src="/logos/skuast.png" 
+                    alt="SKUAST-K Seal" 
+                    className="sp-crest-logo"
+                  />
+                </a>
+                <span className="sp-emblem-divider" />
+                <span className="sp-emblem-badge-wrap" title="Holistic Agriculture Development Program">
+                  <img 
+                    src="/logos/hadp.png" 
+                    alt="HADP Logo" 
+                    className="sp-hadp-logo"
+                  />
                 </span>
-                <ExternalLink size={12} className="sp-univ-ext-icon" />
-              </a>
+              </div>
 
-              {/* Bottom Row: HADP Badge & Project Statement */}
-              <div className="sp-hadp-subtitle-bar">
-                <img 
-                  src="/logos/hadp.png" 
-                  alt="HADP Logo" 
-                  className="sp-hadp-logo"
-                />
-                <span className="sp-hadp-pill">{t('hadp_tag', 'HADP #04')}</span>
-                <span className="sp-hadp-text">
-                  {t('hadp_statement', 'Strengthening Agricultural Marketing in UT of Jammu and Kashmir')}
-                </span>
-                <span className="sp-hadp-mic-tag">
-                  {t('mic_tag', '(Market Intelligence Cell)')}
-                </span>
+              {/* Institutional Typography Hierarchy */}
+              <div className="sp-institution-info">
+                <div className="sp-univ-row">
+                  <a 
+                    href="https://skuastkashmir.ac.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="sp-univ-anchor"
+                    title={t('univ_name', 'Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir')}
+                  >
+                    <span className="sp-univ-heading">
+                      {t('univ_name', 'Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir')}
+                    </span>
+                    <ExternalLink size={11} className="sp-univ-external-icon" />
+                  </a>
+                </div>
+
+                <div className="sp-project-row">
+                  <span className="sp-hadp-tag-pill">{t('hadp_tag', 'HADP #04')}</span>
+                  <span className="sp-project-statement">
+                    {t('hadp_statement', 'Strengthening Agricultural Marketing in UT of Jammu and Kashmir')}
+                  </span>
+                  <span className="sp-mic-tag-highlight">
+                    {t('mic_tag', '(Market Intelligence Cell)')}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
+          {/* Right: Executive Control Suite */}
           <div className="sp-utility-right">
-            {/* Language Toggle Button (English, Hindi, Urdu) */}
+            {/* Language Switcher */}
             <LanguageToggle />
 
-            {/* Theme Switcher Toggle */}
-            <div style={{ display: 'flex', gap: '0.2rem', background: 'var(--color-bg)', padding: '2px 4px', borderRadius: '50px', border: '1px solid var(--color-border)' }}>
+            <div className="sp-suite-separator" />
+
+            {/* Theme Selector */}
+            <div className="sp-theme-cluster">
               <button
                 onClick={() => toggleTheme('light')}
-                style={{
-                  background: theme === 'light' ? 'var(--color-primary)' : 'transparent',
-                  color: theme === 'light' ? '#fff' : 'var(--color-text-muted)',
-                  border: 'none',
-                  borderRadius: '50%',
-                  width: '22px',
-                  height: '22px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s'
-                }}
+                className={`sp-theme-dot ${theme === 'light' ? 'active' : ''}`}
                 title={t('light_theme', 'Light Theme')}
+                aria-label="Light Theme"
               >
                 <Sun size={12} />
               </button>
               <button
                 onClick={() => toggleTheme('dark')}
-                style={{
-                  background: theme === 'dark' ? 'var(--color-primary)' : 'transparent',
-                  color: theme === 'dark' ? '#fff' : 'var(--color-text-muted)',
-                  border: 'none',
-                  borderRadius: '50%',
-                  width: '22px',
-                  height: '22px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s'
-                }}
+                className={`sp-theme-dot ${theme === 'dark' ? 'active' : ''}`}
                 title={t('dark_theme', 'Dark Theme')}
+                aria-label="Dark Theme"
               >
                 <Moon size={12} />
               </button>
               <button
                 onClick={() => toggleTheme('warm')}
-                style={{
-                  background: theme === 'warm' ? 'var(--color-primary)' : 'transparent',
-                  color: theme === 'warm' ? '#fff' : 'var(--color-text-muted)',
-                  border: 'none',
-                  borderRadius: '50%',
-                  width: '22px',
-                  height: '22px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s'
-                }}
+                className={`sp-theme-dot ${theme === 'warm' ? 'active' : ''}`}
                 title={t('warm_theme', 'Warm Theme')}
+                aria-label="Warm Theme"
               >
                 <Coffee size={12} />
               </button>
             </div>
 
-            {/* Admin Login Link */}
-            <NavLink to="/admin" className="sp-utility-item" style={{ fontSize: '0.76rem' }}>
-              <Lock size={12} />
+            <div className="sp-suite-separator" />
+
+            {/* Admin Portal Pill */}
+            <NavLink to="/admin" className="sp-admin-badge-btn" title="Administrative Access">
+              <Lock size={11} />
               <span>{t('admin_portal_btn', 'Admin Portal')}</span>
             </NavLink>
           </div>

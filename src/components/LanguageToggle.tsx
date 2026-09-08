@@ -17,11 +17,11 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = 'compa
       role="group"
       aria-label={t('select_language', 'Select Language')}
     >
-      <div className="sp-lang-icon-wrap" title={t('select_language', 'Language')}>
-        <Globe size={13} className="sp-lang-icon" />
-      </div>
+      <div className="sp-lang-capsule">
+        <div className="sp-lang-icon-slot" title={t('select_language', 'Language')}>
+          <Globe size={13} className="sp-lang-globe-icon" />
+        </div>
 
-      <div className="sp-lang-pill">
         {SUPPORTED_LANGUAGES.map((lang) => {
           const isActive = language === lang.code;
           return (
@@ -29,11 +29,11 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = 'compa
               key={lang.code}
               type="button"
               onClick={() => setLanguage(lang.code as SupportedLanguage)}
-              className={`sp-lang-btn ${isActive ? 'active' : ''} sp-lang-btn-${lang.code}`}
+              className={`sp-lang-item ${isActive ? 'active' : ''} sp-lang-item-${lang.code}`}
               title={`${lang.label} (${lang.nativeName})`}
               aria-pressed={isActive}
             >
-              <span className={`sp-lang-native sp-lang-native-${lang.code}`}>{lang.nativeName}</span>
+              <span className={`sp-lang-txt sp-lang-txt-${lang.code}`}>{lang.nativeName}</span>
             </button>
           );
         })}
