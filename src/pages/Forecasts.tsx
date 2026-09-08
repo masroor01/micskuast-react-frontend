@@ -54,10 +54,13 @@ const Forecasts: React.FC = () => {
           clipPath: 'polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%)'
         }}>
           <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#f87171', display: 'inline-block' }} />
-          MIC Update
+          <EditableLabel labelKey="forecast_update_badge" defaultValue="MIC Update" />
         </div>
         <p style={{ margin: 0, fontSize: '0.85rem', fontWeight: 600, color: 'var(--color-text-main)' }}>
-          🍎 AI-powered Apple Price Forecasts for the 2026–27 marketing season are now <span style={{ color: '#15803d', fontWeight: 800 }}>LIVE</span> on MIC — providing wholesale price projections.
+          <EditableLabel 
+            labelKey="forecast_update_text" 
+            defaultValue="🍎 AI-powered Apple Price Forecasts for the 2026–27 marketing season are now LIVE on MIC — providing wholesale price projections." 
+          />
         </p>
       </div>
 

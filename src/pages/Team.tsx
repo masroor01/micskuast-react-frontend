@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, GraduationCap } from 'lucide-react';
+import { EditableLabel } from '../components/EditableLabel';
 
 const LinkedinIcon = ({ size = 18 }: { size?: number }) => (
   <svg 
@@ -117,7 +118,7 @@ const Team: React.FC = () => {
             padding: '4px 12px',
             borderRadius: '50px'
           }}>
-            HADP Project Members
+            <EditableLabel labelKey="team_badge" defaultValue="HADP Project Members" />
           </span>
           <h1 style={{ 
             fontSize: 'clamp(28px, 4vw, 42px)', 
@@ -126,10 +127,13 @@ const Team: React.FC = () => {
             marginTop: '1rem',
             marginBottom: '1rem'
           }}>
-            Meet Our Team
+            <EditableLabel labelKey="team_title" defaultValue="Meet Our Team" />
           </h1>
           <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6', fontSize: '1.05rem' }}>
-            The research, analytical, and technical brains driving agricultural price forecasting and market intelligence models at SKUAST-K Kashmir.
+            <EditableLabel 
+              labelKey="team_subtitle" 
+              defaultValue="The research, analytical, and technical brains driving agricultural price forecasting and market intelligence models at SKUAST-K Kashmir." 
+            />
           </p>
         </div>
 
@@ -147,7 +151,8 @@ const Team: React.FC = () => {
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <GraduationCap size={24} style={{ color: 'var(--color-accent)' }} /> Principal Investigators
+              <GraduationCap size={24} style={{ color: 'var(--color-accent)' }} /> 
+              <EditableLabel labelKey="team_pi_title" defaultValue="Principal Investigators" />
             </h2>
             
             <div className="team-grid">

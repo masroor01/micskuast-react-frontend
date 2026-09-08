@@ -22,6 +22,49 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const currentOption = SUPPORTED_LANGUAGES.find(l => l.code === language) || SUPPORTED_LANGUAGES[0];
   const dir = currentOption.dir;
 
+  const syncGoogleTranslate = (targetLang: SupportedLanguage) => {
+    try {
+      const host = window.location.hostname;
+      const cookieVal = targetLang === 'en' ? '' : `/en/${targetLang}`;
+
+      if (targetLang === 'en') {
+        const past = 'Thu, 01 Jan 1970 00:00:00 UTC';
+        document.cookie = `googtrans=; expires=${past}; path=/;`;
+        document.cookie = `googtrans=; expires=${past}; path=/; domain=${host};`;
+        document.cookie = `googtrans=; expires=${past}; path=/; domain=.${host};`;
+        document.cookie = `googtrans=/en/en; path=/;`;
+      } else {
+        document.cookie = `googtrans=${cookieVal}; path=/;`;
+        document.cookie = `googtrans=${cookieVal}; path=/; domain=${host};`;
+        document.cookie = `googtrans=${cookieVal}; path=/; domain=.${host};`;
+      }
+
+      const triggerSelect = () => {
+        const combo = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+        if (combo) {
+          if (combo.value !== targetLang) {
+            combo.value = targetLang;
+            combo.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+          return true;
+        }
+        return false;
+      };
+
+      if (!triggerSelect()) {
+        let attempts = 0;
+        const timer = setInterval(() => {
+          attempts++;
+          if (triggerSelect() || attempts > 12) {
+            clearInterval(timer);
+          }
+        }, 300);
+      }
+    } catch (e) {
+      console.warn('Google Translate sync error:', e);
+    }
+  };
+
   useEffect(() => {
     // Persist choice
     localStorage.setItem('site_language', language);
@@ -30,6 +73,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     document.documentElement.setAttribute('lang', language);
     document.documentElement.setAttribute('dir', dir);
     document.documentElement.setAttribute('data-lang', language);
+
+    // Sync full-page translation via Google Translate Bridge
+    syncGoogleTranslate(language);
 
     // Trigger custom event for external listeners
     window.dispatchEvent(new CustomEvent('language-changed', { detail: { language, dir } }));

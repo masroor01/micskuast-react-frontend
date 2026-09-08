@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, Search, FileText, Calendar, ExternalLink } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
+import { useLanguage } from '../context/LanguageContext';
 
 interface PublicationItem {
   id: number;
@@ -157,6 +158,7 @@ const getCategoryColors = (category: string) => {
 };
 
 const Publications: React.FC = () => {
+  const { t } = useLanguage();
   const [publications, setPublications] = useState<PublicationItem[]>(PUBLICATIONS_DATA);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
@@ -227,10 +229,13 @@ const Publications: React.FC = () => {
       <div style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '2.5rem', marginBottom: '3rem' }}>
         <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
           <BookOpen size={36} style={{ color: 'var(--color-accent)' }} />
-          Publications & Books Directory
+          <EditableLabel labelKey="pub_page_title" defaultValue="Publications & Books Directory" />
         </h1>
         <p style={{ color: 'var(--color-text-muted)', fontSize: '1.1rem', maxWidth: '750px' }}>
-          Browse research bulletins, academic publications, market textbooks, and seasonal outlook reports compiled by the SKUAST Market Intelligence Cell.
+          <EditableLabel 
+            labelKey="pub_page_desc" 
+            defaultValue="Browse research bulletins, academic publications, market textbooks, and seasonal outlook reports compiled by the SKUAST Market Intelligence Cell." 
+          />
         </p>
       </div>
 
@@ -273,7 +278,7 @@ const Publications: React.FC = () => {
         <div style={{ position: 'relative', minWidth: '280px' }}>
           <input
             type="text"
-            placeholder="Search reports or authors..."
+            placeholder={t('pub_search_placeholder', 'Search reports or authors...')}
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             className="form-input"
@@ -319,7 +324,7 @@ const Publications: React.FC = () => {
                 marginBottom: '0.75rem',
                 fontWeight: 600
               }}>
-                By {item.author}
+                <EditableLabel labelKey="pub_by" defaultValue="By" /> {item.author}
               </p>
               
               <p className="card-desc" style={{ 
@@ -336,7 +341,7 @@ const Publications: React.FC = () => {
                     style={{ width: '100%', justifyContent: 'center', padding: '0.5rem', fontSize: '0.82rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-primary)', color: 'var(--color-primary)', background: 'transparent', fontWeight: 700 }}
                   >
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <ExternalLink size={14} /> View
+                      <ExternalLink size={14} /> <EditableLabel labelKey="pub_view" defaultValue="View" />
                     </span>
                   </a>
                 ) : (
@@ -347,7 +352,7 @@ const Publications: React.FC = () => {
                     style={{ width: '100%', justifyContent: 'center', padding: '0.5rem 1rem', fontSize: '0.85rem', borderRadius: 'var(--radius-sm)' }}
                   >
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                      Request Access <ExternalLink size={14} />
+                      <EditableLabel labelKey="pub_request_access" defaultValue="Request Access" /> <ExternalLink size={14} />
                     </span>
                   </a>
                 )}
@@ -357,9 +362,11 @@ const Publications: React.FC = () => {
         </div>
       ) : (
         <div style={{ textAlign: 'center', padding: '4rem 2rem', border: '1px dashed var(--color-border)', borderRadius: 'var(--radius-md)', background: 'var(--color-surface)' }}>
-          <h3 style={{ color: 'var(--color-primary)' }}>No Publications Found</h3>
+          <h3 style={{ color: 'var(--color-primary)' }}>
+            <EditableLabel labelKey="pub_empty_title" defaultValue="No Publications Found" />
+          </h3>
           <p style={{ color: 'var(--color-text-muted)', marginTop: '0.25rem' }}>
-            We couldn't find any documents matching "{searchQuery}". Try refining your search query or switching categories.
+            <EditableLabel labelKey="pub_empty_desc" defaultValue="We couldn't find any documents matching your query. Try refining your search query or switching categories." />
           </p>
         </div>
       )}

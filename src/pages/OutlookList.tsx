@@ -3,6 +3,7 @@ import { wpApi, type CommodityOutlook } from '../services/wpApi';
 import CommodityCard from '../components/CommodityCard';
 import Loader from '../components/Loader';
 import { BookOpen } from 'lucide-react';
+import { EditableLabel } from '../components/EditableLabel';
 
 const OutlookList: React.FC = () => {
   const [outlooks, setOutlooks] = useState<CommodityOutlook[]>([]);
@@ -22,10 +23,13 @@ const OutlookList: React.FC = () => {
       <div style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '2.5rem', marginBottom: '3rem' }}>
         <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
           <BookOpen size={36} style={{ color: 'var(--color-accent)' }} />
-          Commodity Outlooks
+          <EditableLabel labelKey="outlooks_title" defaultValue="Commodity Outlooks" />
         </h1>
         <p style={{ color: 'var(--color-text-muted)', fontSize: '1.1rem', maxWidth: '750px' }}>
-          Explore detailed reports on arrivals, wholesale prices, and future market predictions for major Kashmir horticultural products. All reports are published and managed dynamically in WordPress.
+          <EditableLabel 
+            labelKey="outlooks_subtitle" 
+            defaultValue="Explore detailed reports on arrivals, wholesale prices, and future market predictions for major Kashmir horticultural products. All reports are published and managed dynamically in WordPress." 
+          />
         </p>
       </div>
 

@@ -2555,5 +2555,44 @@ html[dir="rtl"] .sp-nav-links {
   transform: scale(1.15);
 }
 
+/* ==========================================================================
+   Google Translate Seamless Integration & Clean UI Rules
+   ========================================================================== */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-te-menu-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
 
+body {
+  top: 0px !important;
+  position: static !important;
+}
 
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Protect icons, SVG graphics, and brand logos from text translation distortion */
+svg,
+.lucide,
+i.fa,
+i.fas,
+i.far,
+.brand-logo,
+.notranslate {
+  translate: no !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}

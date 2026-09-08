@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Landmark, TrendingUp, DollarSign, Calendar, RefreshCw } from 'lucide-react';
+import { EditableLabel } from '../components/EditableLabel';
 
 interface StatRow {
   metric: string;
@@ -126,10 +127,14 @@ const Markets: React.FC = () => {
       {/* Banner */}
       <div className="market-header-banner">
         <h1 style={{ color: 'white', display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-          <Landmark size={36} /> APMC Market Intelligence
+          <Landmark size={36} /> 
+          <EditableLabel labelKey="markets_header_title" defaultValue="APMC Market Intelligence" />
         </h1>
         <p style={{ color: 'hsla(0, 0%, 100%, 0.8)', maxWidth: '700px', fontSize: '1.1rem' }}>
-          Statistical analysis and pricing logs from major wholesale assembly and terminal agricultural markets.
+          <EditableLabel 
+            labelKey="markets_header_subtitle" 
+            defaultValue="Statistical analysis and pricing logs from major wholesale assembly and terminal agricultural markets." 
+          />
         </p>
       </div>
 
