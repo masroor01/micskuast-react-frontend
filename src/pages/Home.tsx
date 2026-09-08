@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw, TrendingUp, AlertTriangle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
+import { useLanguage } from '../context/LanguageContext';
 
 export interface HeroSlide {
   id: number;
@@ -118,20 +119,34 @@ const defaultTeam = [
   }
 ];
 
+const defaultEnglishTickerItems: string[] = [
+  "🍎 AI-powered Apple Price Forecasts for the 2026–27 marketing season are now LIVE on MIC — providing 7-day and 30-day price forecasts across major wholesale markets of Jammu & Kashmir for informed harvesting, storage and marketing decisions.",
+  "📈 NEW REPORT (July 23, 2026): 2026 Cherry Model Performance Review is now live — forecast accuracy across 13 market/grade combinations with an overall prediction accuracy of 81.7%.",
+  "🌏 EXPORT MILESTONE (July 2026): J&K's premium Areko Cherries and Scentrose Plums from Shopian & Pulwama have entered the Singapore market for the first time.",
+  "📡 DIGITAL MARKET UPDATE: DMI is encouraging all States and Union Territories to establish State-level agricultural market databases integrated with AGMARKNET.",
+  "🇮🇳 POLICY UPDATE: NITI Aayog's \"Operation Golden Greens\" roadmap proposes transforming J&K into a global horticulture leader.",
+  "⚠️ TRADE ALERT: Recent reductions in import duties on apples have raised competitiveness concerns.",
+  "🍏 APPLE INDUSTRY: High-density apple plantations continue expanding across J&K.",
+];
+
+const defaultUrduTickerItems: string[] = [
+  "🍎 مارکیٹنگ سیزن 2026–27 کے لیے سیب کی قیمتوں کی پیشین گوئیاں اب لائیو ہیں — کٹائی، ذخیرہ اندوزی اور مارکیٹ کے فیصلوں کے لیے 7 اور 30 روزہ پیشین گوئی۔",
+  "📈 نئی رپورٹ (23 جولائی 2026): چیری ماڈل پرفارمنس کا جائزہ اب لائیو ہے — 13 مارکیٹ/گریڈ امتزاجات میں 81.7% پیشن گوئی کی درستگی۔",
+  "🌏 برآمدی سنگ میل (جولائی 2026): شوپیاں اور پلوامہ سے جے اینڈ کے کی پریمیم اریکو چیری اور سنٹروس آلو بخارا پہلی بار سنگاپور کی منڈی میں داخل ہوئے۔",
+  "📡 ڈیجیٹل مارکیٹ اپڈیٹ: ڈی ایم آئی تمام ریاستوں اور مرکز کے زیر انتظام علاقوں کو ایگمارک نیٹ کے ساتھ مربوط زرعی مارکیٹ ڈیٹا بیس بنانے کی ترغیب دے رہا ہے۔",
+  "🇮🇳 پالیسی اپڈیٹ: نیتی آیوگ کا 'آپریشن گولڈن گرینز' روڈ میپ جموں و کشمیر کو عالمی باغبانی مرکز بنانے کی تجویز پیش کرتا ہے۔",
+  "⚠️ تجارتی الرٹ: سیب پر درآمدی ڈیوٹی میں حالیہ کمی نے مقابلے کے خدشات کو جنم دیا ہے۔",
+  "🍏 سیب کی صنعت: جموں و کشمیر میں اعلی کثافت والی سیب کی باغبانی میں مسلسل توسیع جاری ہے۔"
+];
+
 const Home: React.FC = () => {
+  const { language } = useLanguage();
   const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(defaultHeroSlides);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const [tickerItems, setTickerItems] = useState<string[]>([
-    "🍎 AI-powered Apple Price Forecasts for the 2026–27 marketing season are now LIVE on MIC — providing 7-day and 30-day price forecasts across major wholesale markets of Jammu & Kashmir for informed harvesting, storage and marketing decisions.",
-    "📈 NEW REPORT (July 23, 2026): 2026 Cherry Model Performance Review is now live — forecast accuracy across 13 market/grade combinations with an overall prediction accuracy of 81.7%.",
-    "🌏 EXPORT MILESTONE (July 2026): J&K's premium Areko Cherries and Scentrose Plums from Shopian & Pulwama have entered the Singapore market for the first time.",
-    "📡 DIGITAL MARKET UPDATE: DMI is encouraging all States and Union Territories to establish State-level agricultural market databases integrated with AGMARKNET.",
-    "🇮🇳 POLICY UPDATE: NITI Aayog's \"Operation Golden Greens\" roadmap proposes transforming J&K into a global horticulture leader.",
-    "⚠️ TRADE ALERT: Recent reductions in import duties on apples have raised competitiveness concerns.",
-    "🍏 APPLE INDUSTRY: High-density apple plantations continue expanding across J&K.",
-  ]);
+  const [tickerItems, setTickerItems] = useState<string[]>(defaultEnglishTickerItems);
+  const [isCustomTicker, setIsCustomTicker] = useState<boolean>(false);
   const [teamMembers, setTeamMembers] = useState<any[]>([]);
   const [isTeamLoading, setIsTeamLoading] = useState(true);
 
@@ -162,7 +177,12 @@ const Home: React.FC = () => {
           if (cachedData.hero_slides && cachedData.hero_slides.length > 0) {
             setHeroSlides(cachedData.hero_slides);
           }
-          if (cachedData.ticker_items && cachedData.ticker_items.length > 0) setTickerItems(cachedData.ticker_items);
+          if (cachedData.ticker_items && cachedData.ticker_items.length > 0) {
+            setTickerItems(cachedData.ticker_items);
+            if (JSON.stringify(cachedData.ticker_items) !== JSON.stringify(defaultEnglishTickerItems)) {
+              setIsCustomTicker(true);
+            }
+          }
           if (cachedData.team) {
             setTeamMembers(cachedData.team);
           } else {
@@ -186,7 +206,12 @@ const Home: React.FC = () => {
           if (data.hero_slides && data.hero_slides.length > 0) {
             setHeroSlides(data.hero_slides);
           }
-          if (data.ticker_items && data.ticker_items.length > 0) setTickerItems(data.ticker_items);
+          if (data.ticker_items && data.ticker_items.length > 0) {
+            setTickerItems(data.ticker_items);
+            if (JSON.stringify(data.ticker_items) !== JSON.stringify(defaultEnglishTickerItems)) {
+              setIsCustomTicker(true);
+            }
+          }
           if (data.team) {
             setTeamMembers(data.team);
           } else {
@@ -201,6 +226,10 @@ const Home: React.FC = () => {
         setIsTeamLoading(false);
       });
   }, []);
+
+  const activeTickerItems = (language === 'ur' && !isCustomTicker)
+    ? defaultUrduTickerItems
+    : tickerItems;
  
   return (
     <div className="home-page animate-fade-in">
@@ -208,23 +237,23 @@ const Home: React.FC = () => {
       <div className="react-marquee-container">
         <div className="react-marquee-label">
           <span className="live-dot animate-pulse"></span>
-          <span>MIC UPDATE</span>
+          <EditableLabel labelKey="ticker_label" defaultValue="MIC UPDATE" />
         </div>
         
         <div className="react-marquee-track">
           <div className="react-marquee-content">
-            {tickerItems.map((item, idx) => (
+            {activeTickerItems.map((item, idx) => (
               <React.Fragment key={idx}>
-                <span className="marquee-item">{item}</span>
-                {idx < tickerItems.length - 1 && <span className="marquee-separator">●</span>}
+                <bdi className="marquee-item">{item}</bdi>
+                {idx < activeTickerItems.length - 1 && <span className="marquee-separator">●</span>}
               </React.Fragment>
             ))}
           </div>
           <div className="react-marquee-content" aria-hidden="true">
-            {tickerItems.map((item, idx) => (
+            {activeTickerItems.map((item, idx) => (
               <React.Fragment key={`double-${idx}`}>
-                <span className="marquee-item">{item}</span>
-                {idx < tickerItems.length - 1 && <span className="marquee-separator">●</span>}
+                <bdi className="marquee-item">{item}</bdi>
+                {idx < activeTickerItems.length - 1 && <span className="marquee-separator">●</span>}
               </React.Fragment>
             ))}
           </div>
@@ -1098,6 +1127,7 @@ const Home: React.FC = () => {
           min-height: 38px;
           overflow: hidden;
           position: relative;
+          width: 100%;
         }
         .react-marquee-label {
           flex-shrink: 0;
@@ -1117,6 +1147,11 @@ const Home: React.FC = () => {
           box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
           clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
         }
+        html[dir="rtl"] .react-marquee-label {
+          padding: 8px 14px 8px 18px;
+          box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
+          clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
+        }
         .react-marquee-label .live-dot {
           width: 8px;
           height: 8px;
@@ -1124,6 +1159,7 @@ const Home: React.FC = () => {
           border-radius: 50%;
           animation: dot-pulse 1.5s infinite ease-in-out;
           display: inline-block;
+          flex-shrink: 0;
         }
         @keyframes dot-pulse {
           0% { transform: scale(0.8); opacity: 0.5; }
@@ -1136,6 +1172,7 @@ const Home: React.FC = () => {
           overflow: hidden;
           user-select: none;
           position: relative;
+          min-width: 0;
         }
         .react-marquee-content {
           display: flex;
@@ -1144,7 +1181,12 @@ const Home: React.FC = () => {
           white-space: nowrap;
           gap: 3rem;
           padding-left: 1.5rem;
+          padding-right: 1.5rem;
           animation: marquee-scroll 95s linear infinite;
+          will-change: transform;
+        }
+        html[dir="rtl"] .react-marquee-content {
+          animation-name: marquee-scroll-rtl;
         }
         .react-marquee-track:hover .react-marquee-content {
           animation-play-state: paused;
@@ -1153,8 +1195,14 @@ const Home: React.FC = () => {
           font-size: 0.82rem;
           font-weight: 600;
           color: var(--color-text-main);
-          display: flex;
+          display: inline-flex;
           align-items: center;
+          unicode-bidi: isolate;
+        }
+        html[dir="rtl"] .marquee-item {
+          font-family: 'Noto Naskh Arabic', 'Al-Qalam', serif;
+          font-size: 0.95rem;
+          line-height: 1.6;
         }
         .marquee-link {
           color: var(--color-primary-light);
@@ -1173,10 +1221,15 @@ const Home: React.FC = () => {
           font-size: 8px;
           margin: 0;
           opacity: 0.4;
+          flex-shrink: 0;
         }
         @keyframes marquee-scroll {
           0% { transform: translate3d(0, 0, 0); }
           100% { transform: translate3d(-100%, 0, 0); }
+        }
+        @keyframes marquee-scroll-rtl {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(100%, 0, 0); }
         }
 
         .team-grid {
