@@ -66,19 +66,22 @@ const Header: React.FC = () => {
                     className="sp-univ-anchor"
                     title={t('univ_name', 'Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir')}
                   >
-                    <span className="sp-univ-heading">
+                    <span className="sp-univ-heading desktop-only-text">
                       {t('univ_name', 'Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir')}
                     </span>
-                    <ExternalLink size={11} className="sp-univ-external-icon" />
+                    <span className="sp-univ-heading mobile-only-text">
+                      {t('univ_short', 'SKUAST-K')}
+                    </span>
+                    <ExternalLink size={11} className="sp-univ-external-icon desktop-only-text" />
                   </a>
                 </div>
 
                 <div className="sp-project-row">
                   <span className="sp-hadp-tag-pill">{t('hadp_tag', 'HADP #04')}</span>
-                  <span className="sp-project-statement">
+                  <span className="sp-project-statement desktop-only-text">
                     {t('hadp_statement', 'Strengthening Agricultural Marketing in UT of Jammu and Kashmir')}
                   </span>
-                  <span className="sp-mic-tag-highlight">
+                  <span className="sp-mic-tag-highlight desktop-only-text">
                     {t('mic_tag', '(Market Intelligence Cell)')}
                   </span>
                 </div>
@@ -91,7 +94,7 @@ const Header: React.FC = () => {
             {/* Language Switcher */}
             <LanguageToggle />
 
-            <div className="sp-suite-separator" />
+            <div className="sp-suite-separator desktop-only" />
 
             {/* Theme Selector */}
             <div className="sp-theme-cluster">
@@ -121,10 +124,10 @@ const Header: React.FC = () => {
               </button>
             </div>
 
-            <div className="sp-suite-separator" />
+            <div className="sp-suite-separator desktop-only" />
 
-            {/* Admin Portal Pill */}
-            <NavLink to="/admin" className="sp-admin-badge-btn" title="Administrative Access">
+            {/* Admin Portal Pill (Available in Mobile Drawer on mobile) */}
+            <NavLink to="/admin" className="sp-admin-badge-btn desktop-only" title="Administrative Access">
               <Lock size={11} />
               <span>{t('admin_portal_btn', 'Admin Portal')}</span>
             </NavLink>
@@ -140,9 +143,8 @@ const Header: React.FC = () => {
             <img 
               src="/logos/mic.png" 
               alt="MIC Logo" 
+              className="sp-brand-logo-img"
               style={{ 
-                height: '42px', 
-                width: '42px',
                 objectFit: 'contain',
                 filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.3))'
               }} 

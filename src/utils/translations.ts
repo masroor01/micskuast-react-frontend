@@ -16,6 +16,7 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
   en: {
     // Top Bar & Institutional Lockup
     univ_name: "Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir",
+    univ_short: "SKUAST-K",
     hadp_tag: "HADP #04",
     hadp_statement: "Strengthening Agricultural Marketing in UT of Jammu and Kashmir",
     mic_tag: "(Market Intelligence Cell)",
@@ -306,6 +307,7 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
   ur: {
     // Top Bar & Institutional Lockup
     univ_name: "شیرِ کشمیر یونیورسٹی آف ایگریکلچرل سائنسز اینڈ ٹیکنالوجی آف کشمیر",
+    univ_short: "سکواسٹ-کے",
     hadp_tag: "ایچ اے ڈی پی #04",
     hadp_statement: "مرکز کے زیر انتظام جموں و کشمیر میں زرعی مارکیٹنگ کا استحکام",
     mic_tag: "(مارکیٹ انٹیلی جنس سیل)",
