@@ -100,6 +100,22 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     home_card4_meta: "HADP Project 04",
     home_card4_stat: "View Reports →",
 
+    home_card5_tag: "Spatial Arbitrage & Cointegration",
+    home_card5_title: "Price Transmission & Market Integration",
+    home_card5_desc: "Econometric evaluation across 2,225 pairs & 17 crops estimating long-run cointegration, price elasticity, and speed of price adjustment.",
+    home_card5_meta: "2,225 Pairs",
+    home_card5_stat: "85.1% Cointegrated →",
+
+    // Homepage Dedicated Price Transmission Section
+    home_trans_badge: "HADP Project 04 • Econometric Research",
+    home_trans_title: "Wholesale Price Transmission & Market Cointegration",
+    home_trans_desc: "Empirical study across 2,225 market pairs and 17 crops evaluating spatial integration, price elasticity, and error-correction transmission speed.",
+    home_trans_tab_overview: "Overview & Key Metrics",
+    home_trans_tab_national: "National Corridors (17 Crops)",
+    home_trans_tab_jk: "J&K Regional Pipeline",
+    home_trans_tab_apple: "Apple Spatial Network",
+    home_trans_view_full: "Explore Complete Econometric Study & Data Tables",
+
     // Publications Directory
     pub_page_title: "Publications & Books Directory",
     pub_page_desc: "Browse research bulletins, academic publications, market textbooks, and seasonal outlook reports compiled by the SKUAST Market Intelligence Cell.",
@@ -373,6 +389,22 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     home_card4_desc: "کسانوں، تاجروں اور منصوبہ سازوں کے لیے باغبانی کموڈیٹی آؤٹ لک اور تحقیقی دستاویزات کی اشاعت۔",
     home_card4_meta: "ایچ اے ڈی پی پروجیکٹ 04",
     home_card4_stat: "رپورٹس دیکھیں →",
+
+    home_card5_tag: "جغرافیائی تجارت اور مربوطیت",
+    home_card5_title: "قیمتوں کی منتقلی اور مارکیٹ کا باہمی ربط",
+    home_card5_desc: "2,225 تجارتی جوڑوں اور 17 فصلوں کا معاشی تجزیہ جو مارکیٹ کے ربط، قیمتوں کی بحالی کی رفتار اور ترسیلی رکاوٹوں کی پیمائش کرتا ہے۔",
+    home_card5_meta: "2,225 جوڑے",
+    home_card5_stat: "85.1% مربوط →",
+
+    // Homepage Dedicated Price Transmission Section
+    home_trans_badge: "ایچ اے ڈی پی پروجیکٹ 04 • معاشی تحقیق",
+    home_trans_title: "تھوک مارکیٹ میں قیمتوں کی منتقلی اور باہمی ربط",
+    home_trans_desc: "2,225 مارکیٹ جوڑوں اور 17 فصلوں کا جامع تجزئیاتی مطالعہ جو قیمتوں کے باہمی ربط، لچک اور منتقلی کی رفتار کا جائزہ لیتا ہے۔",
+    home_trans_tab_overview: "جائزہ اور اہم پیمانے",
+    home_trans_tab_national: "قومی تجارتی راستے (17 فصلیں)",
+    home_trans_tab_jk: "جموں و کشمیر علاقائی رابطہ",
+    home_trans_tab_apple: "سیب کا جغرافیائی نیٹ ورک",
+    home_trans_view_full: "مکمل معاشی مطالعہ اور ڈیٹا ٹیبلز دیکھیں",
 
     // Publications Directory
     pub_page_title: "مطبوعات و کتب ڈائرکٹری",
