@@ -94,14 +94,6 @@ const Forecasts: React.FC = () => {
           <EditableLabel labelKey="forecast_tab_mandi" defaultValue="Live Mandi Data" />
         </button>
         <button
-          onClick={() => setActiveView('ledger')}
-          className={`market-tab-btn ${activeView === 'ledger' ? 'active' : ''}`}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
-        >
-          <Landmark size={18} /> 
-          <EditableLabel labelKey="forecast_tab_ledger" defaultValue="Orchard Ledger (Stats)" />
-        </button>
-        <button
           onClick={() => setActiveView('transmission')}
           className={`market-tab-btn ${activeView === 'transmission' ? 'active' : ''}`}
           style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
@@ -116,6 +108,14 @@ const Forecasts: React.FC = () => {
         >
           <AlertOctagon size={18} /> 
           <EditableLabel labelKey="forecast_tab_disruption" defaultValue="Corridor Disruption" />
+        </button>
+        <button
+          onClick={() => setActiveView('ledger')}
+          className={`market-tab-btn ${activeView === 'ledger' ? 'active' : ''}`}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+        >
+          <Landmark size={18} /> 
+          <EditableLabel labelKey="forecast_tab_ledger" defaultValue="Orchard Ledger (Stats)" />
         </button>
       </div>
 
