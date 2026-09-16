@@ -107,6 +107,13 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     home_card5_meta: "2,225 Pairs",
     home_card5_stat: "85.1% Cointegrated →",
 
+    home_card6_tag: "Corridor Shocks & NARDL",
+    home_card6_title: "NH-44 Corridor Disruption Engine",
+    home_card6_desc: "Live policy simulation & scenario engine tracking GDELT media metadata, NASCDI index, and asymmetric price impacts across 8 apple chains.",
+    home_card6_meta: "NASCDI-NARDL",
+    home_card6_stat: "8 Supply Chains →",
+    forecast_tab_disruption: "Corridor Disruption",
+
     // Homepage Dedicated Price Transmission Section
     home_trans_badge: "HADP Project 04 • Econometric Research",
     home_trans_title: "Wholesale Price Transmission & Market Cointegration",
@@ -397,6 +404,13 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     home_card5_desc: "2,225 تجارتی جوڑوں اور 17 فصلوں کا معاشی تجزیہ جو مارکیٹ کے ربط، قیمتوں کی بحالی کی رفتار اور ترسیلی رکاوٹوں کی پیمائش کرتا ہے۔",
     home_card5_meta: "2,225 جوڑے",
     home_card5_stat: "85.1% مربوط →",
+
+    home_card6_tag: "راہداری کے جھٹکے اور نارڈل ماڈل",
+    home_card6_title: "این ایچ-44 کوریڈور تعطل اور اثرات کا انجن",
+    home_card6_desc: "جی ڈیلٹ میڈیا میٹا ڈیٹا، این اے ایس سی ڈی آئی انڈیکس اور 8 سیب سپلائی چینز میں قیمتوں کے اثرات کا تخمینہ۔",
+    home_card6_meta: "این اے ایس سی ڈی آئی",
+    home_card6_stat: "8 سپلائی چینز ←",
+    forecast_tab_disruption: "کوریڈور کا تعطل",
 
     // Homepage Dedicated Price Transmission Section
     home_trans_badge: "ایچ اے ڈی پی پروجیکٹ 04 • معاشی تحقیق",

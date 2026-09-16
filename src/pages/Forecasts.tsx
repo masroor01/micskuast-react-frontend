@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { TrendingUp, Layers, LineChart, Landmark, GitCompare } from 'lucide-react';
+import { TrendingUp, Layers, LineChart, Landmark, GitCompare, AlertOctagon } from 'lucide-react';
 import RealTimePrices from '../components/RealTimePrices';
 import OrchardLedger from './OrchardLedger';
 import PriceTransmission from '../components/PriceTransmission';
+import CorridorDisruption from '../components/CorridorDisruption';
 import { EditableLabel } from '../components/EditableLabel';
 
 const Forecasts: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeView = (searchParams.get('view') || 'predict') as 'predict' | 'tool' | 'dashboard' | 'ledger' | 'transmission';
+  const activeView = (searchParams.get('view') || 'predict') as 'predict' | 'tool' | 'dashboard' | 'ledger' | 'transmission' | 'disruption';
   const [currentTheme, setCurrentTheme] = useState(document.documentElement.getAttribute('data-theme') || 'light');
 
-  const setActiveView = (view: 'predict' | 'tool' | 'dashboard' | 'ledger' | 'transmission') => {
+  const setActiveView = (view: 'predict' | 'tool' | 'dashboard' | 'ledger' | 'transmission' | 'disruption') => {
     setSearchParams({ view });
   };
 
@@ -107,6 +108,14 @@ const Forecasts: React.FC = () => {
         >
           <GitCompare size={18} /> 
           <EditableLabel labelKey="forecast_tab_transmission" defaultValue="Price Transmission" />
+        </button>
+        <button
+          onClick={() => setActiveView('disruption')}
+          className={`market-tab-btn ${activeView === 'disruption' ? 'active' : ''}`}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+        >
+          <AlertOctagon size={18} /> 
+          <EditableLabel labelKey="forecast_tab_disruption" defaultValue="Corridor Disruption" />
         </button>
       </div>
 
@@ -272,6 +281,13 @@ const Forecasts: React.FC = () => {
       {activeView === 'transmission' && (
         <div className="animate-fade-in" style={{ width: '100%' }}>
           <PriceTransmission />
+        </div>
+      )}
+
+      {/* VIEW: NH-44 Corridor Disruption Engine (NASCDI-NARDL) */}
+      {activeView === 'disruption' && (
+        <div className="animate-fade-in" style={{ width: '100%' }}>
+          <CorridorDisruption />
         </div>
       )}
 

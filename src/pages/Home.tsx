@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw, TrendingUp, AlertTriangle, ChevronLeft, ChevronRight, GitCompare } from 'lucide-react';
+import { ArrowRight, Landmark, Mail, GraduationCap, Brain, Bell, Award, MapPin, CalendarRange, RefreshCw, TrendingUp, AlertTriangle, ChevronLeft, ChevronRight, GitCompare, AlertOctagon } from 'lucide-react';
 import { EditableLabel } from '../components/EditableLabel';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -32,18 +32,30 @@ const defaultHeroSlides: HeroSlide[] = [
   },
   {
     id: 2,
-    eyebrow: "HADP-04: Market Stability & Price Transmission",
+    eyebrow: "HADP-04: Highway Shocks & Supply Chain Resilience",
     show_hadp_logo: true,
-    title: "Market Price Transmission & Volatility Radar",
-    subtitle: "Analyzing spatial price transmission across 2,225 market pairs & 17 crops, monitoring supply chain shocks, and tracking price anomalies across national trading corridors.",
-    btn_primary_text: "Price Transmission Study",
-    btn_primary_link: "/forecasts?view=transmission",
-    btn_secondary_text: "View EWS Reports",
-    btn_secondary_link: "/ews",
+    title: "NH-44 Corridor Disruption & Policy Simulation Engine",
+    subtitle: "Simulate highway closures, landslides, and transport shocks using GDELT media metadata and NARDL error-correction models across 8 Kashmir apple chains.",
+    btn_primary_text: "Corridor Disruption Engine",
+    btn_primary_link: "/forecasts?view=disruption",
+    btn_secondary_text: "Vulnerability Rankings",
+    btn_secondary_link: "/forecasts?view=disruption",
     bg_image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=2000&q=80"
   },
   {
     id: 3,
+    eyebrow: "HADP-04: Spatial Econometrics & Market Integration",
+    show_hadp_logo: true,
+    title: "Wholesale Price Transmission & Market Cointegration",
+    subtitle: "Empirical analysis of 2,225 market pairs across 17 crops evaluating spatial arbitrage, price elasticity, and transmission speed between J&K and national mandis.",
+    btn_primary_text: "Explore Price Transmission",
+    btn_primary_link: "/forecasts?view=transmission",
+    btn_secondary_text: "Price Forecast Engine",
+    btn_secondary_link: "/forecasts",
+    bg_image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2000&q=80"
+  },
+  {
+    id: 4,
     eyebrow: "HADP-04: Digital Agricultural Trade Infrastructure",
     show_hadp_logo: true,
     title: "Live APMC Mandi Arrival Logs & Real-Time Sync",
@@ -55,7 +67,7 @@ const defaultHeroSlides: HeroSlide[] = [
     bg_image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=2000&q=80"
   },
   {
-    id: 4,
+    id: 5,
     eyebrow: "HADP-04: Research, Policy & Scientific Impact",
     show_hadp_logo: true,
     title: "Horticulture Intelligence Bulletins & Policy Reports",
@@ -65,18 +77,6 @@ const defaultHeroSlides: HeroSlide[] = [
     btn_secondary_text: "Our Research Team",
     btn_secondary_link: "/team",
     bg_image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2000&q=80"
-  },
-  {
-    id: 5,
-    eyebrow: "HADP-04: Spatial Econometrics & Market Integration",
-    show_hadp_logo: true,
-    title: "Wholesale Price Transmission & Market Cointegration",
-    subtitle: "Empirical analysis of 2,225 market pairs across 17 crops evaluating spatial arbitrage, price elasticity, and transmission speed between J&K and national mandis.",
-    btn_primary_text: "Explore Price Transmission",
-    btn_primary_link: "/forecasts?view=transmission",
-    btn_secondary_text: "Price Forecast Engine",
-    btn_secondary_link: "/forecasts",
-    bg_image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=2000&q=80"
   }
 ];
 
@@ -565,6 +565,32 @@ const Home: React.FC = () => {
                 </span>
                 <span style={{ color: '#0d9488' }}>
                   <EditableLabel labelKey="home_card5_stat" defaultValue="85.1% Cointegrated →" />
+                </span>
+              </div>
+            </NavLink>
+
+            {/* Card 6: Corridor Disruption Engine (NASCDI-NARDL) */}
+            <NavLink to="/forecasts?view=disruption" className="sp-intel-card">
+              <div>
+                <span className="sp-card-tag" style={{ color: '#ea580c' }}>
+                  <EditableLabel labelKey="home_card6_tag" defaultValue="Corridor Shocks & NARDL" />
+                </span>
+                <h3 className="sp-card-headline">
+                  <EditableLabel labelKey="home_card6_title" defaultValue="NH-44 Corridor Disruption Engine" />
+                </h3>
+                <p className="sp-card-summary">
+                  <EditableLabel 
+                    labelKey="home_card6_desc" 
+                    defaultValue="Live policy simulation & scenario engine tracking GDELT media metadata, NASCDI index, and asymmetric price impacts across 8 apple chains." 
+                  />
+                </p>
+              </div>
+              <div className="sp-card-footer">
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', color: '#ea580c' }}>
+                  <AlertOctagon size={15} /> <EditableLabel labelKey="home_card6_meta" defaultValue="NASCDI-NARDL" />
+                </span>
+                <span style={{ color: '#ea580c' }}>
+                  <EditableLabel labelKey="home_card6_stat" defaultValue="8 Supply Chains →" />
                 </span>
               </div>
             </NavLink>
