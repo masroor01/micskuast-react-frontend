@@ -55,10 +55,10 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     hero_slide_btn_primary_1: "Explore Live Forecasts",
     hero_slide_btn_secondary_1: "View EWS Reports",
 
-    hero_slide_title_2: "Early Warning Systems & Price Volatility Risk Radar",
-    hero_slide_subtitle_2: "Monitoring market volatility parameters, supply chain shocks, and abnormal price movements across regional and national trading corridors.",
-    hero_slide_btn_primary_2: "View EWS Reports",
-    hero_slide_btn_secondary_2: "Market Stability Report",
+    hero_slide_title_2: "Market Price Transmission & Volatility Radar",
+    hero_slide_subtitle_2: "Analyzing spatial price transmission across 2,225 market pairs & 17 crops, monitoring supply chain shocks, and tracking price anomalies across national trading corridors.",
+    hero_slide_btn_primary_2: "Price Transmission Study",
+    hero_slide_btn_secondary_2: "View EWS Reports",
 
     hero_slide_title_3: "Live APMC Mandi Arrival Logs & Real-Time Sync",
     hero_slide_subtitle_3: "Tracking daily arrivals, transaction volume, grade-wise realizations, and interstate commodity trade across 15+ wholesale terminal markets.",
@@ -345,10 +345,10 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     hero_slide_btn_primary_1: "براہِ راست پیشین گوئیاں دیکھیں",
     hero_slide_btn_secondary_1: "ارلی وارننگ رپورٹس دیکھیں",
 
-    hero_slide_title_2: "ارلی وارننگ سسٹم اور قیمتوں میں اتار چڑھاؤ کا رسک ریڈار",
-    hero_slide_subtitle_2: "علاقائی اور قومی تجارتی راستوں میں مارکیٹ کے اتار چڑھاؤ، رسد کے بحران اور قیمتوں کی غیر معمولی حرکات کی مسلسل نگرانی۔",
-    hero_slide_btn_primary_2: "ارلی وارننگ رپورٹس دیکھیں",
-    hero_slide_btn_secondary_2: "مارکیٹ استحکام رپورٹ",
+    hero_slide_title_2: "مارکیٹ میں قیمتوں کی منتقلی اور اتار چڑھاؤ کا رسک ریڈار",
+    hero_slide_subtitle_2: "2,225 مارکیٹ جوڑوں اور 17 فصلوں میں قیمتوں کی منتقلی، رسد کے بحران اور تجارتی راستوں میں قیمتوں کے اتار چڑھاؤ کا تفصیلی تجزیہ۔",
+    hero_slide_btn_primary_2: "قیمتوں کی منتقلی کا مطالعہ",
+    hero_slide_btn_secondary_2: "ارلی وارننگ رپورٹس دیکھیں",
 
     hero_slide_title_3: "براہِ راست اے پی ایم سی منڈی آمد اور ریل ٹائم مطابقت",
     hero_slide_subtitle_3: "15 سے زائد بڑی منڈیوں میں روزانہ کی آمد، تجارتی حجم، گریڈ کے مطابق قیمتیں اور بین الصوبائی تجارت کی باقاعدہ جانچ۔",

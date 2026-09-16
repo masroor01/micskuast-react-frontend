@@ -32,14 +32,14 @@ const defaultHeroSlides: HeroSlide[] = [
   },
   {
     id: 2,
-    eyebrow: "HADP-04: Market Stability & Early Warning Systems",
+    eyebrow: "HADP-04: Market Stability & Price Transmission",
     show_hadp_logo: true,
-    title: "Early Warning Systems & Price Volatility Risk Radar",
-    subtitle: "Monitoring market volatility parameters, supply chain shocks, and abnormal price movements across regional and national trading corridors.",
-    btn_primary_text: "View EWS Reports",
-    btn_primary_link: "/ews",
-    btn_secondary_text: "Market Stability Report",
-    btn_secondary_link: "https://micskuast.in/reports/cherry_stability_20260212_1244/MIC_Cherry_Stability_Report_Text_IFRAME.html",
+    title: "Market Price Transmission & Volatility Radar",
+    subtitle: "Analyzing spatial price transmission across 2,225 market pairs & 17 crops, monitoring supply chain shocks, and tracking price anomalies across national trading corridors.",
+    btn_primary_text: "Price Transmission Study",
+    btn_primary_link: "/forecasts?view=transmission",
+    btn_secondary_text: "View EWS Reports",
+    btn_secondary_link: "/ews",
     bg_image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=2000&q=80"
   },
   {
@@ -189,7 +189,13 @@ const Home: React.FC = () => {
         const cachedData = JSON.parse(cachedConfigStr);
         if (cachedData) {
           if (cachedData.hero_slides && cachedData.hero_slides.length > 0) {
-            setHeroSlides(cachedData.hero_slides);
+            const upgradedSlides = cachedData.hero_slides.map((s: HeroSlide) => {
+              if (s.id === 2 && (s.btn_secondary_link?.includes('cherry_stability') || !s.title?.includes('Transmission'))) {
+                return defaultHeroSlides[1];
+              }
+              return s;
+            });
+            setHeroSlides(upgradedSlides);
           }
           if (cachedData.ticker_items && cachedData.ticker_items.length > 0) {
             setTickerItems(cachedData.ticker_items);
@@ -218,7 +224,13 @@ const Home: React.FC = () => {
           localStorage.setItem('micskuast_config', JSON.stringify(data));
           
           if (data.hero_slides && data.hero_slides.length > 0) {
-            setHeroSlides(data.hero_slides);
+            const upgradedSlides = data.hero_slides.map((s: HeroSlide) => {
+              if (s.id === 2 && (s.btn_secondary_link?.includes('cherry_stability') || !s.title?.includes('Transmission'))) {
+                return defaultHeroSlides[1];
+              }
+              return s;
+            });
+            setHeroSlides(upgradedSlides);
           }
           if (data.ticker_items && data.ticker_items.length > 0) {
             setTickerItems(data.ticker_items);
