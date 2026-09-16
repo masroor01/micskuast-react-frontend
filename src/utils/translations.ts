@@ -134,6 +134,7 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     forecast_tab_tool: "Smart Forecasting Tool",
     forecast_tab_mandi: "Live Mandi Data",
     forecast_tab_ledger: "Orchard Ledger (Stats)",
+    forecast_tab_transmission: "Price Transmission",
 
     // Team Page
     team_badge: "HADP Project Members",
@@ -407,6 +408,7 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     forecast_tab_tool: "سمارٹ فورکاسٹنگ ٹول",
     forecast_tab_mandi: "براہِ راست منڈی ڈیٹا",
     forecast_tab_ledger: "باغبان لیجر (اعدادوشمار)",
+    forecast_tab_transmission: "قیمتوں کی منتقلی اور مربوطیت",
 
     // Team Page
     team_badge: "ایچ اے ڈی پی پروجیکٹ اراکین",

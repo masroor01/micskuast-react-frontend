@@ -37,6 +37,8 @@ function App() {
             <Route path="/ews" element={<EWS />} />
             <Route path="/publications" element={<Publications />} />
             <Route path="/orchard-ledger" element={<Navigate to="/forecasts?view=ledger" replace />} />
+            <Route path="/price-transmission" element={<Navigate to="/forecasts?view=transmission" replace />} />
+            <Route path="/transmission" element={<Navigate to="/forecasts?view=transmission" replace />} />
             <Route path="/team" element={<Team />} />
             <Route path="/admin" element={<Admin />} />
             {/* Fallback route */}

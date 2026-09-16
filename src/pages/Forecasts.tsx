@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { TrendingUp, Layers, LineChart, Landmark } from 'lucide-react';
+import { TrendingUp, Layers, LineChart, Landmark, GitCompare } from 'lucide-react';
 import RealTimePrices from '../components/RealTimePrices';
 import OrchardLedger from './OrchardLedger';
+import PriceTransmission from '../components/PriceTransmission';
 import { EditableLabel } from '../components/EditableLabel';
 
 const Forecasts: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeView = (searchParams.get('view') || 'predict') as 'predict' | 'tool' | 'dashboard' | 'ledger';
+  const activeView = (searchParams.get('view') || 'predict') as 'predict' | 'tool' | 'dashboard' | 'ledger' | 'transmission';
   const [currentTheme, setCurrentTheme] = useState(document.documentElement.getAttribute('data-theme') || 'light');
 
-  const setActiveView = (view: 'predict' | 'tool' | 'dashboard' | 'ledger') => {
+  const setActiveView = (view: 'predict' | 'tool' | 'dashboard' | 'ledger' | 'transmission') => {
     setSearchParams({ view });
   };
 
@@ -97,6 +98,14 @@ const Forecasts: React.FC = () => {
         >
           <Landmark size={18} /> 
           <EditableLabel labelKey="forecast_tab_ledger" defaultValue="Orchard Ledger (Stats)" />
+        </button>
+        <button
+          onClick={() => setActiveView('transmission')}
+          className={`market-tab-btn ${activeView === 'transmission' ? 'active' : ''}`}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+        >
+          <GitCompare size={18} /> 
+          <EditableLabel labelKey="forecast_tab_transmission" defaultValue="Price Transmission" />
         </button>
       </div>
 
@@ -255,6 +264,13 @@ const Forecasts: React.FC = () => {
       {activeView === 'ledger' && (
         <div className="animate-fade-in" style={{ backgroundColor: 'var(--color-surface)', borderRadius: '16px', border: '1px solid var(--color-border)', overflow: 'hidden', padding: '1.5rem' }}>
           <OrchardLedger />
+        </div>
+      )}
+
+      {/* VIEW: Price Transmission & Spatial Cointegration Study */}
+      {activeView === 'transmission' && (
+        <div className="animate-fade-in" style={{ width: '100%' }}>
+          <PriceTransmission />
         </div>
       )}
 
