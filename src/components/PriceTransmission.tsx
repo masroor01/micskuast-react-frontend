@@ -102,13 +102,13 @@ export const PriceTransmission: React.FC = () => {
         background: 'linear-gradient(135deg, rgba(21, 128, 61, 0.08) 0%, rgba(15, 118, 110, 0.05) 100%)',
         border: '1px solid var(--color-border)',
         borderRadius: '16px',
-        padding: '2rem 1.75rem',
+        padding: 'clamp(1.1rem, 3.5vw, 2rem) clamp(0.9rem, 3vw, 1.75rem)',
         marginBottom: '2rem',
         position: 'relative',
         overflow: 'hidden'
       }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', marginBottom: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.6rem' }}>
             <span style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -145,7 +145,7 @@ export const PriceTransmission: React.FC = () => {
         </div>
 
         <h2 style={{
-          fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+          fontSize: 'clamp(1.3rem, 2.5vw, 1.85rem)',
           fontWeight: 900,
           color: 'var(--color-text-main)',
           lineHeight: 1.25,
@@ -154,7 +154,7 @@ export const PriceTransmission: React.FC = () => {
           Price Transmission &amp; Market Cointegration Study
         </h2>
         <p style={{
-          fontSize: '0.95rem',
+          fontSize: '0.92rem',
           color: 'var(--color-text-muted)',
           maxWidth: '900px',
           lineHeight: 1.6,
@@ -169,15 +169,15 @@ export const PriceTransmission: React.FC = () => {
       {/* KPI Highlight Stat Cards */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
-        gap: '1.25rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
+        gap: 'clamp(0.75rem, 2vw, 1.25rem)',
         marginBottom: '2.5rem'
       }}>
         <div className="stat-card" style={{
           background: 'var(--color-surface)',
           border: '1px solid var(--color-border)',
           borderRadius: '14px',
-          padding: '1.25rem',
+          padding: 'clamp(0.9rem, 2vw, 1.25rem)',
           boxShadow: 'var(--shadow-sm)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
@@ -343,7 +343,7 @@ export const PriceTransmission: React.FC = () => {
             padding: '0.75rem 1rem',
             marginBottom: '1.25rem'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.4rem' }}>
               <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-text-muted)' }}>
                 Filter Category:
               </span>
@@ -391,7 +391,7 @@ export const PriceTransmission: React.FC = () => {
               </button>
             </div>
 
-            <div style={{ position: 'relative', minWidth: '220px' }}>
+            <div style={{ position: 'relative', flex: '1 1 200px', minWidth: 'min(100%, 200px)' }}>
               <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-text-muted)' }} />
               <input
                 type="text"
@@ -538,7 +538,7 @@ export const PriceTransmission: React.FC = () => {
             </p>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
               gap: '1rem',
               marginTop: '1rem'
             }}>
@@ -569,7 +569,7 @@ export const PriceTransmission: React.FC = () => {
             </h4>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
               gap: '0.75rem'
             }}>
               {[
@@ -606,7 +606,7 @@ export const PriceTransmission: React.FC = () => {
           </div>
 
           {/* Tables: Fastest vs. Slowest J&K Pairs */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
             <div>
               <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#16a34a', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <Zap size={16} /> Fastest Internal J&amp;K Correcting Pairs
@@ -809,7 +809,7 @@ export const PriceTransmission: React.FC = () => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
             <div style={{
               background: 'var(--color-surface)',
               border: '1px solid var(--color-border)',
@@ -880,7 +880,7 @@ export const PriceTransmission: React.FC = () => {
       {/* SUB-TAB 5: Strategic Takeaways */}
       {activeSubTab === 'takeaways' && (
         <div className="animate-fade-in">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 270px), 1fr))', gap: '1.5rem' }}>
             <div style={{
               background: 'var(--color-surface)',
               border: '1px solid var(--color-border)',

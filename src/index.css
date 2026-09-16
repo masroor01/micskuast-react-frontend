@@ -648,6 +648,33 @@ a {
   background-color: var(--color-surface-hover);
 }
 
+@media (max-width: 768px) {
+  .market-tabs {
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.35rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .market-tab-btn {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.8rem;
+    gap: 0.25rem;
+  }
+  .data-table-container {
+    margin-top: 1rem;
+    border-radius: var(--radius-sm);
+    -webkit-overflow-scrolling: touch;
+  }
+  .data-table th, .data-table td {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .data-table th {
+    font-size: 0.72rem;
+  }
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }

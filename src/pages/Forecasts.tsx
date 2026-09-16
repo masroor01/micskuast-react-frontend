@@ -33,11 +33,12 @@ const Forecasts: React.FC = () => {
         background: 'var(--color-surface)',
         border: '1px solid var(--color-border)',
         borderRadius: 'var(--radius-sm)',
-        padding: '0.5rem 1rem',
+        padding: '0.6rem 1rem',
         marginBottom: '2rem',
         display: 'flex',
+        flexWrap: 'wrap',
         alignItems: 'center',
-        gap: '1rem',
+        gap: '0.75rem',
         boxShadow: 'var(--shadow-sm)'
       }}>
         <div style={{
