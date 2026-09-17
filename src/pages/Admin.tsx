@@ -364,6 +364,32 @@ const defaultLabels: Record<string, string> = {
   cde_badge: 'NASCDI-NARDL Research Programme • SKUAST-Kashmir',
   cde_title: 'NH-44 Corridor Disruption Engine & Policy Radar',
   cde_desc: 'Econometric scenario-simulation and policy-recommendation suite tracking Nonlinear Asymmetric Supply-Chain Disruption Index (NASCDI) via GDELT media intelligence and NARDL error-correction models across 8 Kashmir apple supply chains.',
+  cde_stat1_lbl: 'Monitored Supply Chains',
+  cde_stat1_val: '8 Chains',
+  cde_stat1_sub: 'Shopian & Sopore to 4 mandis',
+  cde_stat2_lbl: 'Lexicon Terms',
+  cde_stat2_val: '150+ Terms',
+  cde_stat2_sub: 'Disruption, Mitigation & Context',
+  cde_stat3_lbl: 'Most Vulnerable Chain',
+  cde_stat3_val: 'Shopian Amer. B',
+  cde_stat3_sub: 'Rank 1/8 · Highest exposure',
+  cde_stat4_lbl: 'Monte Carlo Robustness',
+  cde_stat4_val: '10,000 Draws',
+  cde_stat4_sub: 'Shopian higher exposure in 73.6% of runs',
+
+  cde_how_title: 'How the Corridor Disruption Engine Functions',
+  cde_how_desc: "Kashmir produces over 70% of India's apples, funneled almost exclusively through a single high-altitude arterial corridor: National Highway 44 (NH-44). Severe weather landslides, shooting stones at Ramban-Banihal, and security blockades create severe asymmetric price shocks between farmgate and terminal mandis.",
+  cde_step1_title: '1. GDELT Lexicon Scoring',
+  cde_step1_desc: 'Parses real-time news articles through a curated domain dictionary assigning positive weights to disruptions (landslides, closures), negative weights to mitigations (reopened), gated by apple/Kashmir commodity context.',
+  cde_step2_title: '2. NARDL Error-Correction',
+  cde_step2_desc: 'Fitted Nonlinear Autoregressive Distributed Lag models capture asymmetric transmission: price declines during road closures are faster and steeper than price recovery during reopenings.',
+  cde_step3_title: '3. Vulnerability Index',
+  cde_step3_desc: 'Integrates error-correction adjustment speed (\\phi), long-run sensitivity (\\beta^+), and empirical model fit into a composite ranking stress-tested with 10,000 bootstrap simulations.',
+  cde_step4_title: '4. Actionable Policy Rules',
+  cde_step4_desc: 'Automatically maps current and simulated disruption severity to explicit policy instruments: CA store buffer mandates, e-NAM floor prices, KCC credit windows, and parametric insurance.',
+  cde_btn_sim: 'Open Interactive Headline Simulator →',
+  cde_btn_recs: 'View 8-Chain Vulnerability Rankings',
+
   cde_rec7_1_title: 'NH-44 Corridor Infrastructure Resilience & Permanent Bypass Priority',
   cde_rec7_1_body: 'Price adjustment remains incomplete even after corridor conditions normalise. Treat NH-44 reliability (e.g. T-5 tunnel, shooting-stone sheds) as a standing structural priority rather than seasonal emergency maintenance.',
   cde_rec7_2_title: 'Real-Time NASCDI Disruption Monitoring & Early Warning Broadcast',
@@ -2689,6 +2715,184 @@ const Admin: React.FC = () => {
             </div>
           </div>
 
+          {/* Key Stat Cards (Top Row) */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              📊 Key Indicator Metric Cards (Top Row)
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              {[
+                { num: 1, defLbl: 'Monitored Supply Chains', defVal: '8 Chains', defSub: 'Shopian & Sopore to 4 mandis' },
+                { num: 2, defLbl: 'Lexicon Terms', defVal: '150+ Terms', defSub: 'Disruption, Mitigation & Context' },
+                { num: 3, defLbl: 'Most Vulnerable Chain', defVal: 'Shopian Amer. B', defSub: 'Rank 1/8 · Highest exposure' },
+                { num: 4, defLbl: 'Monte Carlo Robustness', defVal: '10,000 Draws', defSub: 'Shopian higher exposure in 73.6% of runs' }
+              ].map(item => {
+                const lblKey = `cde_stat${item.num}_lbl`;
+                const valKey = `cde_stat${item.num}_val`;
+                const subKey = `cde_stat${item.num}_sub`;
+                return (
+                  <div key={item.num} style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#dc2626', display: 'block', marginBottom: '0.5rem' }}>
+                      Metric Card #{item.num}
+                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Card Label</label>
+                        <input
+                          type="text"
+                          value={config.labels?.[lblKey] ?? defaultLabels[lblKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [lblKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          style={{ width: '100%', fontWeight: 700 }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Value / Stat</label>
+                        <input
+                          type="text"
+                          value={config.labels?.[valKey] ?? defaultLabels[valKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [valKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          style={{ width: '100%', fontWeight: 800, fontSize: '1.05rem', color: '#16a34a' }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Subtitle / Note</label>
+                        <input
+                          type="text"
+                          value={config.labels?.[subKey] ?? defaultLabels[subKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [subKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          style={{ width: '100%', fontSize: '0.8rem' }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Core Pipeline Explainer Cards */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              ⚙️ "How the Corridor Disruption Engine Functions" Explainer Cards
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Section Title</label>
+                <input
+                  type="text"
+                  value={config.labels?.cde_how_title ?? defaultLabels.cde_how_title}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_how_title: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', fontWeight: 700 }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Section Description Paragraph</label>
+                <textarea
+                  value={config.labels?.cde_how_desc ?? defaultLabels.cde_how_desc}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_how_desc: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={3}
+                  style={{ width: '100%' }}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              {[
+                { step: 1, icon: '📝', defaultName: '1. GDELT Lexicon Scoring' },
+                { step: 2, icon: '📈', defaultName: '2. NARDL Error-Correction' },
+                { step: 3, icon: '🏆', defaultName: '3. Vulnerability Index' },
+                { step: 4, icon: '🎯', defaultName: '4. Actionable Policy Rules' }
+              ].map(item => {
+                const titleKey = `cde_step${item.step}_title`;
+                const descKey = `cde_step${item.step}_desc`;
+                return (
+                  <div key={item.step} style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                    <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary)', display: 'block', marginBottom: '0.5rem' }}>
+                      {item.icon} Step {item.step} Card
+                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Card Title</label>
+                        <input
+                          type="text"
+                          value={config.labels?.[titleKey] ?? defaultLabels[titleKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [titleKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          style={{ width: '100%', fontWeight: 700 }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Card Description</label>
+                        <textarea
+                          value={config.labels?.[descKey] ?? defaultLabels[descKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [descKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          rows={3}
+                          style={{ width: '100%' }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--color-border)' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Simulator Call-to-Action Button Text</label>
+                <input
+                  type="text"
+                  value={config.labels?.cde_btn_sim ?? defaultLabels.cde_btn_sim}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_btn_sim: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', fontWeight: 700 }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Rankings Call-to-Action Button Text</label>
+                <input
+                  type="text"
+                  value={config.labels?.cde_btn_recs ?? defaultLabels.cde_btn_recs}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_btn_recs: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', fontWeight: 700 }}
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Simulator Texts */}
           <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
             <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
@@ -3172,10 +3376,33 @@ const Admin: React.FC = () => {
                 pt_takeaway4_title: "Price Transmission - Takeaway 4 Heading",
                 pt_takeaway4_desc: "Price Transmission - Takeaway 4 Paragraph",
 
-                // NH-44 Corridor Disruption Engine
                 cde_badge: "Corridor Disruption - Top Badge Text",
                 cde_title: "Corridor Disruption - Main Engine Title",
                 cde_desc: "Corridor Disruption - Engine Overview Paragraph",
+                cde_stat1_lbl: "Corridor Disruption - Metric 1 Label (Monitored Supply Chains)",
+                cde_stat1_val: "Corridor Disruption - Metric 1 Value (8 Chains)",
+                cde_stat1_sub: "Corridor Disruption - Metric 1 Subtitle",
+                cde_stat2_lbl: "Corridor Disruption - Metric 2 Label (Lexicon Terms)",
+                cde_stat2_val: "Corridor Disruption - Metric 2 Value (150+ Terms)",
+                cde_stat2_sub: "Corridor Disruption - Metric 2 Subtitle",
+                cde_stat3_lbl: "Corridor Disruption - Metric 3 Label (Most Vulnerable Chain)",
+                cde_stat3_val: "Corridor Disruption - Metric 3 Value (Shopian Amer. B)",
+                cde_stat3_sub: "Corridor Disruption - Metric 3 Subtitle",
+                cde_stat4_lbl: "Corridor Disruption - Metric 4 Label (Monte Carlo Robustness)",
+                cde_stat4_val: "Corridor Disruption - Metric 4 Value (10,000 Draws)",
+                cde_stat4_sub: "Corridor Disruption - Metric 4 Subtitle",
+                cde_how_title: "Corridor Disruption - How It Functions Section Title",
+                cde_how_desc: "Corridor Disruption - How It Functions Section Description",
+                cde_step1_title: "Corridor Disruption - Step 1 Title (GDELT Lexicon Scoring)",
+                cde_step1_desc: "Corridor Disruption - Step 1 Description",
+                cde_step2_title: "Corridor Disruption - Step 2 Title (NARDL Error-Correction)",
+                cde_step2_desc: "Corridor Disruption - Step 2 Description",
+                cde_step3_title: "Corridor Disruption - Step 3 Title (Vulnerability Index)",
+                cde_step3_desc: "Corridor Disruption - Step 3 Description",
+                cde_step4_title: "Corridor Disruption - Step 4 Title (Actionable Policy Rules)",
+                cde_step4_desc: "Corridor Disruption - Step 4 Description",
+                cde_btn_sim: "Corridor Disruption - Simulator Button Text",
+                cde_btn_recs: "Corridor Disruption - Rankings Button Text",
                 cde_sim_heading: "Corridor Disruption - Simulator Section Heading",
                 cde_sim_desc: "Corridor Disruption - Simulator Description & Instructions",
                 cde_rec7_1_title: "Corridor Disruption - Directive §7.1 Title",

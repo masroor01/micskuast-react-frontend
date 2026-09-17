@@ -984,72 +984,119 @@ export const CorridorDisruption: React.FC = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
             <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '1.25rem', borderTop: '4px solid #16a34a' }}>
               <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>📊</div>
-              <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>Monitored Supply Chains</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-text-main)', margin: '0.25rem 0' }}>8 Chains</div>
-              <div style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>Shopian &amp; Sopore (American &amp; Delicious)</div>
+              <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
+                <EditableLabel labelKey="cde_stat1_lbl" defaultValue="Monitored Supply Chains" />
+              </div>
+              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-text-main)', margin: '0.25rem 0' }}>
+                <EditableLabel labelKey="cde_stat1_val" defaultValue="8 Chains" />
+              </div>
+              <div style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>
+                <EditableLabel labelKey="cde_stat1_sub" defaultValue="Shopian & Sopore (American & Delicious)" />
+              </div>
             </div>
 
             <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '1.25rem', borderTop: '4px solid #d97706' }}>
               <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>📰</div>
-              <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>Lexicon Terms</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-text-main)', margin: '0.25rem 0' }}>150+ Terms</div>
-              <div style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>Disruption (+), Mitigation (−) &amp; Context</div>
+              <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
+                <EditableLabel labelKey="cde_stat2_lbl" defaultValue="Lexicon Terms" />
+              </div>
+              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-text-main)', margin: '0.25rem 0' }}>
+                <EditableLabel labelKey="cde_stat2_val" defaultValue="150+ Terms" />
+              </div>
+              <div style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>
+                <EditableLabel labelKey="cde_stat2_sub" defaultValue="Disruption (+), Mitigation (−) & Context" />
+              </div>
             </div>
 
             <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '1.25rem', borderTop: '4px solid #dc2626' }}>
               <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>🏔️</div>
-              <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>Most Vulnerable Chain</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#dc2626', margin: '0.25rem 0' }}>Shopian Amer. B</div>
-              <div style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>Rank 1/8 (Vulnerability Index: 0.00775)</div>
+              <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
+                <EditableLabel labelKey="cde_stat3_lbl" defaultValue="Most Vulnerable Chain" />
+              </div>
+              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#dc2626', margin: '0.25rem 0' }}>
+                <EditableLabel labelKey="cde_stat3_val" defaultValue="Shopian Amer. B" />
+              </div>
+              <div style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>
+                <EditableLabel labelKey="cde_stat3_sub" defaultValue="Rank 1/8 (Vulnerability Index: 0.00775)" />
+              </div>
             </div>
 
             <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '12px', padding: '1.25rem', borderTop: '4px solid #2563eb' }}>
               <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>🎲</div>
-              <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>Monte Carlo Robustness</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-text-main)', margin: '0.25rem 0' }}>10,000 Draws</div>
-              <div style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>Shopian higher exposure in 73.6% of runs</div>
+              <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
+                <EditableLabel labelKey="cde_stat4_lbl" defaultValue="Monte Carlo Robustness" />
+              </div>
+              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--color-text-main)', margin: '0.25rem 0' }}>
+                <EditableLabel labelKey="cde_stat4_val" defaultValue="10,000 Draws" />
+              </div>
+              <div style={{ fontSize: '0.76rem', color: 'var(--color-text-muted)' }}>
+                <EditableLabel labelKey="cde_stat4_sub" defaultValue="Shopian higher exposure in 73.6% of runs" />
+              </div>
             </div>
           </div>
 
           {/* Core Pipeline Explainer */}
           <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '14px', padding: '1.75rem' }}>
             <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: 'var(--color-text-main)' }}>
-              How the Corridor Disruption Engine Functions
+              <EditableLabel labelKey="cde_how_title" defaultValue="How the Corridor Disruption Engine Functions" />
             </h3>
             <p style={{ margin: '0 0 1.25rem', fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
-              Kashmir produces over 70% of India's apples, funneled almost exclusively through a single high-altitude arterial corridor: National Highway 44 (NH-44). Severe weather landslides, shooting stones at Ramban-Banihal, and security blockades create severe asymmetric price shocks between farmgate and terminal mandis.
+              <EditableLabel 
+                labelKey="cde_how_desc" 
+                defaultValue="Kashmir produces over 70% of India's apples, funneled almost exclusively through a single high-altitude arterial corridor: National Highway 44 (NH-44). Severe weather landslides, shooting stones at Ramban-Banihal, and security blockades create severe asymmetric price shocks between farmgate and terminal mandis." 
+              />
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
               <div style={{ background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: '10px', padding: '1.1rem' }}>
                 <div style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>📝</div>
-                <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-main)' }}>1. GDELT Lexicon Scoring</h4>
+                <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-main)' }}>
+                  <EditableLabel labelKey="cde_step1_title" defaultValue="1. GDELT Lexicon Scoring" />
+                </h4>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
-                  Parses real-time news articles through a curated domain dictionary assigning positive weights to disruptions (landslides, closures), negative weights to mitigations (reopened), gated by apple/Kashmir commodity context.
+                  <EditableLabel 
+                    labelKey="cde_step1_desc" 
+                    defaultValue="Parses real-time news articles through a curated domain dictionary assigning positive weights to disruptions (landslides, closures), negative weights to mitigations (reopened), gated by apple/Kashmir commodity context." 
+                  />
                 </p>
               </div>
 
               <div style={{ background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: '10px', padding: '1.1rem' }}>
                 <div style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>📈</div>
-                <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-main)' }}>2. NARDL Error-Correction</h4>
+                <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-main)' }}>
+                  <EditableLabel labelKey="cde_step2_title" defaultValue="2. NARDL Error-Correction" />
+                </h4>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
-                  Fitted Nonlinear Autoregressive Distributed Lag models capture asymmetric transmission: price declines during road closures are faster and steeper than price recovery during reopenings.
+                  <EditableLabel 
+                    labelKey="cde_step2_desc" 
+                    defaultValue="Fitted Nonlinear Autoregressive Distributed Lag models capture asymmetric transmission: price declines during road closures are faster and steeper than price recovery during reopenings." 
+                  />
                 </p>
               </div>
 
               <div style={{ background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: '10px', padding: '1.1rem' }}>
                 <div style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>🏆</div>
-                <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-main)' }}>3. Vulnerability Index</h4>
+                <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-main)' }}>
+                  <EditableLabel labelKey="cde_step3_title" defaultValue="3. Vulnerability Index" />
+                </h4>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
-                  Integrates error-correction adjustment speed ($\phi$), long-run sensitivity ($\beta^+$), and empirical model fit into a composite ranking stress-tested with 10,000 bootstrap simulations.
+                  <EditableLabel 
+                    labelKey="cde_step3_desc" 
+                    defaultValue="Integrates error-correction adjustment speed ($\phi$), long-run sensitivity ($\beta^+$), and empirical model fit into a composite ranking stress-tested with 10,000 bootstrap simulations." 
+                  />
                 </p>
               </div>
 
               <div style={{ background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: '10px', padding: '1.1rem' }}>
                 <div style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>🎯</div>
-                <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-main)' }}>4. Actionable Policy Rules</h4>
+                <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text-main)' }}>
+                  <EditableLabel labelKey="cde_step4_title" defaultValue="4. Actionable Policy Rules" />
+                </h4>
                 <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--color-text-muted)', lineHeight: 1.5 }}>
-                  Automatically maps current and simulated disruption severity to explicit policy instruments: CA store buffer mandates, e-NAM floor prices, KCC credit windows, and parametric insurance.
+                  <EditableLabel 
+                    labelKey="cde_step4_desc" 
+                    defaultValue="Automatically maps current and simulated disruption severity to explicit policy instruments: CA store buffer mandates, e-NAM floor prices, KCC credit windows, and parametric insurance." 
+                  />
                 </p>
               </div>
             </div>
@@ -1074,7 +1121,7 @@ export const CorridorDisruption: React.FC = () => {
                 boxShadow: '0 4px 14px rgba(22,163,74,0.35)'
               }}
             >
-              <Sliders size={18} /> Open Interactive Headline Simulator &rarr;
+              <Sliders size={18} /> <EditableLabel labelKey="cde_btn_sim" defaultValue="Open Interactive Headline Simulator →" />
             </button>
             <button
               onClick={() => setActiveTab('recs')}
@@ -1092,7 +1139,7 @@ export const CorridorDisruption: React.FC = () => {
                 gap: '8px'
               }}
             >
-              <ShieldAlert size={18} /> View 8-Chain Vulnerability Rankings
+              <ShieldAlert size={18} /> <EditableLabel labelKey="cde_btn_recs" defaultValue="View 8-Chain Vulnerability Rankings" />
             </button>
           </div>
         </div>
