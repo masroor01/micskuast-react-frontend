@@ -315,7 +315,67 @@ const defaultLabels: Record<string, string> = {
   about_cta2_btn: 'Early Warning Alerts',
   about_cta3_btn: 'Live APMC Mandis',
   about_cta4_btn: 'Research Bulletins',
-  about_cta5_btn: 'Meet Research Team'
+  about_cta5_btn: 'Meet Research Team',
+
+  // Homepage Intelligence Cards (Card 5 & 6)
+  home_card5_tag: 'Spatial Arbitrage & Cointegration',
+  home_card5_title: 'Price Transmission & Market Integration',
+  home_card5_desc: 'Econometric evaluation across 2,225 pairs & 17 crops estimating long-run cointegration, price elasticity, and speed of price adjustment.',
+  home_card5_meta: '2,225 Pairs',
+  home_card5_stat: '85.1% Cointegrated →',
+
+  home_card6_tag: 'Corridor Shocks & NARDL',
+  home_card6_title: 'NH-44 Corridor Disruption Engine',
+  home_card6_desc: 'Live policy simulation & scenario engine tracking GDELT media metadata, NASCDI index, and asymmetric price impacts across 8 apple chains.',
+  home_card6_meta: '8 Apple Chains',
+  home_card6_stat: 'Simulate Scenarios →',
+
+  // Price Transmission & Cointegration Section
+  pt_badge: 'HADP Project #04 • Econometric Research',
+  pt_release_tag: 'September 2026 Release',
+  pt_lead_text: 'Lead: Market Intelligence Cell, SKUAST-Kashmir',
+  pt_main_title: 'Price Transmission & Market Cointegration Study',
+  pt_main_desc: 'Empirical spatial integration assessment across 2,225 wholesale mandi pairs nationwide. Evaluating whether agricultural wholesale markets across India and Jammu & Kashmir are economically tethered in the long run, how rapidly price shocks transmit between mandis, and where supply chains fragment into isolated circuits.',
+  pt_stat1_title: 'Market Pairs Tested',
+  pt_stat1_val: '2,225',
+  pt_stat1_desc: 'Historical overlapping daily mandi trading series',
+  pt_stat2_title: 'Overall Cointegration',
+  pt_stat2_val: '85.1%',
+  pt_stat2_desc: '1,894 pairs tethered to shared long-run equilibrium (p < 0.05)',
+  pt_stat3_title: 'Vegetable Benchmark',
+  pt_stat3_val: '98.0%',
+  pt_stat3_desc: 'Cauliflower & Cabbage lead; perishability accelerates arbitrage',
+  pt_stat4_title: 'J&K Apple Pipeline',
+  pt_stat4_val: '74.5%',
+  pt_stat4_desc: '372 pairs tested across 28 major terminal markets',
+  pt_stat5_title: 'Parimpore vs. Narwal',
+  pt_stat5_val: '-0.0088',
+  pt_stat5_desc: '<1% daily gap closed; non-interchangeable spot roles',
+  pt_takeaway1_title: 'Perishability Dictates Market Connectivity',
+  pt_takeaway1_desc: 'Crops with short shelf-lives (Cauliflower 98%, Cabbage 97%, Tomato 96%) exhibit near-perfect spatial cointegration. Because produce cannot wait, geographic price spikes trigger immediate truck dispatches, restoring market equilibrium within days.',
+  pt_takeaway2_title: "NH44 Highway is J&K's Price Transmission Backbone",
+  pt_takeaway2_desc: 'Within J&K, vegetables achieved 100% cointegration across mandis situated along or near the National Highway 44 (Srinagar – Jammu). Highway transit reliability directly governs the efficiency of agricultural market arbitrage for local growers.',
+  pt_takeaway3_title: 'Avoid Spatial Proxy Over-Generalization',
+  pt_takeaway3_desc: "Because Parimpore and Narwal have a very slow adjustment speed (-0.0088), agricultural advisory models must not substitute one mandi's spot prices for the other. Each mandi requires localized, grade-specific neural network models.",
+  pt_takeaway4_title: 'Data Telemetry Upgrades Under HADP',
+  pt_takeaway4_desc: 'To address data coverage gaps in Aglar and Nowpora, the Market Intelligence Cell is expanding automated electronic logging and daily arrival telemetry under HADP Project #04, ensuring universal spatial monitoring across all J&K horticulture clusters.',
+
+  // NH-44 Corridor Disruption Engine Section
+  cde_badge: 'NASCDI-NARDL Research Programme • SKUAST-Kashmir',
+  cde_title: 'NH-44 Corridor Disruption Engine & Policy Radar',
+  cde_desc: 'Econometric scenario-simulation and policy-recommendation suite tracking Nonlinear Asymmetric Supply-Chain Disruption Index (NASCDI) via GDELT media intelligence and NARDL error-correction models across 8 Kashmir apple supply chains.',
+  cde_rec7_1_title: 'NH-44 Corridor Infrastructure Resilience & Permanent Bypass Priority',
+  cde_rec7_1_body: 'Price adjustment remains incomplete even after corridor conditions normalise. Treat NH-44 reliability (e.g. T-5 tunnel, shooting-stone sheds) as a standing structural priority rather than seasonal emergency maintenance.',
+  cde_rec7_2_title: 'Real-Time NASCDI Disruption Monitoring & Early Warning Broadcast',
+  cde_rec7_2_body: 'Continuous automated scanning of GDELT news feeds and highway closure reports. Escalate surveillance and broadcast freight advisories to growers when week-over-week index exceeds the 70th (Amber) or 90th (Red) percentile threshold.',
+  cde_rec7_3_title: 'Targeted Buffer Investment in Shopian Cold-Storage & Pre-Cooling',
+  cde_rec7_3_body: 'Shopian-origin chains rank highest in vulnerability. Prioritise under HADP / MIDH / PMKSY schemes for packhouse and CA store expansion, targeting buffer capacity for at least 15% of peak weekly harvest during highway closures.',
+  cde_rec7_4_title: 'e-NAM Minimum Reference Price & KCC Liquidity Window Activation',
+  cde_rec7_4_body: 'Under elevated shock severity, activate e-NAM Minimum Reference Price (MRP) floors and Kisan Credit Card (KCC) emergency liquidity windows for Shopian American growers to avert distress sales.',
+  cde_rec7_5_title: 'Parametric Corridor Disruption Index Insurance (CDII) Pilot',
+  cde_rec7_5_body: 'Highest-ranked chain by vulnerability index (Rank 1 of 8: Shopian American Grade B) — designated pilot candidate for parametric index insurance triggering automatic compensation during prolonged highway blockades.',
+  cde_sim_heading: '1. Select Supply Chain & Compose Hypothetical Headline',
+  cde_sim_desc: 'Add terms from the actual GDELT media scoring lexicon. The engine calculates the raw score, applies the normalization z-score, and routes the disruption into the NARDL response curve.'
 };
 
 const defaultTeam: TeamMember[] = [
@@ -396,7 +456,7 @@ const Admin: React.FC = () => {
     }, 0);
   };
   
-  const [activeTab, setActiveTab] = useState<'home' | 'slides' | 'about' | 'labels' | 'publications' | 'security' | 'team'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'slides' | 'about' | 'transmission' | 'disruption' | 'labels' | 'publications' | 'security' | 'team'>('home');
   const [config, setConfig] = useState<SiteConfig | null>(null);
   
   const [editingLabelKey, setEditingLabelKey] = useState<string | null>(null);
@@ -1097,6 +1157,18 @@ const Admin: React.FC = () => {
           🏛️ About Us Page Content
         </button>
         <button
+          onClick={() => setActiveTab('transmission')}
+          className={`market-tab-btn ${activeTab === 'transmission' ? 'active' : ''}`}
+        >
+          📈 Price Transmission
+        </button>
+        <button
+          onClick={() => setActiveTab('disruption')}
+          className={`market-tab-btn ${activeTab === 'disruption' ? 'active' : ''}`}
+        >
+          ⚠️ Corridor Disruption
+        </button>
+        <button
           onClick={() => setActiveTab('publications')}
           className={`market-tab-btn ${activeTab === 'publications' ? 'active' : ''}`}
         >
@@ -1332,6 +1404,166 @@ const Admin: React.FC = () => {
                   className="form-input"
                   style={{ width: '100%' }}
                 />
+              </div>
+            </div>
+          </div>
+
+          {/* Intelligence Grid Cards 5 & 6 */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              Homepage Intelligence Cards (Transmission &amp; Disruption Engine)
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+              {/* Card 5: Price Transmission */}
+              <div style={{ padding: '1.25rem', background: 'var(--color-bg)', borderRadius: '10px', border: '1px solid var(--color-border)' }}>
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#0d9488', display: 'block', marginBottom: '0.75rem' }}>
+                  Card #5: Price Transmission &amp; Market Integration
+                </span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Tagline</label>
+                    <input
+                      type="text"
+                      value={config.labels?.home_card5_tag ?? defaultLabels.home_card5_tag}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), home_card5_tag: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Headline Title</label>
+                    <input
+                      type="text"
+                      value={config.labels?.home_card5_title ?? defaultLabels.home_card5_title}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), home_card5_title: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      style={{ width: '100%', fontWeight: 700 }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Summary</label>
+                    <textarea
+                      value={config.labels?.home_card5_desc ?? defaultLabels.home_card5_desc}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), home_card5_desc: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      rows={3}
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Meta Text</label>
+                      <input
+                        type="text"
+                        value={config.labels?.home_card5_meta ?? defaultLabels.home_card5_meta}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), home_card5_meta: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        style={{ width: '100%' }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Link Text</label>
+                      <input
+                        type="text"
+                        value={config.labels?.home_card5_stat ?? defaultLabels.home_card5_stat}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), home_card5_stat: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        style={{ width: '100%' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 6: Corridor Disruption */}
+              <div style={{ padding: '1.25rem', background: 'var(--color-bg)', borderRadius: '10px', border: '1px solid var(--color-border)' }}>
+                <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#ea580c', display: 'block', marginBottom: '0.75rem' }}>
+                  Card #6: NH-44 Corridor Disruption Engine
+                </span>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Tagline</label>
+                    <input
+                      type="text"
+                      value={config.labels?.home_card6_tag ?? defaultLabels.home_card6_tag}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), home_card6_tag: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Headline Title</label>
+                    <input
+                      type="text"
+                      value={config.labels?.home_card6_title ?? defaultLabels.home_card6_title}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), home_card6_title: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      style={{ width: '100%', fontWeight: 700 }}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Summary</label>
+                    <textarea
+                      value={config.labels?.home_card6_desc ?? defaultLabels.home_card6_desc}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), home_card6_desc: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      rows={3}
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Meta Text</label>
+                      <input
+                        type="text"
+                        value={config.labels?.home_card6_meta ?? defaultLabels.home_card6_meta}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), home_card6_meta: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        style={{ width: '100%' }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.2rem' }}>Link Text</label>
+                      <input
+                        type="text"
+                        value={config.labels?.home_card6_stat ?? defaultLabels.home_card6_stat}
+                        onChange={e => {
+                          const updated = { ...(config.labels || defaultLabels), home_card6_stat: e.target.value };
+                          setConfig({ ...config, labels: updated });
+                        }}
+                        className="form-input"
+                        style={{ width: '100%' }}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2219,6 +2451,341 @@ const Admin: React.FC = () => {
         </form>
       )}
 
+      {/* TAB: Price Transmission & Market Cointegration */}
+      {activeTab === 'transmission' && config && (
+        <form onSubmit={(e) => { e.preventDefault(); saveConfig(config); }} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          {/* Header & Overview */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              📈 Price Transmission Executive Overview
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Top Badge</label>
+                  <input
+                    type="text"
+                    value={config.labels?.pt_badge ?? defaultLabels.pt_badge}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), pt_badge: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Release Tag</label>
+                  <input
+                    type="text"
+                    value={config.labels?.pt_release_tag ?? defaultLabels.pt_release_tag}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), pt_release_tag: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Lead Organization</label>
+                  <input
+                    type="text"
+                    value={config.labels?.pt_lead_text ?? defaultLabels.pt_lead_text}
+                    onChange={e => {
+                      const updated = { ...(config.labels || defaultLabels), pt_lead_text: e.target.value };
+                      setConfig({ ...config, labels: updated });
+                    }}
+                    className="form-input"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Main Section Title</label>
+                <input
+                  type="text"
+                  value={config.labels?.pt_main_title ?? defaultLabels.pt_main_title}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), pt_main_title: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', fontWeight: 700 }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Overview Paragraph</label>
+                <textarea
+                  value={config.labels?.pt_main_desc ?? defaultLabels.pt_main_desc}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), pt_main_desc: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={3}
+                  style={{ width: '100%' }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* KPI Stat Cards */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              📊 KPI Highlight Metrics
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+              {[1, 2, 3, 4, 5].map(idx => {
+                const titleKey = `pt_stat${idx}_title`;
+                const valKey = `pt_stat${idx}_val`;
+                const descKey = `pt_stat${idx}_desc`;
+                return (
+                  <div key={idx} style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--color-primary)', display: 'block', marginBottom: '0.5rem' }}>
+                      Metric #{idx}
+                    </span>
+                    <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Title</label>
+                    <input
+                      type="text"
+                      value={config.labels?.[titleKey] ?? defaultLabels[titleKey]}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), [titleKey]: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      style={{ width: '100%', marginBottom: '0.5rem' }}
+                    />
+                    <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Value</label>
+                    <input
+                      type="text"
+                      value={config.labels?.[valKey] ?? defaultLabels[valKey]}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), [valKey]: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      style={{ width: '100%', marginBottom: '0.5rem', fontWeight: 800 }}
+                    />
+                    <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Description</label>
+                    <textarea
+                      value={config.labels?.[descKey] ?? defaultLabels[descKey]}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), [descKey]: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      rows={2}
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Strategic Takeaways */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              💡 Strategic Takeaways Cards
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem' }}>
+              {[1, 2, 3, 4].map(idx => {
+                const titleKey = `pt_takeaway${idx}_title`;
+                const descKey = `pt_takeaway${idx}_desc`;
+                return (
+                  <div key={idx} style={{ padding: '1rem', background: 'var(--color-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#2563eb', display: 'block', marginBottom: '0.5rem' }}>
+                      Takeaway Card #{idx}
+                    </span>
+                    <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Heading</label>
+                    <input
+                      type="text"
+                      value={config.labels?.[titleKey] ?? defaultLabels[titleKey]}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), [titleKey]: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      style={{ width: '100%', marginBottom: '0.5rem', fontWeight: 700 }}
+                    />
+                    <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Body Description</label>
+                    <textarea
+                      value={config.labels?.[descKey] ?? defaultLabels[descKey]}
+                      onChange={e => {
+                        const updated = { ...(config.labels || defaultLabels), [descKey]: e.target.value };
+                        setConfig({ ...config, labels: updated });
+                      }}
+                      className="form-input"
+                      rows={3}
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button type="submit" className="btn btn-primary" style={{ fontWeight: 700, gap: '0.5rem', padding: '10px 28px', fontSize: '0.95rem' }}>
+              <Save size={18} /> Save Price Transmission Changes
+            </button>
+          </div>
+        </form>
+      )}
+
+      {/* TAB: Corridor Disruption Engine */}
+      {activeTab === 'disruption' && config && (
+        <form onSubmit={(e) => { e.preventDefault(); saveConfig(config); }} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          {/* Header & Overview */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              ⚠️ NH-44 Corridor Disruption Engine Overview
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Top Badge</label>
+                <input
+                  type="text"
+                  value={config.labels?.cde_badge ?? defaultLabels.cde_badge}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_badge: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%' }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Engine Main Title</label>
+                <input
+                  type="text"
+                  value={config.labels?.cde_title ?? defaultLabels.cde_title}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_title: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', fontWeight: 700 }}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Engine Overview Description</label>
+                <textarea
+                  value={config.labels?.cde_desc ?? defaultLabels.cde_desc}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_desc: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={3}
+                  style={{ width: '100%' }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Simulator Texts */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              🎮 Policy Simulator Header &amp; Instructions
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Simulator Heading</label>
+                <input
+                  type="text"
+                  value={config.labels?.cde_sim_heading ?? defaultLabels.cde_sim_heading}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_sim_heading: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  style={{ width: '100%', fontWeight: 700 }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.25rem' }}>Simulator Instructions &amp; Description</label>
+                <textarea
+                  value={config.labels?.cde_sim_desc ?? defaultLabels.cde_sim_desc}
+                  onChange={e => {
+                    const updated = { ...(config.labels || defaultLabels), cde_sim_desc: e.target.value };
+                    setConfig({ ...config, labels: updated });
+                  }}
+                  className="form-input"
+                  rows={2}
+                  style={{ width: '100%' }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Statutory Directives §7.1 to §7.5 */}
+          <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
+            <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem', color: 'var(--color-primary)' }}>
+              🏛️ Statutory Policy Directives (§7.1 to §7.5)
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              {[
+                { sec: '7_1', label: '§7.1 Infrastructure Resilience & Permanent Bypass' },
+                { sec: '7_2', label: '§7.2 Real-Time Monitoring & Early Warning Broadcast' },
+                { sec: '7_3', label: '§7.3 Cold-Storage & Pre-Cooling Buffer Investment' },
+                { sec: '7_4', label: '§7.4 e-NAM Reference Price & KCC Liquidity Windows' },
+                { sec: '7_5', label: '§7.5 Parametric Index Insurance (CDII) Pilot' }
+              ].map(item => {
+                const titleKey = `cde_rec${item.sec}_title`;
+                const bodyKey = `cde_rec${item.sec}_body`;
+                return (
+                  <div key={item.sec} style={{ padding: '1.25rem', background: 'var(--color-bg)', borderRadius: '10px', border: '1px solid var(--color-border)' }}>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--color-primary)', display: 'block', marginBottom: '0.5rem' }}>
+                      {item.label}
+                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Directive Title</label>
+                        <input
+                          type="text"
+                          value={config.labels?.[titleKey] ?? defaultLabels[titleKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [titleKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          style={{ width: '100%', fontWeight: 700 }}
+                        />
+                      </div>
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '0.2rem' }}>Directive Body Text</label>
+                        <textarea
+                          value={config.labels?.[bodyKey] ?? defaultLabels[bodyKey]}
+                          onChange={e => {
+                            const updated = { ...(config.labels || defaultLabels), [bodyKey]: e.target.value };
+                            setConfig({ ...config, labels: updated });
+                          }}
+                          className="form-input"
+                          rows={3}
+                          style={{ width: '100%' }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button type="submit" className="btn btn-primary" style={{ fontWeight: 700, gap: '0.5rem', padding: '10px 28px', fontSize: '0.95rem' }}>
+              <Save size={18} /> Save Corridor Disruption Changes
+            </button>
+          </div>
+        </form>
+      )}
+
       {/* TAB 2: Publications Manager */}
       {activeTab === 'publications' && config && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '2rem' }}>
@@ -2560,7 +3127,67 @@ const Admin: React.FC = () => {
                 home_stat2_val: "Homepage Stats Strip - Stat 2 Value (e.g. 19 Years)",
                 home_stat2_lbl: "Homepage Stats Strip - Stat 2 Label (e.g. Price Series)",
                 home_stat3_val: "Homepage Stats Strip - Stat 3 Value (e.g. Real-Time)",
-                home_stat3_lbl: "Homepage Stats Strip - Stat 3 Label (e.g. Feeds Synced)"
+                home_stat3_lbl: "Homepage Stats Strip - Stat 3 Label (e.g. Feeds Synced)",
+
+                // Homepage Cards 5 & 6
+                home_card5_tag: "Homepage Card 5 - Tagline",
+                home_card5_title: "Homepage Card 5 - Title (Price Transmission)",
+                home_card5_desc: "Homepage Card 5 - Description",
+                home_card5_meta: "Homepage Card 5 - Meta Text (e.g. 2,225 Pairs)",
+                home_card5_stat: "Homepage Card 5 - Link Text (e.g. 85.1% Cointegrated →)",
+
+                home_card6_tag: "Homepage Card 6 - Tagline",
+                home_card6_title: "Homepage Card 6 - Title (Corridor Disruption Engine)",
+                home_card6_desc: "Homepage Card 6 - Description",
+                home_card6_meta: "Homepage Card 6 - Meta Text (e.g. 8 Apple Chains)",
+                home_card6_stat: "Homepage Card 6 - Link Text (e.g. Simulate Scenarios →)",
+
+                // Price Transmission & Market Cointegration
+                pt_badge: "Price Transmission - Top Badge Text",
+                pt_release_tag: "Price Transmission - Release Tag",
+                pt_lead_text: "Price Transmission - Lead Cell Attribution",
+                pt_main_title: "Price Transmission - Section Title",
+                pt_main_desc: "Price Transmission - Overview Paragraph",
+                pt_stat1_title: "Price Transmission - Metric 1 Title (Market Pairs Tested)",
+                pt_stat1_val: "Price Transmission - Metric 1 Value",
+                pt_stat1_desc: "Price Transmission - Metric 1 Description",
+                pt_stat2_title: "Price Transmission - Metric 2 Title (Overall Cointegration)",
+                pt_stat2_val: "Price Transmission - Metric 2 Value",
+                pt_stat2_desc: "Price Transmission - Metric 2 Description",
+                pt_stat3_title: "Price Transmission - Metric 3 Title (Vegetable Benchmark)",
+                pt_stat3_val: "Price Transmission - Metric 3 Value",
+                pt_stat3_desc: "Price Transmission - Metric 3 Description",
+                pt_stat4_title: "Price Transmission - Metric 4 Title (J&K Apple Pipeline)",
+                pt_stat4_val: "Price Transmission - Metric 4 Value",
+                pt_stat4_desc: "Price Transmission - Metric 4 Description",
+                pt_stat5_title: "Price Transmission - Metric 5 Title (Parimpore vs. Narwal)",
+                pt_stat5_val: "Price Transmission - Metric 5 Value",
+                pt_stat5_desc: "Price Transmission - Metric 5 Description",
+                pt_takeaway1_title: "Price Transmission - Takeaway 1 Heading",
+                pt_takeaway1_desc: "Price Transmission - Takeaway 1 Paragraph",
+                pt_takeaway2_title: "Price Transmission - Takeaway 2 Heading",
+                pt_takeaway2_desc: "Price Transmission - Takeaway 2 Paragraph",
+                pt_takeaway3_title: "Price Transmission - Takeaway 3 Heading",
+                pt_takeaway3_desc: "Price Transmission - Takeaway 3 Paragraph",
+                pt_takeaway4_title: "Price Transmission - Takeaway 4 Heading",
+                pt_takeaway4_desc: "Price Transmission - Takeaway 4 Paragraph",
+
+                // NH-44 Corridor Disruption Engine
+                cde_badge: "Corridor Disruption - Top Badge Text",
+                cde_title: "Corridor Disruption - Main Engine Title",
+                cde_desc: "Corridor Disruption - Engine Overview Paragraph",
+                cde_sim_heading: "Corridor Disruption - Simulator Section Heading",
+                cde_sim_desc: "Corridor Disruption - Simulator Description & Instructions",
+                cde_rec7_1_title: "Corridor Disruption - Directive §7.1 Title",
+                cde_rec7_1_body: "Corridor Disruption - Directive §7.1 Body Text",
+                cde_rec7_2_title: "Corridor Disruption - Directive §7.2 Title",
+                cde_rec7_2_body: "Corridor Disruption - Directive §7.2 Body Text",
+                cde_rec7_3_title: "Corridor Disruption - Directive §7.3 Title",
+                cde_rec7_3_body: "Corridor Disruption - Directive §7.3 Body Text",
+                cde_rec7_4_title: "Corridor Disruption - Directive §7.4 Title",
+                cde_rec7_4_body: "Corridor Disruption - Directive §7.4 Body Text",
+                cde_rec7_5_title: "Corridor Disruption - Directive §7.5 Title",
+                cde_rec7_5_body: "Corridor Disruption - Directive §7.5 Body Text"
               }[key] || key;
 
               const currentVal = (config.labels || defaultLabels)[key] || defaultLabels[key];

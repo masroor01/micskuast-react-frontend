@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { TrendingUp, Layers, LineChart, Landmark, GitCompare, AlertOctagon } from 'lucide-react';
+import { TrendingUp, Layers, Landmark, GitCompare, AlertOctagon } from 'lucide-react';
 import RealTimePrices from '../components/RealTimePrices';
 import OrchardLedger from './OrchardLedger';
 import PriceTransmission from '../components/PriceTransmission';
@@ -9,10 +9,11 @@ import { EditableLabel } from '../components/EditableLabel';
 
 const Forecasts: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeView = (searchParams.get('view') || 'predict') as 'predict' | 'tool' | 'dashboard' | 'ledger' | 'transmission' | 'disruption';
+  const rawView = searchParams.get('view');
+  const activeView = (rawView === 'tool' ? 'predict' : (rawView || 'predict')) as 'predict' | 'dashboard' | 'ledger' | 'transmission' | 'disruption';
   const [currentTheme, setCurrentTheme] = useState(document.documentElement.getAttribute('data-theme') || 'light');
 
-  const setActiveView = (view: 'predict' | 'tool' | 'dashboard' | 'ledger' | 'transmission' | 'disruption') => {
+  const setActiveView = (view: 'predict' | 'dashboard' | 'ledger' | 'transmission' | 'disruption') => {
     setSearchParams({ view });
   };
 
@@ -76,14 +77,6 @@ const Forecasts: React.FC = () => {
         >
           <TrendingUp size={18} /> 
           <EditableLabel labelKey="forecast_tab_realtime" defaultValue="Real-Time Forecasts" />
-        </button>
-        <button
-          onClick={() => setActiveView('tool')}
-          className={`market-tab-btn ${activeView === 'tool' ? 'active' : ''}`}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
-        >
-          <LineChart size={18} /> 
-          <EditableLabel labelKey="forecast_tab_tool" defaultValue="Smart Forecasting Tool" />
         </button>
         <button
           onClick={() => setActiveView('dashboard')}
@@ -203,35 +196,6 @@ const Forecasts: React.FC = () => {
                 The forecasts provided here are for informational purposes only. Actual market prices may vary based on local conditions and external factors. No liability is accepted for any financial decisions based on these forecasts.
               </p>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* VIEW: Forecasting Tool (Live /forecast Iframe Widget) */}
-      {activeView === 'tool' && (
-        <div className="animate-fade-in">
-          <div style={{
-            width: '100%',
-            maxWidth: 'none',
-            margin: '0 auto',
-            padding: 0,
-            boxSizing: 'border-box'
-          }}>
-            <iframe
-              src={`https://micmandis.onrender.com/forecast?theme=${currentTheme}`}
-              title="Agricultural Forecasting Tool"
-              style={{
-                width: '100%',
-                height: '80vh',
-                display: 'block',
-                border: 'none',
-                borderRadius: '12px',
-                boxShadow: '0 6px 22px rgba(0,0,0,.08)',
-                margin: 0,
-                padding: 0,
-                filter: currentTheme === 'dark' ? 'invert(0.9) hue-rotate(180deg)' : 'none'
-              }}
-            />
           </div>
         </div>
       )}

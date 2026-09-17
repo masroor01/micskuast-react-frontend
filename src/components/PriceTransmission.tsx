@@ -13,6 +13,7 @@ import {
   Truck,
   Database
 } from 'lucide-react';
+import { EditableLabel } from './EditableLabel';
 
 interface CropTransmissionData {
   crop: string;
@@ -123,7 +124,7 @@ export const PriceTransmission: React.FC = () => {
               letterSpacing: '0.06em'
             }}>
               <Activity size={12} />
-              HADP Project #04 • Econometric Research
+              <EditableLabel labelKey="pt_badge" defaultValue="HADP Project #04 • Econometric Research" />
             </span>
             <span style={{
               backgroundColor: 'var(--color-primary-pale)',
@@ -133,13 +134,13 @@ export const PriceTransmission: React.FC = () => {
               fontSize: '0.72rem',
               fontWeight: 700
             }}>
-              September 2026 Release
+              <EditableLabel labelKey="pt_release_tag" defaultValue="September 2026 Release" />
             </span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', fontWeight: 600 }}>
-              Lead: Market Intelligence Cell, SKUAST-Kashmir
+              <EditableLabel labelKey="pt_lead_text" defaultValue="Lead: Market Intelligence Cell, SKUAST-Kashmir" />
             </span>
           </div>
         </div>
@@ -151,7 +152,7 @@ export const PriceTransmission: React.FC = () => {
           lineHeight: 1.25,
           marginBottom: '0.75rem'
         }}>
-          Price Transmission &amp; Market Cointegration Study
+          <EditableLabel labelKey="pt_main_title" defaultValue="Price Transmission & Market Cointegration Study" />
         </h2>
         <p style={{
           fontSize: '0.92rem',
@@ -160,9 +161,10 @@ export const PriceTransmission: React.FC = () => {
           lineHeight: 1.6,
           margin: 0
         }}>
-          Empirical spatial integration assessment across <strong>2,225 wholesale mandi pairs</strong> nationwide. 
-          Evaluating whether agricultural wholesale markets across India and Jammu &amp; Kashmir are economically tethered in the long run, 
-          how rapidly price shocks transmit between mandis, and where supply chains fragment into isolated circuits.
+          <EditableLabel 
+            labelKey="pt_main_desc" 
+            defaultValue="Empirical spatial integration assessment across 2,225 wholesale mandi pairs nationwide. Evaluating whether agricultural wholesale markets across India and Jammu & Kashmir are economically tethered in the long run, how rapidly price shocks transmit between mandis, and where supply chains fragment into isolated circuits." 
+          />
         </p>
       </div>
 
@@ -182,15 +184,15 @@ export const PriceTransmission: React.FC = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
-              Market Pairs Tested
+              <EditableLabel labelKey="pt_stat1_title" defaultValue="Market Pairs Tested" />
             </span>
             <Database size={16} style={{ color: 'var(--color-primary)' }} />
           </div>
           <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--color-text-main)', lineHeight: 1 }}>
-            2,225
+            <EditableLabel labelKey="pt_stat1_val" defaultValue="2,225" />
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '0.4rem', margin: 0 }}>
-            Historical overlapping daily mandi trading series
+            <EditableLabel labelKey="pt_stat1_desc" defaultValue="Historical overlapping daily mandi trading series" />
           </p>
         </div>
 
@@ -203,15 +205,15 @@ export const PriceTransmission: React.FC = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
-              Overall Cointegration
+              <EditableLabel labelKey="pt_stat2_title" defaultValue="Overall Cointegration" />
             </span>
             <CheckCircle2 size={16} style={{ color: '#16a34a' }} />
           </div>
           <div style={{ fontSize: '1.85rem', fontWeight: 900, color: '#16a34a', lineHeight: 1 }}>
-            85.1%
+            <EditableLabel labelKey="pt_stat2_val" defaultValue="85.1%" />
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '0.4rem', margin: 0 }}>
-            1,894 pairs tethered to shared long-run equilibrium (p &lt; 0.05)
+            <EditableLabel labelKey="pt_stat2_desc" defaultValue="1,894 pairs tethered to shared long-run equilibrium (p < 0.05)" />
           </p>
         </div>
 
@@ -224,15 +226,15 @@ export const PriceTransmission: React.FC = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
-              Vegetable Benchmark
+              <EditableLabel labelKey="pt_stat3_title" defaultValue="Vegetable Benchmark" />
             </span>
             <TrendingUp size={16} style={{ color: '#2563eb' }} />
           </div>
           <div style={{ fontSize: '1.85rem', fontWeight: 900, color: '#2563eb', lineHeight: 1 }}>
-            98.0%
+            <EditableLabel labelKey="pt_stat3_val" defaultValue="98.0%" />
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '0.4rem', margin: 0 }}>
-            Cauliflower &amp; Cabbage lead; perishability accelerates arbitrage
+            <EditableLabel labelKey="pt_stat3_desc" defaultValue="Cauliflower & Cabbage lead; perishability accelerates arbitrage" />
           </p>
         </div>
 
@@ -245,15 +247,15 @@ export const PriceTransmission: React.FC = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
-              J&amp;K Apple Pipeline
+              <EditableLabel labelKey="pt_stat4_title" defaultValue="J&K Apple Pipeline" />
             </span>
             <Truck size={16} style={{ color: '#d97706' }} />
           </div>
           <div style={{ fontSize: '1.85rem', fontWeight: 900, color: '#d97706', lineHeight: 1 }}>
-            74.5%
+            <EditableLabel labelKey="pt_stat4_val" defaultValue="74.5%" />
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '0.4rem', margin: 0 }}>
-            372 pairs tested across 28 major terminal markets
+            <EditableLabel labelKey="pt_stat4_desc" defaultValue="372 pairs tested across 28 major terminal markets" />
           </p>
         </div>
 
@@ -266,15 +268,15 @@ export const PriceTransmission: React.FC = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-text-muted)', textTransform: 'uppercase' }}>
-              Parimpore vs. Narwal
+              <EditableLabel labelKey="pt_stat5_title" defaultValue="Parimpore vs. Narwal" />
             </span>
             <Scale size={16} style={{ color: '#dc2626' }} />
           </div>
           <div style={{ fontSize: '1.85rem', fontWeight: 900, color: '#dc2626', lineHeight: 1 }}>
-            -0.0088
+            <EditableLabel labelKey="pt_stat5_val" defaultValue="-0.0088" />
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '0.4rem', margin: 0 }}>
-            &lt;1% daily gap closed; non-interchangeable spot roles
+            <EditableLabel labelKey="pt_stat5_desc" defaultValue="<1% daily gap closed; non-interchangeable spot roles" />
           </p>
         </div>
       </div>
@@ -890,12 +892,14 @@ export const PriceTransmission: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
                 <CheckCircle2 size={20} style={{ color: '#16a34a' }} />
                 <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800 }}>
-                  Perishability Dictates Market Connectivity
+                  <EditableLabel labelKey="pt_takeaway1_title" defaultValue="Perishability Dictates Market Connectivity" />
                 </h4>
               </div>
               <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.6, margin: 0 }}>
-                Crops with short shelf-lives (Cauliflower 98%, Cabbage 97%, Tomato 96%) exhibit near-perfect spatial cointegration. 
-                Because produce cannot wait, geographic price spikes trigger immediate truck dispatches, restoring market equilibrium within days.
+                <EditableLabel 
+                  labelKey="pt_takeaway1_desc" 
+                  defaultValue="Crops with short shelf-lives (Cauliflower 98%, Cabbage 97%, Tomato 96%) exhibit near-perfect spatial cointegration. Because produce cannot wait, geographic price spikes trigger immediate truck dispatches, restoring market equilibrium within days." 
+                />
               </p>
             </div>
 
@@ -908,12 +912,14 @@ export const PriceTransmission: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
                 <Truck size={20} style={{ color: '#2563eb' }} />
                 <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800 }}>
-                  NH44 Highway is J&amp;K&apos;s Price Transmission Backbone
+                  <EditableLabel labelKey="pt_takeaway2_title" defaultValue="NH44 Highway is J&K's Price Transmission Backbone" />
                 </h4>
               </div>
               <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.6, margin: 0 }}>
-                Within J&amp;K, vegetables achieved 100% cointegration across mandis situated along or near the National Highway 44 (Srinagar &ndash; Jammu). 
-                Highway transit reliability directly governs the efficiency of agricultural market arbitrage for local growers.
+                <EditableLabel 
+                  labelKey="pt_takeaway2_desc" 
+                  defaultValue="Within J&K, vegetables achieved 100% cointegration across mandis situated along or near the National Highway 44 (Srinagar – Jammu). Highway transit reliability directly governs the efficiency of agricultural market arbitrage for local growers." 
+                />
               </p>
             </div>
 
@@ -926,12 +932,14 @@ export const PriceTransmission: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
                 <AlertTriangle size={20} style={{ color: '#d97706' }} />
                 <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800 }}>
-                  Avoid Spatial Proxy Over-Generalization
+                  <EditableLabel labelKey="pt_takeaway3_title" defaultValue="Avoid Spatial Proxy Over-Generalization" />
                 </h4>
               </div>
               <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.6, margin: 0 }}>
-                Because Parimpore and Narwal have a very slow adjustment speed (-0.0088), agricultural advisory models must not substitute one mandi&apos;s spot prices for the other. 
-                Each mandi requires localized, grade-specific neural network models.
+                <EditableLabel 
+                  labelKey="pt_takeaway3_desc" 
+                  defaultValue="Because Parimpore and Narwal have a very slow adjustment speed (-0.0088), agricultural advisory models must not substitute one mandi's spot prices for the other. Each mandi requires localized, grade-specific neural network models." 
+                />
               </p>
             </div>
 
@@ -944,12 +952,14 @@ export const PriceTransmission: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
                 <Zap size={20} style={{ color: '#9333ea' }} />
                 <h4 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800 }}>
-                  Data Telemetry Upgrades Under HADP
+                  <EditableLabel labelKey="pt_takeaway4_title" defaultValue="Data Telemetry Upgrades Under HADP" />
                 </h4>
               </div>
               <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.6, margin: 0 }}>
-                To address data coverage gaps in Aglar and Nowpora, the Market Intelligence Cell is expanding automated electronic logging and daily arrival telemetry 
-                under HADP Project #04, ensuring universal spatial monitoring across all J&amp;K horticulture clusters.
+                <EditableLabel 
+                  labelKey="pt_takeaway4_desc" 
+                  defaultValue="To address data coverage gaps in Aglar and Nowpora, the Market Intelligence Cell is expanding automated electronic logging and daily arrival telemetry under HADP Project #04, ensuring universal spatial monitoring across all J&K horticulture clusters." 
+                />
               </p>
             </div>
           </div>

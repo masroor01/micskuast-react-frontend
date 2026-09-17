@@ -7,6 +7,7 @@ import {
   ShieldAlert, 
   Compass 
 } from 'lucide-react';
+import { EditableLabel } from './EditableLabel';
 
 // --- DATASET & RESEARCH SPECIFICATION ---
 export interface ChainData {
@@ -881,14 +882,17 @@ export const CorridorDisruption: React.FC = () => {
 
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', padding: '4px 12px', borderRadius: '30px', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#86efac', marginBottom: '0.85rem' }}>
           <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />
-          NASCDI-NARDL Research Programme &middot; SKUAST-Kashmir
+          <EditableLabel labelKey="cde_badge" defaultValue="NASCDI-NARDL Research Programme • SKUAST-Kashmir" />
         </div>
 
         <h2 style={{ fontSize: 'clamp(22px, 3.2vw, 32px)', fontWeight: 900, margin: '0 0 0.65rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
-          NH-44 Corridor Disruption Engine &amp; Policy Radar
+          <EditableLabel labelKey="cde_title" defaultValue="NH-44 Corridor Disruption Engine & Policy Radar" />
         </h2>
         <p style={{ margin: 0, fontSize: '0.92rem', color: '#cbd5e1', maxWidth: '780px', lineHeight: 1.6 }}>
-          Econometric scenario-simulation and policy-recommendation suite tracking Nonlinear Asymmetric Supply-Chain Disruption Index (NASCDI) via GDELT media intelligence and NARDL error-correction models across 8 Kashmir apple supply chains.
+          <EditableLabel 
+            labelKey="cde_desc" 
+            defaultValue="Econometric scenario-simulation and policy-recommendation suite tracking Nonlinear Asymmetric Supply-Chain Disruption Index (NASCDI) via GDELT media intelligence and NARDL error-correction models across 8 Kashmir apple supply chains." 
+          />
         </p>
 
         {/* Engine Navigation Sub-tabs */}
@@ -1213,10 +1217,10 @@ export const CorridorDisruption: React.FC = () => {
                     § {rec.section} &middot; STATUTORY DIRECTIVE
                   </div>
                   <h4 style={{ margin: '0 0 0.35rem', fontSize: '0.98rem', fontWeight: 800, color: 'var(--color-text-main)' }}>
-                    {rec.title}
+                    <EditableLabel labelKey={`cde_rec${rec.section.replace('.', '_')}_title`} defaultValue={rec.title} />
                   </h4>
                   <p style={{ margin: '0 0 0.5rem', fontSize: '0.85rem', color: 'var(--color-text-main)', lineHeight: 1.55 }}>
-                    {rec.body}
+                    <EditableLabel labelKey={`cde_rec${rec.section.replace('.', '_')}_body`} defaultValue={rec.body} />
                   </p>
                   <div style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)', fontFamily: 'monospace' }}>
                     <strong>Trigger Condition:</strong> {rec.trigger}
@@ -1235,10 +1239,13 @@ export const CorridorDisruption: React.FC = () => {
           {/* Controls Bar */}
           <div style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: '14px', padding: '1.5rem' }}>
             <h3 style={{ margin: '0 0 0.4rem', fontSize: '1.15rem', fontWeight: 800, color: 'var(--color-text-main)' }}>
-              1. Select Supply Chain &amp; Compose Hypothetical Headline
+              <EditableLabel labelKey="cde_sim_heading" defaultValue="1. Select Supply Chain & Compose Hypothetical Headline" />
             </h3>
             <p style={{ margin: '0 0 1.25rem', fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>
-              Add terms from the actual GDELT media scoring lexicon. The engine calculates the raw score, applies the normalization $z$-score, and routes the disruption into the NARDL response curve.
+              <EditableLabel 
+                labelKey="cde_sim_desc" 
+                defaultValue="Add terms from the actual GDELT media scoring lexicon. The engine calculates the raw score, applies the normalization z-score, and routes the disruption into the NARDL response curve." 
+              />
             </p>
 
             {/* Chain Selector */}
