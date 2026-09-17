@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Edit2, Bold, Italic, Underline, AlignJustify } from 'lucide-react';
+import { Edit2, Bold, Italic, Underline, AlignJustify, Type } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 import { getCachedConfig, getCachedConfigSync, setCachedConfig } from '../utils/configCache';
@@ -82,6 +82,83 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
       textarea.focus();
       textarea.setSelectionRange(start + tagOpen.length, start + tagOpen.length + selectedText.length);
     }, 0);
+  };
+
+  const applyFontSize = (size: string) => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const text = textarea.value;
+
+    if (size === 'reset') {
+      if (start < end) {
+        const selected = text.substring(start, end);
+        const cleaned = selected.replace(/<span style="font-size:\s*[^;"]+;?">([\s\S]*?)<\/span>/gi, '$1');
+        const newValue = text.substring(0, start) + cleaned + text.substring(end);
+        setEditValue(newValue);
+      } else {
+        const cleaned = text.replace(/<span style="font-size:\s*[^;"]+;?">([\s\S]*?)<\/span>/gi, '$1');
+        setEditValue(cleaned);
+      }
+      return;
+    }
+
+    if (start < end) {
+      const selected = text.substring(start, end);
+      const spanRegex = /^<span style="font-size:\s*[^;"]+;?">([\s\S]*)<\/span>$/i;
+      let replacement = '';
+      if (spanRegex.test(selected)) {
+        replacement = selected.replace(/font-size:\s*[^;"]+;?/i, `font-size: ${size};`);
+      } else {
+        replacement = `<span style="font-size: ${size};">${selected}</span>`;
+      }
+      const newValue = text.substring(0, start) + replacement + text.substring(end);
+      setEditValue(newValue);
+
+      setTimeout(() => {
+        textarea.focus();
+        textarea.setSelectionRange(start, start + replacement.length);
+      }, 0);
+    } else {
+      if (text.trim().length > 0) {
+        const entireSpanRegex = /^<span style="font-size:\s*[^;"]+;?">([\s\S]*)<\/span>$/i;
+        let newValue = '';
+        if (entireSpanRegex.test(text)) {
+          newValue = text.replace(/font-size:\s*[^;"]+;?/i, `font-size: ${size};`);
+        } else {
+          newValue = `<span style="font-size: ${size};">${text}</span>`;
+        }
+        setEditValue(newValue);
+        setTimeout(() => {
+          textarea.focus();
+        }, 0);
+      } else {
+        const tagOpen = `<span style="font-size: ${size};">`;
+        const tagClose = `</span>`;
+        setEditValue(tagOpen + tagClose);
+        setTimeout(() => {
+          textarea.focus();
+          textarea.setSelectionRange(tagOpen.length, tagOpen.length);
+        }, 0);
+      }
+    }
+  };
+
+  const adjustFontSize = (delta: number) => {
+    const text = textareaRef.current?.value || editValue;
+    const match = text.match(/font-size:\s*(\d+(?:\.\d+)?)(px|rem|em)/i);
+    let currentSize = 16;
+    if (match) {
+      currentSize = parseFloat(match[1]);
+      const unit = match[2].toLowerCase();
+      if (unit === 'rem' || unit === 'em') {
+        currentSize = Math.round(currentSize * 16);
+      }
+    }
+    const newSize = Math.max(9, Math.min(72, Math.round(currentSize + delta)));
+    applyFontSize(`${newSize}px`);
   };
 
   const handleSave = () => {
@@ -177,7 +254,7 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
             borderRadius: '16px',
             padding: '2rem',
             width: '90%',
-            maxWidth: '480px',
+            maxWidth: '520px',
             boxShadow: '0 12px 35px rgba(0,0,0,0.6)',
             border: '1px solid #333'
           }}>
@@ -192,101 +269,217 @@ export const EditableLabel: React.FC<EditableLabelProps> = ({ labelKey, defaultV
             {/* Formatting Toolbar */}
             <div style={{
               display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              marginBottom: '0.75rem',
+              flexDirection: 'column',
+              gap: '0.5rem',
+              marginBottom: '0.85rem',
               background: '#282832',
-              padding: '6px 10px',
+              padding: '8px 10px',
               borderRadius: '8px',
-              border: '1px solid #3d3d4b',
-              flexWrap: 'wrap'
+              border: '1px solid #3d3d4b'
             }}>
-              <span style={{ fontSize: '0.72rem', color: '#9ca3af', fontWeight: 700, marginRight: '4px' }}>
-                Format:
-              </span>
-              
-              <button
-                type="button"
-                onClick={() => applyFormatting('<b>', '</b>')}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  background: '#353544',
-                  border: '1px solid #4a4a5c',
-                  color: '#fff',
-                  borderRadius: '6px',
-                  padding: '4px 9px',
-                  fontSize: '0.78rem',
-                  fontWeight: 800,
-                  cursor: 'pointer'
-                }}
-                title="Bold (<b>...</b>)"
-              >
-                <Bold size={13} /> Bold
-              </button>
+              {/* Row 1: Style Formatting */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                flexWrap: 'wrap'
+              }}>
+                <span style={{ fontSize: '0.72rem', color: '#9ca3af', fontWeight: 700, marginRight: '4px' }}>
+                  Format:
+                </span>
+                
+                <button
+                  type="button"
+                  onClick={() => applyFormatting('<b>', '</b>')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    background: '#353544',
+                    border: '1px solid #4a4a5c',
+                    color: '#fff',
+                    borderRadius: '6px',
+                    padding: '4px 9px',
+                    fontSize: '0.78rem',
+                    fontWeight: 800,
+                    cursor: 'pointer'
+                  }}
+                  title="Bold (<b>...</b>)"
+                >
+                  <Bold size={13} /> Bold
+                </button>
 
-              <button
-                type="button"
-                onClick={() => applyFormatting('<i>', '</i>')}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  background: '#353544',
-                  border: '1px solid #4a4a5c',
-                  color: '#fff',
-                  borderRadius: '6px',
-                  padding: '4px 9px',
-                  fontSize: '0.78rem',
-                  fontStyle: 'italic',
-                  cursor: 'pointer'
-                }}
-                title="Italic (<i>...</i>)"
-              >
-                <Italic size={13} /> Italic
-              </button>
+                <button
+                  type="button"
+                  onClick={() => applyFormatting('<i>', '</i>')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    background: '#353544',
+                    border: '1px solid #4a4a5c',
+                    color: '#fff',
+                    borderRadius: '6px',
+                    padding: '4px 9px',
+                    fontSize: '0.78rem',
+                    fontStyle: 'italic',
+                    cursor: 'pointer'
+                  }}
+                  title="Italic (<i>...</i>)"
+                >
+                  <Italic size={13} /> Italic
+                </button>
 
-              <button
-                type="button"
-                onClick={() => applyFormatting('<u>', '</u>')}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  background: '#353544',
-                  border: '1px solid #4a4a5c',
-                  color: '#fff',
-                  borderRadius: '6px',
-                  padding: '4px 9px',
-                  fontSize: '0.78rem',
-                  textDecoration: 'underline',
-                  cursor: 'pointer'
-                }}
-                title="Underline (<u>...</u>)"
-              >
-                <Underline size={13} /> Underline
-              </button>
+                <button
+                  type="button"
+                  onClick={() => applyFormatting('<u>', '</u>')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    background: '#353544',
+                    border: '1px solid #4a4a5c',
+                    color: '#fff',
+                    borderRadius: '6px',
+                    padding: '4px 9px',
+                    fontSize: '0.78rem',
+                    textDecoration: 'underline',
+                    cursor: 'pointer'
+                  }}
+                  title="Underline (<u>...</u>)"
+                >
+                  <Underline size={13} /> Underline
+                </button>
 
-              <button
-                type="button"
-                onClick={() => applyFormatting('<div style="text-align: justify;">', '</div>')}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  background: '#353544',
-                  border: '1px solid #4a4a5c',
-                  color: '#fff',
-                  borderRadius: '6px',
-                  padding: '4px 9px',
-                  fontSize: '0.78rem',
-                  cursor: 'pointer'
-                }}
-                title="Justify Text Alignment"
-              >
-                <AlignJustify size={13} /> Justify
-              </button>
+                <button
+                  type="button"
+                  onClick={() => applyFormatting('<div style="text-align: justify;">', '</div>')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    background: '#353544',
+                    border: '1px solid #4a4a5c',
+                    color: '#fff',
+                    borderRadius: '6px',
+                    padding: '4px 9px',
+                    fontSize: '0.78rem',
+                    cursor: 'pointer'
+                  }}
+                  title="Justify Text Alignment"
+                >
+                  <AlignJustify size={13} /> Justify
+                </button>
+              </div>
+
+              {/* Row 2: Font Size Controls */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                flexWrap: 'wrap',
+                paddingTop: '6px',
+                borderTop: '1px solid #383846'
+              }}>
+                <span style={{ fontSize: '0.72rem', color: '#9ca3af', fontWeight: 700, marginRight: '2px', display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
+                  <Type size={13} /> Size:
+                </span>
+
+                <select
+                  onChange={(e) => {
+                    if (e.target.value) {
+                      applyFontSize(e.target.value);
+                      e.target.value = '';
+                    }
+                  }}
+                  defaultValue=""
+                  style={{
+                    background: '#353544',
+                    border: '1px solid #4a4a5c',
+                    color: '#fff',
+                    borderRadius: '6px',
+                    padding: '4px 8px',
+                    fontSize: '0.76rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    outline: 'none'
+                  }}
+                  title="Select Font Size Preset"
+                >
+                  <option value="" disabled>Choose Size...</option>
+                  <option value="11px">11px — Extra Small</option>
+                  <option value="13px">13px — Small</option>
+                  <option value="15px">15px — Normal</option>
+                  <option value="18px">18px — Medium</option>
+                  <option value="22px">22px — Large</option>
+                  <option value="26px">26px — Extra Large</option>
+                  <option value="32px">32px — Title / Stat</option>
+                  <option value="40px">40px — Display Headline</option>
+                  <option value="reset">↺ Reset Size (Default)</option>
+                </select>
+
+                {/* Quick Step Buttons */}
+                <div style={{ display: 'inline-flex', borderRadius: '6px', overflow: 'hidden', border: '1px solid #4a4a5c' }}>
+                  <button
+                    type="button"
+                    onClick={() => adjustFontSize(-2)}
+                    style={{
+                      background: '#353544',
+                      border: 'none',
+                      borderRight: '1px solid #4a4a5c',
+                      color: '#fff',
+                      padding: '3px 8px',
+                      fontSize: '0.75rem',
+                      fontWeight: 800,
+                      cursor: 'pointer'
+                    }}
+                    title="Decrease font size (-2px)"
+                  >
+                    A-
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => adjustFontSize(+2)}
+                    style={{
+                      background: '#353544',
+                      border: 'none',
+                      color: '#fff',
+                      padding: '3px 8px',
+                      fontSize: '0.75rem',
+                      fontWeight: 800,
+                      cursor: 'pointer'
+                    }}
+                    title="Increase font size (+2px)"
+                  >
+                    A+
+                  </button>
+                </div>
+
+                {/* Quick Size Chips */}
+                {['12px', '16px', '22px', '28px'].map((sz, i) => {
+                  const tag = ['SM', 'MD', 'LG', 'XL'][i];
+                  return (
+                    <button
+                      key={sz}
+                      type="button"
+                      onClick={() => applyFontSize(sz)}
+                      style={{
+                        background: '#353544',
+                        border: '1px solid #4a4a5c',
+                        color: '#d1d5db',
+                        borderRadius: '6px',
+                        padding: '3px 7px',
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        cursor: 'pointer'
+                      }}
+                      title={`Set font size to ${sz}`}
+                    >
+                      {tag}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Textarea */}
