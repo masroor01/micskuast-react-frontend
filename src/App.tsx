@@ -16,6 +16,7 @@ import Team from './pages/Team';
 import Admin from './pages/Admin';
 import About from './pages/About';
 import { ParticleBackground } from './components/ParticleBackground';
+import { MICChatWidget } from './components/MICChatWidget';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         </main>
         
         <Footer />
+        <MICChatWidget />
       </div>
     </Router>
   </LanguageProvider>
