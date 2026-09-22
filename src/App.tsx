@@ -40,6 +40,8 @@ function App() {
             <Route path="/orchard-ledger" element={<Navigate to="/forecasts?view=ledger" replace />} />
             <Route path="/price-transmission" element={<Navigate to="/forecasts?view=transmission" replace />} />
             <Route path="/transmission" element={<Navigate to="/forecasts?view=transmission" replace />} />
+            <Route path="/multimarket" element={<Navigate to="/forecasts?view=transmission&sub=multimarket" replace />} />
+            <Route path="/multi-market" element={<Navigate to="/forecasts?view=transmission&sub=multimarket" replace />} />
             <Route path="/team" element={<Team />} />
             <Route path="/admin" element={<Admin />} />
             {/* Fallback route */}

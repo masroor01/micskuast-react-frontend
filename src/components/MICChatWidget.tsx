@@ -38,7 +38,7 @@ export const MICChatWidget: React.FC = () => {
     {
       id: 'welcome-1',
       role: 'assistant',
-      content: "Hello! I am your **MIC Agri-Assistant** powered by SKUAST-K & Anthropic Claude 👋\n\nI can help you analyze daily wholesale mandi prices, LSTM price forecasts, NH-44 corridor disruption indices, and SKUAST-K horticulture bulletins. What would you like to explore today?",
+      content: "Hello! I am your **MIC Assistant** 👋\n\nI can help you analyze daily wholesale mandi prices, LSTM price forecasts, NH-44 corridor disruption indices, and SKUAST-K horticulture bulletins. What would you like to explore today?",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
@@ -258,7 +258,7 @@ export const MICChatWidget: React.FC = () => {
             }}
           >
             <span style={{ fontSize: '1rem' }}>💬</span>
-            <span>Ask MIC AI Assistant</span>
+            <span>Ask MIC Assistant</span>
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -391,13 +391,8 @@ export const MICChatWidget: React.FC = () => {
               </div>
 
               <div>
-                <div style={{ fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.01em', lineHeight: 1.2 }}>
-                  MIC Agri-Assistant
-                </div>
-                <div style={{ fontSize: '0.72rem', opacity: 0.9, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <span>SKUAST-K</span>
-                  <span>•</span>
-                  <span>Anthropic Claude</span>
+                <div style={{ fontWeight: 800, fontSize: '1rem', letterSpacing: '0.01em', lineHeight: 1.2 }}>
+                  MIC Assistant
                 </div>
               </div>
             </div>

@@ -73,9 +73,14 @@ if (!file_exists($configFile)) {
         "hero_subtitle" => "Forecasting daily wholesale Mandi prices for Apple and Cherry with Deep Learning LSTM models to guide harvesting, storage, and market dispatch.",
         "hero_slides" => $defaultHeroSlides,
         "ticker_items" => [
-            "🍎 AI-powered Apple Price Forecasts for the 2026–27 marketing season are now LIVE on MIC — providing 7-day and 30-day price forecasts across major wholesale markets of Jammu & Kashmir.",
-            "🍒 Cherry Market Stability Assessment (MIC, 2026) report has been released. Check out the latest guidelines.",
-            "📈 APMC Sopore & Srinagar market arrivals have registered a 14% increase in the current week."
+            "🍎 LIVE FORECASTS: AI-Powered Apple Price Forecasts for the 2026–27 marketing season are now active on MIC — providing 7-day and 30-day price predictions across Sopore, Parimpora, Narwal, and Azadpur APMC mandis.",
+            "📊 PRICE TRANSMISSION: Spatial econometrics analysis across 2,225 market pairs confirms 85.1% cointegration between J&K terminal markets and major national consumption hubs.",
+            "🚚 NH-44 CORRIDOR RADAR: Real-time Highway Disruption Index active — tracking freight movements, transit times, and bottleneck alerts along the Ramban-Banihal stretch to optimize fruit dispatch schedules.",
+            "🍒 CHERRY SEASON REVIEW: 2026 Cherry Model Performance validation complete with 81.7% out-of-sample directional accuracy across 13 major market/grade combinations.",
+            "❄️ CA STORAGE INTELLIGENCE: Controlled Atmosphere (CA) storage occupancy in Pulwama, Shopian, and Lassipora reaches optimal levels with price-buffer simulations projecting favorable post-harvest realisations.",
+            "🚆 RAIL FREIGHT LOGISTICS: Northern Railways and J&K Horticulture Department expand parcel train services and reefer container quotas for accelerated apple dispatches to Mumbai, Bengaluru, and Kolkata mandis.",
+            "🌏 HORTICULTURE EXPORTS: J&K's premium high-density apple varieties and stone fruits record expanded market access across Southeast Asia and Gulf corridors under HADP-04 export promotion initiatives.",
+            "📜 POLICY & EWS ALERT: HADP-04 Early Warning System (EWS) bulletins updated with advisory guidance on harvest scheduling, grade-wise sorting, and packaging standards."
         ],
         "announcement" => [
             "tag" => "New Release",

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { 
   TrendingUp, 
   Activity, 
@@ -11,9 +12,11 @@ import {
   BarChart3, 
   MapPin, 
   Truck,
-  Database
+  Database,
+  GitCompare
 } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
+import { MultiMarketComparison } from './MultiMarketComparison';
 
 interface CropTransmissionData {
   crop: string;
@@ -86,7 +89,36 @@ const appleIsolatedPairs = [
 ];
 
 export const PriceTransmission: React.FC = () => {
-  const [activeSubTab, setActiveSubTab] = useState<'overview' | 'jk' | 'apple' | 'methodology' | 'takeaways'>('overview');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const subParam = searchParams.get('sub');
+  const viewParam = searchParams.get('view');
+
+  const [activeSubTab, setActiveSubTabState] = useState<'overview' | 'multimarket' | 'jk' | 'apple' | 'methodology' | 'takeaways'>(() => {
+    if (subParam === 'multimarket' || viewParam === 'multimarket') return 'multimarket';
+    if (subParam === 'jk') return 'jk';
+    if (subParam === 'apple') return 'apple';
+    if (subParam === 'methodology') return 'methodology';
+    if (subParam === 'takeaways') return 'takeaways';
+    return 'overview';
+  });
+
+  const setActiveSubTab = (tab: 'overview' | 'multimarket' | 'jk' | 'apple' | 'methodology' | 'takeaways') => {
+    setActiveSubTabState(tab);
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      next.set('view', 'transmission');
+      next.set('sub', tab);
+      return next;
+    }, { replace: true });
+  };
+
+  useEffect(() => {
+    if (subParam && ['overview', 'multimarket', 'jk', 'apple', 'methodology', 'takeaways'].includes(subParam)) {
+      setActiveSubTabState(subParam as any);
+    } else if (viewParam === 'multimarket') {
+      setActiveSubTabState('multimarket');
+    }
+  }, [subParam, viewParam]);
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'Vegetable' | 'Fruit'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -293,6 +325,27 @@ export const PriceTransmission: React.FC = () => {
         </button>
 
         <button
+          onClick={() => setActiveSubTab('multimarket')}
+          className={`market-tab-btn ${activeSubTab === 'multimarket' ? 'active' : ''}`}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+        >
+          <GitCompare size={16} />
+          <span>Multi-Market Comparison</span>
+          <span style={{
+            fontSize: '0.68rem',
+            background: activeSubTab === 'multimarket' ? '#15803d' : 'var(--color-primary-pale, rgba(21, 128, 61, 0.12))',
+            color: activeSubTab === 'multimarket' ? '#ffffff' : 'var(--color-primary, #15803d)',
+            padding: '2px 7px',
+            borderRadius: '999px',
+            fontWeight: 800,
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase'
+          }}>
+            Interactive
+          </span>
+        </button>
+
+        <button
           onClick={() => setActiveSubTab('jk')}
           className={`market-tab-btn ${activeSubTab === 'jk' ? 'active' : ''}`}
           style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
@@ -495,6 +548,11 @@ export const PriceTransmission: React.FC = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* SUB-TAB: Multi-Market Comparison */}
+      {activeSubTab === 'multimarket' && (
+        <MultiMarketComparison />
       )}
 
       {/* SUB-TAB 2: J&K Regional Pipeline (141 Pairs) */}

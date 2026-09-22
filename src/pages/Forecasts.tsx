@@ -10,7 +10,7 @@ import { EditableLabel } from '../components/EditableLabel';
 const Forecasts: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const rawView = searchParams.get('view');
-  const activeView = (rawView === 'tool' ? 'predict' : (rawView || 'predict')) as 'predict' | 'dashboard' | 'ledger' | 'transmission' | 'disruption';
+  const activeView = (rawView === 'tool' ? 'predict' : (rawView === 'multimarket' ? 'transmission' : (rawView || 'predict'))) as 'predict' | 'dashboard' | 'ledger' | 'transmission' | 'disruption';
   const [currentTheme, setCurrentTheme] = useState(document.documentElement.getAttribute('data-theme') || 'light');
 
   const setActiveView = (view: 'predict' | 'dashboard' | 'ledger' | 'transmission' | 'disruption') => {

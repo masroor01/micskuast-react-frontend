@@ -132,25 +132,25 @@ const defaultTeam = [
 ];
 
 const defaultEnglishTickerItems: string[] = [
-  "🍎 AI-powered Apple Price Forecasts for the 2026–27 marketing season are now LIVE on MIC — providing 7-day and 30-day price forecasts across major wholesale markets of Jammu & Kashmir for informed harvesting, storage and marketing decisions.",
-  "📈 NEW REPORT (July 23, 2026): 2026 Cherry Model Performance Review is now live — forecast accuracy across 13 market/grade combinations with an overall prediction accuracy of 81.7%.",
-  "🌏 EXPORT MILESTONE (July 2026): J&K's premium Areko Cherries and Scentrose Plums from Shopian & Pulwama have entered the Singapore market for the first time.",
-  "📡 DIGITAL MARKET UPDATE: DMI is encouraging all States and Union Territories to establish State-level agricultural market databases integrated with AGMARKNET.",
-  "🇮🇳 POLICY UPDATE: NITI Aayog's \"Operation Golden Greens\" roadmap proposes transforming J&K into a global horticulture leader.",
-  "⚠️ TRADE ALERT: Recent reductions in import duties on apples have raised competitiveness concerns.",
-  "🍏 APPLE INDUSTRY: High-density apple plantations continue expanding across J&K.",
-  "📊 NEW STUDY (Sept 2026): Econometric Analysis of Price Transmission across 2,225 Market Pairs & 17 Crops is now LIVE — 85.1% cointegration with rapid spatial transmission along the NH44 highway corridor.",
+  "🍎 LIVE FORECASTS: AI-Powered Apple Price Forecasts for the 2026–27 marketing season are now active on MIC — providing 7-day and 30-day price predictions across Sopore, Parimpora, Narwal, and Azadpur APMC mandis.",
+  "📊 PRICE TRANSMISSION: Spatial econometrics analysis across 2,225 market pairs confirms 85.1% cointegration between J&K terminal markets and major national consumption hubs.",
+  "🚚 NH-44 CORRIDOR RADAR: Real-time Highway Disruption Index active — tracking freight movements, transit times, and bottleneck alerts along the Ramban-Banihal stretch to optimize fruit dispatch schedules.",
+  "🍒 CHERRY SEASON REVIEW: 2026 Cherry Model Performance validation complete with 81.7% out-of-sample directional accuracy across 13 major market/grade combinations.",
+  "❄️ CA STORAGE INTELLIGENCE: Controlled Atmosphere (CA) storage occupancy in Pulwama, Shopian, and Lassipora reaches optimal levels with price-buffer simulations projecting favorable post-harvest realisations.",
+  "🚆 RAIL FREIGHT LOGISTICS: Northern Railways and J&K Horticulture Department expand parcel train services and reefer container quotas for accelerated apple dispatches to Mumbai, Bengaluru, and Kolkata mandis.",
+  "🌏 HORTICULTURE EXPORTS: J&K's premium high-density apple varieties and stone fruits record expanded market access across Southeast Asia and Gulf corridors under HADP-04 export promotion initiatives.",
+  "📜 POLICY & EWS ALERT: HADP-04 Early Warning System (EWS) bulletins updated with advisory guidance on harvest scheduling, grade-wise sorting, and packaging standards.",
 ];
 
 const defaultUrduTickerItems: string[] = [
-  "🍎 مارکیٹنگ سیزن 2026–27 کے لیے سیب کی قیمتوں کی پیشین گوئیاں اب لائیو ہیں — کٹائی، ذخیرہ اندوزی اور مارکیٹ کے فیصلوں کے لیے 7 اور 30 روزہ پیشین گوئی۔",
-  "📈 نئی رپورٹ (23 جولائی 2026): چیری ماڈل پرفارمنس کا جائزہ اب لائیو ہے — 13 مارکیٹ/گریڈ امتزاجات میں 81.7% پیشن گوئی کی درستگی۔",
-  "🌏 برآمدی سنگ میل (جولائی 2026): شوپیاں اور پلوامہ سے جے اینڈ کے کی پریمیم اریکو چیری اور سنٹروس آلو بخارا پہلی بار سنگاپور کی منڈی میں داخل ہوئے۔",
-  "📡 ڈیجیٹل مارکیٹ اپڈیٹ: ڈی ایم آئی تمام ریاستوں اور مرکز کے زیر انتظام علاقوں کو ایگمارک نیٹ کے ساتھ مربوط زرعی مارکیٹ ڈیٹا بیس بنانے کی ترغیب دے رہا ہے۔",
-  "🇮🇳 پالیسی اپڈیٹ: نیتی آیوگ کا 'آپریشن گولڈن گرینز' روڈ میپ جموں و کشمیر کو عالمی باغبانی مرکز بنانے کی تجویز پیش کرتا ہے۔",
-  "⚠️ تجارتی الرٹ: سیب پر درآمدی ڈیوٹی میں حالیہ کمی نے مقابلے کے خدشات کو جنم دیا ہے۔",
-  "🍏 سیب کی صنعت: جموں و کشمیر میں اعلی کثافت والی سیب کی باغبانی میں مسلسل توسیع جاری ہے۔",
-  "📊 نیا معاشی مطالعہ: 2,225 مارکیٹ جوڑوں اور 17 فصلوں میں قیمتوں کی منتقلی کا جائزہ اب لائیو ہے — 85.1% باہمی مربوطیت کے ساتھ این ایچ 44 پر قیمتوں کی تیز منتقلی۔",
+  "🍎 لائیو پیشین گوئیاں: مارکیٹنگ سیزن 2026–27 کے لیے سیب کی قیمتوں کی اے آئی پیشین گوئیاں اب لائیو ہیں — سوپور، پرمپورہ، نروال اور آزاد پور منڈیوں کے لیے 7 اور 30 روزہ تخمینہ۔",
+  "📊 قیمتوں کی منتقلی: 2,225 مارکیٹ جوڑوں کے معاشی جائزے سے جموں و کشمیر اور قومی منڈیوں کے درمیان 85.1% ہم آہنگی کی تصدیق۔",
+  "🚚 این ایچ 44 کوریڈور اپڈیٹ: ہائی وے ڈسرپشن انڈیکس لائیو ہے — رام بن-بانہال روٹ پر ٹرانسپورٹ کے بہاؤ اور مال برداری کا تفصیلی جائزہ۔",
+  "🍒 چیری ماڈل رپورٹ: 2026 چیری پرفارمنس کا جائزہ مکمل — 13 مارکیٹ/گریڈ امتزاجات میں 81.7% پیشن گوئی کی درستگی۔",
+  "❄️ سی اے اسٹوریج: پلوامہ، شوپیاں اور لسی پورہ میں کولڈ اسٹوریج گنجائش کا جائزہ اور پوسٹ ہارویسٹ قیمتوں کا تجزیہ۔",
+  "🚆 ریلوے کارگو اپڈیٹ: باغبانی برآمدات کے لیے ناردرن ریلویز کی طرف سے ریفر کنٹینرز اور خصوصی پارسل ٹرینوں کا انتظام۔",
+  "🌏 برآمدات: ایچ اے ڈی پی 04 کے تحت جموں و کشمیر کے اعلیٰ معیار کے سیب اور پھلوں کی خلیجی اور ایشیائی منڈیوں میں برآمد۔",
+  "📜 ارلی وارننگ بلیٹن: کٹائی کے نظام الاوقات اور گریڈنگ کے معیارات پر مبنی تازہ ترین باغبانی رہنمائی نامہ جاری۔",
 ];
 
 const Home: React.FC = () => {
