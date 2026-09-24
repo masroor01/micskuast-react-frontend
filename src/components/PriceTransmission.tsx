@@ -13,7 +13,8 @@ import {
   MapPin, 
   Truck,
   Database,
-  GitCompare
+  GitCompare,
+  ArrowRight
 } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
 import { MultiMarketComparison } from './MultiMarketComparison';
@@ -385,6 +386,73 @@ export const PriceTransmission: React.FC = () => {
       {/* SUB-TAB 1: National Overview (17 Crops) */}
       {activeSubTab === 'overview' && (
         <div className="animate-fade-in">
+          {/* Direct CTA Banner to Multi-Market Simulator */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(21, 128, 61, 0.08) 0%, rgba(16, 185, 129, 0.04) 100%)',
+            border: '1.5px solid #16a34a',
+            borderRadius: '12px',
+            padding: '1rem 1.25rem',
+            marginBottom: '1.5rem',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            boxShadow: '0 4px 12px rgba(22, 163, 74, 0.08)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+              <div style={{
+                background: '#15803d',
+                color: 'white',
+                borderRadius: '10px',
+                padding: '0.6rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <GitCompare size={22} />
+              </div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <strong style={{ fontSize: '0.98rem', color: 'var(--color-text-main)' }}>
+                    Interactive Multi-Market Comparison &amp; Shock Simulator
+                  </strong>
+                  <span style={{
+                    fontSize: '0.68rem',
+                    background: '#15803d',
+                    color: 'white',
+                    padding: '2px 8px',
+                    borderRadius: '999px',
+                    fontWeight: 800,
+                    textTransform: 'uppercase'
+                  }}>
+                    September 2026 Cointegration Study
+                  </span>
+                </div>
+                <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.84rem', color: 'var(--color-text-muted)' }}>
+                  Pairwise &amp; cohort transmission analysis across 2,225 mandi links, error-correction speeds (&lambda;), freight arbitrage margins, and dynamic shock multiplier simulator.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => setActiveSubTab('multimarket')}
+              className="btn btn-primary"
+              style={{
+                fontSize: '0.85rem',
+                padding: '0.55rem 1.25rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                whiteSpace: 'nowrap',
+                fontWeight: 700,
+                cursor: 'pointer'
+              }}
+            >
+              <span>Launch Multi-Market Engine</span>
+              <ArrowRight size={16} />
+            </button>
+          </div>
+
           {/* Controls Bar */}
           <div style={{
             display: 'flex',
