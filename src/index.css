@@ -926,6 +926,29 @@ a {
   color: #f87171 !important;
 }
 
+.track-pill-capstone {
+  background-color: rgba(217, 119, 6, 0.16);
+  color: #b45309;
+}
+[data-theme="dark"] .track-pill-capstone {
+  background-color: rgba(245, 158, 11, 0.22);
+  color: #fbbf24 !important;
+}
+[data-theme="warm"] .track-pill-capstone {
+  background-color: rgba(180, 83, 9, 0.2);
+  color: #92400e;
+}
+
+.track-text-capstone {
+  color: #b45309;
+}
+[data-theme="dark"] .track-text-capstone {
+  color: #fbbf24 !important;
+}
+[data-theme="warm"] .track-text-capstone {
+  color: #92400e;
+}
+
 /* Quiz Feedback Theme Adaptability */
 .quiz-feedback-correct {
   background-color: rgba(22, 163, 74, 0.12);
