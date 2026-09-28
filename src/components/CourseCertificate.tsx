@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Award, Printer, CheckCircle, X, Sparkles, ShieldCheck } from 'lucide-react';
+import { Award, Printer, CheckCircle, X, Sparkles } from 'lucide-react';
 
 interface CourseCertificateProps {
   isOpen: boolean;
@@ -373,76 +373,68 @@ export const CourseCertificate: React.FC<CourseCertificateProps> = ({
             {/* Signatures & Verification Seal */}
             <div style={{
               display: 'flex',
-              alignItems: 'flex-end',
-              justifyContent: 'space-between',
+              alignItems: 'center',
+              justifyContent: 'space-around',
               paddingTop: '1.5rem',
               borderTop: '1px solid #e2e8f0',
-              marginTop: 'auto'
+              marginTop: 'auto',
+              flexWrap: 'wrap',
+              gap: '2rem'
             }}>
               
-              {/* Left Signature */}
-              <div style={{ textAlign: 'center', minWidth: '180px' }}>
+              {/* Actual SKUAST-K Official University Seal */}
+              <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{
-                  fontFamily: '"Brush Script MT", cursive, serif',
-                  fontSize: '1.4rem',
-                  color: '#0f172a',
-                  marginBottom: '2px',
-                  lineHeight: 1
-                }}>
-                  Prof. M. A. Wani
-                </div>
-                <div style={{ width: '150px', height: '1.5px', background: '#94a3b8', margin: '0 auto 4px auto' }} />
-                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#0f172a' }}>
-                  Principal Investigator &amp; Lead
-                </div>
-                <div style={{ fontSize: '0.65rem', color: '#64748b' }}>
-                  Market Intelligence Cell (MIC)
-                </div>
-              </div>
-
-              {/* Center Golden Seal */}
-              <div style={{ textAlign: 'center' }}>
-                <div style={{
-                  width: '68px',
-                  height: '68px',
+                  width: '92px',
+                  height: '92px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                  boxShadow: '0 4px 12px rgba(217, 119, 6, 0.35)',
-                  margin: '0 auto 6px auto',
+                  padding: '6px',
+                  background: 'radial-gradient(circle, #ffffff 65%, #fef3c7 100%)',
+                  boxShadow: '0 4px 14px rgba(217, 119, 6, 0.25), 0 0 0 2.5px #d97706, 0 0 0 5px rgba(21, 128, 61, 0.2)',
                   display: 'flex',
-                  flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#ffffff',
-                  border: '2px dashed #fef3c7'
+                  marginBottom: '6px'
                 }}>
-                  <ShieldCheck size={22} />
-                  <span style={{ fontSize: '0.55rem', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                    VERIFIED
-                  </span>
+                  <img 
+                    src="/logos/skuast.png" 
+                    alt="SKUAST-Kashmir Official Seal" 
+                    style={{
+                      width: '76px',
+                      height: '76px',
+                      objectFit: 'contain'
+                    }} 
+                  />
                 </div>
-                <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#15803d' }}>
-                  SKUAST-K SEAL
+                <div style={{ fontSize: '0.72rem', fontWeight: 900, color: '#15803d', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                  SKUAST-Kashmir
+                </div>
+                <div style={{ fontSize: '0.62rem', color: '#b45309', fontWeight: 800, letterSpacing: '0.04em' }}>
+                  ★ OFFICIAL UNIVERSITY SEAL ★
                 </div>
               </div>
 
-              {/* Right Signature & Date */}
-              <div style={{ textAlign: 'center', minWidth: '180px' }}>
+              {/* Authorized Signatory: Professor F. A. Shaheen */}
+              <div style={{ textAlign: 'center', minWidth: '240px' }}>
                 <div style={{
                   fontFamily: '"Brush Script MT", cursive, serif',
-                  fontSize: '1.4rem',
+                  fontSize: '1.8rem',
                   color: '#0f172a',
-                  marginBottom: '2px',
-                  lineHeight: 1
+                  marginBottom: '4px',
+                  lineHeight: 1.1,
+                  letterSpacing: '0.01em'
                 }}>
-                  Dr. S. A. Mir
+                  Prof. F. A. Shaheen
                 </div>
-                <div style={{ width: '150px', height: '1.5px', background: '#94a3b8', margin: '0 auto 4px auto' }} />
-                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#0f172a' }}>
-                  Director / Co-PI
+                <div style={{ width: '220px', height: '1.5px', background: '#94a3b8', margin: '0 auto 6px auto' }} />
+                <div style={{ fontSize: '0.88rem', fontWeight: 900, color: '#0f172a' }}>
+                  Professor F. A. Shaheen
                 </div>
-                <div style={{ fontSize: '0.65rem', color: '#64748b' }}>
-                  Directorate of Research, SKUAST-K
+                <div style={{ fontSize: '0.76rem', fontWeight: 700, color: '#15803d', marginTop: '2px' }}>
+                  Head, IBPR, SKUAST-Kashmir
+                </div>
+                <div style={{ fontSize: '0.68rem', color: '#64748b' }}>
+                  Market Intelligence Cell (MIC)
                 </div>
               </div>
 
