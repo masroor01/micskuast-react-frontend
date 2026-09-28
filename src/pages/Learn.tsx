@@ -923,32 +923,20 @@ export const Learn: React.FC = () => {
     <div className="container section-padding animate-fade-in" style={{ maxWidth: '1280px', margin: '0 auto' }}>
       
       {/* Header Banner */}
-      <div style={{
-        background: 'linear-gradient(135deg, #0b192c 0%, #1e3a8a 100%)',
-        color: '#ffffff',
-        borderRadius: '16px',
-        padding: '2.25rem 2rem',
-        marginBottom: '2rem',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.12)',
-        border: '1px solid rgba(255,255,255,0.1)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+      <div className="learn-hero-banner">
         <div style={{
           position: 'absolute',
           top: '-30px',
           right: '-30px',
-          width: '200px',
-          height: '200px',
+          width: '220px',
+          height: '220px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(59,130,246,0.28) 0%, transparent 70%)',
           pointerEvents: 'none'
         }} />
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.75rem' }}>
-          <span style={{
-            background: '#2563eb',
-            color: '#ffffff',
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '0.85rem' }}>
+          <span className="learn-hero-badge" style={{
             padding: '4px 10px',
             borderRadius: '999px',
             fontSize: '0.72rem',
@@ -960,9 +948,9 @@ export const Learn: React.FC = () => {
             gap: '5px'
           }}>
             <GraduationCap size={14} />
-            <EditableLabel labelKey="learn_badge" defaultValue="AI Learning Lab • Python for Data Science" />
+            <EditableLabel labelKey="learn_badge" defaultValue="AI Learning Lab • Python for Data Science" style={{ color: '#ffffff' }} />
           </span>
-          <span style={{ fontSize: '0.8rem', color: '#93c5fd', fontWeight: 600 }}>
+          <span className="learn-hero-subtitle" style={{ fontSize: '0.82rem', fontWeight: 600 }}>
             Interactive Video &amp; Code Academy
           </span>
         </div>
@@ -971,21 +959,23 @@ export const Learn: React.FC = () => {
           fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
           fontWeight: 900,
           margin: '0 0 0.75rem 0',
-          lineHeight: 1.2
+          lineHeight: 1.2,
+          color: '#ffffff'
         }}>
-          <EditableLabel labelKey="learn_title" defaultValue="Python for Data Science Academy: Beginner to Advanced" />
+          <EditableLabel labelKey="learn_title" defaultValue="Python for Data Science Academy: Beginner to Advanced" style={{ color: '#ffffff' }} />
         </h1>
 
         <p style={{
-          fontSize: '0.92rem',
-          color: '#cbd5e1',
+          fontSize: '0.94rem',
           maxWidth: '850px',
           lineHeight: 1.6,
-          margin: 0
+          margin: 0,
+          color: '#e2e8f0'
         }}>
           <EditableLabel 
             labelKey="learn_desc" 
             defaultValue="A comprehensive, progressive curriculum with hands-on video tutorials, code examples, and interactive challenges. Master general Python programming, numerical computing with NumPy, tabular data analysis with Pandas, statistical visualization, and machine learning."
+            style={{ color: '#e2e8f0' }}
           />
         </p>
       </div>
@@ -1006,7 +996,7 @@ export const Learn: React.FC = () => {
               Choose Difficulty Track
             </div>
             <div style={{ fontSize: '1rem', fontWeight: 900, color: 'var(--color-text-main)', marginTop: '0.2rem' }}>
-              Active Track: <span style={{ color: selectedLevel === 'beginner' ? '#16a34a' : (selectedLevel === 'intermediate' ? '#d97706' : '#dc2626') }}>{selectedLevel.toUpperCase()}</span>
+              Active Track: <span className={`track-text-${selectedLevel}`} style={{ fontWeight: 900 }}>{selectedLevel.toUpperCase()}</span>
             </div>
           </div>
 
@@ -1029,7 +1019,7 @@ export const Learn: React.FC = () => {
                 fontSize: '0.82rem',
                 cursor: 'pointer',
                 backgroundColor: selectedLevel === 'beginner' ? '#16a34a' : 'transparent',
-                color: selectedLevel === 'beginner' ? '#ffffff' : 'var(--color-text-muted)',
+                color: selectedLevel === 'beginner' ? '#ffffff' : 'var(--color-text-main)',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
@@ -1049,8 +1039,8 @@ export const Learn: React.FC = () => {
                 fontWeight: 800,
                 fontSize: '0.82rem',
                 cursor: 'pointer',
-                backgroundColor: selectedLevel === 'intermediate' ? '#d97706' : 'transparent',
-                color: selectedLevel === 'intermediate' ? '#ffffff' : 'var(--color-text-muted)',
+                backgroundColor: selectedLevel === 'intermediate' ? '#b45309' : 'transparent',
+                color: selectedLevel === 'intermediate' ? '#ffffff' : 'var(--color-text-main)',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
@@ -1071,7 +1061,7 @@ export const Learn: React.FC = () => {
                 fontSize: '0.82rem',
                 cursor: 'pointer',
                 backgroundColor: selectedLevel === 'advanced' ? '#dc2626' : 'transparent',
-                color: selectedLevel === 'advanced' ? '#ffffff' : 'var(--color-text-muted)',
+                color: selectedLevel === 'advanced' ? '#ffffff' : 'var(--color-text-main)',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
@@ -1249,12 +1239,10 @@ export const Learn: React.FC = () => {
           {/* Top Bar: Level Badge & Complete Button */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{
-                background: selectedLevel === 'beginner' ? 'rgba(22, 163, 74, 0.12)' : (selectedLevel === 'intermediate' ? 'rgba(217, 119, 6, 0.12)' : 'rgba(220, 38, 38, 0.12)'),
-                color: selectedLevel === 'beginner' ? '#16a34a' : (selectedLevel === 'intermediate' ? '#d97706' : '#dc2626'),
+              <span className={`track-pill-${selectedLevel}`} style={{
                 fontSize: '0.72rem',
                 fontWeight: 800,
-                padding: '3px 8px',
+                padding: '3px 9px',
                 borderRadius: '999px',
                 textTransform: 'uppercase'
               }}>
@@ -1532,14 +1520,16 @@ export const Learn: React.FC = () => {
                   Submit Answer
                 </button>
               ) : (
-                <div style={{
-                  padding: '0.75rem 1rem',
-                  borderRadius: '8px',
-                  background: selectedQuizAnswer === activeLesson.quiz.correctIndex ? 'rgba(22, 163, 74, 0.12)' : 'rgba(220, 38, 38, 0.12)',
-                  fontSize: '0.82rem',
-                  color: selectedQuizAnswer === activeLesson.quiz.correctIndex ? '#15803d' : '#b91c1c',
-                  lineHeight: 1.5
-                }}>
+                <div 
+                  className={selectedQuizAnswer === activeLesson.quiz.correctIndex ? 'quiz-feedback-correct' : 'quiz-feedback-incorrect'}
+                  style={{
+                    padding: '0.75rem 1rem',
+                    borderRadius: '8px',
+                    fontSize: '0.84rem',
+                    lineHeight: 1.5,
+                    fontWeight: 500
+                  }}
+                >
                   <strong>{selectedQuizAnswer === activeLesson.quiz.correctIndex ? '✅ Correct! ' : '❌ Incorrect. '}</strong>
                   {activeLesson.quiz.explanation}
                 </div>

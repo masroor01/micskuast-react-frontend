@@ -804,6 +804,165 @@ a {
   color: white;
 }
 
+/* ==========================================================================
+   AI LEARNING LAB - THEME ADAPTIVE STYLES & CONTRAST READABILITY
+   ========================================================================== */
+.learn-hero-banner {
+  background: linear-gradient(135deg, #091322 0%, #112240 50%, #1e3a8a 100%);
+  color: #ffffff !important;
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .learn-hero-banner {
+  background: linear-gradient(135deg, #060c17 0%, #0f172a 50%, #1e293b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="warm"] .learn-hero-banner {
+  background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #3f2a1d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 30px rgba(41, 37, 36, 0.35);
+}
+
+.learn-hero-banner h1,
+.learn-hero-banner h1 * {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.learn-hero-banner p,
+.learn-hero-banner p * {
+  color: #e2e8f0 !important;
+}
+
+.learn-hero-badge {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .learn-hero-badge {
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="warm"] .learn-hero-badge {
+  background: #b45309 !important;
+  color: #ffffff !important;
+}
+
+.learn-hero-subtitle {
+  color: #93c5fd !important;
+}
+
+[data-theme="warm"] .learn-hero-subtitle {
+  color: #fed7aa !important;
+}
+
+/* Track difficulty badges & active text */
+.track-pill-beginner {
+  background-color: rgba(22, 163, 74, 0.14);
+  color: #15803d;
+}
+[data-theme="dark"] .track-pill-beginner {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #4ade80 !important;
+}
+[data-theme="warm"] .track-pill-beginner {
+  background-color: rgba(20, 83, 45, 0.18);
+  color: #14532d;
+}
+
+.track-pill-intermediate {
+  background-color: rgba(217, 119, 6, 0.14);
+  color: #b45309;
+}
+[data-theme="dark"] .track-pill-intermediate {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24 !important;
+}
+[data-theme="warm"] .track-pill-intermediate {
+  background-color: rgba(180, 83, 9, 0.18);
+  color: #92400e;
+}
+
+.track-pill-advanced {
+  background-color: rgba(220, 38, 38, 0.14);
+  color: #dc2626;
+}
+[data-theme="dark"] .track-pill-advanced {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171 !important;
+}
+[data-theme="warm"] .track-pill-advanced {
+  background-color: rgba(185, 28, 28, 0.18);
+  color: #991b1b;
+}
+
+.track-text-beginner {
+  color: #15803d;
+}
+[data-theme="dark"] .track-text-beginner {
+  color: #4ade80 !important;
+}
+
+.track-text-intermediate {
+  color: #b45309;
+}
+[data-theme="dark"] .track-text-intermediate {
+  color: #fbbf24 !important;
+}
+
+.track-text-advanced {
+  color: #dc2626;
+}
+[data-theme="dark"] .track-text-advanced {
+  color: #f87171 !important;
+}
+
+/* Quiz Feedback Theme Adaptability */
+.quiz-feedback-correct {
+  background-color: rgba(22, 163, 74, 0.12);
+  border: 1px solid rgba(22, 163, 74, 0.3);
+  color: #15803d;
+}
+
+[data-theme="dark"] .quiz-feedback-correct {
+  background-color: rgba(34, 197, 94, 0.16);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #4ade80 !important;
+}
+
+[data-theme="warm"] .quiz-feedback-correct {
+  background-color: rgba(20, 83, 45, 0.15);
+  border-color: rgba(22, 163, 74, 0.4);
+  color: #14532d;
+}
+
+.quiz-feedback-incorrect {
+  background-color: rgba(220, 38, 38, 0.12);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: #b91c1c;
+}
+
+[data-theme="dark"] .quiz-feedback-incorrect {
+  background-color: rgba(239, 68, 68, 0.16);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171 !important;
+}
+
+[data-theme="warm"] .quiz-feedback-incorrect {
+  background-color: rgba(127, 29, 29, 0.15);
+  border-color: rgba(185, 28, 28, 0.4);
+  color: #991b1b;
+}
+
 /* About Us premium style cards */
 .about-grid {
   display: grid;
