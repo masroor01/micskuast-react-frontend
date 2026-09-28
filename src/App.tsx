@@ -15,6 +15,7 @@ import Publications from './pages/Publications';
 import Team from './pages/Team';
 import Admin from './pages/Admin';
 import About from './pages/About';
+import Learn from './pages/Learn';
 import { ParticleBackground } from './components/ParticleBackground';
 import { MICChatWidget } from './components/MICChatWidget';
 
@@ -37,6 +38,9 @@ function App() {
             <Route path="/forecasts" element={<Forecasts />} />
             <Route path="/ews" element={<EWS />} />
             <Route path="/publications" element={<Publications />} />
+            <Route path="/learn" element={<Learn />} />
+            <Route path="/data-science" element={<Navigate to="/learn" replace />} />
+            <Route path="/python-academy" element={<Navigate to="/learn" replace />} />
             <Route path="/orchard-ledger" element={<Navigate to="/forecasts?view=ledger" replace />} />
             <Route path="/price-transmission" element={<Navigate to="/forecasts?view=transmission" replace />} />
             <Route path="/transmission" element={<Navigate to="/forecasts?view=transmission" replace />} />

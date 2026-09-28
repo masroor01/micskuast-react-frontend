@@ -5,9 +5,11 @@ import {
   RotateCcw, 
   Terminal, 
   ShieldAlert, 
-  Compass 
+  Compass,
+  Truck
 } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
+import { MultiMarketCorridorImpact } from './MultiMarketCorridorImpact';
 
 // --- DATASET & RESEARCH SPECIFICATION ---
 export interface ChainData {
@@ -768,7 +770,7 @@ const ResponseChart: React.FC<{ path: Array<{ horizon: number; effect: number }>
 
 // --- MAIN COMPONENT ---
 export const CorridorDisruption: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'recs' | 'simulator' | 'about'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'multimarket' | 'recs' | 'simulator' | 'about'>('overview');
   const [selectedChainId, setSelectedChainId] = useState<string>("Shopian_American_B");
   
   // Simulator State
@@ -915,6 +917,37 @@ export const CorridorDisruption: React.FC = () => {
             }}
           >
             <Compass size={15} /> Overview &amp; Key Signals
+          </button>
+          <button
+            onClick={() => setActiveTab('multimarket')}
+            style={{
+              padding: '7px 14px',
+              borderRadius: '8px',
+              border: 'none',
+              background: activeTab === 'multimarket' ? '#16a34a' : 'rgba(255,255,255,0.08)',
+              color: '#ffffff',
+              fontWeight: 700,
+              fontSize: '0.82rem',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            <Truck size={15} /> Multi-Market Corridor Scope
+            <span style={{
+              fontSize: '0.66rem',
+              background: activeTab === 'multimarket' ? '#ffffff' : '#16a34a',
+              color: activeTab === 'multimarket' ? '#16a34a' : '#ffffff',
+              padding: '1px 7px',
+              borderRadius: '999px',
+              fontWeight: 800,
+              letterSpacing: '0.03em',
+              textTransform: 'uppercase'
+            }}>
+              10 Mandis
+            </span>
           </button>
           <button
             onClick={() => setActiveTab('recs')}
@@ -1102,10 +1135,10 @@ export const CorridorDisruption: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick CTA to Simulator */}
+          {/* Quick CTA to Simulator & Multi-Market */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', margin: '0.5rem 0' }}>
             <button
-              onClick={() => setActiveTab('simulator')}
+              onClick={() => setActiveTab('multimarket')}
               style={{
                 background: 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)',
                 color: '#ffffff',
@@ -1121,7 +1154,25 @@ export const CorridorDisruption: React.FC = () => {
                 boxShadow: '0 4px 14px rgba(22,163,74,0.35)'
               }}
             >
-              <Sliders size={18} /> <EditableLabel labelKey="cde_btn_sim" defaultValue="Open Interactive Headline Simulator →" />
+              <Truck size={18} /> <EditableLabel labelKey="cde_btn_mmc" defaultValue="Explore 10-Mandi Corridor Scope →" />
+            </button>
+            <button
+              onClick={() => setActiveTab('simulator')}
+              style={{
+                background: 'var(--color-surface)',
+                color: 'var(--color-text-main)',
+                border: '1px solid var(--color-border)',
+                padding: '11px 24px',
+                borderRadius: '8px',
+                fontWeight: 700,
+                fontSize: '0.92rem',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <Sliders size={18} /> <EditableLabel labelKey="cde_btn_sim" defaultValue="Open Headline Simulator" />
             </button>
             <button
               onClick={() => setActiveTab('recs')}
@@ -1139,10 +1190,15 @@ export const CorridorDisruption: React.FC = () => {
                 gap: '8px'
               }}
             >
-              <ShieldAlert size={18} /> <EditableLabel labelKey="cde_btn_recs" defaultValue="View 8-Chain Vulnerability Rankings" />
+              <ShieldAlert size={18} /> <EditableLabel labelKey="cde_btn_recs" defaultValue="View 8-Chain Vulnerability" />
             </button>
           </div>
         </div>
+      )}
+
+      {/* TAB: MULTI-MARKET CORRIDOR SCOPE */}
+      {activeTab === 'multimarket' && (
+        <MultiMarketCorridorImpact />
       )}
 
       {/* TAB 2: VULNERABILITY & RECOMMENDATIONS */}

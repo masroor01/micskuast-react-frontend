@@ -36,8 +36,12 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     nav_ews: "EWS Reports",
     nav_apmcs: "APMCs",
     nav_publications: "Publications",
+    nav_learn: "Learning Lab",
     nav_team: "Our Team",
     nav_market_intel: "Explore Live Forecasts",
+    learn_badge: "MIC AI Learning Lab",
+    learn_title: "Python for Agricultural Data Science & Market Econometrics",
+    learn_desc: "Master practical data science tailored for agribusiness, mandi intelligence, time-series forecasting, and econometric spatial integration. Progress from Python and Pandas fundamentals to advanced ADF stationarity, Engle-Granger cointegration, and machine learning price prediction.",
 
     // Homepage Floating Stats
     home_stat1_val: "15+",
@@ -334,8 +338,12 @@ export const translations: Record<SupportedLanguage, Record<string, string>> = {
     nav_ews: "ای ڈبلیو ایس رپورٹس",
     nav_apmcs: "اے پی ایم سی منڈیاں",
     nav_publications: "مطبوعات",
+    nav_learn: "لرننگ لیب",
     nav_team: "ہماری ٹیم",
     nav_market_intel: "براہِ راست پیشن گوئی دیکھیں",
+    learn_badge: "ایم آئی سی اے آئی لرننگ لیب",
+    learn_title: "زرعی ڈیٹا سائنس اور مارکیٹ اکانومیٹرکس کے لیے ازگر (Python)",
+    learn_desc: "زرعی کاروبار، منڈی انٹیلی جنس اور ٹائم سیریز کی پیشین گوئی کے لیے ڈیٹا سائنس کی عملی تربیت۔ ازگر اور پانڈاز سے لے کر جدید اکانومیٹرک ماڈلنگ تک مرحلہ وار سیکھیں۔",
 
     // Homepage Floating Stats
     home_stat1_val: "15+",
