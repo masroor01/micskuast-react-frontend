@@ -132,25 +132,25 @@ const defaultTeam = [
 ];
 
 const defaultEnglishTickerItems: string[] = [
-  "🍎 LIVE FORECASTS: AI-Powered Apple Price Forecasts for the 2026–27 marketing season are now active on MIC — providing 7-day and 30-day price predictions across Sopore, Parimpora, Narwal, and Azadpur APMC mandis.",
-  "📊 PRICE TRANSMISSION: Spatial econometrics analysis across 2,225 market pairs confirms 85.1% cointegration between J&K terminal markets and major national consumption hubs.",
-  "🚚 NH-44 CORRIDOR RADAR: Real-time Highway Disruption Index active — tracking freight movements, transit times, and bottleneck alerts along the Ramban-Banihal stretch to optimize fruit dispatch schedules.",
-  "🍒 CHERRY SEASON REVIEW: 2026 Cherry Model Performance validation complete with 81.7% out-of-sample directional accuracy across 13 major market/grade combinations.",
-  "❄️ CA STORAGE INTELLIGENCE: Controlled Atmosphere (CA) storage occupancy in Pulwama, Shopian, and Lassipora reaches optimal levels with price-buffer simulations projecting favorable post-harvest realisations.",
-  "🚆 RAIL FREIGHT LOGISTICS: Northern Railways and J&K Horticulture Department expand parcel train services and reefer container quotas for accelerated apple dispatches to Mumbai, Bengaluru, and Kolkata mandis.",
-  "🌏 HORTICULTURE EXPORTS: J&K's premium high-density apple varieties and stone fruits record expanded market access across Southeast Asia and Gulf corridors under HADP-04 export promotion initiatives.",
-  "📜 POLICY & EWS ALERT: HADP-04 Early Warning System (EWS) bulletins updated with advisory guidance on harvest scheduling, grade-wise sorting, and packaging standards.",
+  "🍎 PEAK APPLE HARVEST & DISPATCHES: Daily outbound apple shipments cross 1,200+ trucks across Sopore, Shopian, and Parimpora — Grade-A Delicious commanding ₹1,350–₹1,550/box in Azadpur (Delhi) and Vashi (Mumbai) wholesale terminals.",
+  "📈 LIVE AI PRICE PREDICTIONS: MIC Deep Learning LSTM models active for Sopore, Azadpur, Narwal, and Parimpora — projecting sustained price firmness for premium high-density & traditional grades over the 7-day and 30-day forecast windows.",
+  "🚚 NH-44 CORRIDOR FREIGHT RADAR: Highway Disruption Index active — priority green corridor operational along Ramban-Banihal stretch ensuring bottleneck-free transit for fruit trucks to national destination mandis.",
+  "📊 MULTI-MARKET PRICE TRANSMISSION: Spatial econometric analysis across 2,225 inter-mandi pairs reveals strong 85.1% cointegration between Kashmir terminal yards and major metropolitan consumption centers.",
+  "❄️ CA STORAGE ADVISORY: Controlled Atmosphere (CA) facilities across Lassipora, Shopian, and Rangreth commence peak intake — growers advised to utilize phased storage to capitalize on projected post-November price premiums.",
+  "🏛️ e-NAM DIGITAL AUCTIONS: Inter-state electronic trading active across 8 J&K APMCs on e-NAM platform, facilitating direct buyer competition from merchants in Maharashtra, Gujarat, and Karnataka.",
+  "✈️ DIRECT EXPORT CONSIGNMENTS: Commercial air cargo dispatches of premium high-density apple varieties and GI-certified Kashmir Saffron flagged off for UAE and Gulf corridors under HADP-04 export promotion.",
+  "📜 EARLY WARNING SYSTEM (EWS): HADP-04 bulletin advises orchardists on harvest maturity indices, moisture prevention, and corrugated carton packaging to minimize in-transit damage.",
 ];
 
 const defaultUrduTickerItems: string[] = [
-  "🍎 لائیو پیشین گوئیاں: مارکیٹنگ سیزن 2026–27 کے لیے سیب کی قیمتوں کی اے آئی پیشین گوئیاں اب لائیو ہیں — سوپور، پرمپورہ، نروال اور آزاد پور منڈیوں کے لیے 7 اور 30 روزہ تخمینہ۔",
-  "📊 قیمتوں کی منتقلی: 2,225 مارکیٹ جوڑوں کے معاشی جائزے سے جموں و کشمیر اور قومی منڈیوں کے درمیان 85.1% ہم آہنگی کی تصدیق۔",
-  "🚚 این ایچ 44 کوریڈور اپڈیٹ: ہائی وے ڈسرپشن انڈیکس لائیو ہے — رام بن-بانہال روٹ پر ٹرانسپورٹ کے بہاؤ اور مال برداری کا تفصیلی جائزہ۔",
-  "🍒 چیری ماڈل رپورٹ: 2026 چیری پرفارمنس کا جائزہ مکمل — 13 مارکیٹ/گریڈ امتزاجات میں 81.7% پیشن گوئی کی درستگی۔",
-  "❄️ سی اے اسٹوریج: پلوامہ، شوپیاں اور لسی پورہ میں کولڈ اسٹوریج گنجائش کا جائزہ اور پوسٹ ہارویسٹ قیمتوں کا تجزیہ۔",
-  "🚆 ریلوے کارگو اپڈیٹ: باغبانی برآمدات کے لیے ناردرن ریلویز کی طرف سے ریفر کنٹینرز اور خصوصی پارسل ٹرینوں کا انتظام۔",
-  "🌏 برآمدات: ایچ اے ڈی پی 04 کے تحت جموں و کشمیر کے اعلیٰ معیار کے سیب اور پھلوں کی خلیجی اور ایشیائی منڈیوں میں برآمد۔",
-  "📜 ارلی وارننگ بلیٹن: کٹائی کے نظام الاوقات اور گریڈنگ کے معیارات پر مبنی تازہ ترین باغبانی رہنمائی نامہ جاری۔",
+  "🍎 سیب کی کٹائی اور منڈی آمد: سوپور، شوپیاں اور پرمپورہ سے روزانہ 1,200 سے زائد ٹرکوں کی ترسیل — گریڈ اے ڈلیشیس آزاد پور (دہلی) اور واشی (ممبئی) میں ₹1,350 تا ₹1,550 فی پیٹی پر فروخت۔",
+  "📈 لائیو اے آئی پرائس ماڈلز: مارکیٹ انٹیلی جنس سیل کے ڈیپ لرننگ ماڈلز فعال — سوپور، آزاد پور، نروال اور پرمپورہ کے لیے آئندہ 7 اور 30 روزہ قیمتوں کے مستحکم رہنے کی پیشین گوئی۔",
+  "🚚 این ایچ 44 کوریڈور الرٹ: ہائی وے ڈسرپشن انڈیکس فعال — رام بن-بانہال کوریڈور پر سیب کے ٹرکوں کے لیے ترجیحی گرین کوریڈور آپریشنل، بلاتعطل ترسیل یقینی۔",
+  "📊 مارکیٹ پرائس ٹرانسمیشن: 2,225 منڈی جوڑوں کے جائزے سے کشمیر اور قومی کھپت کے مراکز کے درمیان 85.1% معاشی ہم آہنگی کی تصدیق۔",
+  "❄️ سی اے اسٹوریج ایڈوائزری: لسی پورہ، شوپیاں اور رنگریٹ کے کنٹرولڈ ایٹموسفیئر اسٹوریج یونٹس فعال — باغبانوں کو نومبر کے بعد بہتر منافع کے لیے مرحلہ وار اسٹوریج کا مشورہ۔",
+  "🏛️ ای نیم ڈیجیٹل ٹریڈنگ: ای نیم پلیٹ فارم پر جموں و کشمیر کی 8 منڈیوں میں بین الصوبائی تجارت جاری — مہاراشٹر، گجرات اور کرناٹک کے تاجروں کی براہ راست شمولیت۔",
+  "✈️ باغبانی برآمدات: ایچ اے ڈی پی 04 کے تحت ہائی ڈینسٹی سیب اور جی آئی ٹیگ کشمیری زعفران کی پہلی کمرشل ایئر کارگو کھیپ خلیجی ممالک کے لیے روانہ۔",
+  "📜 ارلی وارننگ بلیٹن: کٹائی کی بروقت پختگی، نمی سے بچاؤ اور معیاری کوروگیٹڈ پیکنگ کے متعلق کسانوں کے لیے ہنگامی باغبانی رہنمائی جاری۔",
 ];
 
 const Home: React.FC = () => {
@@ -198,9 +198,14 @@ const Home: React.FC = () => {
             setHeroSlides(upgradedSlides);
           }
           if (cachedData.ticker_items && cachedData.ticker_items.length > 0) {
-            setTickerItems(cachedData.ticker_items);
-            if (JSON.stringify(cachedData.ticker_items) !== JSON.stringify(defaultEnglishTickerItems)) {
-              setIsCustomTicker(true);
+            const hasOldTicker = cachedData.ticker_items.some((item: string) => item.includes('CHERRY SEASON REVIEW') || item.includes('چیری ماڈل رپورٹ'));
+            if (hasOldTicker) {
+              setTickerItems(defaultEnglishTickerItems);
+            } else {
+              setTickerItems(cachedData.ticker_items);
+              if (JSON.stringify(cachedData.ticker_items) !== JSON.stringify(defaultEnglishTickerItems)) {
+                setIsCustomTicker(true);
+              }
             }
           }
           if (cachedData.team) {
@@ -233,9 +238,14 @@ const Home: React.FC = () => {
             setHeroSlides(upgradedSlides);
           }
           if (data.ticker_items && data.ticker_items.length > 0) {
-            setTickerItems(data.ticker_items);
-            if (JSON.stringify(data.ticker_items) !== JSON.stringify(defaultEnglishTickerItems)) {
-              setIsCustomTicker(true);
+            const hasOldTicker = data.ticker_items.some((item: string) => item.includes('CHERRY SEASON REVIEW') || item.includes('چیری ماڈل رپورٹ'));
+            if (hasOldTicker) {
+              setTickerItems(defaultEnglishTickerItems);
+            } else {
+              setTickerItems(data.ticker_items);
+              if (JSON.stringify(data.ticker_items) !== JSON.stringify(defaultEnglishTickerItems)) {
+                setIsCustomTicker(true);
+              }
             }
           }
           if (data.team) {
