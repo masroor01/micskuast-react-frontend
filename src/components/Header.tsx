@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, Sun, Moon, Coffee, Info, Lock, ExternalLink, GraduationCap } from 'lucide-react';
+import { TrendingUp, Landmark, BookOpen, AlertTriangle, Menu, X, Sun, Moon, Coffee, Info, Lock, ExternalLink } from 'lucide-react';
 import { EditableLabel } from './EditableLabel';
 import { LanguageToggle } from './LanguageToggle';
 import { useLanguage } from '../context/LanguageContext';
@@ -208,16 +208,6 @@ const Header: React.FC = () => {
                 <EditableLabel labelKey="nav_publications" defaultValue="Publications" />
               </span>
             </NavLink>
-
-            <NavLink 
-              to="/learn" 
-              className={({ isActive }) => `sp-nav-item ${isActive ? 'active' : ''}`}
-            >
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <GraduationCap size={14} /> 
-                <EditableLabel labelKey="nav_learn" defaultValue="Learning Lab" />
-              </span>
-            </NavLink>
           </nav>
 
           {/* S&P Global Style High-Contrast CTA Button */}
@@ -291,17 +281,6 @@ const Header: React.FC = () => {
                 style={{ color: '#ffffff' }}
               >
                 <EditableLabel labelKey="nav_publications" defaultValue="Publications" />
-              </NavLink>
-              <NavLink 
-                to="/learn" 
-                className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                onClick={() => setMobileOpen(false)}
-                style={{ color: '#ffffff' }}
-              >
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
-                  <GraduationCap size={15} />
-                  <EditableLabel labelKey="nav_learn" defaultValue="Learning Lab" />
-                </span>
               </NavLink>
               <NavLink 
                 to="/forecasts" 
