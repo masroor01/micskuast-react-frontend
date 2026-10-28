@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Shield, Key, Plus, Trash2, Edit, Save, Upload, CheckCircle, AlertTriangle, ArrowUp, ArrowDown } from 'lucide-react';
+import { Shield, Key, Plus, Trash2, Edit, Save, Upload, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, RotateCcw } from 'lucide-react';
 
 interface PublicationItem {
   id: number;
@@ -1069,6 +1069,21 @@ const Admin: React.FC = () => {
     setConfig({ ...config, ticker_items: newItems });
   };
 
+  const resetTickerToDefaults = () => {
+    if (!config) return;
+    const defaultOctoberTickerItems = [
+      "🍏 POST-HARVEST & CA STORAGE (LATE OCT 2026): Over 2.5 lakh MT of premium Grade-A apples stored across Lassipora, Aglar, and Rangreth CA facilities to capture off-season price premiums post-harvest.",
+      "📊 TERMINAL MANDI REALIZATIONS: Azadpur (Delhi) and Vashi (Mumbai) wholesale terminals record steady demand — Grade-A Delicious commanding ₹1,400–₹1,650/box as peak harvest arrivals taper.",
+      "🌸 GI KASHMIR SAFFRON HARVEST: Blooming season commences across Pampore & Budgam karewas — IIKSTC quality grading and e-auction platform active with price realizations at ₹2.5–₹2.8 lakh/kg.",
+      "🚚 NH-44 CORRIDOR FREIGHT RADAR: Priority green corridor active across Banihal-Qazigund stretch ensuring uninterrupted transit for horticulture freight carriers heading to national markets.",
+      "📈 AI PRICE PREDICTIVE ACCURACY: MIC SKUAST-K Deep Learning LSTM neural network models achieve 91.8% directional accuracy across 15-day forecasting horizons for Sopore, Azadpur, and Narwal mandis.",
+      "🌰 WALNUT HARVEST & VALUE ADDITION: Mechanical de-hulling, washing, and vacuum packing of organic walnuts under HADP-04 fetching ₹500–₹750/kg for premium kernels across Kupwara & Shopian.",
+      "🏛️ e-NAM DIGITAL INTER-STATE TRADE: APMCs across J&K record sustained inter-state electronic bidding on e-NAM, linking valley orchardists directly with buyers in Gujarat and Karnataka.",
+      "📜 EWS POST-HARVEST BULLETIN: SKUAST-K HADP-04 advisory issues guidance on orchard sanitation, urea spray for scab prevention, and winter dormant oil scheduling across Kashmir valley."
+    ];
+    setConfig({ ...config, ticker_items: defaultOctoberTickerItems });
+  };
+
   if (!isAuthenticated) {
     return (
       <div style={{ maxWidth: '420px', margin: '6rem auto', padding: '2.5rem', background: '#fff', borderRadius: '16px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-md)' }}>
@@ -1307,9 +1322,14 @@ const Admin: React.FC = () => {
           <div style={{ background: '#fff', padding: '2rem', borderRadius: '12px', border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-sm)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem', marginBottom: '1.25rem' }}>
               <h3 style={{ margin: 0, color: 'var(--color-primary)' }}>Live Scrolling News Ticker</h3>
-              <button type="button" onClick={addTickerItem} className="btn" style={{ fontSize: '0.75rem', padding: '4px 10px' }}>
-                <Plus size={14} /> Add Update Feed
-              </button>
+              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <button type="button" onClick={resetTickerToDefaults} className="btn btn-secondary" style={{ fontSize: '0.75rem', padding: '4px 10px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                  <RotateCcw size={13} /> Reset Defaults
+                </button>
+                <button type="button" onClick={addTickerItem} className="btn" style={{ fontSize: '0.75rem', padding: '4px 10px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                  <Plus size={14} /> Add Update Feed
+                </button>
+              </div>
             </div>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

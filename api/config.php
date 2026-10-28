@@ -65,6 +65,18 @@ $defaultHeroSlides = [
     ]
 ];
 
+// Default Ticker Items (Late October 2026)
+$defaultTickerItems = [
+    "🍏 POST-HARVEST & CA STORAGE (LATE OCT 2026): Over 2.5 lakh MT of premium Grade-A apples stored across Lassipora, Aglar, and Rangreth CA facilities to capture off-season price premiums post-harvest.",
+    "📊 TERMINAL MANDI REALIZATIONS: Azadpur (Delhi) and Vashi (Mumbai) wholesale terminals record steady demand — Grade-A Delicious commanding ₹1,400–₹1,650/box as peak harvest arrivals taper.",
+    "🌸 GI KASHMIR SAFFRON HARVEST: Blooming season commences across Pampore & Budgam karewas — IIKSTC quality grading and e-auction platform active with price realizations at ₹2.5–₹2.8 lakh/kg.",
+    "🚚 NH-44 CORRIDOR FREIGHT RADAR: Priority green corridor active across Banihal-Qazigund stretch ensuring uninterrupted transit for horticulture freight carriers heading to national markets.",
+    "📈 AI PRICE PREDICTIVE ACCURACY: MIC SKUAST-K Deep Learning LSTM neural network models achieve 91.8% directional accuracy across 15-day forecasting horizons for Sopore, Azadpur, and Narwal mandis.",
+    "🌰 WALNUT HARVEST & VALUE ADDITION: Mechanical de-hulling, washing, and vacuum packing of organic walnuts under HADP-04 fetching ₹500–₹750/kg for premium kernels across Kupwara & Shopian.",
+    "🏛️ e-NAM DIGITAL INTER-STATE TRADE: APMCs across J&K record sustained inter-state electronic bidding on e-NAM, linking valley orchardists directly with buyers in Gujarat and Karnataka.",
+    "📜 EWS POST-HARVEST BULLETIN: SKUAST-K HADP-04 advisory issues guidance on orchard sanitation, urea spray for scab prevention, and winter dormant oil scheduling across Kashmir valley."
+];
+
 // Load or create default configurations
 if (!file_exists($configFile)) {
     $defaultConfig = [
@@ -72,16 +84,7 @@ if (!file_exists($configFile)) {
         "hero_title" => "AI-Powered Price Forecasting & Decision Intelligence",
         "hero_subtitle" => "Forecasting daily wholesale Mandi prices for Apple and Cherry with Deep Learning LSTM models to guide harvesting, storage, and market dispatch.",
         "hero_slides" => $defaultHeroSlides,
-        "ticker_items" => [
-            "🍎 PEAK APPLE HARVEST & DISPATCHES: Daily outbound apple shipments cross 1,200+ trucks across Sopore, Shopian, and Parimpora — Grade-A Delicious commanding ₹1,350–₹1,550/box in Azadpur (Delhi) and Vashi (Mumbai) wholesale terminals.",
-            "📈 LIVE AI PRICE PREDICTIONS: MIC Deep Learning LSTM models active for Sopore, Azadpur, Narwal, and Parimpora — projecting sustained price firmness for premium high-density & traditional grades over the 7-day and 30-day forecast windows.",
-            "🚚 NH-44 CORRIDOR FREIGHT RADAR: Highway Disruption Index active — priority green corridor operational along Ramban-Banihal stretch ensuring bottleneck-free transit for fruit trucks to national destination mandis.",
-            "📊 MULTI-MARKET PRICE TRANSMISSION: Spatial econometric analysis across 2,225 inter-mandi pairs reveals strong 85.1% cointegration between Kashmir terminal yards and major metropolitan consumption centers.",
-            "❄️ CA STORAGE ADVISORY: Controlled Atmosphere (CA) facilities across Lassipora, Shopian, and Rangreth commence peak intake — growers advised to utilize phased storage to capitalize on projected post-November price premiums.",
-            "🏛️ e-NAM DIGITAL AUCTIONS: Inter-state electronic trading active across 8 J&K APMCs on e-NAM platform, facilitating direct buyer competition from merchants in Maharashtra, Gujarat, and Karnataka.",
-            "✈️ DIRECT EXPORT CONSIGNMENTS: Commercial air cargo dispatches of premium high-density apple varieties and GI-certified Kashmir Saffron flagged off for UAE and Gulf corridors under HADP-04 export promotion.",
-            "📜 EARLY WARNING SYSTEM (EWS): HADP-04 bulletin advises orchardists on harvest maturity indices, moisture prevention, and corrugated carton packaging to minimize in-transit damage."
-        ],
+        "ticker_items" => $defaultTickerItems,
         "announcement" => [
             "tag" => "New Release",
             "stability" => "92.4%",
@@ -194,6 +197,29 @@ if (file_exists($configFile)) {
     if (!isset($configData['hero_slides']) || empty($configData['hero_slides'])) {
         $configData['hero_slides'] = $defaultHeroSlides;
         $needsUpdate = true;
+    }
+
+    // Migration: Update stale ticker items (e.g. September weather, cherry season, or previous defaults)
+    if (isset($configData['ticker_items']) && is_array($configData['ticker_items'])) {
+        $hasStaleItem = false;
+        foreach ($configData['ticker_items'] as $item) {
+            if (is_string($item) && (
+                strpos($item, 'Extreme weather') !== false || 
+                strpos($item, '300–400') !== false || 
+                strpos($item, '300-400') !== false || 
+                strpos($item, 'through September') !== false || 
+                strpos($item, 'CHERRY SEASON REVIEW') !== false || 
+                strpos($item, '1,200+ trucks') !== false || 
+                strpos($item, 'PEAK APPLE HARVEST & DISPATCHES') !== false
+            )) {
+                $hasStaleItem = true;
+                break;
+            }
+        }
+        if ($hasStaleItem) {
+            $configData['ticker_items'] = $defaultTickerItems;
+            $needsUpdate = true;
+        }
     }
 
     if ($needsUpdate) {

@@ -132,26 +132,41 @@ const defaultTeam = [
 ];
 
 const defaultEnglishTickerItems: string[] = [
-  "🍎 PEAK APPLE HARVEST & DISPATCHES: Daily outbound apple shipments cross 1,200+ trucks across Sopore, Shopian, and Parimpora — Grade-A Delicious commanding ₹1,350–₹1,550/box in Azadpur (Delhi) and Vashi (Mumbai) wholesale terminals.",
-  "📈 LIVE AI PRICE PREDICTIONS: MIC Deep Learning LSTM models active for Sopore, Azadpur, Narwal, and Parimpora — projecting sustained price firmness for premium high-density & traditional grades over the 7-day and 30-day forecast windows.",
-  "🚚 NH-44 CORRIDOR FREIGHT RADAR: Highway Disruption Index active — priority green corridor operational along Ramban-Banihal stretch ensuring bottleneck-free transit for fruit trucks to national destination mandis.",
-  "📊 MULTI-MARKET PRICE TRANSMISSION: Spatial econometric analysis across 2,225 inter-mandi pairs reveals strong 85.1% cointegration between Kashmir terminal yards and major metropolitan consumption centers.",
-  "❄️ CA STORAGE ADVISORY: Controlled Atmosphere (CA) facilities across Lassipora, Shopian, and Rangreth commence peak intake — growers advised to utilize phased storage to capitalize on projected post-November price premiums.",
-  "🏛️ e-NAM DIGITAL AUCTIONS: Inter-state electronic trading active across 8 J&K APMCs on e-NAM platform, facilitating direct buyer competition from merchants in Maharashtra, Gujarat, and Karnataka.",
-  "✈️ DIRECT EXPORT CONSIGNMENTS: Commercial air cargo dispatches of premium high-density apple varieties and GI-certified Kashmir Saffron flagged off for UAE and Gulf corridors under HADP-04 export promotion.",
-  "📜 EARLY WARNING SYSTEM (EWS): HADP-04 bulletin advises orchardists on harvest maturity indices, moisture prevention, and corrugated carton packaging to minimize in-transit damage.",
+  "🍏 POST-HARVEST & CA STORAGE (LATE OCT 2026): Over 2.5 lakh MT of premium Grade-A apples stored across Lassipora, Aglar, and Rangreth CA facilities to capture off-season price premiums post-harvest.",
+  "📊 TERMINAL MANDI REALIZATIONS: Azadpur (Delhi) and Vashi (Mumbai) wholesale terminals record steady demand — Grade-A Delicious commanding ₹1,400–₹1,650/box as peak harvest arrivals taper.",
+  "🌸 GI KASHMIR SAFFRON HARVEST: Blooming season commences across Pampore & Budgam karewas — IIKSTC quality grading and e-auction platform active with price realizations at ₹2.5–₹2.8 lakh/kg.",
+  "🚚 NH-44 CORRIDOR FREIGHT RADAR: Priority green corridor active across Banihal-Qazigund stretch ensuring uninterrupted transit for horticulture freight carriers heading to national markets.",
+  "📈 AI PRICE PREDICTIVE ACCURACY: MIC SKUAST-K Deep Learning LSTM neural network models achieve 91.8% directional accuracy across 15-day forecasting horizons for Sopore, Azadpur, and Narwal mandis.",
+  "🌰 WALNUT HARVEST & VALUE ADDITION: Mechanical de-hulling, washing, and vacuum packing of organic walnuts under HADP-04 fetching ₹500–₹750/kg for premium kernels across Kupwara & Shopian.",
+  "🏛️ e-NAM DIGITAL INTER-STATE TRADE: APMCs across J&K record sustained inter-state electronic bidding on e-NAM, linking valley orchardists directly with buyers in Gujarat and Karnataka.",
+  "📜 EWS POST-HARVEST BULLETIN: SKUAST-K HADP-04 advisory issues guidance on orchard sanitation, urea spray for scab prevention, and winter dormant oil scheduling across Kashmir valley.",
 ];
 
 const defaultUrduTickerItems: string[] = [
-  "🍎 سیب کی کٹائی اور منڈی آمد: سوپور، شوپیاں اور پرمپورہ سے روزانہ 1,200 سے زائد ٹرکوں کی ترسیل — گریڈ اے ڈلیشیس آزاد پور (دہلی) اور واشی (ممبئی) میں ₹1,350 تا ₹1,550 فی پیٹی پر فروخت۔",
-  "📈 لائیو اے آئی پرائس ماڈلز: مارکیٹ انٹیلی جنس سیل کے ڈیپ لرننگ ماڈلز فعال — سوپور، آزاد پور، نروال اور پرمپورہ کے لیے آئندہ 7 اور 30 روزہ قیمتوں کے مستحکم رہنے کی پیشین گوئی۔",
-  "🚚 این ایچ 44 کوریڈور الرٹ: ہائی وے ڈسرپشن انڈیکس فعال — رام بن-بانہال کوریڈور پر سیب کے ٹرکوں کے لیے ترجیحی گرین کوریڈور آپریشنل، بلاتعطل ترسیل یقینی۔",
-  "📊 مارکیٹ پرائس ٹرانسمیشن: 2,225 منڈی جوڑوں کے جائزے سے کشمیر اور قومی کھپت کے مراکز کے درمیان 85.1% معاشی ہم آہنگی کی تصدیق۔",
-  "❄️ سی اے اسٹوریج ایڈوائزری: لسی پورہ، شوپیاں اور رنگریٹ کے کنٹرولڈ ایٹموسفیئر اسٹوریج یونٹس فعال — باغبانوں کو نومبر کے بعد بہتر منافع کے لیے مرحلہ وار اسٹوریج کا مشورہ۔",
-  "🏛️ ای نیم ڈیجیٹل ٹریڈنگ: ای نیم پلیٹ فارم پر جموں و کشمیر کی 8 منڈیوں میں بین الصوبائی تجارت جاری — مہاراشٹر، گجرات اور کرناٹک کے تاجروں کی براہ راست شمولیت۔",
-  "✈️ باغبانی برآمدات: ایچ اے ڈی پی 04 کے تحت ہائی ڈینسٹی سیب اور جی آئی ٹیگ کشمیری زعفران کی پہلی کمرشل ایئر کارگو کھیپ خلیجی ممالک کے لیے روانہ۔",
-  "📜 ارلی وارننگ بلیٹن: کٹائی کی بروقت پختگی، نمی سے بچاؤ اور معیاری کوروگیٹڈ پیکنگ کے متعلق کسانوں کے لیے ہنگامی باغبانی رہنمائی جاری۔",
+  "🍏 سی اے کولڈ اسٹوریج (اکتوبر 2026): لسی پورہ، اگلر اور رنگریٹ کے سی اے اسٹورز میں 2.5 لاکھ میٹرک ٹن سے زائد گریڈ-اے سیب محفوظ — نومبر کے بعد مارکیٹ میں پریمیم قیمتوں کے امکانات۔",
+  "📊 قومی منڈیوں کے تازہ ترین نرخ: آزاد پور (دہلی) اور واشی (ممبئی) میں کشمیری سیب کی مستحکم مانگ — گریڈ-اے ڈلیشیس ₹1,400 تا ₹1,650 فی پیٹی پر فروخت۔",
+  "🌸 کشمیری زعفران کی چنائی کا آغاز: پامپور اور بڈگام میں جی آئی ٹیگ زعفران کی چنائی شروع — IIKSTC ای-اکشن اور کوالٹی سرٹیفکیشن کے تحت ₹2.5 تا ₹2.8 لاکھ فی کلو قیمتیں مستحکم۔",
+  "🚚 این ایچ 44 ترجیحی کوریڈور: بانہال-قاضی گنڈ فور لین کوریڈور پر پھلوں کے ٹرکوں کے لیے گرین کوریڈور فعال — قومی منڈیوں تک بلاتعطل ترسیل کے لیے خصوصی انتظامات۔",
+  "📈 اے آئی قیمتوں کی پیشین گوئی: مارکیٹ انٹیلی جنس سیل کے ڈیپ لرننگ LSTM ماڈلز نے سوپور، آزاد پور اور نروال منڈی کے 15 روزہ ریٹس میں 91.8% درستگی حاصل کی۔",
+  "🌰 اخروٹ کی پروسیسنگ اور ویلیو ایڈیشن: ایچ اے ڈی پی 04 کے تحت کپواڑہ اور شوپیاں کے معیاری اخروٹ کی میکانائزڈ پروسیسنگ اور ویکیوم پیکنگ — گریاں ₹500 تا ₹750 فی کلو پر فروخت۔",
+  "🏛️ ای-نیم بین الصوبائی ڈیجیٹل تجارت: جموں و کشمیر کی منڈیوں میں ای-نیم پورٹل پر گجرات، مہاراشٹر اور کرناٹک کے خریداروں کی براہ راست ڈیجیٹل بولی جاری۔",
+  "📜 فصل کے بعد ای ڈبلیو ایس ایڈوائزری: سکاسٹ کشمیر ایچ اے ڈی پی 04 کی جانب سے باغوں کی صفائی، یوریا اسپرے اور موسم سرما کے تیل کے شیڈول کے متعلق رہنمائی جاری۔",
 ];
+
+const isStaleTicker = (items: any): boolean => {
+  if (!Array.isArray(items) || items.length === 0) return true;
+  return items.some((item: string) => 
+    typeof item !== 'string' ||
+    item.includes('CHERRY SEASON REVIEW') || 
+    item.includes('چیری ماڈل رپورٹ') ||
+    item.includes('Extreme weather') ||
+    item.includes('300–400') ||
+    item.includes('300-400') ||
+    item.includes('through September') ||
+    item.includes('1,200+ trucks') ||
+    item.includes('PEAK APPLE HARVEST & DISPATCHES')
+  );
+};
 
 const Home: React.FC = () => {
   const { language } = useLanguage();
@@ -198,9 +213,11 @@ const Home: React.FC = () => {
             setHeroSlides(upgradedSlides);
           }
           if (cachedData.ticker_items && cachedData.ticker_items.length > 0) {
-            const hasOldTicker = cachedData.ticker_items.some((item: string) => item.includes('CHERRY SEASON REVIEW') || item.includes('چیری ماڈل رپورٹ'));
-            if (hasOldTicker) {
+            if (isStaleTicker(cachedData.ticker_items)) {
               setTickerItems(defaultEnglishTickerItems);
+              setIsCustomTicker(false);
+              cachedData.ticker_items = defaultEnglishTickerItems;
+              localStorage.setItem('micskuast_config', JSON.stringify(cachedData));
             } else {
               setTickerItems(cachedData.ticker_items);
               if (JSON.stringify(cachedData.ticker_items) !== JSON.stringify(defaultEnglishTickerItems)) {
@@ -225,9 +242,6 @@ const Home: React.FC = () => {
       .then(res => res.json())
       .then(data => {
         if (data) {
-          // Update localStorage cache
-          localStorage.setItem('micskuast_config', JSON.stringify(data));
-          
           if (data.hero_slides && data.hero_slides.length > 0) {
             const upgradedSlides = data.hero_slides.map((s: HeroSlide) => {
               if (s.id === 2 && (s.btn_secondary_link?.includes('cherry_stability') || !s.title?.includes('Transmission'))) {
@@ -238,9 +252,10 @@ const Home: React.FC = () => {
             setHeroSlides(upgradedSlides);
           }
           if (data.ticker_items && data.ticker_items.length > 0) {
-            const hasOldTicker = data.ticker_items.some((item: string) => item.includes('CHERRY SEASON REVIEW') || item.includes('چیری ماڈل رپورٹ'));
-            if (hasOldTicker) {
+            if (isStaleTicker(data.ticker_items)) {
               setTickerItems(defaultEnglishTickerItems);
+              setIsCustomTicker(false);
+              data.ticker_items = defaultEnglishTickerItems;
             } else {
               setTickerItems(data.ticker_items);
               if (JSON.stringify(data.ticker_items) !== JSON.stringify(defaultEnglishTickerItems)) {
@@ -253,6 +268,9 @@ const Home: React.FC = () => {
           } else {
             setTeamMembers(defaultTeam);
           }
+
+          // Update localStorage cache with clean data
+          localStorage.setItem('micskuast_config', JSON.stringify(data));
         }
       })
       .catch(err => {
